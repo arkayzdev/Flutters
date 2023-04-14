@@ -3,5 +3,5 @@ function change_avatar() {
 }
 
 function delete_avatar() {
-  location.href="avatar_delete.php"
+  location.href = "avatar_delete.php";
 }

@@ -16,7 +16,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <img src="<?php echo $id_movie['poster_image']?>" id="preview-image" style="width: 240px; height: 350px; object-fit: cover;" />
                         <small class="mb-2 form-text" id="poster-image-inline">Format recommandé : 480x700 - 2 Mo max</small>
                         <div class="d-flex flex-column mb-3 btn btn-dark " style="width:60%">
-                            <label class="form-label text-white m-1" for="customFile1">Choisir image</label>
+                            <label class="form-label text-white m-1" for="customFile1">Changer image</label>
                             <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image"/>
                         </div>
                     
@@ -41,10 +41,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <label class="form-label" for="description-input">Description</label>
                         <textarea class="form-control" name="description" rows="6" aria-describedby="descriptionHelp" id="description-input"><?php echo $id_movie['description']?></textarea>
-                        <!-- <div id="descriptionHelp" class="form-text">
-                        Ceci est une description.
-                        </div> -->
-                        
+
                     </div>
                 </div>
             </div>
@@ -56,14 +53,41 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                     <select onchange="addType()" class="form-select mb-2" id="type-select">
                         <option  id="type-selected" selected>Choisir un genre</option>
                         <?php 
+                            $id = $_GET['id'];
+
                             $q ='SELECT * FROM TYPE ORDER BY name ASC'; // Existing types
                             $req = $bdd->query($q);
                             $types = $req->fetchAll(PDO::FETCH_ASSOC);
 
+
+                            $q ="SELECT name FROM TYPE t
+                            INNER JOIN IS_TO IT on t.id_type = IT.id_type
+                            INNER JOIN MOVIE M on IT.id_movie = M.id_movie
+                            WHERE M.id_movie = $id";
+                            $req = $bdd->query($q);
+                            $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                            
                             foreach ($types as $type) {
-                                echo '<option id="' . $type['name']. '-option">' . $type['name'] . "</option>'";
+                                $option = 1;
+                                foreach($results as $result) {
+                                    if ($result['name'] == $type['name']) {
+                                        $option = 0;
+                                    }
+                                }
+                                if ($option) {
+                                    echo '<option id="' . $type['name']. '-option">' . $type['name'] . "</option>'";
+                                }   
                             } ?>
                     </select>
+                    
+                    <?php foreach ($results as $result) { ?>
+                            <div class="d-flex mb-2" id="<?php echo $result['name'] ?>-delete">
+                                <input class="form-control" name="types[]" value="<?php echo $result['name']?>" readonly>
+                                <button class="btn btn-danger" type="button" onclick="deleteType('<?php echo $result['name'] ?>')">
+                                    <i class="uil uil-multiply"></i>
+                                </button>
+                           </div>
+                    <?php } ?>
                 </div>
                 
             </div>
@@ -71,14 +95,33 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
             <div class="mb-2">
                 <label class="form-label" for="language-select">Langue original</label>
                 <select class="form-select mb-2" name="language">
-                    <option value="">Choisir une langue</option>
+                    
+                    <?php $q = "SELECT name from LANGUAGE l
+                    INNER JOIN IN_LANGUAGE IL on l.id_language = IL.id_language
+                    INNER JOIN MOVIE M on IL.id_movie = M.id_movie
+                    WHERE M.id_movie = $id";
+                    $req = $bdd->query($q);
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                        ?>
+
+                    <option value="<?php echo $results[0]['name']?>"><?php echo $results[0]['name']?></option>
                     <?php 
-                        $q ='SELECT * FROM LANGUAGE ORDER BY name ASC'; // Existing Actors
-                        $req = $bdd->query($q);
-                        $languages = $req->fetchAll(PDO::FETCH_ASSOC);
-                        
-                        foreach ($languages as $language) {
+                    $q = 'SELECT * FROM LANGUAGE ORDER BY name ASC'; // Existing Actors
+                    $req = $bdd->query($q);
+                    $languages = $req->fetchAll(PDO::FETCH_ASSOC);
+
+                    
+                    
+                    foreach ($languages as $language) {
+                        $option = 1;
+                        foreach($results as $result) {
+                            if ($result['name'] == $language['name']) {
+                                $option = 0;
+                            }
+                        }
+                        if ($option) {
                             echo '<option value="' . $language['name'] . '">' . $language['name'] . "</option>'";
+                        }   
                     } ?>
                 </select>
             </div>
@@ -90,14 +133,51 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <select class="form-select mb-2" id="actor-select" onchange="addActor()">
                             <option id="actor-selected">Choisir un acteur</option>
                             <?php 
-                                $q ='SELECT * FROM ACTOR ORDER BY first_name ASC'; // Existing Actors
-                                $req = $bdd->query($q);
-                                $actors = $req->fetchAll(PDO::FETCH_ASSOC);
 
-                                foreach ($actors as $actor) {
-                                    echo '<option id="' . $actor['first_name'] . "-" . $actor['last_name'] . '-option">' . $actor['first_name'] . " " . $actor['last_name'] . "</option>'";
-                            } ?>
+                            $id = $_GET['id'];
+
+                            $q ='SELECT * FROM ACTOR ORDER BY first_name ASC'; // Existing Actors
+                            $req = $bdd->query($q);
+                            $actors = $req->fetchAll(PDO::FETCH_ASSOC);
+                            $all_actors = [];
+                            foreach($actors as $key) {
+                                array_push($all_actors, $key['first_name'] . '-' . $key['last_name'] );
+                            }
+
+                            $q ="SELECT first_name, last_name FROM ACTOR a
+                            INNER JOIN PLAYED P on a.id_actor = P.id_actor
+                            INNER JOIN MOVIE M on P.id_movie = M.id_movie
+                            WHERE M.id_movie = $id";
+                            $req = $bdd->query($q);
+                            $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                            
+                            $result_actors = [];
+                            foreach($results as $key) {
+                                array_push($result_actors, $key['first_name'] . '-' . $key['last_name'] );
+                            }
+                            
+                            foreach ($all_actors as $actor) {
+                                $option = 1;
+                                foreach($result_actors as $result) {
+                                    if ($actor == $result) {
+                                        $option = 0;
+                                    }
+                                }
+                                if ($option) {
+                                    echo '<option id="' . $actor. '-option">' . $actor . "</option>'";
+                                }   
+                            } 
+                             ?>
                         </select>
+                        <?php foreach ($results as $result) { 
+                            $actor_name = $result['first_name'] . " " . $result['last_name']; ?>
+                            <div class="d-flex mb-2" id="<?php echo $actor_name?>-delete">
+                                <input class="form-control" name="types[]" value="<?php echo $actor_name?>" readonly>
+                                <button class="btn btn-danger" type="button" onclick="deleteActor('<?php echo $actor_name ?>')">
+                                    <i class="uil uil-multiply"></i>
+                                </button>
+                           </div>
+                        <?php } ?>
                     </div>
             </div>
 
@@ -107,22 +187,62 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <select onchange="addDirector()"class="form-select mb-2" id="director-select">
                             <option value="" id="director-selected">Choisir un réalisateur</option>
                             <?php 
-                                $q ='SELECT * FROM DIRECTOR ORDER BY first_name ASC'; // Existing Actors
-                                $req = $bdd->query($q);
-                                $directors = $req->fetchAll(PDO::FETCH_ASSOC);
-                                
-                                foreach ($directors as $director) {
-                                    echo '<option id="' . $director['first_name'] . "-" . $director['last_name'] . '-option">' . $director['first_name'] . " " . $director['last_name'] . "</option>'";
-                                } ?>
+
+                            $id = $_GET['id'];
+
+                            $q ='SELECT * FROM DIRECTOR ORDER BY first_name ASC'; // Existing Actors
+                            $req = $bdd->query($q);
+                            $directors= $req->fetchAll(PDO::FETCH_ASSOC);
+                            $all_directors = [];
+                            foreach($directors as $key) {
+                                array_push($all_directors, $key['first_name'] . '-' . $key['last_name'] );
+                            }
+
+                            $q ="SELECT first_name, last_name FROM DIRECTOR d
+                            INNER JOIN REALIZED R on d.id_director = R.id_director
+                            INNER JOIN MOVIE M on R.id_movie = M.id_movie
+                            WHERE M.id_movie = $id";
+                            $req = $bdd->query($q);
+                            $results = $req->fetchAll(PDO::FETCH_ASSOC);
+                                            
+                            $result_directors = [];
+                            foreach($results as $key) {
+                                array_push($result_directors, $key['first_name'] . '-' . $key['last_name'] );
+                            }
+                            
+                            foreach ($all_directors as $director) {
+                                $option = 1;
+                                foreach($result_directors as $result) {
+                                    if ($director == $result) {
+                                        $option = 0;
+                                    }
+                                }
+                                if ($option) {
+                                    echo '<option id="' . $director . '-option">' . $director . "</option>'";
+                                }   
+                            } 
+                             ?>
                         </select>
+                        <?php foreach ($results as $result) { 
+                            $director_name = $result['first_name'] . " " . $result['last_name']; ?>
+                            <div class="d-flex mb-2" id="<?php echo $director_name?>-delete">
+                                <input class="form-control" name="types[]" value="<?php echo $director_name?>" readonly>
+                                <button class="btn btn-danger" type="button" onclick="deleteDirector('<?php echo $director_name ?>')">
+                                    <i class="uil uil-multiply"></i>
+                                </button>
+                           </div>
+                        <?php } ?>
                     </div>
+                </div>
                     
                 </div>
 
-            <div>
-                <input class="btn btn-danger" type="submit" value="Ajouter" onclick="return confirm(\'Ajouter ?\')">
+            <div class="mb-4">
+                <?php echo '<input type="hidden" name="id" value="' . $_GET['id'] . '">'; ?>
+                <input class="btn btn-danger" type="submit" value="Modifier" onclick="return confirm(\'Modifier ?\')">
                 <a class="btn btn-danger" href="movies" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?')">Annuler</a></td>
             </div>
+            
 
         </form>
 <?php endif; } ?>
@@ -289,7 +409,8 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
         </td>
 
         <td>
-            <?php $q ="SELECT first_name, last_name FROM ACTOR a
+            <?php 
+            $q ="SELECT first_name, last_name FROM ACTOR a
             INNER JOIN PLAYED P on a.id_actor = P.id_actor
             INNER JOIN MOVIE M on P.id_movie = M.id_movie
             WHERE M.id_movie = $id";

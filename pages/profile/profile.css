@@ -237,6 +237,21 @@ main {
   accent-color: #f33232;
 }
 
+/* ----- Reservations ----- */
+
+.r_poster {
+  width: 90%;
+}
+
+.r_background {
+  object-fit: cover;
+  background-position: 50% 40% !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+/* ----- MediaQueries ----- */
+
 @media screen and (max-width: 1000px) {
   .profile_right_side_div {
     width: 100%;
@@ -247,4 +262,33 @@ main {
   #avatar_info {
     width: 100%;
   }
+}
+
+#redeem_data {
+  font-size: 0.8em;
+
+  border: none;
+  background-color: inherit;
+  text-decoration: underline;
+  color: #f33232;
+  font-weight: 700;
+  margin-top: 4em;
+}
+
+#billet_pdf {
+  background-color: #d22121;
+  color: white;
+  width: 9em;
+  padding: 0.5em 0 0.5em 0;
+  border: 1px grey solid;
+  font-weight: 600;
+  border-radius: 0.5em;
+  margin-top: 0.5em;
+  transition: 0.3s;
+  text-align: center;
+}
+
+#billet_pdf:hover {
+  background-color: #e22121;
+  transition: 0.3s;
 }

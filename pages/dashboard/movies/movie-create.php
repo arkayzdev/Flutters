@@ -92,6 +92,22 @@ foreach($id_types as $id) {
     ]); 
 }
 
+$language = $_POST['language'];
+
+$q ="SELECT id_language FROM LANGUAGE WHERE name = '$language'";
+    $req = $bdd->query($q);
+    $id_language = $req->fetch(PDO::FETCH_ASSOC);
+
+
+$q = 'INSERT INTO IN_LANGUAGE (id_movie, id_language) 
+      VALUES (:id_movie, :id_language)';
+$req = $bdd->prepare($q); 
+$req->execute([
+    'id_movie' => $id_movie,
+    'id_language' => $id_language['id_language']
+]); 
+
+
 
 $actors = $_POST['actors'];
 $id_actors = [];

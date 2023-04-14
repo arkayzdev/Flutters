@@ -32,7 +32,6 @@
 
     }
 
-    // Verify if the user exist in the db
     $query = $bdd->prepare('SELECT COUNT(email) FROM NEWSLETTER WHERE email = :email');
     $query->execute([
         'email' => htmlspecialchars($_SESSION['email']),
@@ -105,8 +104,8 @@
         <div class="d-block d-lg-none" id="profile_up_side">
             <nav>
                 <ul class="d-flex p-0">
-                    <li class="col-6 text-center"><a href="*">Mes informations</a></li>
-                    <li class="col-6 text-center"><a href="*">Mes réservations</a></li>
+                    <li class="col-6 text-center"><a href="profile.php">Mes informations</a></li>
+                    <li class="col-6 text-center"><a href="mes_reservations.php">Mes réservations</a></li>
                 </ul>
             </nav>
         </div>
@@ -120,10 +119,10 @@
             <div class="d-none d-lg-block col-4 col-xl-3" id="profile_left_side">
                 <nav style="list-style:none;">
                     <ul class="d-none d-lg-flex">
-                        <li><a href="*">Mes informations</a></li>
-                        <li><a href="*">Mon mot de passe</a></li>
-                        <li><a href="*">Ma newsletter</a></li>
-                        <li><a href="*">Mes réservations</a></li>
+                        <li><a href="#mes_informations">Mes informations</a></li>
+                        <li><a href="#mon_mot_de_passe">Mon mot de passe</a></li>
+                        <li><a href="#ma_newsletter">Ma newsletter</a></li>
+                        <li><a href="mes_reservations.php">Mes réservations</a></li>
                     </ul>
                 </nav>
             </div>
@@ -134,7 +133,7 @@
                 <!----- Mes informations ----->
                 <div class="profile_right_side_div">
                     <!-- title -->
-                    <h3 id="h3">Mes informations</h3>
+                    <h3 id="h3" id="mes_informations">Mes informations</h3>
                     <!-- profile -->
                     <div class="d-flex flex-column-reverse flex-lg-row">
                         <!-- profile left side infos -->
@@ -161,10 +160,26 @@
                                     echo '<p>' . $email . '</p>'
                                     ?>
                                 </div>
+
                                 <!-- update_button -->
                                 <div class="update_btn">
                                     <input type='submit' value="Mettre à jour">
                                 </div>
+                            </form>
+
+                            <!-- PDF --> 
+                            <form action="profile_pdf.php" method="POST">
+                                <!-- actual pwd -->
+                                <?php 
+                                echo '<input type=\'text\' name=\'first_name\' value="' . $firstname . '" class="d-none">';
+                                echo '<input type=\'text\' name=\'last_name\' value="' . $lastname . '" class="d-none">';
+                                echo '<input type=\'text\' name=\'email\' value="' . $email . '" class="d-none">';
+                                echo '<input type=\'text\' name=\'avatar\' value="' . $avatar . '" class="d-none">';
+                                echo '<input type=\'text\' name=\'newsletter\' value="' . $newsletter . '" class="d-none">';
+                                ?>
+                                <!-- lastname -->
+                                <!-- update_button -->
+                                <button id="redeem_data" type='submit' value="Exporter les informations utilisateurs">Exporter les informations utilisateurs</button>
                             </form>
                         </div>
                         <!-- profile right side infos -->
@@ -211,7 +226,7 @@
                 </div>
 
                 <!-- Mon mot de passe -->
-                <div class="profile_right_side_div">
+                <div id="mon_mot_de_passe" class="profile_right_side_div">
                     <!-- title -->
                     <h3>Mon mot de passe</h3>
                     <!-- profile pwd change -->
@@ -239,7 +254,7 @@
                 <!-- Newsletter -->
                 <div class="profile_right_side_div">
                     <!-- title -->
-                    <h3>Newsletter</h3>
+                    <h3 id="ma_newsletter">Newsletter</h3>
                     <!-- profile newsletter -->
                     <div>
                         <!-- proile_form_newsletter -->

@@ -1,5 +1,5 @@
 <?php
-$id_client = $_POST['id'];
+$id_movie = $_POST['id'];
 
 include '../../connect_db.php';
 

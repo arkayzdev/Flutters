@@ -14,7 +14,7 @@
   <!-- Import Bootstrap CSS Library -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <!-- Import css -->
-  <link href="homepage.css" rel="stylesheet">
+  <link href="homepage.css?rs=<?= time()?>" rel="stylesheet">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 </head>
@@ -52,7 +52,7 @@
         <div class="col-4 col-md-2">
           <a class="feature-movie-block" href="">
             <div class="d-flex flex-column align-items-center movie-poster-effect" width="100%">
-              <img src="img/homepage/trending/Amsterdam.png" alt="">
+              <img src="img/homepage/ca.jpg" alt="">
               <p>Amsterdam</p>
             </div>
           </a>
@@ -60,7 +60,7 @@
         <div class="col-4 col-md-2 ">
           <a class="feature-movie-block" href="">
             <div class="d-flex flex-column align-items-center movie-poster-effect" width="100%">
-              <img src="img/homepage/trending/Amsterdam.png" alt="">
+              <img src="img/homepage/ca.jpg" alt="">
               <p>Amsterdam</p>
             </div>
           </a>
@@ -68,7 +68,7 @@
         <div class="col-4 col-md-2">
           <a class="feature-movie-block" href="">
             <div class="d-flex flex-column align-items-center movie-poster-effect">
-              <img src="img/homepage/trending/Amsterdam.png" alt="">
+              <img src="img/homepage/ca.jpg" alt="">
               <p>Amsterdam</p>
             </div>
           </a>
@@ -76,7 +76,7 @@
         <div class="col-4 col-md-2">
           <a class="feature-movie-block" href="">
             <div class="d-flex flex-column align-items-center movie-poster-effect">
-              <img src="img/homepage/trending/Amsterdam.png" alt="">
+              <img src="img/homepage/ca.jpg" alt="">
               <p>Amsterdam</p>
             </div>
           </a>
@@ -84,7 +84,7 @@
         <div class="col-4 col-md-2">
           <a class="feature-movie-block" href="">
             <div class="d-flex flex-column align-items-center movie-poster-effect">
-              <img src="img/homepage/trending/Amsterdam.png" alt="">
+              <img src="img/homepage/ca.jpg" alt="">
               <p>Amsterdam</p>
             </div>
           </a>
