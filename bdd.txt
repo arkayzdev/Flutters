@@ -1,0 +1,142 @@
+CREATE TABLE USERS(
+   id_client INT AUTO_INCREMENT,
+   first_name VARCHAR(50) ,
+   last_name VARCHAR(50) ,
+   password VARCHAR(255) ,
+   email VARCHAR(100) UNIQUE,
+   avatar VARCHAR(50) ,
+   user_type VARCHAR(10) DEFAULT 'Normal',
+   email_verification INT DEFAULT 0,
+   PRIMARY KEY(id_client)
+);
+
+CREATE TABLE ROOM(
+   id_room INT AUTO_INCREMENT ,
+   capacity_seat INT NOT NULL,
+   PRIMARY KEY(id_room)
+);
+
+CREATE TABLE MOVIE(
+   id_movie INT AUTO_INCREMENT ,
+   description TEXT NOT NULL,
+   title VARCHAR(50)  NOT NULL,
+   release_date DATE NOT NULL,
+   duration INT,
+   end_date DATE,
+   original_language VARCHAR(50) ,
+   poster_image VARCHAR (50),
+   PRIMARY KEY(id_movie)
+);
+
+CREATE TABLE TYPE(
+   id_type INT AUTO_INCREMENT ,
+   name VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_type)
+);
+
+CREATE TABLE ACTOR(
+   id_actor INT AUTO_INCREMENT ,
+   first_name VARCHAR(50)  NOT NULL,
+   last_name VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_actor)
+);
+
+CREATE TABLE EVENT(
+   id_event INT AUTO_INCREMENT ,
+   description TEXT NOT NULL,
+   date_event DATE NOT NULL,
+   capacity INT,
+   price DECIMAL(19,4),
+   PRIMARY KEY(id_event)
+);
+
+CREATE TABLE REVIEW(
+   id_review INT AUTO_INCREMENT ,
+   description TEXT,
+   score DOUBLE,
+   id_movie INT NOT NULL,
+   id_client INT NOT NULL,
+   PRIMARY KEY(id_review),
+   FOREIGN KEY(id_movie) REFERENCES MOVIE(id_movie),
+   FOREIGN KEY(id_client) REFERENCES USERS(id_client)
+);
+
+CREATE TABLE DIRECTOR(
+   id_director INT AUTO_INCREMENT ,
+   last_name VARCHAR(50) ,
+   first_name VARCHAR(50) ,
+   PRIMARY KEY(id_director)
+);
+
+CREATE TABLE ORDERS(
+   order_id INT AUTO_INCREMENT ,
+   purchase_date VARCHAR(50)  NOT NULL,
+   final_price DOUBLE,
+   id_client INT NOT NULL,
+   PRIMARY KEY(order_id),
+   FOREIGN KEY(id_client) REFERENCES USERS(id_client)
+);
+
+CREATE TABLE SESSION(
+   id_session INT AUTO_INCREMENT ,
+   price DECIMAL(19,4) NOT NULL,
+   seance_date DATE NOT NULL,
+   start_time TIME NOT NULL,
+   id_room INT  NOT NULL,
+   PRIMARY KEY(id_session),
+   FOREIGN KEY(id_room) REFERENCES ROOM(id_room)
+);
+
+CREATE TABLE TICKET(
+   id_ticket INT AUTO_INCREMENT ,
+   qr_code VARCHAR(50)  NOT NULL,
+   id_session INT ,
+   id_event INT ,
+   order_id INT NOT NULL,
+   PRIMARY KEY(id_ticket),
+   FOREIGN KEY(id_session) REFERENCES SESSION(id_session),
+   FOREIGN KEY(id_event) REFERENCES EVENT(id_event),
+   FOREIGN KEY(order_id) REFERENCES ORDERS(order_id)
+);
+
+CREATE TABLE REALIZED(
+   id_movie INT ,
+   id_director INT ,
+   PRIMARY KEY(id_movie, id_director),
+   FOREIGN KEY(id_movie) REFERENCES MOVIE(id_movie),
+   FOREIGN KEY(id_director) REFERENCES DIRECTOR(id_director)
+);
+
+CREATE TABLE PLAYED(
+   id_movie INT ,
+   id_actor INT ,
+   PRIMARY KEY(id_movie, id_actor),
+   FOREIGN KEY(id_movie) REFERENCES MOVIE(id_movie),
+   FOREIGN KEY(id_actor) REFERENCES ACTOR(id_actor)
+);
+
+CREATE TABLE TAKE_PLACE(
+   id_session INT ,
+   id_movie INT ,
+   PRIMARY KEY(id_session, id_movie),
+   FOREIGN KEY(id_session) REFERENCES SESSION(id_session),
+   FOREIGN KEY(id_movie) REFERENCES MOVIE(id_movie)
+);
+
+CREATE TABLE IS_TO(
+   id_movie INT ,
+   id_type INT,
+   PRIMARY KEY(id_movie, id_type),
+   FOREIGN KEY(id_movie) REFERENCES MOVIE(id_movie),
+   FOREIGN KEY(id_type) REFERENCES TYPE(id_type)
+);
+
+DELETE FROM MOVIE WHERE id_movie != 0;
+INSERT INTO MOVIE (title, description, release_date, duration) VALUES ('SpiderPate','prout', '2004-12-23', 123);
+INSERT INTO USERS (first_name, last_name, password, email, user_type) VALUES ('franck', 'zhuang', 'azeaze', 'franck.zhuang@htm.fr', 'Admin');
+INSERT INTO IS_TO (id_movie, id_type) VALUES (7,2);
+INSERT INTO REALIZED (id_movie, id_director) VALUES (7, 1);
+INSERT INTO DIRECTOR (first_name, last_name) VALUES ('Monsieur' , 'Macron');
+INSERT INTO TYPE (name) VALUE ('Policer');
+INSERT INTO REALIZED (id_movie, id_director) VALUES (7, 2);
+INSERT INTO PLAYED (id_movie, id_actor) VALUES (7, 2);

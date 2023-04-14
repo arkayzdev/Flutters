@@ -1,0 +1,250 @@
+/* Import font family : Open sans*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+/* Colors root*/
+:root {
+  --white-1: #ffffff;
+  --white-2: #f9f9f9;
+  --white-3: #f2f3f4;
+  --white-4: #ecedee;
+  --red: #e32828;
+  --grey-1: #3c434b;
+  --grey-2: #282a2d;
+  --black: #000000;
+  --footer: #101114;
+}
+
+body {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("profile_background.png");
+  /* background-color: light-grey; */
+  font-family: "Open Sans", sans-serif;
+  background-color: #c8cfcd;
+  font-size: 1em;
+  height: 1000px;
+}
+main {
+  margin-top: 6em;
+}
+
+/* ----- profile_up_side ----- */
+#profile_up_side {
+  background-color: white;
+  margin-bottom: 1em;
+}
+#profile_up_side ul {
+  margin: 0;
+}
+#profile_up_side li {
+  list-style: none;
+  height: 100%;
+}
+#profile_up_side a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1em 0 1em 0;
+  font-weight: 700;
+  text-decoration: none;
+  color: grey;
+  transition: 0.3s;
+}
+#profile_up_side a:hover {
+  color: var(--red);
+  box-shadow: inset 0 -3px 0 var(--red);
+  transition: 0.2s;
+}
+
+/* ----- profile_left_side ----- */
+#profile_left_side nav {
+  width: 90%;
+  height: 100%;
+  list-style: none;
+}
+#profile_left_side {
+  height: 50%;
+}
+#profile_left_side nav ul {
+  background-color: white;
+  width: 100%;
+  padding: 1.5em 0 1.5em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#profile_left_side nav ul li {
+  width: 90%;
+  height: 3em;
+  list-style: none;
+  margin-bottom: 0.5em;
+}
+#profile_left_side nav ul li a {
+  width: 100%;
+  height: 100%;
+  color: grey;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid grey;
+  transition: 0.3s;
+}
+#profile_left_side nav ul li a:hover {
+  color: var(--red);
+  text-decoration: none;
+  font-size: 1.2em;
+  border-bottom: 2px solid var(--red);
+  transition: 0.3s;
+}
+
+/* ----- profile_right_side the_rest----- */
+.profile_right_side_div {
+  background-color: white;
+  width: 100%;
+  padding: 2em;
+  margin-bottom: 3em;
+  font-weight: 600;
+}
+.profile_right_side_div h3 {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 0.75em;
+}
+
+.changeable {
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+.changeable label {
+  color: lightgrey;
+  font-size: 0.8em;
+  margin-left: 0.1em;
+}
+.changeable p {
+  color: lightgrey;
+  border-bottom: 2px solid lightgrey;
+  margin-right: 2em;
+  margin-bottom: 0;
+}
+.changeable input {
+  border: none;
+  border-bottom: 2px solid lightgrey;
+  margin-right: 2em;
+  transition: 0.3s;
+  margin-top: 0.2em;
+}
+.changeable input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid var(--red);
+  transition: 0.3s;
+}
+
+.update_btn input {
+  background-color: var(--red);
+  color: white;
+  width: 10em;
+  height: 3em;
+  border: none;
+  font-weight: 600;
+  border-radius: 0.5em;
+  margin-top: 2em;
+  transition: 0.3s;
+}
+.update_btn input:hover {
+  background-color: #f33232;
+  transition: 0.3s;
+}
+
+/* Mes informations */
+
+#profile_avatar {
+  width: 15em;
+  height: 15em;
+  border-radius: 10em;
+  object-fit: cover;
+}
+
+#image_btn {
+  background-color: var(--red);
+  color: white;
+  width: 12em;
+  padding: 0.5em 0 0.5em 0;
+  border: none;
+  font-weight: 600;
+  border-radius: 0.5em;
+  margin-top: 1em;
+  transition: 0.3s;
+  text-align: center;
+}
+#image_btn:hover {
+  background-color: #f33232;
+  transition: 0.3s;
+}
+
+#avatar_btn_delete {
+  border: none !important;
+  background-color: inherit;
+  text-decoration: underline;
+  color: grey;
+  transition: 0.3s;
+  margin-bottom: 1em;
+  margin-top: 0.1em;
+}
+#avatar_btn_delete:hover {
+  color: var(--red);
+  transition: 0.3s;
+}
+#profile_avatar_delete_modal {
+  width: 10em;
+  height: 3em;
+  border: none;
+  border-radius: 1em;
+  font-weight: 600;
+  color: white;
+  transition: 0.2s;
+}
+#profile_avatar_delete_modal:first-child {
+  background-color: var(--red);
+}
+#profile_avatar_delete_modal:first-child:hover {
+  background-color: #f33232;
+}
+#profile_avatar_delete_modal:nth-child(2) {
+  background-color: #a9a9a9;
+}
+#profile_avatar_delete_modal:nth-child(2):hover {
+  background-color: #898989;
+  transition: 0.2s;
+}
+
+#avatar_info {
+  font-size: 0.8em;
+  width: 65%;
+  text-align: center;
+  color: grey;
+  font-weight: 600;
+}
+
+/* ----- Newsletter ----- */
+
+#check_box {
+  accent-color: #f33232;
+}
+
+@media screen and (max-width: 1000px) {
+  .profile_right_side_div {
+    width: 100%;
+  }
+  #mes_infos_left {
+    width: 95%;
+  }
+  #avatar_info {
+    width: 100%;
+  }
+}
