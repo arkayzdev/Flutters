@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // Import PHPMailer Datas
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -63,12 +64,12 @@ $mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'noreply.flutters@gmail.com';
-$mail->Password = 'yzxuigjxhslrhlqt';
+$mail->Username = 'flutters.noreply@gmail.com';
+$mail->Password = 'kvslcvqrtitiflsl';
 $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
 
-$mail->setFrom('noreply.flutters@gmail.com');
+$mail->setFrom('flutters.noreply@gmail.com');
 
 $mail->addAddress($_POST["email"]);
 

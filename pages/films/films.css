@@ -32,13 +32,16 @@
   width: 100%;
   padding: 4em 2em 4em 2em;
 
-  display: flex;
-  flex-wrap: wrap;
-
   margin-right: auto;
   margin-left: auto;
 
-  justify-content: space-around;
+  text-align: center;
+}
+
+#film_main:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
 }
 
 #film_h2 {
@@ -54,11 +57,11 @@
 }
 
 .film_a {
-  display: block;
-  width: 12em;
+  display: inline-block;
+  width: 15em;
   height: 20em;
   text-decoration: none;
-  margin-right: 1em;
+  margin: 0 0.5em 1em 0.5em;
 }
 
 .titles {

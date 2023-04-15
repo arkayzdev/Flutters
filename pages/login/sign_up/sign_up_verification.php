@@ -1,4 +1,5 @@
 <?php
+ob_start();
 // Import PHPMailer Datas
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -89,7 +90,7 @@ if (!$reponse) {
 }
 
 // MAIL 
-$headers = 'From:noreply@flutters.com' . "\r\n"; // Header
+$headers = 'From:flutters.noreply@gmail.com' . "\r\n"; // Header
 $subject = 'Signup | Verification'; // Subject
 $message = ' 
 
@@ -114,12 +115,13 @@ $mail = new PHPMailer(true);
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'noreply.flutters@gmail.com';
-$mail->Password = 'yzxuigjxhslrhlqt';
+$mail->Username = 'flutters.noreply@gmail.com';
+$mail->Password = 'kvslcvqrtitiflsl';
 $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
+$mail->SMTPDebug = true;
 
-$mail->setFrom('noreply.flutters@gmail.com');
+$mail->setFrom('flutters.noreply@gmail.com');
 
 $mail->addAddress($_POST["email"]);
 
@@ -127,7 +129,6 @@ $mail->isHTML(true);
 
 $mail->Subject = $subject;
 $mail->Body = $message;
-
 $mail->send();
 // FIN MAIL
 
@@ -146,3 +147,4 @@ if (isset($_POST['firstname']) && !empty($_POST['firstname'])) {
 $msg = "Votre compte a été crée ! Vérifiez vos mail pour valider l'inscription !";
 header('location:../sign_in/sign_in.php?message=' . $msg . '&green_alert=1');
 exit;
+?>

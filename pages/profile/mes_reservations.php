@@ -134,11 +134,11 @@
                     ]);
                     $r_start_time = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT langage FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                    $query = $bdd->prepare('SELECT language FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
                     $query->execute([
                         'order_id' => htmlspecialchars($r_order_id),
                     ]);
-                    $r_langage = $query->fetch(PDO::FETCH_COLUMN);
+                    $r_language = $query->fetch(PDO::FETCH_COLUMN);
 
                     $query = $bdd->prepare('SELECT title FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
                     $query->execute([
@@ -192,7 +192,7 @@
                     </div>
                     <div class="col-sm-8">
                         <?php 
-                        echo '<p>' . strftime("%d %B %G", strtotime($r_seance_date)) . ' à ' .  date("G:i", strtotime($r_start_time)) . ' (' . $r_duration . ' min) en ' . $r_langage . '</p>';
+                        echo '<p>' . strftime("%d %B %G", strtotime($r_seance_date)) . ' à ' .  date("G:i", strtotime($r_start_time)) . ' (' . $r_duration . ' min) en ' . $r_language . '</p>';
                         echo '<h3>' . $r_title . '</h3>';
                         echo '<p><strong>Date de réservation: </strong>' . strftime("%d %B %G", strtotime($r_order_purchase_date)) . '</p>';
                         echo '<p><strong>Nombre de billets: </strong>' . $r_no_ticket . ' billet(s)</p>';
@@ -211,7 +211,7 @@
                             echo '<input type=\'text\' name=\'r_final_price\' value="' . $r_final_price  . '" class="d-none">';
                             echo '<input type=\'text\' name=\'r_no_ticket\' value="' . $r_no_ticket  . '" class="d-none">';
                             echo '<input type=\'text\' name=\'r_seance_date\' value="' . $r_seance_date  . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_langage\' value="' . $r_langage  . '" class="d-none">';
+                            echo '<input type=\'text\' name=\'r_language\' value="' . $r_language  . '" class="d-none">';
                             echo '<input type=\'text\' name=\'r_start_time\' value="' . $r_start_time   . '" class="d-none">';
                             echo '<input type=\'text\' name=\'r_title\' value="' . $r_title   . '" class="d-none">';
                             echo '<input type=\'text\' name=\'r_duration\' value="' . $r_duration   . '" class="d-none">';

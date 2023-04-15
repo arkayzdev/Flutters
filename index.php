@@ -49,7 +49,6 @@
       <h1 class="alaffiche">À l'affiche</h1>
       <br />
       <br />
-      <br />
     </section>
     <section>
       <div class="scroll-holder">
@@ -118,72 +117,7 @@
             <img src="img/homepage/5.webp" />
           </div>
         </div>
-        <div class="scroll-tray">
-        <div>
-            <img src="img/homepage/1.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/2.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/3.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/4.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/5.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/6.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/7.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/8.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/9.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/10.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/11.jpeg" />
-          </div>
-          <div>
-            <img src="img/homepage/12.jpeg" />
-          </div>
-          <div>
-            <img src="img/homepage/13.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/12.jpeg" />
-          </div>
-          <div>
-            <img src="img/homepage/11.jpeg" />
-          </div>
-          <div>
-            <img src="img/homepage/10.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/9.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/8.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/7.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/6.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/5.webp" />
-          </div>
-        </div>
-      </div>
+       
     </section>
   <!-- homepage-event_carousel -->
   <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -288,7 +222,7 @@
             <div class="accordion123">
               <div class="accordion__item">
                 <button class="accordion__question">
-                  Quelles sont les expériences proposées par les cinémas Flutter
+                  Les expériences proposées par les cinémas Flutters
                   ?
                 </button>
                 <div class="accordion__collapse collapse">

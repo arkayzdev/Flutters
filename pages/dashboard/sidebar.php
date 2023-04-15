@@ -20,7 +20,7 @@
         </a>
       </li>
       <li class="nav-item hover-effect">
-        <a class="nav-link" href="../movie-sessions/movie-sessions">
+        <a class="nav-link" href="../sessions/sessions">
           <i class="uil uil-ticket"></i>
           Séances
         </a>

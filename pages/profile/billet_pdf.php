@@ -48,7 +48,7 @@
 
     <page backtop="7mm" backbottom="7mm" backleft="10mm" backright="10mm"> 
         <h1 style="text-align:center; font-size:38px; margin: 30px 0 0px 0; text-decoration: underline">' . $_POST['r_title'] . '</h1>
-        <p style="text-align:center; margin: 15px 0 30px 0; font-size:14px;"><strong> ' . strftime("%d %B %G", strtotime($_POST['r_seance_date'])) . ' à ' .  date("G:i", strtotime($_POST['r_start_time'])) . ' (' . $_POST['r_duration'] . ' min) en ' . $_POST['r_langage'] . '</strong></p>
+        <p style="text-align:center; margin: 15px 0 30px 0; font-size:14px;"><strong> ' . strftime("%d %B %G", strtotime($_POST['r_seance_date'])) . ' à ' .  date("G:i", strtotime($_POST['r_start_time'])) . ' (' . $_POST['r_duration'] . ' min) en ' . $_POST['r_language'] . '</strong></p>
 
         <img style="display:block; margin: 20px 0 50px 220px; width:300px;" src="../dashboard/movies/' . $_POST['r_poster_image'] . '">
 
