@@ -50,7 +50,7 @@
     /* --- nav_searchbar --- */
     #nav_searchbar {
     margin: 0.2em 0em 1em 1em;
-    width: 18em;
+    width: 15em;
     height: 2em;
 
     background-color: var(--grey-2);
@@ -59,7 +59,7 @@
     border-radius: 10em;
     }
     #nav_searchbar > input {
-    width: 17.5em;
+    width: 12em;
         
     border: none;
 
@@ -70,7 +70,7 @@
 
     position:relative;
 
-    bottom:1.8em;
+    bottom:1.55em;
     left:2em;
     font-size:0.9em;
     }
@@ -92,7 +92,7 @@
     opacity: 1;
 
     position: relative;
-    top: 0.1em;
+    top: 0.2em;
     left:0.5em;
 
     border: none;
@@ -260,7 +260,6 @@
         <ul class="d-flex" id="nav_link">
             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
             <li class="nav-item"><a class="nav-link" href="/">Films</a></li>
-            <li class="nav-item"><a class="nav-link" href="/">Événements</a></li>
             <li class="nav-item"><a class="nav-link" href="/">À propos</a></li>
         </ul>
     </div>
@@ -269,7 +268,7 @@
         <form class="d-flex d-none d-sm-block" role="search" action="#" method="POST" id="nav_searchbar">
                 <button type="submit" style="z-index:100;"><img src="/pages/nav/img/search.svg" alt="Loupe" width="15"
                 height="15"></button>
-                <input class="form-control me-2" type="text" placeholder="Trouver des films ou évènements" aria-label="Search">
+                <input class="form-control me-2" type="text" placeholder="Trouver des films" aria-label="Search">
             </form>
 
         <!-- nav_profile -->

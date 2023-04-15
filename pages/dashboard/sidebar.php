@@ -20,12 +20,6 @@
         </a>
       </li>
       <li class="nav-item hover-effect">
-        <a class="nav-link" href="../events/events">
-          <i class="uil uil-archway"></i>
-          Événements
-        </a>
-      </li>
-      <li class="nav-item hover-effect">
         <a class="nav-link" href="../movie-sessions/movie-sessions">
           <i class="uil uil-ticket"></i>
           Séances
@@ -44,7 +38,7 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link hover-effect" href="../movie-type/move-type">
+        <a class="nav-link hover-effect" href="../movie-type/movie-type">
           <i class="uil uil-presentation-play"></i>
           Types de films
         </a>

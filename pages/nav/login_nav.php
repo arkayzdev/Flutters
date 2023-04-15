@@ -147,7 +147,6 @@
                         <ul class="d-flex flex-column align-items-center" id="nav_link_modal">
                             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
                             <li class="nav-item"><a class="nav-link" href="/">Films</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/">Événements</a></li>
                             <li class="nav-item"><a class="nav-link" href="/">À propos</a></li>
                             <?php 
                                 if (!isset($_SESSION['email'])){

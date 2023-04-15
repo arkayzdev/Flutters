@@ -1,3 +1,4 @@
+<?php include '../../connect_db.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -35,14 +36,19 @@
       
     <?php include '../sidebar.php' ?>
 
+    <?php 
+    $q = "SELECT COUNT(first_name) FROM USERS";
+    $req = $bdd->query($q);
+    $req->execute();
+    $result = $req->fetch(PDO::FETCH_ASSOC); ?>
+
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <h2>Utilisateurs</h2>
+        <h2>Utilisateurs (<?php echo $result['COUNT(first_name)'] ?>)</h2>
         <div class="table-responsive">
           <table class="table table-sm">
             <thead>
               <tr>
                 <?php echo (!isset($_GET['type']) || $_GET['type'] == 'delete')? '<th scope="col">#</th>' :'';?>
-                <?php echo (isset($_GET['type']) && $_GET['type'] == 'modify')? '<th scope="col">Type</th>' :'';?>
                 <th scope="col">Prénom</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Mail</th>

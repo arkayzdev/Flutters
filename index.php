@@ -251,7 +251,7 @@
             <h3 class="hero-news__item-title">
               Ces deux stars de cinéma pourraient être... frères !
               <br />
-              <a class="redirection" href="”youtube.com”"><mark>Lire la suite</mark></a>
+              <a class="redirection" href="https://Flutters.ovh"><mark>Lire la suite</mark></a>
             </h3>
             <div class="hero-news__item-date">15 AVril, 2023</div>
           </article>
@@ -259,7 +259,7 @@
             <h3 class="hero-news__item-title">
               "Je n'irai pas voir Mario !" : pourquoi le Luigi de 1993 boycotte
               le film d'animation
-              <a class="redirection" href="”youtube.com”"><mark>Lire la suite</mark></a>
+              <a class="redirection" href="https://Flutters.ovh"><mark>Lire la suite</mark></a>
             </h3>
             <div class="hero-news__item-date">5 AVril, 2023</div>
           </article>
@@ -268,7 +268,7 @@
               Deadpool 3 : on le pensait mort mais ce personnage sera de retour
               !
               <br />
-              <a class="redirection" href="”youtube.com”"><mark>Lire la suite</mark></a>
+              <a class="redirection" href="https://Flutters.ovh"><mark>Lire la suite</mark></a>
             </h3>
             <div class="hero-news__item-date">1 AVril, 2023</div>
           </article>
@@ -278,62 +278,68 @@
 
   <!-- FAQ -->
 
-  <section class="card">
-      <div class="card__image"></div>
-      <div class="card__text">
-        <h1>FAQ</h1>
+  <div class="allpage">
+      <div class="backgroundfaq">
+        <section class="card123">
+          <div class="card__image"></div>
+          <div class="card__text">
+            <h1>FAQ</h1>
 
-        <div class="accordion">
-          <div class="accordion__item">
-            <button class="accordion__question">
-              Quelles sont les expériences proposées par les cinémas Flutter ?
-            </button>
-            <div class="accordion__collapse collapse">
-              <div class="accordion__content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                bibendum ante lorem, ac fringilla purus feugiat eu. Vivamus quis
-                felis et metus fringilla sodales. Suspendisse sit amet dolor
-                arcu. Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.
+            <div class="accordion123">
+              <div class="accordion__item">
+                <button class="accordion__question">
+                  Quelles sont les expériences proposées par les cinémas Flutter
+                  ?
+                </button>
+                <div class="accordion__collapse collapse">
+                  <div class="accordion__content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Morbi bibendum ante lorem, ac fringilla purus feugiat eu.
+                    Vivamus quis felis et metus fringilla sodales. Suspendisse
+                    sit amet dolor arcu. Maecenas diam metus, tincidunt vitae
+                    dolor ut, tincidunt.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion__item">
+                <button class="accordion__question">
+                  Comment puis-je devenir ambassadeur de Flutters ?
+                </button>
+                <div class="accordion__collapse collapse">
+                  <div class="accordion__content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Morbi bibendum ante lorem, ac fringilla purus feugiat eu.
+                    Vivamus quis felis et metus fringilla sodales. Suspendisse
+                    sit amet dolor arcu. Maecenas diam metus, tincidunt vitae
+                    dolor ut, tincidunt.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion__item">
+                <button class="accordion__question">
+                  Comment puis-je bénéficier de tarifs réduits ?
+                </button>
+                <div class="accordion__collapse collapse">
+                  <div class="accordion__content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Morbi bibendum ante lorem, ac fringilla purus feugiat eu.
+                    Vivamus quis felis et metus fringilla sodales. Suspendisse
+                    sit amet dolor arcu. Maecenas diam metus, tincidunt vitae
+                    dolor ut, tincidunt.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="accordion__item">
-            <button class="accordion__question">
-              Comment puis-je devenir ambassadeur de Flutters ?
-            </button>
-            <div class="accordion__collapse collapse">
-              <div class="accordion__content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                bibendum ante lorem, ac fringilla purus feugiat eu. Vivamus quis
-                felis et metus fringilla sodales. Suspendisse sit amet dolor
-                arcu. Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.
-              </div>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__question">
-              Comment puis-je bénéficier de tarifs réduits ?
-            </button>
-            <div class="accordion__collapse collapse">
-              <div class="accordion__content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                bibendum ante lorem, ac fringilla purus feugiat eu. Vivamus quis
-                felis et metus fringilla sodales. Suspendisse sit amet dolor
-                arcu. Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.
-              </div>
-            </div>
-          </div>
-        </div>
+        </section>
       </div>
-    </section>
-
-    <script src="script.js"></script>
+    </div>    
   <!-- Footer -->
   <?php include 'pages/footer/footer.php' ?>
 
   <!-- Import Bootstrap JS Library -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="homepage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
 </body>
 

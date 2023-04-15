@@ -22,8 +22,8 @@
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <button id="trigger-search-users" class="btn btn-dark" onclick="searchUsers()"><i class="uil uil-search"></i></button>
-    <input id="search-user-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" >
+    <button id="trigger-search-actors" class="btn btn-dark" onclick="searchActors()"><i class="uil uil-search"></i></button>
+    <input id="search-actor-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" >
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#">Déconnexion</a>
@@ -39,15 +39,10 @@
     $q = "SELECT COUNT(first_name) FROM ACTOR";
     $req = $bdd->query($q);
     $req->execute();
-    $result = $req;
-    
-
-    ?>
-
+    $result = $req->fetch(PDO::FETCH_ASSOC); ?>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <?php var_dump($result); ?>
-        <h2>Acteurs </h2>
+        <h2>Acteurs (<?php echo $result['COUNT(first_name)'] ?>)</h2>
         <div class="table-responsive">
           <table class="table table-sm">
             <thead>
@@ -71,9 +66,9 @@
                 
               </tr>
             </thead>
-            <tbody id="display-user">
+            <tbody id="display-actor">
               
-            <?php include 'user-delete.php';
+            <?php include 'actor-delete.php';
             include 'table-creation.php'; ?>
 
             </tbody>
