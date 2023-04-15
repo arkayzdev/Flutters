@@ -9,15 +9,15 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
 <?php if (isset($_GET['type']) && isset($_GET['id']) && $_GET['type'] == 'modify') : ?> 
 <?php foreach ($result_movies as $id_movie) {
     if ($_GET['id'] ==  $id_movie['id_movie']) : ?> 
-       <form class="d-flex flex-column m-2 col-6" method="POST" action="movie-create" enctype="multipart/form-data">
+       <form class="d-flex flex-column m-2 col-6" method="POST" action="movie-update" enctype="multipart/form-data">
             <div>
                 <div class="d-flex">
                     <div class="me-4 d-flex flex-column">
-                        <img src="<?php echo $id_movie['poster_image']?>" id="preview-image" style="width: 240px; height: 350px; object-fit: cover;" />
-                        <small class="mb-2 form-text" id="poster-image-inline">Format recommandé : 480x700 - 2 Mo max</small>
+                        <img src="<?php echo $id_movie['poster_image']?>" id="preview-image" style="width: 240px; height: 350px; object-fit: cover;" value="<?php echo $id_movie['poster_image']?>"/>
+                        <small class="mb-2 form-text" id="poster-image-inline">Format : JPEG/PNG/GIF - 2 Mo max</small>
                         <div class="d-flex flex-column mb-3 btn btn-dark " style="width:60%">
                             <label class="form-label text-white m-1" for="customFile1">Changer image</label>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image"/>
+                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image" value="<?php echo $id_movie['poster_image']?>"/>
                         </div>
                     
                     </div>
@@ -101,8 +101,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                     INNER JOIN MOVIE M on IL.id_movie = M.id_movie
                     WHERE M.id_movie = $id";
                     $req = $bdd->query($q);
-                    $results = $req->fetchAll(PDO::FETCH_ASSOC);
-                        ?>
+                    $results = $req->fetchAll(PDO::FETCH_ASSOC);?>
 
                     <option value="<?php echo $results[0]['name']?>"><?php echo $results[0]['name']?></option>
                     <?php 
@@ -172,7 +171,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <?php foreach ($results as $result) { 
                             $actor_name = $result['first_name'] . " " . $result['last_name']; ?>
                             <div class="d-flex mb-2" id="<?php echo $actor_name?>-delete">
-                                <input class="form-control" name="types[]" value="<?php echo $actor_name?>" readonly>
+                                <input class="form-control" name="actors[]" value="<?php echo $actor_name?>" readonly>
                                 <button class="btn btn-danger" type="button" onclick="deleteActor('<?php echo $actor_name ?>')">
                                     <i class="uil uil-multiply"></i>
                                 </button>
@@ -226,7 +225,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <?php foreach ($results as $result) { 
                             $director_name = $result['first_name'] . " " . $result['last_name']; ?>
                             <div class="d-flex mb-2" id="<?php echo $director_name?>-delete">
-                                <input class="form-control" name="types[]" value="<?php echo $director_name?>" readonly>
+                                <input class="form-control" name="directors[]" value="<?php echo $director_name?>" readonly>
                                 <button class="btn btn-danger" type="button" onclick="deleteDirector('<?php echo $director_name ?>')">
                                     <i class="uil uil-multiply"></i>
                                 </button>
@@ -234,14 +233,15 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <?php } ?>
                     </div>
                 </div>
-                    
-                </div>
 
-            <div class="mb-4">
-                <?php echo '<input type="hidden" name="id" value="' . $_GET['id'] . '">'; ?>
-                <input class="btn btn-danger" type="submit" value="Modifier" onclick="return confirm(\'Modifier ?\')">
-                <a class="btn btn-danger" href="movies" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?')">Annuler</a></td>
+                <div class="mb-4">
+                    <?php echo '<input type="hidden" name="id" value="' . $_GET['id'] . '">'; ?>
+                    <input class="btn btn-danger" type="submit" value="Modifier" onclick="return confirm(\'Modifier ?\')">
+                    <a class="btn btn-danger" href="movies" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?')">Annuler</a></td>
+                </div>
+            
             </div>
+
             
 
         </form>
@@ -254,7 +254,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                 <div class="d-flex">
                     <div class="me-4 d-flex flex-column">
                         <img src="img/Aperçu.png" id="preview-image" style="width: 240px; height: 350px; object-fit: cover;" />
-                        <small class="mb-2 form-text" id="poster-image-inline">Format recommandé : 480x700 - 2 Mo max</small>
+                        <small class="mb-2 form-text" id="poster-image-inline">Format JPEG/PNG/GIF- 2 Mo max</small>
                         <div class="d-flex flex-column mb-3 btn btn-dark " style="width:60%">
                             <label class="form-label text-white m-1" for="customFile1">Choisir image</label>
                             <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image"/>

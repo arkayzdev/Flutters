@@ -16,7 +16,7 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] != 4){
 
     if(!in_array($_FILES['image']['type'], $acceptable)){
         $msg = 'Le fichier doit être du type jpeg, gif ou png.';
-        header('location: profile.php?message=' . $msg);
+        header('location: movie?message=' . $msg);
         exit;
     }
 
@@ -24,7 +24,7 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] != 4){
     $maxSize = 2 * 1024 * 1024; // 2Mo exprimée en octets
     if($_FILES['image']['size'] > $maxSize){
         $msg = 'Le fichier doit faire moins de 2 Mo.';
-        header('location: profile.php?message=' . $msg);
+        header('location: movie?message=' . $msg);
         exit;
     }
 

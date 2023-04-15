@@ -41,59 +41,191 @@
 
   <!-- Featured Movies -->
 
-  <div class="feature-movies">
-    <div class="container">
-      <h1>À l'affiche</h1>
-      <div class="d-flex flex-row justify-content-end align-items-end">
-        <a href="" class="hover-effect view-more-cta d-flex flex-row align-items-center justify-content-end">VOIR PLUS<img src="img/angle-right.svg" alt="" width="8%"></a>
+  <style>
+      /* Import font family : Open sans*/
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+      body {
+        background-color: #ffffff;
+      }
+
+      .alaffiche {
+        font-family: "Open Sans", sans-serif;
+        margin: 1em;
+        margin-top: 2em;
+        margin-bottom: 20px;
+        padding-left: 20px;
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 700;
+        border-left: 4px solid #ff0000;
+        display: flex;
+        align-items: center;
+        color: #000000;
+      }
+
+      .scroll-tray {
+        white-space: nowrap;
+      }
+      .scroll-tray div {
+        display: inline-block;
+      }
+
+      .scroll-tray img {
+        border-radius: 0.3rem;
+        margin: 7px 5px;
+        padding: 0;
+        width: 340px;
+      }
+
+      .scroll-holder {
+        overflow-x: hidden;
+        padding-bottom :50px;
+      }
+
+      .scroll-holder .scroll-tray:first-child {
+        animation: scroll-tray-hero 180s linear infinite;
+      }
+
+      .scroll-holder .scroll-tray:last-child {
+        animation: scroll-tray-hero 120s linear infinite;
+      }
+
+      @keyframes scroll-tray-hero {
+        0% {
+          transform: translateX(0);
+        }
+
+        99.99% {
+          transform: translateX(-7098px);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1 class="alaffiche">À l'affiche</h1>
+      <br />
+      <br />
+      <br />
+    </section>
+    <section>
+      <div class="scroll-holder">
+        <div class="scroll-tray">
+          <div>
+            <img src="img/homepage/1.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/2.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/3.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/4.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/5.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/6.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/7.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/8.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/9.webp" />
+          </div>
+          <div>
+            <img src="img/homepge/10.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/11.jpeg" />
+          </div>
+          <div>
+            <img src="img/homepage/12.jpeg" />
+          </div>
+          <div>
+            <img src="img/homepage/13.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/12.jpeg" />
+          </div>
+          <div>
+            <img src="img/homepage/11.jpeg" />
+          </div>
+          <div>
+            <img src="img/homepage/10.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/9.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/8.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/7.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/6.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/5.webp" />
+          </div>
+        </div>
+        <div class="scroll-tray">
+          <div>
+            <img src="img/homepage/22.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/23.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/24.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/25.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/26.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/27.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/1.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/2.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/3.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/4.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/5.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/6.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/7.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/8.webp" />
+          </div>
+        </div>
       </div>
-
-      <div class="d-flex flex-row align-items-center justify-content-between">
-        <div class="col-4 col-md-2">
-          <a class="feature-movie-block" href="">
-            <div class="d-flex flex-column align-items-center movie-poster-effect" width="100%">
-              <img src="img/homepage/ca.jpg" alt="">
-              <p>Amsterdam</p>
-            </div>
-          </a>
-        </div>
-        <div class="col-4 col-md-2 ">
-          <a class="feature-movie-block" href="">
-            <div class="d-flex flex-column align-items-center movie-poster-effect" width="100%">
-              <img src="img/homepage/ca.jpg" alt="">
-              <p>Amsterdam</p>
-            </div>
-          </a>
-        </div>
-        <div class="col-4 col-md-2">
-          <a class="feature-movie-block" href="">
-            <div class="d-flex flex-column align-items-center movie-poster-effect">
-              <img src="img/homepage/ca.jpg" alt="">
-              <p>Amsterdam</p>
-            </div>
-          </a>
-        </div>
-        <div class="col-4 col-md-2">
-          <a class="feature-movie-block" href="">
-            <div class="d-flex flex-column align-items-center movie-poster-effect">
-              <img src="img/homepage/ca.jpg" alt="">
-              <p>Amsterdam</p>
-            </div>
-          </a>
-        </div>
-        <div class="col-4 col-md-2">
-          <a class="feature-movie-block" href="">
-            <div class="d-flex flex-column align-items-center movie-poster-effect">
-              <img src="img/homepage/ca.jpg" alt="">
-              <p>Amsterdam</p>
-            </div>
-          </a>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
+    </section>
 
 
 

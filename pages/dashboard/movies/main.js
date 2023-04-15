@@ -167,5 +167,12 @@ function deleteDirector(value) {
 
 }
 
-
+async function searchMovies() {
+    const input = document.getElementById('search-movie-input');
+    const name = input.value;
+    const res = await fetch("api/search-movie.php?name=" + name);
+    const str = await res.text();
+    const div = document.getElementById('display-movie');
+    div.innerHTML = str;
+}
 

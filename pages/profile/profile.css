@@ -240,12 +240,12 @@ main {
 /* ----- Reservations ----- */
 
 .r_poster {
-  width: 90%;
+  width: 100%;
 }
 
 .r_background {
   object-fit: cover;
-  background-position: 50% 40% !important;
+  background-position: 50% 20% !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
@@ -261,6 +261,15 @@ main {
   }
   #avatar_info {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .r_background {
+    background: white !important;
+  }
+  .r_poster {
+    width: 60%;
   }
 }
 

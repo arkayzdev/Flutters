@@ -8,7 +8,7 @@
         </a>
       </li>
       <li class="nav-item hover-effect">
-        <a class="nav-link active" href="../users/users">
+        <a class="nav-link " href="../users/users">
           <i class="uil uil-users-alt"></i>
           Utilisateurs
         </a>

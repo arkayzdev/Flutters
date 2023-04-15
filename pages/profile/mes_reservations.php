@@ -122,43 +122,43 @@
                     ]);
                     $r_no_ticket = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT seance_date FROM SESSION WHERE id_session = (SELECT id_ticket FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                    $query = $bdd->prepare('SELECT seance_date FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
                     $query->execute([
                         'order_id' => htmlspecialchars($r_order_id),
                     ]);
                     $r_seance_date = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT start_time FROM SESSION WHERE id_session = (SELECT id_ticket FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                    $query = $bdd->prepare('SELECT start_time FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
                     $query->execute([
                         'order_id' => htmlspecialchars($r_order_id),
                     ]);
                     $r_start_time = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT langage FROM SESSION WHERE id_session = (SELECT id_ticket FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                    $query = $bdd->prepare('SELECT langage FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
                     $query->execute([
                         'order_id' => htmlspecialchars($r_order_id),
                     ]);
                     $r_langage = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT title FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_ticket FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                    $query = $bdd->prepare('SELECT title FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
                     $query->execute([
                         'order_id' => htmlspecialchars($r_order_id),
                     ]);
                     $r_title = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT duration FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_ticket FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                    $query = $bdd->prepare('SELECT duration FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
                     $query->execute([
                         'order_id' => htmlspecialchars($r_order_id),
                     ]);
                     $r_duration = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT poster_image FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_ticket FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                    $query = $bdd->prepare('SELECT poster_image FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
                     $query->execute([
                         'order_id' => htmlspecialchars($r_order_id),
                     ]);
                     $r_poster_image = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT room_name FROM ROOM WHERE id_room = (SELECT id_room FROM SESSION WHERE id_session = (SELECT id_ticket FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                    $query = $bdd->prepare('SELECT room_name FROM ROOM WHERE id_room = (SELECT id_room FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
                     $query->execute([
                         'order_id' => htmlspecialchars($r_order_id),
                     ]);
@@ -182,12 +182,12 @@
                     $r_room_name  
                 -->
 
-                <!-- Mon mot de passe -->
+                <!-- Tickets -->
                 <div class="profile_right_side_div d-block d-sm-flex flex-row-reverse r_background"
-                style="background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url('<?php echo '../movies/img/' . $r_poster_image ?>'); ">
+                style="background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url('<?php echo '../dashboard/movies/' . $r_poster_image ?>'); ">
                     <div class="col-sm-4">
                         <?php
-                        echo '<img class="r_poster" src="../movies/img/' . $r_poster_image . '">';
+                        echo '<img class="r_poster" src="../dashboard/movies/' . $r_poster_image . '">';
                         ?>
                     </div>
                     <div class="col-sm-8">
@@ -221,9 +221,6 @@
                             <!-- lastname -->
                             <!-- update_button -->
                             <button id="billet_pdf" type='submit' value="Exporter les informations utilisateurs">Télécharger</button>
-                            <?php
-                                echo '<p> ' . $r_poster_image . ' </p>';
-                            ?>
                         </form>
                     </div>
                 </div>

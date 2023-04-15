@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,8 +16,18 @@
 </head>
 
 <body>
-  
-  <?php include '../searchbar.php' ?>
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="../../../../"><img src="../img/header-logo.svg" alt="" width="120" height="35"></a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <input id="search-movie-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" oninput="searchMovies()">
+    <div class="navbar-nav">
+      <div class="nav-item text-nowrap">
+        <a class="nav-link px-3" href="#">Déconnexion</a>
+      </div>
+    </div>
+  </header>
   <div class="container-fluid">
     <div class="row">
       
@@ -50,7 +60,7 @@
                 
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="display-movie">
             <?php include 'movie-delete.php';
             include 'table-creation.php'; ?>
 
@@ -62,7 +72,7 @@
   </div>
 
 
-
+<script src="main.js"></script>
 </body>
 
 </html>

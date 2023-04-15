@@ -47,17 +47,17 @@
 
 
     <page backtop="7mm" backbottom="7mm" backleft="10mm" backright="10mm"> 
-        <h1 style="text-align:center; font-size:38px; margin: 30px 0 0px 0;">' . $_POST['r_title'] . '</h1>
-        <p style="text-align:center; margin: 15px 0 30px 0; font-size:14px;"> ' . strftime("%d %B %G", strtotime($_POST['r_seance_date'])) . ' à ' .  date("G:i", strtotime($_POST['r_start_time'])) . ' (' . $_POST['r_duration'] . ' min) en ' . $_POST['r_langage'] . '</p>
+        <h1 style="text-align:center; font-size:38px; margin: 30px 0 0px 0; text-decoration: underline">' . $_POST['r_title'] . '</h1>
+        <p style="text-align:center; margin: 15px 0 30px 0; font-size:14px;"><strong> ' . strftime("%d %B %G", strtotime($_POST['r_seance_date'])) . ' à ' .  date("G:i", strtotime($_POST['r_start_time'])) . ' (' . $_POST['r_duration'] . ' min) en ' . $_POST['r_langage'] . '</strong></p>
 
-        <img style="display:block; margin: 20px 0 50px 220px; width:300px;" src="../movies/img/' . $_POST['r_poster_image'] . '">
+        <img style="display:block; margin: 20px 0 50px 220px; width:300px;" src="../dashboard/movies/' . $_POST['r_poster_image'] . '">
 
 
-        <p style="font-size:16px; padding:0; margin:5px 0 5px 0;"><strong>Date de réservation: </strong>' . strftime("%d %B %G", strtotime($_POST['r_order_purchase_date'])) . '</p>
-        <p style="font-size:16px;padding:0; margin:5px 0 5px 0;"><strong>Nombre de billets: </strong>' . $_POST['r_no_ticket'] . ' billet(s)</p>
-        <p style="font-size:16px;padding:0; margin:5px 0 5px 0;"><strong>Prix total: </strong>' . number_format($_POST['r_final_price'],2) . '€ TTC</p>
-        <p style="font-size:16px;padding:0; margin:5px 0 5px 0;"><strong>Numéro de commande:</strong> #' . $_POST['r_order_id'] . '</p>
-        <p style="font-size:16px;padding:0; margin:5px 0 5px 0;"><strong>Salle: </strong>' . $_POST['r_room_name'] . '</p>
+        <p style="font-size:16px; padding:0; margin:7px 0 7px 0;"><strong>Date de réservation: </strong>' . strftime("%d %B %G", strtotime($_POST['r_order_purchase_date'])) . '</p>
+        <p style="font-size:16px;padding:0; margin:7px 0 7px 0;"><strong>Nombre de billets: </strong>' . $_POST['r_no_ticket'] . ' billet(s)</p>
+        <p style="font-size:16px;padding:0; margin:7px 0 7px 0;"><strong>Prix total: </strong>' . number_format($_POST['r_final_price'],2) . '€ TTC</p>
+        <p style="font-size:16px;padding:0; margin:7px 0 7px 0;"><strong>Numéro de commande:</strong> #' . $_POST['r_order_id'] . '</p>
+        <p style="font-size:16px;padding:0; margin:7px 0 7px 0;"><strong>Salle: </strong>' . $_POST['r_room_name'] . '</p>
     </page> 
     
     ';
@@ -68,7 +68,7 @@
         $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', 0);
         $html2pdf->pdf->SetDisplayMode('fullpage');
         $html2pdf->writeHTML($content);
-        $html2pdf->output('user_data.pdf');
+        $html2pdf->output('user_data.pdf', 'D');
         // $html2pdf->output('user_data.pdf');
 
     } catch (Html2PdfException $e) {
