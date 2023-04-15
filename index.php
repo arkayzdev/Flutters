@@ -17,7 +17,12 @@
   <link href="homepage.css?rs=<?= time()?>" rel="stylesheet">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
 </head>
+
 
 <body>
   <!-- Import Header -->
@@ -40,73 +45,6 @@
   </div>
 
   <!-- Featured Movies -->
-
-  <style>
-      /* Import font family : Open sans*/
-      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
-
-      body {
-        background-color: #ffffff;
-      }
-
-      .alaffiche {
-        font-family: "Open Sans", sans-serif;
-        margin: 1em;
-        margin-top: 2em;
-        margin-bottom: 20px;
-        padding-left: 20px;
-        text-transform: uppercase;
-        font-size: 2rem;
-        font-weight: 700;
-        border-left: 4px solid #ff0000;
-        display: flex;
-        align-items: center;
-        color: #000000;
-      }
-
-      .scroll-tray {
-        white-space: nowrap;
-      }
-      .scroll-tray div {
-        display: inline-block;
-      }
-
-      .scroll-tray img {
-        border-radius: 0.3rem;
-        margin: 7px 5px;
-        padding: 0;
-        width: 340px;
-      }
-
-      .scroll-holder {
-        overflow-x: hidden;
-        padding-bottom :50px;
-      }
-
-      .scroll-holder .scroll-tray:first-child {
-        animation: scroll-tray-hero 180s linear infinite;
-      }
-
-      .scroll-holder .scroll-tray:last-child {
-        animation: scroll-tray-hero 120s linear infinite;
-      }
-
-      @keyframes scroll-tray-hero {
-        0% {
-          transform: translateX(0);
-        }
-
-        99.99% {
-          transform: translateX(-7098px);
-        }
-
-        100% {
-          transform: translateX(0);
-        }
-      }
-    </style>
-  </head>
-  <body>
     <section>
       <h1 class="alaffiche">À l'affiche</h1>
       <br />
@@ -144,7 +82,7 @@
             <img src="img/homepage/9.webp" />
           </div>
           <div>
-            <img src="img/homepge/10.webp" />
+            <img src="img/homepage/10.webp" />
           </div>
           <div>
             <img src="img/homepage/11.jpeg" />
@@ -181,25 +119,7 @@
           </div>
         </div>
         <div class="scroll-tray">
-          <div>
-            <img src="img/homepage/22.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/23.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/24.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/25.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/26.webp" />
-          </div>
-          <div>
-            <img src="img/homepage/27.webp" />
-          </div>
-          <div>
+        <div>
             <img src="img/homepage/1.webp" />
           </div>
           <div>
@@ -223,12 +143,48 @@
           <div>
             <img src="img/homepage/8.webp" />
           </div>
+          <div>
+            <img src="img/homepage/9.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/10.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/11.jpeg" />
+          </div>
+          <div>
+            <img src="img/homepage/12.jpeg" />
+          </div>
+          <div>
+            <img src="img/homepage/13.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/12.jpeg" />
+          </div>
+          <div>
+            <img src="img/homepage/11.jpeg" />
+          </div>
+          <div>
+            <img src="img/homepage/10.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/9.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/8.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/7.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/6.webp" />
+          </div>
+          <div>
+            <img src="img/homepage/5.webp" />
+          </div>
         </div>
       </div>
     </section>
-
-
-
   <!-- homepage-event_carousel -->
   <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -282,58 +238,43 @@
   </div>
 
   <!-- Actuality -->
-  <h2 class="actuality-title">Actualités</h2>
-  <div class="actuality  bg-grey d-flex justify-content-center ">
-    <div class=" col-sm-6 row d-flex align-items-center actu-col-1 ">
-      <div class="actu-block actu1 d-flex align-items-end justify-content-end">
-        <div class="actu-texts">
-          <h3>Séance Tenante</h3>
-          <p>Le podcast des cinémas Flutter !</p>
-          <div class="actu-link d-flex justify-content-end">
-            <a href="">Ecoutez</a>
-          </div>
-
+  <section>
+      <h1 class="actutitre">Actualité</h1>
+      <br />
+      <br />
+      <br />
+    </section>
+    <div class="wrapper">
+      <section>
+        <div class="hero-news hero-news1">
+          <article class="hero-news__item">
+            <h3 class="hero-news__item-title">
+              Ces deux stars de cinéma pourraient être... frères !
+              <br />
+              <a class="redirection" href="”youtube.com”"><mark>Lire la suite</mark></a>
+            </h3>
+            <div class="hero-news__item-date">15 AVril, 2023</div>
+          </article>
+          <article class="hero-news__item">
+            <h3 class="hero-news__item-title">
+              "Je n'irai pas voir Mario !" : pourquoi le Luigi de 1993 boycotte
+              le film d'animation
+              <a class="redirection" href="”youtube.com”"><mark>Lire la suite</mark></a>
+            </h3>
+            <div class="hero-news__item-date">5 AVril, 2023</div>
+          </article>
+          <article class="hero-news__item">
+            <h3 class="hero-news__item-title">
+              Deadpool 3 : on le pensait mort mais ce personnage sera de retour
+              !
+              <br />
+              <a class="redirection" href="”youtube.com”"><mark>Lire la suite</mark></a>
+            </h3>
+            <div class="hero-news__item-date">1 AVril, 2023</div>
+          </article>
         </div>
-      </div>
+      </section>
     </div>
-
-    <div class="col-sm-6 row align-items-center actu-col-2">
-      <div class="actu-block actu2 d-flex align-items-end justify-content-end">
-        <div class="actu-texts">
-          <h3>Séance Tenante</h3>
-          <p>Le podcast des cinémas Flutter !</p>
-          <div class="actu-link d-flex justify-content-end">
-            <a href="">Ecoutez</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Info -->
-  <div class="info d-flex justify-content-center ">
-    <div class=" col-sm-6 row d-flex align-items-center info-col-1 justify-content-end">
-      <img src="img/actu3.jfif" class="img-reponsive" style="width:80%">
-    </div>
-
-
-    <div class=" col-sm-6 row align-items-center info-col-2">
-      <div class="info-block info2 d-flex align-items-center justify-content-start">
-        <div class="info-texts">
-          <h3>Vous voulez en savoir
-            plus sur notre cinéma ?</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Morbi bibendum ante lorem, ac fringilla purus feugiat eu.
-            Vivamus quis felis et metus fringilla sodales.
-            Suspendisse sit amet dolor arcu.
-            Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.</p>
-          <div class="info-link d-flex justify-content-start">
-            <a href="">À propos</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- FAQ -->
   <div class="faq d-flex justify-content-center">

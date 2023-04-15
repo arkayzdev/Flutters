@@ -44,19 +44,19 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link hover-effect" href="#">
+        <a class="nav-link hover-effect" href="../movie-type/move-type">
           <i class="uil uil-presentation-play"></i>
           Types de films
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link hover-effect" href="#">
+        <a class="nav-link hover-effect" href="../actors/actors">
           <i class="uil uil-user-check"></i>
           Acteurs
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link hover-effect" href="#">
+        <a class="nav-link hover-effect" href="../directors/directors">
           <i class="uil uil-user-exclamation"></i>
           Réalisateurs
         </a>

@@ -167,6 +167,15 @@ function deleteDirector(value) {
 
 }
 
+var inputTrigger = document.getElementById("search-movie-input");
+
+inputTrigger.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("trigger-search-movies").click();
+    }
+});
+
 async function searchMovies() {
     const input = document.getElementById('search-movie-input');
     const name = input.value;
@@ -175,4 +184,5 @@ async function searchMovies() {
     const div = document.getElementById('display-movie');
     div.innerHTML = str;
 }
+
 

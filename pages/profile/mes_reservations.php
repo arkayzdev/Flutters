@@ -103,7 +103,7 @@
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column">
 
             <?php
-                $q = 'SELECT * FROM ORDERS WHERE id_client = (SELECT id_client FROM USERS WHERE email = :email)';
+                $q = 'SELECT * FROM ORDERS WHERE id_client = (SELECT id_client FROM USERS WHERE email = :email) ORDER BY order_id ASC';
                 $req = $bdd->prepare($q);
                 $reponse = $req->execute([
                   'email' => htmlspecialchars($_SESSION['email']),

@@ -45,14 +45,12 @@
                 <?php echo (isset($_GET['type']) && $_GET['type'] == 'modify')? '<th scope="col">Type</th>' :'';?>
                 <th scope="col">Prénom</th>
                 <th scope="col">Nom</th>
-                <th scope="col">Mail</th>
-                <?php echo (isset($_GET['type']) && $_GET['type'] == 'create')? '<th scope="col">Mot de passe</th>' :'';?>
                 <?php 
                 if (!isset($_GET['type']) || $_GET['type'] == 'delete') {
                   echo '<th scope="col" class="d-flex justify-content-center">
                           <div class=" hover-effect d-flex align-items-center">
                             <i class="add-icon uil uil-user-plus"></i> 
-                            <a class="add-cta" href="users.php?type=create">Ajouter un admin</a>     
+                            <a class="add-cta" href="actors?type=create">Ajouter un acteur</a>     
                           </div>
                         </th>';
                 } else {

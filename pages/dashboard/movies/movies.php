@@ -21,7 +21,8 @@
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <input id="search-movie-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" oninput="searchMovies()">
+    <button id="trigger-search-movies" class="btn btn-dark" onclick="searchMovies()"><i class="uil uil-search"></i></button>
+    <input id="search-movie-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" >
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#">Déconnexion</a>

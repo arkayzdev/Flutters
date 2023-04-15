@@ -196,29 +196,62 @@ a {
 }
 
 /* A l'affiche */
-.feature-movies h1 {
-  border-left: 4px solid var(--red);
-  padding-left: 1em;
-  font-weight: 800;
-  /* margin-left: 1em; */
+
+.alaffiche {
+  font-family: "Open Sans", sans-serif;
+  margin: 2em;
+  margin-top: 2em;
+  margin-bottom: 20px;
+  padding-left: 25px;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  border-left: 4px solid #ff0000;
+  display: flex;
+  align-items: center;
+  color: #000000;
 }
 
-.feature-movies {
-  margin: 4em 0em 2em 0em;
-  max-height: 80%;
+.scroll-tray {
+  white-space: nowrap;
+}
+.scroll-tray div {
+  display: inline-block;
 }
 
-.feature-movie-block {
-  margin: 1em;
-  color: var(--grey-1);
+.scroll-tray img {
+  border-radius: 0.3rem;
+  margin: 7px 5px;
+  padding: 0;
+  width: 340px;
 }
 
-.feature-movies p {
-  padding: 0.6em;
+.scroll-holder {
+  overflow-x: hidden;
+  padding-bottom: 70px;
+  margin-top: -15px;
 }
 
-.feature-movies img {
-  max-width: 100%;
+.scroll-holder .scroll-tray:first-child {
+  animation: scroll-tray-hero 180s linear infinite;
+}
+
+.scroll-holder .scroll-tray:last-child {
+  animation: scroll-tray-hero 120s linear infinite;
+}
+
+@keyframes scroll-tray-hero {
+  0% {
+    transform: translateX(0);
+  }
+
+  99.99% {
+    transform: translateX(-7098px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* ---------- homepage-event_carousel ---------- */
@@ -239,99 +272,159 @@ a {
 }
 
 /* ---------- actualités ---------- */
-.actuality {
-  height: 500px;
-}
-
-.actuality-title {
-  margin: 2em 0 0 2.4em;
-  font-weight: 800;
+.actutitre {
+  font-family: "Open Sans", sans-serif;
+  margin: 2em;
+  margin-top: 2em;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 700;
+  border-left: 4px solid #ff0000;
+  display: flex;
+  align-items: center;
   color: #000000;
-  background-color: var(--white-1);
 }
 
-.actuality .actu-col-1 {
-  padding: 0 2em 0 5em;
+.wrapper {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  background-color: #fff;
 }
 
-.actuality .actu-col-2 {
-  padding: 0 5em 0 2em;
+hr {
+  margin: 2rem 0;
+  border-top: 1px solid #ccc;
 }
 
-.actuality .actu-block {
-  height: 80%;
-  background-image: url("img/actu1.jpg");
+.hero-news {
+  display: grid;
+  grid-gap: 1px;
+  padding-bottom: 50px;
+}
+
+.hero-news > article {
+  padding: 1rem;
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
-  background-size: auto;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: calc(66vw - 2rem);
+  box-sizing: border-box;
 }
 
-.actuality .actu-texts {
-  background-color: var(--white-2);
-  margin-bottom: 12px;
-  padding: 1em;
-  border-radius: 20px;
-  width: 40%;
+.hero-news__item:first-child {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url(img/homepage/frere.jpg);
+  background-size: 120%;
+  transition: 1s;
 }
 
-.actuality h3 {
-  font-weight: 800;
-  color: black;
+.hero-news__item:first-child:hover {
+  background-size: 150%;
+  background-position: center;
 }
 
-.actuality a {
-  text-decoration: none;
-  padding: 0.3em 1em 0.3em 1em;
-  background-color: var(--red);
-  border-radius: 20px;
-  color: var(--white-1);
-  font-weight: 700;
+.hero-news__item:nth-child(2) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url(img/homepage/mario.jpg);
+  background-size: 137%;
+  transition: 1s;
 }
 
-/* ---------- info ---------- */
-.info {
-  height: 500px;
-  background-color: var(--white-2);
+.hero-news__item:nth-child(2):hover {
+  background-size: 150%;
+  background-position: center;
 }
 
-.info .info-col-1 {
-  padding: 0 2em 0 5em;
+.hero-news__item:nth-child(3) {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
+    url(img/homepage/dead.jpg);
+
+  background-size: 135%;
+  transition: 1s;
 }
 
-.info .info-col-2 {
-  padding: 0 5em 0 2em;
+.hero-news__item:nth-child(3):hover {
+  background-size: 150%;
+  background-position: center;
 }
 
-.info .info-block {
-  height: 80%;
-  background-color: var(--white-2);
+.hero-news__item-title {
+  margin: auto 0 4px;
+  font-size: 1.25rem;
+  line-height: 1.1;
 }
 
-.info .info-texts {
-  background-color: var(--white-2);
-  margin-bottom: 12px;
-  padding: 1em 1em 1em 6em;
-  border-radius: 20px;
-  width: 80%;
+.hero-news__item:first-child .hero-news__item-title {
+  font-size: 1.75rem;
 }
 
-.info h3 {
-  font-weight: 800;
-  color: black;
-  padding-bottom: 1em;
+.hero-news2 .hero-news__item-title {
+  order: 2;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.info a {
-  text-decoration: none;
-  padding: 0.5em 1.2em 0.5em 1.2em;
-  background-color: var(--red);
-  border-radius: 20px;
-  color: var(--white-1);
-  font-weight: 700;
+.hero-news2 .hero-news__item-date {
+  order: 1;
+  margin-top: auto;
+  margin-bottom: 4px;
 }
 
-.info p {
-  padding-bottom: 1em;
+@media (min-width: 767px) {
+  .hero-news1 {
+    grid-template-columns: 2fr 1fr;
+  }
+  .hero-news1 .hero-news__item:first-child {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: auto;
+  }
+  .hero-news1 .hero-news__item:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    height: calc(25vw - 2rem);
+    max-height: 300px;
+  }
+  .hero-news1 .hero-news__item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    height: calc(25vw - 2rem);
+    max-height: 300px;
+  }
+  .hero-news2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero-news2 .hero-news__item:first-child {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    height: calc(50vw - 2rem);
+    max-height: 600px;
+  }
+  .hero-news2 .hero-news__item:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+    height: calc(33vw - 2rem);
+    max-height: 300px;
+  }
+  .hero-news2 .hero-news__item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+    height: calc(33vw - 2rem);
+    max-height: 300px;
+  }
+}
+
+.redirection {
+  color: #ffffff;
+  font-size: 0.5em;
 }
 
 /* ---------- FAQ ------------- */

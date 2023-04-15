@@ -28,8 +28,8 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
                         echo '<td><input class="update-input form-control" name="email" value="'. htmlspecialchars($id_client['email']). '"></td>'; ?>
                         <td >
                             <?php echo '<input type="hidden" name="id" value="' . htmlspecialchars($id_client['id_client']) . '">'; ?>
-                            <input class="button update-cta hover-effect" type="submit" value="Modifier" onclick="return confirm('Appliquer les modifications ?');">
-                            <a class="button hover-effect" href="users.php" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?');">Annuler</a>
+                            <input class="btn btn-danger" type="submit" value="Modifier" onclick="return confirm('Appliquer les modifications ?');">
+                            <a class="btn btn-danger" href="users.php" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?');">Annuler</a>
                         </td>
                     </form>
                 </tr>
@@ -43,8 +43,8 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
             <td><input class="update-input form-control" name="last_name"></td>
             <td><input class="update-input form-control" name="email"></td>
             <td><input class="update-input form-control" type="password" name="password"></td>
-            <td><input class="button update-cta hover-effect" type="submit" value="Ajouter" onclick="return confirm('Ajouter ?');">
-            <a class="button hover-effect" href="users.php" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?');">Annuler</a></td>
+            <td><input class="btn btn-danger" type="submit" value="Ajouter" onclick="return confirm('Ajouter ?');">
+            <a class="btn btn-danger" href="users.php" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?');">Annuler</a></td>
         </form>
     </tr>
 

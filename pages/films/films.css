@@ -1,0 +1,35 @@
+/* Import font family : Open sans*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+/* Colors root*/
+:root {
+  --white-1: #ffffff;
+  --white-2: #f9f9f9;
+  --white-3: #f2f3f4;
+  --white-4: #ecedee;
+  --red: #e32828;
+  --grey-1: #3c434b;
+  --grey-2: #282a2d;
+  --black: #000000;
+  --footer: #101114;
+}
+
+body {
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../profile/profile_background.png");
+  /* background-color: light-grey; */
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  height: 1000px;
+}
+
+main {
+  background-color: white;
+  margin-top: 2em;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  font-weight: 700;
+}
