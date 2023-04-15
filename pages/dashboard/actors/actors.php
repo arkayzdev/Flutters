@@ -1,3 +1,4 @@
+<?php include '../../connect_db.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -34,9 +35,19 @@
     <div class="row">
       
     <?php include '../sidebar.php' ?>
+    <?php 
+    $q = "SELECT COUNT(first_name) FROM ACTOR";
+    $req = $bdd->query($q);
+    $req->execute();
+    $result = $req;
+    
+
+    ?>
+
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <h2>Utilisateurs</h2>
+      <?php var_dump($result); ?>
+        <h2>Acteurs </h2>
         <div class="table-responsive">
           <table class="table table-sm">
             <thead>

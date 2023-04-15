@@ -277,70 +277,57 @@
     </div>
 
   <!-- FAQ -->
-  <div class="faq d-flex justify-content-center">
-    <div class="col-sm-6 row faq-left d-flex ">
-      <h2 id="faqtitre">Questions récurrentes</h2>
-      <p>Notre centre d'aide en ligne n'est pas encore disponible.</p>
-      <div class="faq-link">
-        <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">N'appuyez pas<img src="img/angle-right.svg" alt="" width="5%"></a>
+
+  <section class="card">
+      <div class="card__image"></div>
+      <div class="card__text">
+        <h1>FAQ</h1>
+
+        <div class="accordion">
+          <div class="accordion__item">
+            <button class="accordion__question">
+              Quelles sont les expériences proposées par les cinémas Flutter ?
+            </button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                bibendum ante lorem, ac fringilla purus feugiat eu. Vivamus quis
+                felis et metus fringilla sodales. Suspendisse sit amet dolor
+                arcu. Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__question">
+              Comment puis-je devenir ambassadeur de Flutters ?
+            </button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                bibendum ante lorem, ac fringilla purus feugiat eu. Vivamus quis
+                felis et metus fringilla sodales. Suspendisse sit amet dolor
+                arcu. Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.
+              </div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__question">
+              Comment puis-je bénéficier de tarifs réduits ?
+            </button>
+            <div class="accordion__collapse collapse">
+              <div class="accordion__content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                bibendum ante lorem, ac fringilla purus feugiat eu. Vivamus quis
+                felis et metus fringilla sodales. Suspendisse sit amet dolor
+                arcu. Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-    </div>
-    <div class=" col-sm-6 faq-right d-flex justify-content-end">
-      <div class="container-faq d-flex flex-column justify-content-center align-items-center">
-        <div class="FluttersFAQ">
-          <div class="visible-pannel d-flex justify-content-between align-items-center">
-            <h4>Quelles sont les expériences proposées par les
-              cinémas Flutter ?</h4>
-            <img src="img/bottom-arrow.png" alt="croix animation">
-          </div>
-          <div class="toggle-pannel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Morbi bibendum ante lorem, ac fringilla purus feugiat eu.
-              Vivamus quis felis et metus fringilla sodales.
-              Suspendisse sit amet dolor arcu.
-              Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.</p>
-            <br>
-          </div>
-        </div>
-        <hr>
-        <div class="FluttersFAQ">
-          <div class="visible-pannel d-flex justify-content-between align-items-center">
-            <h4>Comment puis-je devenir ambassadeur de Flutters ?</h4>
-            <img src="img/bottom-arrow.png" alt="croix animation">
-          </div>
-          <div class="toggle-pannel">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Morbi bibendum ante lorem, ac fringilla purus feugiat eu.
-              Vivamus quis felis et metus fringilla sodales.
-              Suspendisse sit amet dolor arcu.
-              Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.
-              <br>
-            </p>
-          </div>
-        </div>
-        <hr>
-        <div class="FluttersFAQ">
-          <div class="visible-pannel d-flex justify-content-between align-items-center">
-            <h4>Comment puis-je bénéficier de tarifs réduits ?</h4>
-            <img src="img/bottom-arrow.png" alt="croix animation">
-          </div>
-          <div class="toggle-pannel">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Morbi bibendum ante lorem, ac fringilla purus feugiat eu.
-              Vivamus quis felis et metus fringilla sodales.
-              Suspendisse sit amet dolor arcu.
-              Maecenas diam metus, tincidunt vitae dolor ut, tincidunt.
-              <br>
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
+    <script src="script.js"></script>
   <!-- Footer -->
   <?php include 'pages/footer/footer.php' ?>
 

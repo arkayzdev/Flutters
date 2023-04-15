@@ -1,26 +1,45 @@
+document.querySelectorAll(".accordion__question").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    console.log("click!");
+    let accCollapse = item.nextElementSibling;
 
+    if (!item.classList.contains("collapsing")) {
+      // Ouvrir l'accordéon
+      if (!item.classList.contains("open")) {
+        console.log("toggle accordion button");
 
-const allCross = document.querySelectorAll('.visible-pannel img');
-console.log(allCross);
+        accCollapse.style.display = "block";
+        let accHeight = accCollapse.clientHeight;
+        console.log(accHeight);
 
-allCross.forEach(element => {
+        setTimeout(() => {
+          accCollapse.style.height = accHeight + "px";
+          accCollapse.style.display = "";
+        }, 1);
 
-    element.addEventListener('click', function () {
+        accCollapse.classList = "accordion__collapse collapsing";
 
-        const height = this.parentNode.parentNode.childNodes[3].scrollHeight;
+        setTimeout(() => {
+          console.log("open accordion content");
+          accCollapse.classList = "accordion__collapse collapse open";
+        }, 300);
+      }
+      // Fermer l'accordéon
+      else {
+        accCollapse.classList = "accordion__collapse collapsing";
 
-        const currentChoice = this.parentNode.parentNode.childNodes[3];
+        setTimeout(() => {
+          accCollapse.style.height = "0px";
+        }, 1);
 
+        setTimeout(() => {
+          console.log("close accordion content");
+          accCollapse.classList = "accordion__collapse collapse";
+          accCollapse.style.height = "";
+        }, 300);
+      }
 
-        // console.log(this.src);
-        if (this.src.includes('bottom-arrow')) {
-            this.src = 'img/top-arrow.png';
-            gsap.to(currentChoice, { duration: 0.2, height: height + 20, opacity: 1, padding: '0px 0px' })
-        } else if (this.src.includes('top-arrow')) {
-            this.src = 'img/bottom-arrow.png';
-            gsap.to(currentChoice, { duration: 0.2, height: 0, opacity: 0, padding: '0px 0px' })
-        }
-
-    })
-})
-
+      item.classList.toggle("open");
+    }
+  });
+});
