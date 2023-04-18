@@ -61,8 +61,6 @@
         </div>
         <!-- pwd-forgot -->
         <div class="w-75 mt-3"><a class="align-self-start" style="font-size:14px; font-weight:600; margin-top:2em" id="pwd-forgot" href="forgot_pwd/forgot_pwd.php">Mot de passe oublié ?</a></div>
-        <!-- include captcha -->
-        <?php include("/var/www/flutters.ovh/pages/login/captcha/captcha.php") ?>
         <!-- submit -->
         <div class="col login-submit">
           <input class="w-100 mt-1" type='submit' value="CONNEXION">

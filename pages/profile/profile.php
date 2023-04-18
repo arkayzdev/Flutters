@@ -1,4 +1,7 @@
-<?php session_start();
+<?php 
+session_set_cookie_params(3600);
+session_start();
+
     // $_SESSION['email']='huangfrederic2002@gmail.com';
     // $_SESSION['email']='franck.zhuang@htm.fr';
     // $_SESSION['user_type']='Normal';
@@ -24,6 +27,7 @@
     $email = $result['email'];
     $firstname = $result['first_name'];
     $lastname = $result['last_name'];
+    $user_id = $result['id_client'];
 
     if($result['avatar']=='' || !isset($result['avatar'])){
         $avatar = 'default_avatar.png';
@@ -99,7 +103,7 @@
     </div>
 
     <!-- main content -->
-    <main class="d-flex flex-column">
+    <main class="d-flex flex-column pb-5">
         <!-- profile_up_side nav -->
         <div class="d-block d-lg-none" id="profile_up_side">
             <nav>
@@ -171,6 +175,7 @@
                             <form action="profile_pdf.php" method="POST">
                                 <!-- actual pwd -->
                                 <?php 
+                                echo '<input type=\'text\' name=\'user_id\' value="' . $user_id . '" class="d-none">';
                                 echo '<input type=\'text\' name=\'first_name\' value="' . $firstname . '" class="d-none">';
                                 echo '<input type=\'text\' name=\'last_name\' value="' . $lastname . '" class="d-none">';
                                 echo '<input type=\'text\' name=\'email\' value="' . $email . '" class="d-none">';
@@ -220,7 +225,7 @@
                             </div>
 
                             <!-- informations about avatar changement -->
-                            <p id="avatar_info">Seuls les photos au format jpg ou png faisant moins de 2Mo sont acceptés</p>
+                            <p id="avatar_info">Seuls les photos au format jpg, jpeg et png faisant moins de 10Mo sont acceptés</p>
                         </div>
                     </div>
                 </div>
@@ -284,6 +289,9 @@
 
         </div>
     </main>
+
+      <!-- Footer -->
+  <?php include '/var/www/flutters.ovh/pages/footer/footer.php' ?>
 
     <!-- Import Bootstrap JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

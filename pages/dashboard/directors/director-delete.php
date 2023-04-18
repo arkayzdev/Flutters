@@ -3,7 +3,7 @@
 
     if (isset($_GET['id']) && $_GET['type'] == 'delete') {
             $id = $_GET['id'];
-            $q = "DELETE FROM REALIZED WHERE id_actor= $id";
+            $q = "DELETE FROM REALIZED WHERE id_director= $id";
             $req = $bdd->prepare($q);
             $req->execute();
 

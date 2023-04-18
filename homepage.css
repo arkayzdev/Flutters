@@ -242,10 +242,6 @@ a {
   animation: scroll-tray-hero 180s linear infinite;
 }
 
-.scroll-holder .scroll-tray:last-child {
-  animation: scroll-tray-hero 120s linear infinite;
-}
-
 @keyframes scroll-tray-hero {
   0% {
     transform: translateX(0);

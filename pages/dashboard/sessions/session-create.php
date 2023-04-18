@@ -1,75 +1,27 @@
 <?php
 include '../../connect_db.php';
 
-// Image check
-//si une image est postée ($_FILES['image']) :
+$room_name = $_POST['room'];
 
-if(isset($_FILES['image']) && $_FILES['image']['error'] != 4){
+$q = "SELECT id_room FROM ROOM WHERE room_name = $room_name";
+$req = $bdd->query($q);
+$req->execute();
 
-    //vérifier que le fichier est de type jpg, png ou gif (utiliser le type du fichier), si non : redirection
-    // tableau des types acceptés
-    $acceptable = [
-                    'image/jpeg',
-                    'image/png',
-                    'image/gif',
-                ];
-
-    if(!in_array($_FILES['image']['type'], $acceptable)){
-        $msg = 'Le fichier doit être du type jpeg, gif ou png.';
-        header('location: movie?message=' . $msg);
-        exit;
-    }
-
-    //vérifier que le fichier moins de 2Mo  (utiliser la size du fichier), si non : redirection
-    $maxSize = 2 * 1024 * 1024; // 2Mo exprimée en octets
-    if($_FILES['image']['size'] > $maxSize){
-        $msg = 'Le fichier doit faire moins de 2 Mo.';
-        header('location: movie?message=' . $msg);
-        exit;
-    }
-
-    //créer un dossier dossier s'il n'existe pas (fonctions file_exists et mkdir)
-    if(!file_exists('movies-img')){
-        mkdir('movies-img'); // chmod 0777 par défaut
-    }
-
-    //y enregistrer le fichier (le déplacer de son emplacement temp vers le dossier uploads)
-    $from = $_FILES['image']['tmp_name'];
-
-    // Renommage du fichier : risque de doublon si 2 fichiers avec la meme ext. sont envoyés ds la même seconde
-    $timestamp = time(); // Nb de secondes écoulées depuis le 01/01/1970
-    // récupération de l'extension originale
-    //$_FILES['image']['name'] // image.jpeg / profile.gif / doc.min.png
-    $array = explode('.', $_FILES['image']['name']); //['doc', 'min', 'png']
-    $extension = end($array); // On récupère le dernier élément du tableau
-
-    $filename = 'movie-poster-' . $timestamp . '.' . $extension;
-    $destination = 'movies-img/' . $filename;
-
-    $saveResult = move_uploaded_file($from, $destination);
-
-    if(!$saveResult){
-        $msg = 'Le fichier n\'a pas pu être enregistré.';
-        header('location:profile.php?message=' . $msg);
-        exit;
-    }
-} else {
-    header('location: movies.php?message=Veuillez mettre une image.');
-}
+$room = $req->fetch(PDO::FETCH_ASSOC);
 
 
-$q = 'INSERT INTO MOVIE (title, description, release_date, duration, poster_image) 
-      VALUES (:title, :description, :release_date, :duration, :poster_image)';
+$q = 'INSERT INTO SESSION (seance_date, start_time, language, price, id_room) 
+      VALUES (:seance_date, :start_time, :language, :price, :id_room)';
 $req = $bdd->prepare($q); 
 $response = $req->execute([
-    'title' => $_POST['title'],
-    'description' => $_POST['description'],
-    'release_date' => $_POST['release_date'],
-    'duration' => (int)$_POST['duration'],
-    'poster_image' => $destination
+    'seance_date' => $_POST['date'],
+    'start_time' => $_POST['start_time'], 
+    'language'=> $_POST['language'],
+    'price' => $_POST['price'], 
+    'id_room' => $room['id_room']
 ]); 
 
-$id_movie = (int)$bdd->lastInsertId();
+
 
 
 $types = $_POST['types'];

@@ -1,4 +1,5 @@
-<?php session_start();
+<?php 
+    session_start();
   setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
 
 
@@ -40,10 +41,9 @@
     <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); ?>
 
     <!-- main content -->
-    <main class="d-flex flex-column">
+    <main class="d-flex flex-column pb-5">
                 <!-- Button trigger message modal -->
         <button type="button" style="display:none" id="btn_message_modal" data-bs-toggle="modal" data-bs-target="#message_modal">
-        Supprimer la photo
         </button>
 
         <!-- activate the message -->
@@ -109,78 +109,65 @@
                   'email' => htmlspecialchars($_SESSION['email']),
                 ]);
                 $result = $req -> fetchAll(PDO::FETCH_ASSOC);
+                
+                if(isset($result[0])){
+                    foreach($result as $id_client) { 
+                        $r_order_id = $id_client['order_id'];
+                        $r_order_purchase_date = $id_client['purchase_date'];
+                        $r_final_price = $id_client['final_price'];
 
-                foreach($result as $id_client) { 
-                    $r_order_id = $id_client['order_id'];
-                    $r_order_purchase_date = $id_client['purchase_date'];
-                    $r_final_price = $id_client['final_price'];
+                        // Verify if email exist in the db
+                        $query = $bdd->prepare('SELECT COUNT(id_ticket) FROM TICKET WHERE order_id = :order_id');
+                        $query->execute([
+                            'order_id' => htmlspecialchars($r_order_id),
+                        ]);
+                        $r_no_ticket = $query->fetch(PDO::FETCH_COLUMN);
 
-                    // Verify if email exist in the db
-                    $query = $bdd->prepare('SELECT COUNT(id_ticket) FROM TICKET WHERE order_id = :order_id');
-                    $query->execute([
-                        'order_id' => htmlspecialchars($r_order_id),
-                    ]);
-                    $r_no_ticket = $query->fetch(PDO::FETCH_COLUMN);
+                        $query = $bdd->prepare('SELECT seance_date FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                        $query->execute([
+                            'order_id' => htmlspecialchars($r_order_id),
+                        ]);
+                        $r_seance_date = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT seance_date FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
-                    $query->execute([
-                        'order_id' => htmlspecialchars($r_order_id),
-                    ]);
-                    $r_seance_date = $query->fetch(PDO::FETCH_COLUMN);
+                        $query = $bdd->prepare('SELECT start_time FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                        $query->execute([
+                            'order_id' => htmlspecialchars($r_order_id),
+                        ]);
+                        $r_start_time = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT start_time FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
-                    $query->execute([
-                        'order_id' => htmlspecialchars($r_order_id),
-                    ]);
-                    $r_start_time = $query->fetch(PDO::FETCH_COLUMN);
+                        $query = $bdd->prepare('SELECT language FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                        $query->execute([
+                            'order_id' => htmlspecialchars($r_order_id),
+                        ]);
+                        $r_language = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT language FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
-                    $query->execute([
-                        'order_id' => htmlspecialchars($r_order_id),
-                    ]);
-                    $r_language = $query->fetch(PDO::FETCH_COLUMN);
+                        $query = $bdd->prepare('SELECT title FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                        $query->execute([
+                            'order_id' => htmlspecialchars($r_order_id),
+                        ]);
+                        $r_title = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT title FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
-                    $query->execute([
-                        'order_id' => htmlspecialchars($r_order_id),
-                    ]);
-                    $r_title = $query->fetch(PDO::FETCH_COLUMN);
+                        $query = $bdd->prepare('SELECT duration FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                        $query->execute([
+                            'order_id' => htmlspecialchars($r_order_id),
+                        ]);
+                        $r_duration = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT duration FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
-                    $query->execute([
-                        'order_id' => htmlspecialchars($r_order_id),
-                    ]);
-                    $r_duration = $query->fetch(PDO::FETCH_COLUMN);
+                        $query = $bdd->prepare('SELECT poster_image FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                        $query->execute([
+                            'order_id' => htmlspecialchars($r_order_id),
+                        ]);
+                        $r_poster_image = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT poster_image FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
-                    $query->execute([
-                        'order_id' => htmlspecialchars($r_order_id),
-                    ]);
-                    $r_poster_image = $query->fetch(PDO::FETCH_COLUMN);
+                        $query = $bdd->prepare('SELECT room_name FROM ROOM WHERE id_room = (SELECT id_room FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                        $query->execute([
+                            'order_id' => htmlspecialchars($r_order_id),
+                        ]);
+                        $r_room_name = $query->fetch(PDO::FETCH_COLUMN);
 
-                    $query = $bdd->prepare('SELECT room_name FROM ROOM WHERE id_room = (SELECT id_room FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
-                    $query->execute([
-                        'order_id' => htmlspecialchars($r_order_id),
-                    ]);
-                    $r_room_name = $query->fetch(PDO::FETCH_COLUMN);
-
-  
+    
 
                 ?>
-
-                <!-- 
-                    $r_order_id 
-                    $r_order_purchase_date 
-                    $r_final_price 
-                    $r_no_ticket 
-                    $r_seance_date 
-                    $r_start_time 
-                    $r_langage 
-                    $r_title 
-                    $r_duration 
-                    $r_poster_image 
-                    $r_room_name  
-                -->
 
                 <!-- Tickets -->
                 <div class="profile_right_side_div d-block d-sm-flex flex-row-reverse r_background"
@@ -224,6 +211,10 @@
                         </form>
                     </div>
                 </div>
+                <?php }} else { ?>
+                    <div id="no_command">
+                        <p> Vous n'avez aucunes commandes </p>
+                    </div>
                 <?php } ?>
 
             </div>
@@ -233,6 +224,9 @@
 
         </div>
     </main>
+
+          <!-- Footer -->
+  <?php include '/var/www/flutters.ovh/pages/footer/footer.php' ?>
 
     <!-- Import Bootstrap JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

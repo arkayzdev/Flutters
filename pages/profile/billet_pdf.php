@@ -68,7 +68,7 @@
         $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', 0);
         $html2pdf->pdf->SetDisplayMode('fullpage');
         $html2pdf->writeHTML($content);
-        $html2pdf->output('user_data.pdf', 'D');
+        $html2pdf->output('' . $_POST['r_title'] . '_' . $_POST['r_order_id'] . '.pdf', 'D');
         // $html2pdf->output('user_data.pdf');
 
     } catch (Html2PdfException $e) {

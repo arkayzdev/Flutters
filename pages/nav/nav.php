@@ -58,6 +58,9 @@
 
     border-radius: 10em;
     }
+
+
+
     #nav_searchbar > input {
     width: 12em;
         
@@ -70,8 +73,7 @@
 
     position:relative;
 
-    bottom:1.55em;
-    left:2em;
+
     font-size:0.9em;
     }
     #nav_searchbar > input:focus {
@@ -83,16 +85,18 @@
     border: none;
     box-shadow: none;
     }
-    #nav_searchbar ::placeholder {
+
+    #nav_searchbar input::placeholder {
     color: var(--white-1);
-    opacity: 1;
+    font-weight:500;
+
     }
     #nav_searchbar > button {
     background-color: transparent;
     opacity: 1;
 
     position: relative;
-    top: 0.2em;
+    top: -0.1em;
     left:0.5em;
 
     border: none;
@@ -255,17 +259,17 @@
 <nav class="d-flex flex-row mt-4 justify-content-between nav_body">
     <div class="d-flex">
         <!-- Flutters Brand -->
-        <a href="/"><img class="nav_logo ms-4 d-none d-sm-block" style="width:8em;" src="/pages/nav/img/header-logo.svg"></a>
+        <a href="/"><img class="nav_logo ms-4 mt-1 d-block" style="width:8em;" src="/pages/nav/img/header-logo.svg"></a>
         <!-- nav list -->
         <ul class="d-flex" id="nav_link">
             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
-            <li class="nav-item"><a class="nav-link" href="/">Films</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/films/films">Films</a></li>
             <li class="nav-item"><a class="nav-link" href="/">À propos</a></li>
         </ul>
     </div>
     <div class="d-flex">
         <!-- searchbar -->
-        <form class="d-flex d-none d-sm-block" role="search" action="#" method="POST" id="nav_searchbar">
+        <form class="d-none d-sm-flex" role="search" action="#" method="POST" id="nav_searchbar">
                 <button type="submit" style="z-index:100;"><img src="/pages/nav/img/search.svg" alt="Loupe" width="15"
                 height="15"></button>
                 <input class="form-control me-2" type="text" placeholder="Trouver des films" aria-label="Search">
@@ -328,8 +332,7 @@
                         <button type="button" id="nav_modal_btn" data-bs-dismiss="modal" aria-label="Close"><img src="/pages/nav/img/white_cross.svg"></button>
                         <ul class="d-flex flex-column align-items-center" id="nav_link_modal">
                             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/">Films</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/">Événements</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/films/films">Films</a></li>
                             <li class="nav-item"><a class="nav-link" href="/">À propos</a></li>
                             <?php 
                                 if (!isset($_SESSION['email'])){

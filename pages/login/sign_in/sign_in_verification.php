@@ -9,13 +9,6 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 
 // Account creation requirement
 
-// Check if the captcha has been complete
-if ($_POST['captcha_check'] != 1) {
-    $msg = 'Le captcha n a pas été complété';
-    header('location:sign_in.php?message=' . $msg);
-    exit;
-}
-
 // Valide email
 if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false) {
     $msg = 'Attention ! Adresse email non valide !';

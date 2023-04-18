@@ -128,7 +128,6 @@
         <ul class="d-flex" id="nav_link">
             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
             <li class="nav-item"><a class="nav-link" href="/">Films</a></li>
-            <li class="nav-item"><a class="nav-link" href="/">Événements</a></li>
             <li class="nav-item"><a class="nav-link" href="/">À propos</a></li>
         </ul>
     </div>

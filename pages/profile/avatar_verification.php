@@ -1,4 +1,8 @@
 <?php session_start();
+// Mise en temps illimité du Time Out
+ini_set('max_execution_time', 0);
+// Augmentation de la taille de la mémoire alloué à php pour le traitement des fichiers.
+ini_set('memory_limit','320M'); // UPLOAD MULTIPLE OU GROS FICHIER
     include("../connect_db.php");
 
 
@@ -11,18 +15,19 @@
                         'image/jpeg',
                         'image/png',
                         'image/gif',
+                        'image/jpg'
                     ];
 
         if(!in_array($_FILES['image']['type'], $acceptable)){
-            $msg = 'Le fichier doit être du type jpeg, gif ou png.';
+            $msg = 'Le fichier doit être du type jpeg, jpg ou png.';
             header('location: profile.php?message=' . $msg);
             exit;
         }
 
         //vérifier que le fichier moins de 2Mo  (utiliser la size du fichier), si non : redirection
-        $maxSize = 2 * 1024 * 1024; // 2Mo exprimée en octets
+        $maxSize = 9 * 1024 * 1024; // 2Mo exprimée en octets
         if($_FILES['image']['size'] > $maxSize){
-            $msg = 'Le fichier doit faire moins de 2 Mo.';
+            $msg = 'Le fichier doit faire moins de 10 Mo.';
             header('location: profile.php?message=' . $msg);
             exit;
         }

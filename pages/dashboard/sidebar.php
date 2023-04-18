@@ -55,12 +55,12 @@
           Réalisateurs
         </a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link hover-effect" href="#">
           <i class="uil uil-envelope-check"></i>
           Newsletter
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </nav>

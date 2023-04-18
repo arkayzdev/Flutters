@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
  
-  <title>Dashboard | Movies</title>
+  <title>Dashboard | Séances</title>
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -43,7 +43,6 @@
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <h2>Séances (<?php echo $result['COUNT(id_session)'] ?>)</h2>
         <div class="table-responsive">
-        <?php if(!isset($_GET['type']) || $_GET['type'] == 'delete') : ?> 
           <table class="table table-sm">
             <thead>
                 <tr>
@@ -54,16 +53,19 @@
                   <th scope="col" width="8%">Durée</th>
                   <th scope="col" width="10%">Langage</th>
                   <th scope="col">Salle</th>
+                  <?php echo (!isset($_GET['type']) || $_GET['type'] == 'delete')? '<th scope="col">Places</th>' :'';?>
+                  <th scope="col">Prix</th>
                   
-
+                  <?php if (!isset($_GET['type']) || $_GET['type'] == 'delete') : ?>
                     <th scope="col">
                       <div class=" hover-effect d-flex align-items-center">
                         <i class="add-icon uil uil-plus-circle"></i> 
-                        <a class="add-cta" href="movies?type=create">Ajouter une séance</a>     
+                        <a class="add-cta" href="sessions?type=create">Ajouter une séance</a>     
                       </div>
                     </th>
-
-          <?php endif; ?>    
+                  <?php else : ?>
+                    <th scope="col"></th>
+                  <?php endif; ?>
                 
                 </tr>
             </thead>

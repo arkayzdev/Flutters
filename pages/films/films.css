@@ -30,18 +30,10 @@
 #film_main {
   background-color: white;
   width: 100%;
-  padding: 4em 2em 4em 2em;
+  padding: 4em 2em 4em 4em;
 
   margin-right: auto;
   margin-left: auto;
-
-  text-align: center;
-}
-
-#film_main:after {
-  content: "";
-  display: inline-block;
-  width: 100%;
 }
 
 #film_h2 {
@@ -52,16 +44,51 @@
   margin: 4em 0 1em 0;
 }
 
+.film_h3 {
+  font-size: 2.5em;
+  font-weight: 700;
+
+  margin-bottom: 1em;
+  margin-left: 0.8em;
+  text-align: start !important;
+}
+
 #film_img {
   width: 12em;
+  height: 18em;
 }
 
 .film_a {
   display: inline-block;
   width: 15em;
-  height: 20em;
+  height: 18em;
   text-decoration: none;
   margin: 0 0.5em 1em 0.5em;
+
+  text-align: center;
+}
+
+.film_a:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+.film_a:hover > .titles {
+  transform: scale(1.15);
+  position: relative;
+  top: 3px;
+  transition: 0.3s;
+  color: black;
+}
+
+.film_a:not(:hover) {
+  transform: scale(1);
+  transition: 0.3s;
+}
+
+.film_a:not(:hover) > .titles {
+  transform: scale(1);
+  transition: 0.3s;
 }
 
 .titles {
@@ -69,4 +96,59 @@
   font-weight: 600;
   text-decoration: none;
   font-size: 12px;
+}
+
+@media screen and (max-width: 1111px) {
+  .film_a {
+    width: 13em;
+  }
+
+  #film_main {
+    padding: 3em 0em 4em 3em;
+  }
+  #film_h2 {
+    margin-top: 6em;
+  }
+  .film_h3 {
+    margin-left: 0.4em;
+    margin-top: 0.5em;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  #film_main {
+    text-align: center;
+  }
+  #film_main {
+    padding: 3em 0em 4em 0em;
+  }
+  .film_h3 {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .film_a {
+    width: 40%;
+    height: 100%;
+  }
+  #film_img {
+    width: 100%;
+  }
+  #film_h2 {
+    font-size: 1.5em;
+  }
+  .film_h3 {
+    font-size: 1.3em;
+    margin-left: 8%;
+  }
+}
+
+#film_divider {
+  width: 90%;
+  margin-top: 3em;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 2px solid lightgrey;
 }

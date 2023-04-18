@@ -189,7 +189,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
 
                             $id = $_GET['id'];
 
-                            $q ='SELECT * FROM DIRECTOR ORDER BY first_name ASC'; // Existing Actors
+                            $q ='SELECT * FROM DIRECTOR ORDER BY first_name ASC'; 
                             $req = $bdd->query($q);
                             $directors= $req->fetchAll(PDO::FETCH_ASSOC);
                             $all_directors = [];
@@ -249,122 +249,51 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- Create table -->
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
-        <form class="d-flex flex-column m-2 col-6" method="POST" action="movie-create" enctype="multipart/form-data">
-            <div>
-                <div class="d-flex">
-                    <div class="me-4 d-flex flex-column">
-                        <img src="img/Aperçu.png" id="preview-image" style="width: 240px; height: 350px; object-fit: cover;" />
-                        <small class="mb-2 form-text" id="poster-image-inline">Format JPEG/PNG/GIF- 2 Mo max</small>
-                        <div class="d-flex flex-column mb-3 btn btn-dark " style="width:60%">
-                            <label class="form-label text-white m-1" for="customFile1">Choisir image</label>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image"/>
-                        </div>
-                    
-                    </div>
-                    
-                    <div class="ml-2 d-flex flex-column">
-                        <div class="mb-3">
-                            <label class="form-label" for="film-input">Titre</label>
-                            <input class="form-control" name="title" placeholder="Film" id="film-input">
-                        </div>   
-                        <div class="d-flex flex-row mb-3">
-                            <div class="d-flex flex-column">
-                                <label class="form-label" for="release-date-input">Date de sortie</label>
-                                <input class="form-control" name="release_date" type="date" id="realase-date-input">
-                            </div>
-                            <div class="d-flex flex-column">
-                                <label class="form-label" for="duration-input">Durée (en min)</label>
-                                <input class="form-control" name="duration" type="number" step="1" min="0" placeholder="0" id="duration-input">
-                            </div>
-                           
-                            
-                        </div>
-                        <label class="form-label" for="description-input">Description</label>
-                        <textarea class="form-control" name="description" rows="6" aria-describedby="descriptionHelp" id="description-input"></textarea>
-                        <!-- <div id="descriptionHelp" class="form-text">
-                        Ceci est une description.
-                        </div> -->
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mb-2">
-                <label class="form-label" for="type-select">Genres</label>
-                <div id="type-inputs">
-                    <!-- <input type="text" name="types[]"> -->
-                    <select onchange="addType()" class="form-select mb-2" id="type-select">
-                        <option  id="type-selected" selected>Choisir un genre</option>
-                        <?php 
-                            $q ='SELECT * FROM TYPE ORDER BY name ASC'; // Existing types
-                            $req = $bdd->query($q);
-                            $types = $req->fetchAll(PDO::FETCH_ASSOC);
-
-                            foreach ($types as $type) {
-                                echo '<option id="' . $type['name']. '-option">' . $type['name'] . "</option>'";
-                            } ?>
-                    </select>
-                </div>
-                
-            </div>
-
-            <div class="mb-2">
-                <label class="form-label" for="language-select">Langue original</label>
-                <select class="form-select mb-2" name="language">
-                    <option value="">Choisir une langue</option>
+    <tr>
+        <form method="POST" action="session-create" enctype="multipart/form-data">
+            <td><input type="date" class="form-control" name="date"></td>
+            <td><input type="time" class="form-control" name="start_time"></td>
+            <td>
+                <select class="form-select mb-2" id="type-select">
+                    <option id="type-selected" selected>Choisir un film</option>
                     <?php 
-                        $q ='SELECT * FROM LANGUAGE ORDER BY name ASC'; // Existing Actors
+                        $q ='SELECT title FROM MOVIE ORDER BY title ASC'; // Existing types
                         $req = $bdd->query($q);
-                        $languages = $req->fetchAll(PDO::FETCH_ASSOC);
-                        
-                        foreach ($languages as $language) {
-                            echo '<option value="' . $language['name'] . '">' . $language['name'] . "</option>'";
-                    } ?>
+                        $movies= $req->fetchAll(PDO::FETCH_ASSOC);
+
+                        foreach ($movies as $movie) {
+                            echo '<option value="' . $movie['title'] . '">' . $movie['title'] . "</option>'";
+                        } ?>
                 </select>
-            </div>
+            </td>
+            
+            <td><input class="form-control" name="duration" type="number" name="language"></td>
+            <td>
+                <select class="form-select mb-2" id="type-select">
+                    <option id="type-selected" selected>Choisir une langue</option>
+                    <option value="VOSTFR">VOSTFR</option>
+                    <option value="VO">VO</option>
+                    <option value="VOSTENG">VOSTENG</option>
+                </select>
+            </td>    
+            <td>
+                <select class="form-select mb-2" id="type-select" name="room">
+                    <option id="type-selected" selected>Choisir une salle</option>
+                    <?php 
+                        $q ='SELECT room_name FROM ROOM ORDER BY room_name ASC'; // Existing types
+                        $req = $bdd->query($q);
+                        $rooms = $req->fetchAll(PDO::FETCH_ASSOC);
 
-
-            <div class="mb-2" >
-                <label class="form-label" for="actor-select">Acteurs principaux</label>
-                    <div id="actors-input">
-                        <select class="form-select mb-2" id="actor-select" onchange="addActor()">
-                            <option id="actor-selected">Choisir un acteur</option>
-                            <?php 
-                                $q ='SELECT * FROM ACTOR ORDER BY first_name ASC'; // Existing Actors
-                                $req = $bdd->query($q);
-                                $actors = $req->fetchAll(PDO::FETCH_ASSOC);
-
-                                foreach ($actors as $actor) {
-                                    echo '<option id="' . $actor['first_name'] . "-" . $actor['last_name'] . '-option">' . $actor['first_name'] . " " . $actor['last_name'] . "</option>'";
-                            } ?>
-                        </select>
-                    </div>
-            </div>
-
-            <div class="mb-2">
-                    <label class="form-label" for="director-select">Réalisateurs</label>
-                    <div id="directors-input">
-                        <select onchange="addDirector()"class="form-select mb-2" id="director-select">
-                            <option value="" id="director-selected">Choisir un réalisateur</option>
-                            <?php 
-                                $q ='SELECT * FROM DIRECTOR ORDER BY first_name ASC'; // Existing Actors
-                                $req = $bdd->query($q);
-                                $directors = $req->fetchAll(PDO::FETCH_ASSOC);
-                                
-                                foreach ($directors as $director) {
-                                    echo '<option id="' . $director['first_name'] . "-" . $director['last_name'] . '-option">' . $director['first_name'] . " " . $director['last_name'] . "</option>'";
-                                } ?>
-                        </select>
-                    </div>
-                    
-                </div>
-
-            <div>
-                <input class="btn btn-danger" type="submit" value="Ajouter" onclick="return confirm(\'Ajouter ?\')">
-                <a class="btn btn-danger" href="movies" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?')">Annuler</a></td>
-            </div>
-
+                        foreach ($rooms as $room) {
+                            echo '<option value="' . $room['room_name'] . '">' . $room['room_name'] . "</option>'";
+                        } ?>
+                </select>
+            </td>
+            <td><input class="form-control" name="price" type="number"></td>
+            <td><input class="btn btn-danger" type="submit" value="Ajouter" onclick="return confirm('Ajouter ?');">
+            <a class="btn btn-danger" href="sessions" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?');">Annuler</a></td>
         </form>
+    </tr>
 
     <!-- Display Table -->
 <?php else : ?>
@@ -387,21 +316,23 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
         echo '<td>' .  htmlspecialchars($id_session['language']) . '</td>'; 
 
         $id_room = $id_session['id_room'];
-        $q = "SELECT room_name FROM ROOM WHERE id_room = $id_room "; 
+        $q = "SELECT room_name, capacity_seat FROM ROOM WHERE id_room = $id_room "; 
         $req = $bdd->query($q);
         $result = $req->fetch(PDO::FETCH_ASSOC);
         
         echo '<td>' .  htmlspecialchars($result['room_name']) . '</td>'; 
+        echo '<td>' .  htmlspecialchars($result['capacity_seat']) . '</td>'; 
+        echo '<td>' .  htmlspecialchars(number_format($id_session['price'],2)) . '€</td>'; 
         ?>
 
         <td>
-        <?php echo '<a class="button hover-effect" href="movies?id=' . $id_session['id_session'] .'&type=check">
+        <?php echo '<a class="button hover-effect" href="sessions?id=' . $id_session['id_session'] .'&type=check">
                         <i class="uil uil-info-circle"></i>
                     </a>';
-        echo '  <a class="button hover-effect" href="movies?id=' . $id_session['id_session'] . '&type=modify">
+        echo '  <a class="button hover-effect" href="sessions?id=' . $id_session['id_session'] . '&type=modify">
                     <i class="uil uil-setting"></i>
                 </a>';
-        echo ' <a class="button hover-effect" href="movies?id=' . $id_session['id_session'] . '&type=delete" onclick="return confirm(\'Êtes-vous sûr de vouloir le supprimer ?\');">
+        echo ' <a class="button hover-effect" href="sessions?id=' . $id_session['id_session'] . '&type=delete" onclick="return confirm(\'Êtes-vous sûr de vouloir le supprimer ?\');">
                     <i class="uil uil-trash-alt"></i>
                 </a>';
     } ?>

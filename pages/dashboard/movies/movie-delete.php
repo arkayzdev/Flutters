@@ -9,6 +9,22 @@ if (isset($_GET['id']) && $_GET['type'] == 'delete') {
     $file_src = $result['poster_image'];
     unlink($file_src);
 
+    $q = "SELECT id_session FROM TAKE_PLACE WHERE id_movie= $id";
+    $req = $bdd->prepare($q);
+    $req->execute();
+    $sessions = $req->fetchAll(PDO::FETCH_ASSOC);
+    
+    $q = "DELETE FROM SESSION WHERE id_session = ?";
+    $req = $bdd->prepare($q);
+    foreach ($sessions as $session) {
+        $req->execute([$session['id_session']]);
+    }
+    
+
+    $q = "DELETE FROM TAKE_PLACE WHERE id_movie= $id";
+    $req = $bdd->prepare($q);
+    $req->execute();
+
     $q = "DELETE FROM IS_TO WHERE id_movie= $id";
     $req = $bdd->prepare($q);
     $req->execute();
