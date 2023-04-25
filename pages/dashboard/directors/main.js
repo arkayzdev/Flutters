@@ -19,3 +19,8 @@ async function searchDirectors() {
     const div = document.getElementById('display-director');
     div.innerHTML = str;
 }
+
+function deleteModal(id) {
+    const btn = document.getElementById('delete-director-btn');
+    btn.setAttribute('onclick', 'location.href = \'directors?type=delete&id=' + id + '\'');
+}

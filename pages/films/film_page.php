@@ -1,4 +1,5 @@
 <?php session_start();
+  setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
     // $_SESSION['email']='huangfrederic2002@gmail.com';
     // $_SESSION['email']='franck.zhuang@htm.fr';
     // $_SESSION['user_type']='Normal';
@@ -57,10 +58,71 @@
 
       array_push($category, $type['name']);
     }
-    $category = join(' - ', $category);
+    $category = join('  -  ', $category);
+
+    // Realisateur
+    $q = 'SELECT id_director from REALIZED WHERE id_movie = :id_movie';
+    $req = $bdd->prepare($q);
+    $reponse = $req->execute([
+      'id_movie' => htmlspecialchars($_GET['id'])
+    ]);
+    $realisator = $req -> fetchAll(PDO::FETCH_ASSOC);
+
+    if(sizeof($realisator) != 0){
+      $real = [];
+
+      foreach($realisator as $realisator){
+        $q = 'SELECT last_name,first_name from DIRECTOR WHERE id_director = :id_director';
+        $req = $bdd->prepare($q);
+        $reponse = $req->execute([
+          'id_director' => $realisator['id_director']
+        ]);
+        $director = $req -> fetch(PDO::FETCH_ASSOC);
+
+        $str = $director['first_name'] . ' '  . $director['last_name'];
+
+        array_push($real, $str);
+      }
+      $realisator = join(' ,  ', $real);
+    } else { 
+      $realisator = 'Aucun';
+    }
+
+      // Acteur
+      $q = 'SELECT id_actor from PLAYED WHERE id_movie = :id_movie';
+      $req = $bdd->prepare($q);
+      $reponse = $req->execute([
+        'id_movie' => htmlspecialchars($_GET['id'])
+      ]);
+      $actor_film = $req -> fetchAll(PDO::FETCH_ASSOC);
+  
+      if(sizeof($actor_film) != 0){
+      $real = [];
+  
+      foreach($actor_film as $actor_film){
+        $q = 'SELECT last_name,first_name from ACTOR WHERE id_actor = :id_actor';
+        $req = $bdd->prepare($q);
+        $reponse = $req->execute([
+          'id_actor' => $actor_film['id_actor']
+        ]);
+        $director = $req -> fetch(PDO::FETCH_ASSOC);
+  
+        $str = $director['first_name'] . ' ' . $director['last_name'];
+  
+        array_push($real, $str);
+      }
+      $actor = join(' ,  ', $real);
+    } else {$actor = 'Aucun';}
     
     // Note
-    $note = '*';
+    $note = '5';
+    
+    // Calendar Date
+    $calendar = [];
+
+    for($i=0; $i<6; $i++){
+      array_push($calendar, date('Y-m-d', time()+$i*86400));
+    }    
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +137,8 @@
   <!-- Import css -->
   <link href="film_page.css?rs=<?= time() ?>" rel="stylesheet">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 <body id="film_page">
   <!-- Include Header -->
@@ -83,27 +147,60 @@
   <main>
     
     <!-- Section : film_presentation -->
-    <section id="film_presentation">
-      <!-- poster  -->
-      <img src="../dashboard/movies/<?php echo $poster ?>">
-      <!-- informations -->
-      <div>
-          <p><?php echo $release_date?></p>
-          <h2><?php echo $title?></h2>
-          <p><?php echo $category?></p>
-          <p><?php echo $description?></p>
-
-        <div>
-          <p><?php echo $duration?></p>
-          <p><?php echo $origin_language?></p>
+    <section id="film_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.95) ), url('../dashboard/movies/<?php echo $poster ?>');">
+      <div id="film_presentation_firstdiv" class="d-flex ">
+        <!-- poster  -->
+        <div class="col-6 d-flex justify-content-center align-items-center" >
+          <img src="../dashboard/movies/<?php echo $poster ?>">
         </div>
-
-        <div>
-          <a href="<?php echo $trailer?>">Bande d'annonce</a>
-          <p><?php echo $note?>/5</p>
+        <!-- informations -->
+        <div class="col-6">
+          <p class="fs-5 fw-bold mb-0" style="color:darkgrey;"><?php echo strtoupper(strftime("%d %B %G", strtotime($release_date)))?></p>
+          <h2><?php echo $title?></h2>
+          <p class="fw-bolder"><?php echo $category?></p>
+          <p style="width:80%;"><?php echo $description?></p>
+          <div class="d-flex mb-3">
+            <i class="uil uil-clock-eight col-2">  <?php echo $duration?> min</i>
+            <i class="uil uil-film col-2">   <?php echo $origin_language?></i>
+            <i class="uil uil-star ms-3 col-2">    <?php echo $note?>/5</i>
+          </div>
+          <p class="mb-1">Réalisateur(s) :  <?php echo $realisator?></p>
+          <p class="mb-4">Acteur(s) :  <?php echo $actor?></p>
+          <a class="btn d-flex align-items-center justify-content-center" href="<?php echo $trailer?>"><i class="uil uil-play">  Bande d'annonce</i></a>
         </div>
       </div>
     </section>
+
+    <!-- Section : film_calendar -->
+    <section id="film_calendar" class="pt-3">
+    <?php echo '<input class="d-none" id="calendar_selected_date" value=' . date('Y-m-d') . '>';?>
+      <div id="film_calendar_div">
+
+        <?php include('api/create_calendar.php'); ?>
+
+      </div>
+      
+      <div style="height: 4em;border: 1px solid grey; margin: 0.6em 0.5em 0 0.5em;"></div>
+
+      <div>
+      <button onclick="" class="calendar_button calendar_button_act"><i class="uil uil-schedule"></i><p>Calendrier</p></button>
+      <button onclick="" class="calendar_button calendar_button_act"><i class="uil uil-redo"></i><p>Today</p></button>
+      </div>
+    </section>
+
+    <!-- Section : film_session -->
+    <section style="width:100%; height:1000px;" id="film_session">
+        <div id="film_session_div">
+          <h3>Flutters La Misère</h3>
+          <p>28 Boulevard de la Misère, Paris 15ème</p>
+          <div id="film_session_sub_div">
+
+            <?php include('api/create_film_session.php') ?>
+
+          </div>
+        </div>
+    </section>
+
 
 
   </main>

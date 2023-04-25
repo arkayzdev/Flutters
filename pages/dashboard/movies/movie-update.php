@@ -49,10 +49,9 @@ foreach($types as $type) {
     $q = "SELECT id_type FROM TYPE WHERE name = '$type'";
     $req = $bdd->query($q);
     $type_select = $req->fetch(PDO::FETCH_ASSOC);
-    // var_dump($type_select);
     array_push($id_types, $type_select['id_type']);
 }
-// var_dump($type_select);
+
    
 $q = 'INSERT INTO IS_TO (id_movie, id_type) 
       VALUES (:id_movie, :id_type)';

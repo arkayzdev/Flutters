@@ -140,7 +140,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                             $actors = $req->fetchAll(PDO::FETCH_ASSOC);
                             $all_actors = [];
                             foreach($actors as $key) {
-                                array_push($all_actors, $key['first_name'] . '-' . $key['last_name'] );
+                                array_push($all_actors, $key['first_name'] . ' ' . $key['last_name'] );
                             }
 
                             $q ="SELECT first_name, last_name FROM ACTOR a
@@ -152,7 +152,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                             
                             $result_actors = [];
                             foreach($results as $key) {
-                                array_push($result_actors, $key['first_name'] . '-' . $key['last_name'] );
+                                array_push($result_actors, $key['first_name'] . ' ' . $key['last_name'] );
                             }
                             
                             foreach ($all_actors as $actor) {
@@ -163,7 +163,9 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                                     }
                                 }
                                 if ($option) {
-                                    echo '<option id="' . $actor. '-option">' . $actor . "</option>'";
+                                    $actor_names = explode(' ', $actor);
+                                    $actor_names = join("-", $actor_names);
+                                    echo '<option id="' . $actor_names . '-option">' . $actor . "</option>'";
                                 }   
                             } 
                              ?>
@@ -194,7 +196,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                             $directors= $req->fetchAll(PDO::FETCH_ASSOC);
                             $all_directors = [];
                             foreach($directors as $key) {
-                                array_push($all_directors, $key['first_name'] . '-' . $key['last_name'] );
+                                array_push($all_directors, $key['first_name'] . ' ' . $key['last_name'] );
                             }
 
                             $q ="SELECT first_name, last_name FROM DIRECTOR d
@@ -206,7 +208,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                                             
                             $result_directors = [];
                             foreach($results as $key) {
-                                array_push($result_directors, $key['first_name'] . '-' . $key['last_name'] );
+                                array_push($result_directors, $key['first_name'] . ' ' . $key['last_name'] );
                             }
                             
                             foreach ($all_directors as $director) {
@@ -217,7 +219,9 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                                     }
                                 }
                                 if ($option) {
-                                    echo '<option id="' . $director . '-option">' . $director . "</option>'";
+                                    $director_names = explode(' ', $director);
+                                    $director_names = join("-", $director_names);
+                                    echo '<option id="' . $director_names . '-option">' . $director . "</option>'";
                                 }   
                             } 
                              ?>

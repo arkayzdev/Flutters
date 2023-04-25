@@ -50,11 +50,11 @@
                   <th scope="col" width="10%">Date</th>
                   <th scope="col" width="10%">Heure</th>
                   <th scope="col" width="18%">Film</th>
-                  <th scope="col" width="8%">Durée</th>
+                  <?php echo (!isset($_GET['type']) || $_GET['type'] == 'modify')? '<th scope="col" width="8%">Durée</th>' :'';?>
                   <th scope="col" width="10%">Langage</th>
                   <th scope="col">Salle</th>
                   <?php echo (!isset($_GET['type']) || $_GET['type'] == 'delete')? '<th scope="col">Places</th>' :'';?>
-                  <th scope="col">Prix</th>
+                  <th scope="col" width="7%">Prix</th>
                   
                   <?php if (!isset($_GET['type']) || $_GET['type'] == 'delete') : ?>
                     <th scope="col">

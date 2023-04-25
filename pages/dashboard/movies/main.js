@@ -104,7 +104,7 @@ function deleteActor(value) {
     removeSelect.remove()
 
     var addOption = document.createElement('option')
-    addOption.setAttribute("id", value + "-option")
+    addOption.setAttribute("id", value.split(" ").join("-") + "-option")
     addOption.setAttribute("value", value)
     addOption.innerHTML = value
 
@@ -158,7 +158,7 @@ function deleteDirector(value) {
     removeSelect.remove()
 
     var addOption = document.createElement('option')
-    addOption.setAttribute("id", value + "-option")
+    addOption.setAttribute("id", value.split(" ").join("-") + "-option")
     addOption.setAttribute("value", value)
     addOption.innerHTML = value
 

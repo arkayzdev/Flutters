@@ -19,3 +19,8 @@ async function searchTypes() {
     const div = document.getElementById('display-movie-type');
     div.innerHTML = str;
 }
+
+function deleteModal(id) {
+    const btn = document.getElementById('delete-movie-type-btn');
+    btn.setAttribute('onclick', 'location.href = \'movie-type?type=delete&id=' + id + '\'');
+}   

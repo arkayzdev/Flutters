@@ -15,10 +15,8 @@
 }
 
 #film_page {
-  background-color: lightgrey;
   font-family: "Open Sans", sans-serif;
   font-size: 1em;
-  height: 1000px;
 }
 
 #film_page main {
@@ -30,10 +28,134 @@
 
 /* ----- film_presentation ----- */
 #film_presentation {
-  width: 50%;
+  width: 100%;
+  padding: 9em 0 5em 0;
+
+  display: flex;
+  justify-content: center;
+
+  color: white;
 }
+
+#film_presentation_firstdiv {
+  width: 80%;
+}
+
 #film_presentation img {
-  width: 20em;
-  height: 30em;
+  width: 22em;
+}
+
+#film_presentation div h2 {
+  font-size: 62px;
+  font-weight: 900;
+}
+
+#film_presentation a {
+  background-color: red;
+  color: white;
+  width: 12em;
+  height: 2.5em;
+}
+#film_presentation a:hover {
+  background-color: var(--red);
+  opacity: 0.95;
+  transition: 0.5s;
+}
+
+#film_presentation i {
+  font-style: normal;
+}
+
+.r_background {
   object-fit: cover;
+  background-position: 50% 40% !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% !important;
+}
+
+/* ----- film_calendar ----- */
+#film_calendar {
+  background-color: lightgrey;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid grey;
+}
+
+#film_calendar_div {
+  display: flex;
+  height: 7em;
+  text-align: center;
+}
+
+.calendar_button,
+.calendar_button_passed {
+  border: none;
+  background-color: white;
+
+  padding: 0em 3em 0em 3em;
+  height: 4em;
+
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.calendar_button_passed:hover {
+  cursor: default;
+}
+
+.calendar_button:hover {
+  box-shadow: rgba(227, 40, 40, 0.4) 0px 5px 15px;
+  transition: 0.2s;
+}
+
+.calendar_button p,
+.calendar_button_passed p {
+  font-size: 0.8em;
+  font-weight: 700;
+  margin: 0;
+  width: 3em;
+}
+
+.calendar_button_act {
+  width: 8em;
+  padding: 0 1em 0 1em;
+  text-align: center;
+}
+
+.calendar_button_act i {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.calendar_button_act p {
+  margin: 0;
+  width: auto;
+}
+
+/* ----- film_session ----- */
+#film_session {
+  width: 100%;
+  background-color: lightgrey;
+  padding-top: 3em;
+
+  display: flex;
+  justify-content: center;
+}
+#film_session_div {
+  width: 80%;
+}
+#film_session_div h3 {
+  padding-left: 0.2em;
+  font-size: 2.2em;
+  font-weight: 700;
+  margin: 0;
+}
+#film_session_div > p {
+  padding-left: 0.6em;
+  color: grey;
+  font-size: 0.9em;
+  font-weight: 600;
 }

@@ -267,7 +267,6 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
                 </select>
             </td>
             
-            <td><input class="form-control" name="duration" type="number"></td>
             <td>
                 <select class="form-select mb-2" id="type-select" name="language">
                     <option id="type-selected" selected>Choisir une langue</option>

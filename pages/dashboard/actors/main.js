@@ -19,3 +19,8 @@ async function searchActors() {
     const div = document.getElementById('display-actor');
     div.innerHTML = str;
 }
+
+function deleteModal(id) {
+    const btn = document.getElementById('delete-actor-btn');
+    btn.setAttribute('onclick', 'location.href = \'actors?type=delete&id=' + id + '\'');
+}   
