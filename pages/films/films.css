@@ -63,7 +63,7 @@
   width: 15em;
   height: 18em;
   text-decoration: none;
-  margin: 0 0.5em 1em 0.5em;
+  margin: 0 0.5em 2.5em 0.5em;
 
   text-align: center;
 }
@@ -125,11 +125,14 @@
   .film_h3 {
     margin-left: 10%;
   }
+  #film_img {
+    height: 18em;
+  }
 }
 
 @media screen and (max-width: 480px) {
   .film_a {
-    width: 40%;
+    width: 12em;
     height: 100%;
   }
   #film_img {
@@ -141,6 +144,10 @@
   .film_h3 {
     font-size: 1.3em;
     margin-left: 8%;
+    margin-bottom: 2em;
+  }
+  #films_searchbar {
+    padding-right: 0.5em !important;
   }
 }
 
@@ -151,4 +158,82 @@
   margin-left: auto;
   margin-right: auto;
   border-bottom: 2px solid lightgrey;
+}
+
+/* films_searchbar */
+
+#films_searchbar {
+  padding-right: 3em;
+  margin-bottom: 3em;
+
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#films_searchbar input {
+  padding-left: 0.5em;
+  width: 50%;
+  height: 3.3em;
+  border: none;
+
+  border-top: 3px solid darkgrey !important;
+  border-bottom: 3px solid darkgrey !important;
+  border-left: 3px solid darkgrey !important;
+
+  transition: 0.2s;
+
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+#films_searchbar input:focus {
+  border-top: 3px solid var(--red) !important;
+  border-bottom: 3px solid var(--red) !important;
+  border-left: 3px solid var(--red) !important;
+
+  transition: 0.2s;
+}
+
+#film_search:focus + #b {
+  background-color: var(--red);
+  transition: 0.2s;
+}
+
+#b:hover #film_search {
+  border-top: 3px solid var(--red) !important;
+  border-bottom: 3px solid var(--red) !important;
+  border-left: 3px solid var(--red) !important;
+
+  transition: 0.2s;
+}
+
+#films_searchbar input:focus-visible {
+  outline: none;
+}
+
+#films_searchbar input::placeholder {
+  color: darkgrey;
+}
+
+#films_searchbar button {
+  background-color: darkgrey;
+  color: white;
+
+  height: 3.3em;
+  width: 7.5em;
+
+  font-weight: 600;
+  border: none;
+
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+
+  transition: 0.2s;
+}
+
+#films_searchbar button:hover {
+  scale: 1.01;
+  transition: 0.2s;
 }

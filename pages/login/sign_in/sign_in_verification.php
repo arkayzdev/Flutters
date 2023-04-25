@@ -11,6 +11,12 @@ if (isset($_POST['email']) && !empty($_POST['email'])) {
 
 // Valide email
 if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false) {
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 2; $log_page = 'https://flutters.ovh/pages/login/sign_in/sign_in';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+    
     $msg = 'Attention ! Adresse email non valide !';
     header('location:sign_in.php?message=' . $msg);
     exit;
@@ -24,6 +30,12 @@ $query->execute([
 $result_email = $query->fetch(PDO::FETCH_COLUMN);
 
 if ($result_email == 0) {
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 2; $log_page = 'https://flutters.ovh/pages/login/sign_in/sign_in';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
     $msg = 'Email non existant';
     header('location:sign_in.php?message=' . $msg);
     exit;
@@ -37,6 +49,12 @@ $query->execute([
 $result_password = $query->fetch(PDO::FETCH_COLUMN);
 
 if ($result_password != hash('sha512', $_POST['password'])) {
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 2; $log_page = 'https://flutters.ovh/pages/login/sign_in/sign_in';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
     $msg = 'Mot de passe incorrect';
     header('location:sign_in.php?message=' . $msg);
     exit;
@@ -50,6 +68,12 @@ $query->execute([
 $result_email_verification = $query->fetch(PDO::FETCH_COLUMN);
 
 if ($result_email_verification == 0) {
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 2; $log_page = 'https://flutters.ovh/pages/login/sign_in/sign_in';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
     $msg = 'Ce compte est désactivé, pour l\'activer, validez le mail de confirmation. ';
     header('location:sign_in.php?message=' . $msg);
     exit;
@@ -87,6 +111,11 @@ $_SESSION['user_type'] = $result_user_type;
 
 // Unset Cookies
 setcookie('email', $_POST['email'], time() - 24 * 3600);
+
+// logs
+// type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+$log_type = 1; $log_page = 'https://flutters.ovh/pages/login/sign_in/sign_in';
+include($_SERVER['DOCUMENT_ROOT']."/log.php");
 
 // Redirection
 header('location:/');

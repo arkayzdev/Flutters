@@ -1,6 +1,12 @@
 <?php session_start();
   // $_SESSION['email']='huangfrederic2002@gmail.com';
   // $_SESSION['user_type']='Normal';
+
+  // logs
+  // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+  $log_type = 3; 
+  $log_page = 'flutters.ovh';
+  include($_SERVER['DOCUMENT_ROOT']."/log.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +25,7 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 </head>
 
 
@@ -54,67 +59,88 @@
       <div class="scroll-holder">
         <div class="scroll-tray">
           <div>
-            <img src="img/homepage/1.webp" />
+            <a href="https://Flutters.ovh">
+            <img src="img/homepage/1.webp" /><a/>
           </div>
           <div>
-            <img src="img/homepage/2.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/2.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/3.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/3.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/4.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/4.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/5.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/5.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/6.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/6.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/7.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/7.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/8.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/8.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/9.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/9.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/10.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/10.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/11.jpeg" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/11.jpeg" /></a>
           </div>
           <div>
-            <img src="img/homepage/12.jpeg" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/12.jpeg" /></a>
           </div>
           <div>
-            <img src="img/homepage/13.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/13.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/12.jpeg" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/12.jpeg" /></a>
           </div>
           <div>
-            <img src="img/homepage/11.jpeg" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/11.jpeg" /></a>
           </div>
           <div>
-            <img src="img/homepage/10.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/10.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/9.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/9.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/8.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/8.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/7.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/7.webp" /></a>
           </div>
           <div>
-            <img src="img/homepage/6.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/6.webp" /><a/>
           </div>
           <div>
-            <img src="img/homepage/5.webp" />
+          <a href="https://Flutters.ovh">
+            <img src="img/homepage/5.webp" /></a>
           </div>
         </div>
        

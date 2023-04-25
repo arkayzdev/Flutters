@@ -56,7 +56,7 @@
                 <?php echo (isset($_GET['type']) && $_GET['type'] == 'create')? '<th scope="col">Mot de passe</th>' :'';?>
                 <?php 
                 if (!isset($_GET['type']) || $_GET['type'] == 'delete') {
-                  echo '<th scope="col" class="d-flex justify-content-center">
+                  echo '<th scope="col">
                           <div class=" hover-effect d-flex align-items-center">
                             <i class="add-icon uil uil-user-plus"></i> 
                             <a class="add-cta" href="users.php?type=create">Ajouter un admin</a>     

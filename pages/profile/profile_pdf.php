@@ -1,5 +1,11 @@
 <?php
+session_start();
     require_once dirname(__FILE__).'/vendor/autoload.php';
+
+        // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 6; $log_page = 'https://flutters.ovh/pages/profile/profile';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
 
     use Spipu\Html2Pdf\Html2Pdf;
     use Spipu\Html2Pdf\Exception\Html2PdfException;

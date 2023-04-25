@@ -29,6 +29,12 @@ if (isset($_POST['firstname']) && !empty($_POST['firstname'])) {
 
 // Check if the captcha has been complete
 if ($_POST['captcha_check'] != 1) {
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 9; $log_page = 'https://flutters.ovh/pages/login/sign_up/sign_up';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
     $msg = 'Le captcha n a pas été complété';
     header('location:sign_up.php?message=' . $msg);
     exit;
@@ -36,6 +42,12 @@ if ($_POST['captcha_check'] != 1) {
 
 // Valide email
 if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false) {
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 9; $log_page = 'https://flutters.ovh/pages/login/sign_up/sign_up';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
     $msg = 'Attention ! Adresse email non valide !';
     header('location:sign_up.php?message=' . $msg);
     exit;
@@ -43,6 +55,12 @@ if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false) {
 
 // Password requirement met
 if (strlen($_POST['password']) < 6 || strlen($_POST['password']) > 12) {
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 9; $log_page = 'https://flutters.ovh/pages/login/sign_up/sign_up';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
     $msg = 'Attention ! Mot de passe invalide. Le mot de passe doit être compris entre 6 et 12 caractères !';
     header('location:sign_up.php?message=' . $msg);
     exit;
@@ -50,6 +68,12 @@ if (strlen($_POST['password']) < 6 || strlen($_POST['password']) > 12) {
 
 // pwd and confirmation pwd match
 if ($_POST['password'] !== $_POST['confirm-password']) {
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 9; $log_page = 'https://flutters.ovh/pages/login/sign_up/sign_up';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
     $msg = 'Attention ! Les deux mots de passe ne sont pas identiques !';
     header('location:sign_up.php?message=' . $msg);
     exit;
@@ -63,6 +87,12 @@ $query->execute([
 $result = $query->fetch(PDO::FETCH_COLUMN);
 
 if ($result >= 1) {
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 9; $log_page = 'https://flutters.ovh/pages/login/sign_up/sign_up';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
     $msg = 'Email déjà utilisé';
     header('location:sign_up.php?message=' . $msg);
     exit;
@@ -72,13 +102,13 @@ if ($result >= 1) {
 
 // Add new user in the db
 $q = 'INSERT INTO USERS (first_name, last_name, email, password) VALUES (:first_name, :last_name, :email, :password)';
-$req = $bdd->prepare($q); // Return a pdo declaration (statement)
+$req = $bdd->prepare($q); 
 $reponse = $req->execute([
     'first_name' => $_POST['firstname'],
     'last_name' => $_POST['lastname'],
     'email' => $_POST['email'],
     'password' => hash('sha512', $_POST['password'])
-]); // Request setled up.
+]); 
 
 $password = hash('sha512', $_POST['password']);
 
@@ -143,8 +173,12 @@ if (isset($_POST['firstname']) && !empty($_POST['firstname'])) {
     setcookie('firstname', $_POST['firstname'], time() - 24 * 3600);
 }
 
+// logs
+// type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+$log_type = 10; $log_page = 'https://flutters.ovh/pages/login/sign_up/sign_up';
+include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
 // Redirection
 $msg = "Votre compte a été crée ! Vérifiez vos mail pour valider l'inscription !";
 header('location:../sign_in/sign_in.php?message=' . $msg . '&green_alert=1');
 exit;
-?>

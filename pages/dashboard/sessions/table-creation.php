@@ -254,7 +254,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
             <td><input type="date" class="form-control" name="date"></td>
             <td><input type="time" class="form-control" name="start_time"></td>
             <td>
-                <select class="form-select mb-2" id="type-select">
+                <select class="form-select mb-2" id="type-select" name="movie">
                     <option id="type-selected" selected>Choisir un film</option>
                     <?php 
                         $q ='SELECT title FROM MOVIE ORDER BY title ASC'; // Existing types
@@ -267,9 +267,9 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
                 </select>
             </td>
             
-            <td><input class="form-control" name="duration" type="number" name="language"></td>
+            <td><input class="form-control" name="duration" type="number"></td>
             <td>
-                <select class="form-select mb-2" id="type-select">
+                <select class="form-select mb-2" id="type-select" name="language">
                     <option id="type-selected" selected>Choisir une langue</option>
                     <option value="VOSTFR">VOSTFR</option>
                     <option value="VO">VO</option>

@@ -33,6 +33,12 @@ $reponse = $req->execute([
     'email' => htmlspecialchars($_POST['email']),
 ]);
 
+
+// logs
+// type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+$log_type = 5; $log_page = 'https://flutters.ovh/pages/forgot_pwd/forgot_pwd';
+include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
 $msg = 'Le mot de passe a été modifié ! Vous pouvez à présent vous connecter';
 header('location:../sign_in.php?message=' . $msg . '&green_alert=1');
 exit;

@@ -17,6 +17,11 @@
         exit;
     }
 
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 3; $log_page = 'https://flutters.ovh/pages/profile/mes_reservations';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
  
 
 ?>

@@ -1,0 +1,39 @@
+/* Import font family : Open sans*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+/* Colors root*/
+:root {
+  --white-1: #ffffff;
+  --white-2: #f9f9f9;
+  --white-3: #f2f3f4;
+  --white-4: #ecedee;
+  --red: #e32828;
+  --grey-1: #3c434b;
+  --grey-2: #282a2d;
+  --black: #000000;
+  --footer: #101114;
+}
+
+#film_page {
+  background-color: lightgrey;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  height: 1000px;
+}
+
+#film_page main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----- film_presentation ----- */
+#film_presentation {
+  width: 50%;
+}
+#film_presentation img {
+  width: 20em;
+  height: 30em;
+  object-fit: cover;
+}

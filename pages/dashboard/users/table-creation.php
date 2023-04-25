@@ -60,7 +60,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
             echo '<td>' .  htmlspecialchars($id_client['first_name']) . '</td>';
             echo '<td>' .  htmlspecialchars($id_client['last_name']) . '</td>';
             echo '<td>' .  htmlspecialchars($id_client['email']) . '</td>';
-            echo '<td class="d-flex justify-content-center"><a class="button hover-effect" href="users.php?id='. $id_client['id_client'] . 
+            echo '<td><a class="button hover-effect" href="users.php?id='. $id_client['id_client'] . 
             '&type=modify"><i class="uil uil-setting"></i></a>';
             echo ' <a class="button hover-effect" href="users.php?id=' . $id_client['id_client'] . 
             '&type=delete" onclick="return confirm(\'Êtes-vous sûr de vouloir le supprimer ?\');"><i class="uil uil-trash-alt"></i></a></td>'; ?>

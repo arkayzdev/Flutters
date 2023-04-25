@@ -28,7 +28,11 @@
             'email' => $_SESSION['email']
         ]); // Exécution de la requête préparée (on lui passe les valeurs).
 
+                // logs
+        // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+        $log_type = 5; $log_page = 'https://flutters.ovh/pages/profile/profile';
+        include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
         $msg = 'informations d\'utilisateurs modifiés avec succès';
         header('location:profile.php?message=' . $msg);
         exit;
-

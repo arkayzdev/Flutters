@@ -238,7 +238,7 @@ a {
   margin-top: -15px;
 }
 
-.scroll-holder .scroll-tray:first-child {
+.scroll-holder .scroll-tray {
   animation: scroll-tray-hero 180s linear infinite;
 }
 
@@ -248,7 +248,7 @@ a {
   }
 
   99.99% {
-    transform: translateX(-7098px);
+    transform: translateX(-6000px);
   }
 
   100% {

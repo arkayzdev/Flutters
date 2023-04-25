@@ -1,4 +1,5 @@
 <?php
+
 // Verify if get email and hashed pwd exist -> link to data base
 if (isset($_GET['email']) && isset($_GET['hash'])) {
   include("/var/www/flutters.ovh/pages/connect_db.php");
@@ -16,6 +17,7 @@ $query->execute([
 $email_ver = $query->fetch(PDO::FETCH_COLUMN);
 
 if ($email_ver == 1) {
+
   $msg = 'Votre compte a déjà été activé';
   header('location:email_redirection.php?message=' . $msg);
   exit;

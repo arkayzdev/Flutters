@@ -309,6 +309,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/pages/profile/profile.php">Profil</a></li>
+                        <li><a class="dropdown-item" href="/pages/profile/mes_reservations.php">Mes réservations</a></li>
                         <li><a class="dropdown-item" href="#">Dashboard</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/deconnexion.php">Deconnexion</a></li>
@@ -350,6 +351,7 @@
                                 } elseif(isset($_SESSION['email']) && $_SESSION['user_type']=="Admin"){            
                                     echo '
                                     <li class="nav-item" id="nav_modal_divider"><a class="nav-link" href="/pages/profile/profile.php">Profil</a></li>
+                                    <li class="nav-item"><a href="/pages/profile/mes_reservations.php" class="nav-link">Mes réservations</a></li>
                                     <li class="nav-item"><a href="#" class="nav-link">Dashboard</a></li>
                                     <li class="nav-item" id="nav_modal_divider"><a class="nav-link" href="/deconnexion.php">Deconnexion</a></li>
                                     ';

@@ -4,8 +4,13 @@
     // $_SESSION['user_type']='Normal';
 
     // Connect to the db
-    include("../connect_db.php");
+    include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
 
+
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 3; $log_page = 'https://flutters.ovh/pages/films/films';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
 ?>
 
 <!DOCTYPE html>
@@ -27,49 +32,33 @@
         <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); ?>
 
         <h2 id="film_h2">Films</h2>
+        
         <main id="film_main">
+        <!-- Search -->
+        <div id="films_searchbar">
+            <input  onchange="film_search()" id="film_search" type="text" placeholder="Chercher un film">
+            <button id="b" onclick="film_search()" type="button">Rechercher</button>
+        </div>
+
             <h3 class="film_h3"> À l'affiche </h3>
-            <?php
-                $q = 'SELECT * FROM MOVIE WHERE id_movie IN(SELECT id_movie FROM TAKE_PLACE WHERE id_session IN (SELECT id_session FROM Flutters.SESSION WHERE seance_date >=(SELECT DATE(SYSDATE()) FROM dual)) ORDER BY release_date DESC) ORDER BY release_date DESC;';
 
-                    $req = $bdd->prepare($q);
-                    $reponse = $req->execute();
-                    $result = $req -> fetchAll(PDO::FETCH_ASSOC);
+            <div id="a_l_affiche">
+                <?php include('api/create_a_l_affiche.php'); ?>
+            </div>
 
-                    foreach($result as $film) { 
-                        echo '<a class="film_a" href="film_page.php?id=' . $film['id_movie'] . '">'
-                    ?>
-                            <?php 
-                                echo '<img id="film_img" src="../dashboard/movies/' . $film['poster_image'] . '">
-                                <p class="titles"> ' . $film['title'] . '</p> 
-                            ';?>
-                        </a>
-                <?php 
-                }
-                ?>
             <div id="film_divider"></div>
             <h3 class="film_h3 mt-5"> Tous les films </h3>
-            <?php
-                $q = 'SELECT * FROM MOVIE WHERE id_movie NOT IN(SELECT id_movie FROM TAKE_PLACE WHERE id_session IN (SELECT id_session FROM Flutters.SESSION WHERE seance_date >=(SELECT DATE(SYSDATE()) FROM dual)) ORDER BY release_date DESC) ORDER BY release_date DESC;';
 
-                    $req = $bdd->prepare($q);
-                    $reponse = $req->execute();
-                    $result = $req -> fetchAll(PDO::FETCH_ASSOC);
-
-                    foreach($result as $film) { 
-                        echo '<a class="film_a" href="film_page.php?id=' . $film['id_movie'] . '">'
-                    ?>
-                            <?php 
-                                echo '<img id="film_img" src="../dashboard/movies/' . $film['poster_image'] . '">
-                                <p class="titles"> ' . $film['title'] . '</p> 
-                            ';?>
-                        </a>
-                <?php 
-                }
-                ?>
+            <div id="tous_les_films">
+                <?php include('api/create_tous_les_films.php'); ?>
+            </div>
         </main>
+
+              <!-- Footer -->
+  <?php include '/var/www/flutters.ovh/pages/footer/footer.php' ?>
         <!-- Import Bootstrap JS Library -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
+        <script src="main.js"></script>
     </body>
 </html>

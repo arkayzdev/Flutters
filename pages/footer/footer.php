@@ -33,47 +33,50 @@
     background-color: var(--footer);
     }
 
-    #fantom_div{
-        margin-bottom:13em;
+    @media screen and (max-width:770px){
+            #fantom_div{
+            margin-bottom:0em;
+        }   
+        .footer_copyright li{
+            margin-right:0!important;
+        }
+        .disapear_foot{
+            display:none;
+        }
+        .no_disapear_foot{
+            margin-bottom:1em;
+        }
     }
-    @media screen and (max-width:760px){
-         #fantom_div{
-        margin-bottom:0em;
-    }   
-    .footer_copyright li{
-        margin-right:0!important;
-    }
-    }
+
+
 </style>
 
 <footer class="container-fluid pt-5 footer-color">
     <!-- footer-upper -->
     <div class="row border-bottom pb-3 ps-4 d-flex justify-content:center">
         <div class="col-0 col-md-1" id="fantom_div"></div>
-        <div class="d-block mb-5 col-4 col-xl-6">
+        <div class="d-block mb-5 col-8 col-md-4 col-xl-6">
             <img style="width:10em" src="/pages/footer/img/Flutters-White.svg">
         </div>
-        <div class="col-10 col-md-2 col-xl-1 me-4">
+        <div class="col-10 col-md-2 col-xl-1 me-4 disapear_foot">
             <h5 class="text-white">Navigation</h5>
             <ul class="footer-list d-flex d-md-block">
-                <li><a href="">Accueil</a></li>
-                <li><a href="">Films</a></li>
-                <li><a href="">Evenements</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/pages/films/films">Films</a></li>
                 <li><a href="">A propos</a></li>
             </ul>
         </div>
-        <div class="col-10 col-md-2 col-xl-1">
+        <div class="col-10 col-md-2 col-xl-1 disapear_foot">
             <h5 class="text-white">Films</h5>
             <ul class="footer-list d-flex d-md-block">
-                <li><a href="">Nouveautés</a></li>
-                <li><a href="">A l'affiche</a></li>
-                <li><a href="">Tous les films</a></li>
+                <li><a href="/pages/films/films">A l'affiche</a></li>
+                <li><a href="/pages/films/films">Tous les films</a></li>
             </ul>
         </div>
-        <div class="col-10 col-md-2 col-xl-2">
+        <div class="col-12 col-md-2 col-xl-2 no_disapear_foot">
             <h5 class="text-white">Contact</h5>
-            <ul class="footer-list d-block">
-                <li><a href="">contact@flutters.me</a></li>
+            <ul class="footer-list d-block" id="footer_contact">
+                <li><a href="mailto:flutters.contact@gmail.com">flutters.contact@gmail.com</a></li>
                 <li><a href="">28 Boulevard de la Misère, Paris 15ème</a></li>
                 <li><a href="">05 85 76 21 03</a></li>
             </ul>

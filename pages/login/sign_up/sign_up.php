@@ -1,3 +1,15 @@
+<?php
+    // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 3; $log_page = 'https://flutters.ovh/pages/login/sign_up/sign_up';
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
+    if(isset($_SESSION['email'])){
+      header('location:/index');
+      exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

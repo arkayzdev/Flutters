@@ -20,6 +20,12 @@
         </a>
       </li>
       <li class="nav-item hover-effect">
+        <a class="nav-link" href="../movies/movies">
+          <i class="uil uil-archway"></i>
+          Evénements
+        </a>
+      </li>
+      <li class="nav-item hover-effect">
         <a class="nav-link" href="../sessions/sessions">
           <i class="uil uil-ticket"></i>
           Séances
@@ -55,12 +61,12 @@
           Réalisateurs
         </a>
       </li>
-      <!-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link hover-effect" href="#">
           <i class="uil uil-envelope-check"></i>
           Newsletter
         </a>
-      </li> -->
+      </li>
     </ul>
   </div>
 </nav>
