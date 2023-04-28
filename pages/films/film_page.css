@@ -1,5 +1,5 @@
 /* Import font family : Open sans*/
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 /* Colors root*/
 :root {
@@ -17,6 +17,18 @@
 #film_page {
   font-family: "Open Sans", sans-serif;
   font-size: 1em;
+
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin: 0;
+  padding: 0;
 }
 
 #film_page main {
@@ -39,6 +51,10 @@
 
 #film_presentation_firstdiv {
   width: 80%;
+}
+
+#film_presentation_firstdiv > div {
+  width: 50%;
 }
 
 #film_presentation img {
@@ -68,14 +84,14 @@
 
 .r_background {
   object-fit: cover;
-  background-position: 50% 40% !important;
+  background-position: 50% 10% !important;
   background-repeat: no-repeat !important;
   background-size: 100% !important;
 }
 
 /* ----- film_calendar ----- */
 #film_calendar {
-  background-color: lightgrey;
+  background-color: var(--white-4);
   width: 100%;
 
   display: flex;
@@ -89,16 +105,26 @@
   text-align: center;
 }
 
+#film_calendar_div p {
+  padding-bottom: 0.4em;
+}
+
+#film_calendar_div :first-child > p {
+  border-bottom: 2px solid red;
+}
+
 .calendar_button,
 .calendar_button_passed {
   border: none;
   background-color: white;
+  color: black;
 
   padding: 0em 3em 0em 3em;
   height: 4em;
 
   border-radius: 10px;
   margin: 10px;
+  transition: 0.2s;
 }
 
 .calendar_button_passed:hover {
@@ -106,7 +132,7 @@
 }
 
 .calendar_button:hover {
-  box-shadow: rgba(227, 40, 40, 0.4) 0px 5px 15px;
+  box-shadow: rgba(227, 40, 40, 0.4) 0px 5px 15px !important;
   transition: 0.2s;
 }
 
@@ -138,8 +164,8 @@
 /* ----- film_session ----- */
 #film_session {
   width: 100%;
-  background-color: lightgrey;
-  padding-top: 3em;
+  background-color: var(--white-4);
+  padding: 3em 0 3em 0;
 
   display: flex;
   justify-content: center;
@@ -158,4 +184,250 @@
   color: grey;
   font-size: 0.9em;
   font-weight: 600;
+}
+
+/* ----- background-divider ----- */
+#background-divider {
+  height: 25em;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  object-fit: cover;
+  background-position: 50% 50% !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% !important;
+}
+#background-divider img {
+  width: 20em;
+}
+
+/* ----- film_comment ----- */
+#film_comment {
+  width: 100%;
+  background-color: var(--white-4);
+
+  display: flex;
+  justify-content: center;
+
+  padding-bottom: 3em;
+}
+
+#film_comment_div {
+  width: 50%;
+  padding: 4em;
+}
+
+#film_comment_title_div > h2 {
+  color: Black;
+  font-size: 2.2em;
+  font-weight: 700;
+}
+#film_comment_title_div > div {
+  height: 0;
+  width: 15%;
+  border: 1.5px solid black;
+  margin-left: 0.3em;
+}
+
+#film_comment_sub_div {
+  margin-top: 3em;
+}
+
+#film_comment_content,
+#film_comment_my_content {
+  margin-top: 2em;
+  padding: 0em 0.5em 2em 0.5em;
+
+  display: flex;
+  flex-direction: column;
+
+  border-bottom: 2px solid lightgrey;
+}
+
+#film_comment_content p,
+#film_comment_my_content p {
+  color: grey;
+  font-size: 0.9em;
+}
+
+#film_comment_content h3,
+#film_comment_my_content h3 {
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+#film_comment_content :nth-child(2),
+#film_comment_my_content :nth-child(2) {
+  color: rgba(203, 203, 67, 0.79);
+  align-self: flex-end;
+  margin-bottom: 1em;
+}
+
+#film_comment_content:last-child,
+#film_comment_my_content:last-child {
+  border-bottom: none;
+}
+
+#film_comment_button_div {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.film_comment_button {
+  background-color: red;
+  color: white;
+  width: 7em;
+  height: 2.5em;
+  border-radius: 20px;
+}
+.film_comment_button:hover {
+  background-color: var(--red);
+  color: white;
+  opacity: 0.95;
+  transition: 0.5s;
+}
+
+.film_modify_button {
+  background-color: red;
+  margin-top: 2em;
+  display: flex;
+  align-items: center;
+  color: white;
+  width: 5em;
+  height: 2em;
+  border-radius: 20px;
+}
+.film_modify_button:hover {
+  background-color: var(--red);
+  color: white;
+  opacity: 0.95;
+  transition: 0.5s;
+}
+
+/* Medias Queries */
+@media screen and (max-width: 1024px) {
+  /* Section : film_presentation */
+  #film_presentation {
+    justify-content: space-between;
+  }
+  #film_presentation_firstdiv {
+    width: 90%;
+    margin: auto;
+  }
+  #film_presentation_firstdiv :nth-child(2) > p {
+    width: 100%;
+    padding-top: 0.5em;
+    margin-bottom: 0.2em !important;
+    padding-bottom: 0.5em;
+    font-size: 0.9em;
+  }
+  #film_presentation_firstdiv :nth-child(2) > h2 {
+    font-size: 3em;
+  }
+  #film_presentation_firstdiv :nth-child(2) > a {
+    margin-top: 0.8em;
+  }
+
+  /* Section : film_calendar */
+  #film_calendar_div :nth-child(6),
+  #film_calendar_div :nth-child(5),
+  #film_calendar_div :nth-child(4) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  /* Section : film_presentation */
+  #film_presentation_firstdiv {
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+  }
+  #film_presentation_firstdiv > div {
+    width: 80%;
+  }
+  #film_presentation_firstdiv > :nth-child(2) {
+    width: 95%;
+    padding-top: 3em;
+    padding-left: 6em;
+  }
+  .r_background {
+    background-size: 220% !important;
+    background-position: 50% 15% !important;
+  }
+  /* Section : background-divider */
+  #background-divider {
+    background-size: 200% !important;
+    background-position: 50% 30% !important;
+  }
+
+  /* Section : film_calendar */
+  #film_calendar_div :nth-child(3) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  /* Section : film_presentation */
+  #film_presentation_firstdiv > div {
+    width: 100%;
+  }
+  #film_presentation_firstdiv > :first-child > img {
+    width: 75%;
+  }
+  #film_presentation_firstdiv > :nth-child(2) {
+    width: 100%;
+    padding-top: 3em;
+    padding-left: 1em;
+  }
+  #film_presentation_firstdiv :nth-child(2) > h2 {
+    font-size: 2em;
+  }
+  #film_presentation_firstdiv :nth-child(2) > p {
+    font-size: 0.9em;
+  }
+  .r_background {
+    background-size: 400% !important;
+    background-position: 50% 30% !important;
+  }
+  /* Section : film_calendar */
+  #film_calendar_div :nth-child(2) {
+    display: none;
+  }
+  #film_calendar_div > :first-child {
+    display: none;
+  }
+  .calendar_button {
+    text-align: center;
+    width: 5em;
+    padding: 0em !important;
+    border-bottom: none !important;
+  }
+  #switch_btn_pc {
+    display: none;
+  }
+  #switch_btn_mobile {
+    display: flex !important;
+    justify-content: center;
+    padding: 0 !important;
+    border: none;
+    background-color: white;
+    color: black;
+
+    padding: 0em 3em 0em 3em;
+    height: 4em;
+    width: 10em;
+    font-weight: 600;
+
+    border-radius: 10px;
+    margin: 10px !important;
+    transition: 0.2s;
+  }
+  #calendar_button_input {
+    display: none;
+  }
 }

@@ -1,5 +1,18 @@
 <?php session_start();
   setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
+  // Set Cookies
+  if(isset($_SESSION['email'])){
+    setcookie('email', $_SESSION['email'], time() + 1 * 3600);
+    setcookie('id', $_GET['id'], time() + 1 * 3600);
+  } else {
+    unset($_COOKIE["email"]);
+    unset($_COOKIE["id"]);
+    }
+
+    echo $_COOKIE["email"];
+    echo $_COOKIE["id"];
+
+
     // $_SESSION['email']='huangfrederic2002@gmail.com';
     // $_SESSION['email']='franck.zhuang@htm.fr';
     // $_SESSION['user_type']='Normal';
@@ -22,6 +35,7 @@
     ]);
     $result = $req -> fetch(PDO::FETCH_ASSOC);
    
+    $id = $result['id_movie'];
     $title = $result['title'];
     $poster = $result['poster_image'];
     $release_date = $result['release_date'];
@@ -116,13 +130,9 @@
     
     // Note
     $note = '5';
-    
-    // Calendar Date
-    $calendar = [];
 
-    for($i=0; $i<6; $i++){
-      array_push($calendar, date('Y-m-d', time()+$i*86400));
-    }    
+    // Today date
+    $today = date('y-m-d'); 
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -136,7 +146,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <!-- Import css -->
   <link href="film_page.css?rs=<?= time() ?>" rel="stylesheet">
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
   <!-- ICONS -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
@@ -147,25 +156,25 @@
   <main>
     
     <!-- Section : film_presentation -->
-    <section id="film_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7) 50%,rgba(0, 0, 0, 0.95) ), url('../dashboard/movies/<?php echo $poster ?>');">
+    <section id="film_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo $poster ?>');">
       <div id="film_presentation_firstdiv" class="d-flex ">
         <!-- poster  -->
-        <div class="col-6 d-flex justify-content-center align-items-center" >
+        <div class=" d-flex justify-content-center align-items-center" >
           <img src="../dashboard/movies/<?php echo $poster ?>">
         </div>
         <!-- informations -->
-        <div class="col-6">
+        <div>
           <p class="fs-5 fw-bold mb-0" style="color:darkgrey;"><?php echo strtoupper(strftime("%d %B %G", strtotime($release_date)))?></p>
           <h2><?php echo $title?></h2>
           <p class="fw-bolder"><?php echo $category?></p>
-          <p style="width:80%;"><?php echo $description?></p>
+          <p style="width:95%;"><?php echo $description?></p>
           <div class="d-flex mb-3">
-            <i class="uil uil-clock-eight col-2">  <?php echo $duration?> min</i>
-            <i class="uil uil-film col-2">   <?php echo $origin_language?></i>
-            <i class="uil uil-star ms-3 col-2">    <?php echo $note?>/5</i>
+            <i class="uil uil-clock-eight col-4 col-sm-2">  <?php echo $duration?> min</i>
+            <i class="uil uil-film col-4 col-sm-2">   <?php echo $origin_language?></i>
+            <i class="uil uil-star ms-3 col-4 col-sm-2">    <?php echo $note?>/5</i>
           </div>
-          <p class="mb-1">Réalisateur(s) :  <?php echo $realisator?></p>
-          <p class="mb-4">Acteur(s) :  <?php echo $actor?></p>
+          <p class="mb-1">Réalisateurs principaux :  <?php echo $realisator?></p>
+          <p class="mb-4">Acteurs principaux :  <?php echo $actor?></p>
           <a class="btn d-flex align-items-center justify-content-center" href="<?php echo $trailer?>"><i class="uil uil-play">  Bande d'annonce</i></a>
         </div>
       </div>
@@ -173,23 +182,28 @@
 
     <!-- Section : film_calendar -->
     <section id="film_calendar" class="pt-3">
-    <?php echo '<input class="d-none" id="calendar_selected_date" value=' . date('Y-m-d') . '>';?>
+
       <div id="film_calendar_div">
-
         <?php include('api/create_calendar.php'); ?>
-
       </div>
       
-      <div style="height: 4em;border: 1px solid grey; margin: 0.6em 0.5em 0 0.5em;"></div>
+      <div class="d-none d-sm-block" style="height: 4em;border: 1px solid grey; margin: 0.6em 0.5em 0 0.5em;"></div>
+      <?php echo '<input onchange="calendar_button_date(this.value, ' . $_GET['id'] . ')" class="calendar_button calendar_button_act" id="calendar_button_input" style=" visibility: hidden; width: 0; height:6em; margin:0; padding:0;" type="date" min="' . date('Y-m-d') . '">'?>
 
-      <div>
-      <button onclick="" class="calendar_button calendar_button_act"><i class="uil uil-schedule"></i><p>Calendrier</p></button>
-      <button onclick="" class="calendar_button calendar_button_act"><i class="uil uil-redo"></i><p>Today</p></button>
-      </div>
+      <div style="display:flex">
+        <!-- Bouton switching for mobile x other devices -->
+        <button onclick="open_calendar()" id="switch_btn_pc" class="calendar_button calendar_button_act"><i class="uil uil-schedule"></i><p>Calendrier</p></button>
+
+        <?php 
+        echo '<div><input id="switch_btn_mobile" style="display:none;" onchange="calendar_button_date(this.value, ' . $_GET['id'] . ')" value="' . date('Y-m-d') . '" type="date" min="' . date('Y-m-d') . '"></div>';
+        echo '<button value="' . strftime("%Y-%m-%d", strtotime($today)) . '" onclick="calendar_reload(this.value, ' . $_GET['id'] . ')" class="calendar_button calendar_button_act"><i class="uil uil-redo"></i><p>Today</p></button>';
+        ?>
+      </div> 
+
     </section>
 
     <!-- Section : film_session -->
-    <section style="width:100%; height:1000px;" id="film_session">
+    <section id="film_session">
         <div id="film_session_div">
           <h3>Flutters La Misère</h3>
           <p>28 Boulevard de la Misère, Paris 15ème</p>
@@ -201,7 +215,29 @@
         </div>
     </section>
 
+    <!-- Section : background-divider -->
+    <section id="background-divider" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo $poster ?>');">
+      <img src="/img/homepage/Typo-White.svg">  
+    </section>
 
+    <!-- Section : film_comment -->
+    <section id="film_comment">
+      <div id="film_comment_div">
+        <div id="film_comment_title_div">
+          <h2>Commentaires</h2>
+          <div></div>
+        </div>
+
+        <div id="film_comment_sub_div">
+          <?php include('api/create_commentaire.php'); ?>
+        </div>
+
+        <div id="film_comment_button_div">
+          <button id="film_comment_button" onclick="comment_show_more()" class="btn film_comment_button">Voir plus</button>
+        </div>
+
+      </div>
+    </section>
 
   </main>
 

@@ -186,3 +186,7 @@ async function searchMovies() {
 }
 
 
+function deleteModal(id) {
+    const btn = document.getElementById('delete-movie-btn');
+    btn.setAttribute('onclick', 'location.href = \'movies?type=delete&id=' + id + '\'');
+}   

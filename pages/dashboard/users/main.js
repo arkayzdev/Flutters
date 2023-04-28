@@ -19,3 +19,8 @@ async function searchUsers() {
     const div = document.getElementById('display-user');
     div.innerHTML = str;
 }
+
+function deleteModal(id) {
+    const btn = document.getElementById('delete-user-btn');
+    btn.setAttribute('onclick', 'location.href = \'users?type=delete&id=' + id + '\'');
+}   

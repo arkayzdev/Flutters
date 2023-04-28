@@ -49,7 +49,6 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
             <div class="mb-2">
                 <label class="form-label" for="type-select">Genres</label>
                 <div id="type-inputs">
-                    <!-- <input type="text" name="types[]"> -->
                     <select onchange="addType()" class="form-select mb-2" id="type-select">
                         <option  id="type-selected" selected>Choisir un genre</option>
                         <?php 
@@ -251,7 +250,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
     <tr>
         <form method="POST" action="session-create" enctype="multipart/form-data">
-            <td><input type="date" class="form-control" name="date"></td>
+            <td><input type="date" class="form-control" name="date" min="<?= date('Y-m-d')?>"></td>
             <td><input type="time" class="form-control" name="start_time"></td>
             <td>
                 <select class="form-select mb-2" id="type-select" name="movie">

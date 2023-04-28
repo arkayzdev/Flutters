@@ -49,7 +49,6 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
             <div class="mb-2">
                 <label class="form-label" for="type-select">Genres</label>
                 <div id="type-inputs">
-                    <!-- <input type="text" name="types[]"> -->
                     <select onchange="addType()" class="form-select mb-2" id="type-select">
                         <option  id="type-selected" selected>Choisir un genre</option>
                         <?php 
@@ -240,12 +239,33 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="mb-4">
                     <?php echo '<input type="hidden" name="id" value="' . $_GET['id'] . '">'; ?>
-                    <input class="btn btn-danger" type="submit" value="Modifier" onclick="return confirm(\'Modifier ?\')">
-                    <a class="btn btn-danger" href="movies" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?')">Annuler</a></td>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#alterModal">
+                            Confirmer
+                    </button>
+                    <button type="button" class="btn" style="background-color: #c6c6c6;">
+                        <a class="text-light" href="actors">Annuler</a> 
+                    </button>
                 </div>
-            
             </div>
 
+            <!-- Modal -->
+            <div class="modal fade" id="alterModal" tabindex="-1" aria-labelledby="alterModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="alterModalLabel">Confirmation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir modifier ce film ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Modifier</button>
+                        <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #c6c6c6; color: white">Fermer</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
             
 
         </form>
@@ -285,10 +305,6 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <label class="form-label" for="description-input">Description</label>
                         <textarea class="form-control" name="description" rows="6" aria-describedby="descriptionHelp" id="description-input"></textarea>
-                        <!-- <div id="descriptionHelp" class="form-text">
-                        Ceci est une description.
-                        </div> -->
-                        
                     </div>
                 </div>
             </div>
@@ -296,7 +312,6 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
             <div class="mb-2">
                 <label class="form-label" for="type-select">Genres</label>
                 <div id="type-inputs">
-                    <!-- <input type="text" name="types[]"> -->
                     <select onchange="addType()" class="form-select mb-2" id="type-select">
                         <option  id="type-selected" selected>Choisir un genre</option>
                         <?php 
@@ -364,15 +379,38 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
             <div>
-                <input class="btn btn-danger" type="submit" value="Ajouter" onclick="return confirm(\'Ajouter ?\')">
-                <a class="btn btn-danger" href="movies" onclick="return confirm('Êtes-vous sûr de vouloir annuler ?')">Annuler</a></td>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createModal">
+                    Confirmer
+                </button>
+                <button type="button" class="btn" style="background-color: #c6c6c6;">
+                    <a class="text-light" href="actors">Annuler</a> 
+                </button>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="createModalLabel">Confirmation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir créer ce film ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Créer</button>
+                        <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #c6c6c6; color: white">Fermer</button>
+                    </div>
+                    </div>
+                </div>
             </div>
 
         </form>
 
     <!-- Display Table -->
 <?php else : ?>
-    <?php foreach ($result_movies as $id_movie) {
+    <?php foreach ($result_movies as $id_movie) : 
         $id = $id_movie['id_movie'];
         echo '<tr>';
         echo '<td>' .  htmlspecialchars($id_movie['id_movie']) . '</td>';
@@ -429,18 +467,36 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
         </td>
 
         <td>
-        <?php echo '<a class="button hover-effect" href="movies?id=' . $id_movie['id_movie'] .'&type=check">
-                        <i class="uil uil-info-circle"></i>
-                    </a>';
-        echo '  <a class="button hover-effect" href="movies?id=' . $id_movie['id_movie'] . '&type=modify">
+            <button type="button" class="btn btn-light">
+                <a class="text-dark" href="movies?id=<?php echo $id_movie['id_movie']?>&type=modify">
                     <i class="uil uil-setting"></i>
-                </a>';
-        echo ' <a class="button hover-effect" href="movies?id=' . $id_movie['id_movie'] . '&type=delete" onclick="return confirm(\'Êtes-vous sûr de vouloir le supprimer ?\');">
-                    <i class="uil uil-trash-alt"></i>
-                </a>';
-    } ?>
+                </a>
+            </button>
+
+            <button type="button" class="btn btn-light ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteModal(<?php echo $id_actor['id_actor']?>)">
+                <i class="uil uil-trash-alt"></i>
+            </button>
         </td>
         </tr>
-    <?php endif; ?>
+    <?php endforeach; ?>
 
-    <script src="main.js"></script>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModalLabel">Confirmation</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous sûr de vouloir supprimer ce film ?
+            </div>
+            <div class="modal-footer">
+                <button id="delete-movie-btn" type="button" class="btn btn-danger">Supprimer</button>
+                <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #c6c6c6; color: white">Annuler</button>
+            </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
