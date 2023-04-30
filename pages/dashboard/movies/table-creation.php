@@ -9,7 +9,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
 <?php if (isset($_GET['type']) && isset($_GET['id']) && $_GET['type'] == 'modify') : ?> 
 <?php foreach ($result_movies as $id_movie) {
     if ($_GET['id'] ==  $id_movie['id_movie']) : ?> 
-       <form class="d-flex flex-column m-2 col-6" method="POST" action="movie-update" enctype="multipart/form-data">
+       <form class="d-flex flex-column m-2 col-10" method="POST" action="movie-update" enctype="multipart/form-data">
             <div>
                 <div class="d-flex">
                     <div class="me-4 d-flex flex-column">
@@ -27,6 +27,10 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                             <label class="form-label" for="film-input">Titre</label>
                             <input class="form-control" name="title" placeholder="Film" id="film-input" value="<?php echo $id_movie['title']?>">
                         </div>   
+                        <div class="mb-3">
+                            <label class="form-label" for="trailer-input">Bande d'annonce</label>
+                            <input class="form-control" name="trailer" placeholder="Lien" id="trailer-input" value="<?php echo $id_movie['trailer']?>">
+                        </div>  
                         <div class="d-flex flex-row mb-3">
                             <div class="d-flex flex-column">
                                 <label class="form-label" for="release-date-input">Date de sortie</label>
@@ -273,7 +277,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- Create table -->
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
-        <form class="d-flex flex-column m-2 col-6" method="POST" action="movie-create" enctype="multipart/form-data">
+        <form class="d-flex flex-column m-2 col-10" method="POST" action="movie-create" enctype="multipart/form-data">
             <div>
                 <div class="d-flex">
                     <div class="me-4 d-flex flex-column">
@@ -290,7 +294,11 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <div class="mb-3">
                             <label class="form-label" for="film-input">Titre</label>
                             <input class="form-control" name="title" placeholder="Film" id="film-input">
-                        </div>   
+                        </div>  
+                        <div class="mb-3">
+                            <label class="form-label" for="trailer-input">Bande d'annonce</label>
+                            <input class="form-control" name="trailer" placeholder="Lien" id="trailer-input">
+                        </div>    
                         <div class="d-flex flex-row mb-3">
                             <div class="d-flex flex-column">
                                 <label class="form-label" for="release-date-input">Date de sortie</label>
@@ -383,7 +391,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                     Confirmer
                 </button>
                 <button type="button" class="btn" style="background-color: #c6c6c6;">
-                    <a class="text-light" href="actors">Annuler</a> 
+                    <a class="text-light" href="movies">Annuler</a> 
                 </button>
             </div>
 
@@ -415,6 +423,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
         echo '<tr>';
         echo '<td>' .  htmlspecialchars($id_movie['id_movie']) . '</td>';
         echo '<td>' .  htmlspecialchars($id_movie['title']) . '</td>';
+        echo '<td><a href="' . htmlspecialchars($id_movie['trailer']) . '" target="_blank"><i class="uil uil-external-link-alt" style="color: grey; font-size:18px;"></i></a></td>';
         echo '<td>' .  htmlspecialchars($id_movie['release_date']) . '</td>';
         echo '<td>' .  htmlspecialchars($id_movie['duration']) . 'min</td>'; ?>
 

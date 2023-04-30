@@ -17,7 +17,7 @@ async function film_search() {
   div.innerHTML = str;
 }
 
-// For date array
+// Calendar
 async function calendar_button_trigger(val, id) {
   // Red Border
   let last_saved_element = document.getElementById(
@@ -86,23 +86,124 @@ async function calendar_reload(val, id) {
 async function mobile_btn_reload(id) {
   let res = await fetch("api/mobile_date_button.php?id=" + id);
   let str = await res.text();
-  let div = document.getElementById("a");
+  let div = document.getElementById("switch_btn_mobile_div");
   div.innerHTML = str;
 }
 
-async function comment_show_more() {
-  console.log("a");
+// Comment
 
-  let res = await fetch("api/create_commentaire.php?all=1");
+async function comment_show_more(email, id) {
+  let res = await fetch(
+    "api/create_commentaire.php?all=1&id=" + id + "&email=" + email
+  );
   let str = await res.text();
   let div = document.getElementById("film_comment_sub_div");
   div.innerHTML = str;
 
   let btn = document.getElementById("film_comment_button");
   btn.innerHTML = "Voir moins";
-  btn.setAttribute("onClick", "comment_show_less()");
+  btn.setAttribute(
+    "onClick",
+    "comment_show_less('" + email + "','" + id + "')"
+  );
 }
 
-function comment_show_less() {
-  console.log("b");
+async function comment_show_less(email, id) {
+  let res = await fetch(
+    "api/create_commentaire.php?id=" + id + "&email=" + email
+  );
+  let str = await res.text();
+  let div = document.getElementById("film_comment_sub_div");
+  div.innerHTML = str;
+
+  let btn = document.getElementById("film_comment_button");
+  btn.innerHTML = "Voir plus";
+  btn.setAttribute(
+    "onClick",
+    " comment_show_more('" + email + "','" + id + "') "
+  );
+}
+
+async function my_comment_modify(email, id) {
+  console.log(email);
+  let res = await fetch(
+    "api/my_comment_modify.php?id=" + id + "&email=" + email
+  );
+  let str = await res.text();
+  let div = document.getElementById("film_comment_my_content");
+  div.innerHTML = str;
+}
+
+function comment_stars_value(val) {
+  console.log(val);
+  let stars = document.getElementsByClassName("comment_stars");
+  for (let i = 0; i < val; i++) stars[i].style.color = "red";
+  for (let i = val; i < 5; i++) stars[i].style.color = "lightgrey";
+  document.getElementById("comment_stars_value").value = val;
+}
+
+async function my_comment_modify_send(email, id) {
+  email;
+  let description = document.getElementById("comment_stars_description").value;
+  let stars = document.getElementById("comment_stars_value").value;
+
+  console.log(email);
+  let res = await fetch(
+    "api/my_comment_send.php?id=" +
+      id +
+      "&email=" +
+      email +
+      "&stars=" +
+      stars +
+      "&description=" +
+      description
+  );
+  // let str = await res.text();
+  // let div = document.getElementById("film_comment_my_content");
+  // div.innerHTML = str;
+  comment_show_less(email, id);
+}
+
+async function my_comment_create(email, id) {
+  console.log(email);
+  let res = await fetch(
+    "api/my_comment_create.php?id=" + id + "&email=" + email
+  );
+  let str = await res.text();
+  let div = document.getElementById("film_comment_my_content");
+  div.innerHTML = str;
+}
+
+async function my_comment_create_send(email, id) {
+  email;
+  let description = document.getElementById("comment_stars_description").value;
+  let stars = document.getElementById("comment_stars_value").value;
+
+  let res = await fetch(
+    "api/my_comment_create_send.php?id=" +
+      id +
+      "&email=" +
+      email +
+      "&stars=" +
+      stars +
+      "&description=" +
+      description
+  );
+  // let str = await res.text();
+  // let div = document.getElementById("film_comment_my_content");
+  // div.innerHTML = str;
+  comment_show_less(email, id);
+}
+
+function remove_show_btn() {
+  document.getElementById("film_comment_button").style.display = "none";
+}
+
+// Redirection
+function redirect_session(id_session, id_movie) {
+  window.location.href =
+    "../order/session_order.php?id_session=" +
+    id_session +
+    "&id_movie=" +
+    id_movie;
 }

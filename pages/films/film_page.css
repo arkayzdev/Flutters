@@ -57,6 +57,10 @@ p {
   width: 50%;
 }
 
+#film_presentation_firstdiv p {
+  padding-bottom: 1em;
+}
+
 #film_presentation img {
   width: 22em;
 }
@@ -116,14 +120,15 @@ p {
 .calendar_button,
 .calendar_button_passed {
   border: none;
-  background-color: white;
+  background-color: inherit;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px;
   color: black;
 
   padding: 0em 3em 0em 3em;
   height: 4em;
 
   border-radius: 10px;
-  margin: 10px;
+  margin: 1em 2em 1em 2em;
   transition: 0.2s;
 }
 
@@ -251,6 +256,7 @@ p {
 #film_comment_my_content p {
   color: grey;
   font-size: 0.9em;
+  word-wrap: break-word;
 }
 
 #film_comment_content h3,
@@ -261,7 +267,7 @@ p {
 
 #film_comment_content :nth-child(2),
 #film_comment_my_content :nth-child(2) {
-  color: rgba(203, 203, 67, 0.79);
+  color: red;
   align-self: flex-end;
   margin-bottom: 1em;
 }
@@ -293,11 +299,11 @@ p {
 
 .film_modify_button {
   background-color: red;
-  margin-top: 2em;
+  margin-top: 1em;
   display: flex;
   align-items: center;
   color: white;
-  width: 5em;
+  width: 5.1em;
   height: 2em;
   border-radius: 20px;
 }
@@ -308,7 +314,34 @@ p {
   transition: 0.5s;
 }
 
+#film_grade_button {
+  width: 4.1em !important;
+  height: 1.75em;
+  margin-top: 0em;
+  align-self: flex-end;
+}
+
+.comment_stars {
+  background-color: inherit;
+  color: lightgrey;
+  font-size: 1.5em;
+  padding: 0;
+  border: none;
+  margin-top: 0em;
+}
+
 /* Medias Queries */
+@media screen and (max-width: 1800px) {
+  .calendar_button,
+  .calendar_button_passed {
+    margin: 1em 0.5em 1em 0.5em;
+  }
+  #film_session_sub_div .calendar_button,
+  #film_session_sub_div .calendar_button_passed {
+    margin: 1em 1em 1em 1em;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   /* Section : film_presentation */
   #film_presentation {
@@ -338,6 +371,27 @@ p {
   #film_calendar_div :nth-child(4) {
     display: none;
   }
+
+  /* ----- film_session ----- */
+  #film_session_sub_div .calendar_button,
+  #film_session_sub_div .calendar_button_passed {
+    width: 8em;
+    padding: 0 1em 0 1em;
+  }
+  #film_session_sub_div .calendar_button p,
+  #film_session_sub_div .calendar_button_passed p {
+    width: 90% !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .no_seance {
+    width: 10em !important;
+    height: 8em !important;
+  }
+  /* ----- film_comment ----- */
+  #film_comment_div {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 770px) {
@@ -364,10 +418,24 @@ p {
     background-size: 200% !important;
     background-position: 50% 30% !important;
   }
-
   /* Section : film_calendar */
   #film_calendar_div :nth-child(3) {
     display: none;
+  }
+  /* ----- film_session ----- */
+  #film_session_div {
+    width: 85%;
+  }
+  /* ----- background-divider ----- */
+  #background-divider {
+    height: 18em;
+  }
+  #background-divider img {
+    width: 15em;
+  }
+  /* ----- film_comment ----- */
+  #film_comment_div {
+    width: 90%;
   }
 }
 
@@ -415,7 +483,9 @@ p {
     justify-content: center;
     padding: 0 !important;
     border: none;
-    background-color: white;
+    background-color: inherit;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px;
+
     color: black;
 
     padding: 0em 3em 0em 3em;
@@ -429,5 +499,39 @@ p {
   }
   #calendar_button_input {
     display: none;
+  }
+  /* ----- film_session ----- */
+  #film_session_div {
+    width: 85%;
+    margin-left: 1.5em;
+  }
+  .calendar_button,
+  .calendar_button_passed {
+    margin: 0.5em !important;
+  }
+  #film_session_sub_div .calendar_button,
+  #film_session_sub_div .calendar_button_passed {
+    width: 6em;
+  }
+  .no_seance {
+    width: 9em !important;
+    height: 7em !important;
+  }
+  /* ----- film_comment ----- */
+  #film_comment_div {
+    width: 100%;
+    padding: 3em 2em 2em 2em;
+  }
+  #film_comment_div h3 {
+    font-size: 1.2em;
+  }
+}
+@media screen and (max-width: 420px) {
+  #film_session_div {
+    margin-left: 0;
+  }
+  #film_session_sub_div .calendar_button,
+  #film_session_sub_div .calendar_button_passed {
+    margin: 0.5em 1.5em 0.5em 1.5em !important;
   }
 }

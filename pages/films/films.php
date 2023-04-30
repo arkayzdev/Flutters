@@ -40,14 +40,14 @@
             <button id="b" onclick="film_search()" type="button">Rechercher</button>
         </div>
 
-            <h3 class="film_h3"> À l'affiche </h3>
+            <h3 class="film_h3"> À l'affiche (Séances planifiées) </h3>
 
             <div id="a_l_affiche">
                 <?php include('api/create_a_l_affiche.php'); ?>
             </div>
 
             <div id="film_divider"></div>
-            <h3 class="film_h3 mt-5"> Tous les films </h3>
+            <h3 class="film_h3 mt-5"> Tous les films (Séances non planifiées)</h3>
 
             <div id="tous_les_films">
                 <?php include('api/create_tous_les_films.php'); ?>

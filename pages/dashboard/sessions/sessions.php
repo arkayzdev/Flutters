@@ -50,7 +50,7 @@
                   <th scope="col" width="10%">Date</th>
                   <th scope="col" width="10%">Heure</th>
                   <th scope="col" width="18%">Film</th>
-                  <?php echo (!isset($_GET['type']) || $_GET['type'] == 'modify')? '<th scope="col" width="8%">Durée</th>' :'';?>
+                  <?php echo (!isset($_GET['type']) || $_GET['type'] == 'delete')? '<th scope="col" width="8%">Durée</th>' :'';?>
                   <th scope="col" width="10%">Langage</th>
                   <th scope="col">Salle</th>
                   <?php echo (!isset($_GET['type']) || $_GET['type'] == 'delete')? '<th scope="col">Places</th>' :'';?>
@@ -82,6 +82,7 @@
 
 
 <script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -99,9 +99,7 @@ nav i {
   color: #727272;
 }
 
-.sidebar .nav-link.active {
-  color: var(--red);
-}
+
 
 .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {

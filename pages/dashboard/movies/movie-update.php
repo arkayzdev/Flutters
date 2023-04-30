@@ -24,14 +24,15 @@ $saveResult = move_uploaded_file($from, $destination);
 
 
  
-$q = "UPDATE MOVIE SET title=:title, description=:description, release_date=:release_date, duration=:duration, poster_image=:poster_image WHERE id_movie = $id_movie";
+$q = "UPDATE MOVIE SET title=:title, description=:description, release_date=:release_date, duration=:duration, poster_image=:poster_image, trailer=:trailer WHERE id_movie = $id_movie";
 $req = $bdd->prepare($q); 
 $response = $req->execute([
     'title' => $_POST['title'],
     'description' => $_POST['description'],
     'release_date' => $_POST['release_date'],
     'duration' => (int)$_POST['duration'],
-    'poster_image' => $destination
+    'poster_image' => $destination,
+    'trailer' => $_POST['trailer'],
 ]); 
 
 

@@ -1,0 +1,214 @@
+/* Import font family : Open sans*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+/* Colors root*/
+:root {
+  --white-1: #ffffff;
+  --white-2: #f9f9f9;
+  --white-3: #f2f3f4;
+  --white-4: #ecedee;
+  --red: #e32828;
+  --grey-1: #3c434b;
+  --grey-2: #282a2d;
+  --black: #000000;
+  --footer: #101114;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--white-4);
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+
+/* Poster */
+.r_background img {
+  width: 40%;
+}
+.r_background {
+  object-fit: cover;
+  background-position: 50% 30% !important;
+  background-repeat: no-repeat !important;
+  background-size: 120% !important;
+}
+
+#order_validate_pc {
+  font-size: 1.7em !important;
+  font-weight: 600;
+  color: White !important;
+  background-color: lightgrey;
+  opacity: 0.9;
+  border-radius: 10px;
+
+  padding: 0.1em 1.5em 0.1em 1.5em;
+  margin-top: 2em;
+  border: none;
+
+  display: flex;
+  align-items: center;
+}
+
+#order_validate_pc i {
+  font-size: 1.5em;
+  padding-left: 0.3em;
+}
+
+#order_validate_mobile {
+  font-size: 1.7em !important;
+  font-weight: 600;
+  color: White !important;
+  background-color: lightgrey;
+  opacity: 0.9;
+  border-radius: 10px;
+
+  padding: 0.1em 1.5em 0.1em 1.5em;
+  margin-top: 2em;
+  border: none;
+
+  display: flex;
+  align-items: center;
+}
+#order_validate_mobile i {
+  font-size: 1.5em;
+  padding-left: 0.3em;
+}
+
+/* Order */
+main {
+  width: 100%;
+}
+
+/* Order Menu */
+#order_menu {
+  width: 100%;
+  padding: 0em 1em 1em 1em;
+}
+#order_menu > a {
+  color: #e32828;
+  font-size: 3.5em;
+}
+#order_menu > img {
+  width: 10em;
+}
+
+/* Order title*/
+main > h3 {
+  font-size: 2.75em;
+  margin: 0;
+  font-weight: 700;
+  color: var(--red);
+  /* color: black; */
+}
+main > p {
+  font-size: 0.9em;
+  color: grey;
+}
+
+/* Order content*/
+#order_content {
+  padding: 2.5em 2em 1em 2em;
+  width: 95%;
+}
+
+#order_content p {
+  font-size: 1.2em;
+}
+
+#order_content :nth-child(2n + 1) {
+  color: grey;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.order_divider {
+  border-bottom: 2px solid lightgrey;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Order ticket*/
+#ticket {
+  width: 100%;
+}
+#select_ticket_total {
+  font-size: 1.8em !important;
+  font-weight: 600;
+  color: White !important;
+  border: none;
+
+  border-radius: 10px;
+
+  background-color: lightgrey;
+
+  padding: 0.5em 1em 0.5em 1em;
+  margin-top: 1em;
+}
+
+#ticket > p {
+  color: grey;
+  font-size: 0.9em;
+}
+
+/* Order select tickets quantity*/
+#select_ticket {
+  display: flex;
+  align-items: center;
+}
+
+#select_ticket_minus {
+  background-color: inherit;
+  border: none;
+  font-size: 3em;
+  color: lightgrey;
+}
+
+#select_ticket_plus {
+  background-color: inherit;
+  border: none;
+  font-size: 3em;
+  color: var(--red);
+}
+
+#select_ticket_quantity {
+  font-size: 2em;
+  opacity: 0.5;
+  padding: 0 1.5em 0 1.5em;
+}
+
+/* Medias Queries */
+@media screen and (max-width: 1024px) {
+  .r_background {
+    background-position: 50% 30% !important;
+    background-size: 180% !important;
+  }
+}
+@media screen and (max-width: 770px) {
+  .r_background {
+    display: none !important;
+  }
+  main {
+    width: 100% !important;
+  }
+  #ticket {
+    padding-bottom: 0em;
+  }
+  #order_validate_mobile {
+    display: flex !important;
+    margin: 0;
+    padding: 0em;
+    background-color: inherit;
+    font-size: 3em !important;
+  }
+  #order_validate_mobile i {
+    color: lightgrey;
+  }
+}
+@media screen and (max-width: 430px) {
+  #select_ticket_quantity {
+    padding: 0;
+  }
+}

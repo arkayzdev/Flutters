@@ -58,15 +58,16 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] != 4){
 }
 
 
-$q = 'INSERT INTO MOVIE (title, description, release_date, duration, poster_image) 
-      VALUES (:title, :description, :release_date, :duration, :poster_image)';
+$q = 'INSERT INTO MOVIE (title, description, release_date, duration, poster_image, trailer) 
+      VALUES (:title, :description, :release_date, :duration, :poster_image, :trailer)';
 $req = $bdd->prepare($q); 
 $response = $req->execute([
     'title' => $_POST['title'],
     'description' => $_POST['description'],
     'release_date' => $_POST['release_date'],
     'duration' => (int)$_POST['duration'],
-    'poster_image' => $destination
+    'poster_image' => $destination,
+    'trailer' => $_POST['trailer']
 ]); 
 
 $id_movie = (int)$bdd->lastInsertId();

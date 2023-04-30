@@ -49,12 +49,12 @@
                 <tr>
                   <?php echo (!isset($_GET['type']) || $_GET['type'] == 'delete')? '<th scope="col">#</th>' :'';?>
                   <th scope="col" width="15%">Titre</th>
+                  <th scope="col" width="6%">Trailer </th>
                   <th scope="col" width="8%">Date </th>
-                  <th scope="col">Durée</th>
-                  <th scope="col" width="15%">Types</th>
-                  <th scope="col">Directeur</th>
-                  
-                  <th scope="col">Acteurs</th>
+                  <th scope="col" width="8%">Durée</th>
+                  <th scope="col" width="12%">Types</th>
+                  <th scope="col" width="12%">Directeurs</th>
+                  <th scope="col" width="12%">Acteurs</th>
 
                     <th scope="col">
                       <div class=" hover-effect d-flex align-items-center">

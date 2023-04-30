@@ -1,5 +1,5 @@
 <?php
-
+// Connect to db
 include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
 
 if(isset($_GET['search']) && $_GET['search']!=""){
@@ -13,7 +13,7 @@ if(isset($_GET['search']) && $_GET['search']!=""){
     $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 
     if(count($result)==0){
-        echo '<button style="height:10em;" class="calendar_button_passed">
+        echo '<button style="height:10em;" class="calendar_button_passed no_seance">
         <i class="uil uil-annoyed-alt" style="font-size:2em;color: darkslategrey;"></i>
         <div>
             <p style="width:6em; margin-left: 0.4em; color:darkslategrey;">Pas de séance à cette date.</p>
@@ -26,7 +26,9 @@ if(isset($_GET['search']) && $_GET['search']!=""){
             $to_time = strtotime($session['start_time']); 
             $diff_minutes = round(($from_time - $to_time) / 60,2). " minutes";
 
-            if($diff_minutes > 0 && $session['seance_date'] <=  date('Y-m-d')){
+            $diff_days = round((strtotime($session['seance_date']) - strtotime(date('Y-m-d'))) / (60 * 60 * 24),2);
+
+            if($diff_minutes > 0 && $diff_days<=0){
                 echo '<button style="height:5em; color: darkgrey" value='. $session['id_session'] . ' class="calendar_button_passed">
                 <i class="uil uil-ticket" style="font-size:1.5em;";"></i>
                 <div>
@@ -35,7 +37,7 @@ if(isset($_GET['search']) && $_GET['search']!=""){
                 </div>
                 </button>';
             } else {
-                echo '<button onclick="" style="height:5em;" value='. $session['id_session'] . ' class="calendar_button">
+                echo '<button onclick="redirect_session(this.value,' . $_GET['id'] . ')" style="height:5em;" value='. $session['id_session'] . ' class="calendar_button">
                 <i class="uil uil-ticket" style="font-size:1.5em;";"></i>
                 <div>
                     <p style="width:4em; margin-left: 0.4em;">' .  date("G:i", strtotime($session['start_time'])) . '</p>
@@ -55,7 +57,7 @@ if(isset($_GET['search']) && $_GET['search']!=""){
     $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 
     if(count($result)==0){
-        echo '<button style="height:10em;" class="calendar_button_passed">
+        echo '<button style="height:10em;" class="calendar_button_passed no_seance">
         <i class="uil uil-annoyed-alt" style="font-size:2em;color: darkslategrey;"></i>
         <div>
             <p style="width:6em; margin-left: 0.4em; color:darkslategrey;">Pas de séance à cette date.</p>
@@ -79,7 +81,7 @@ if(isset($_GET['search']) && $_GET['search']!=""){
                 </div>
                 </button>';
             } else {
-                echo '<button onclick="" style="height:5em;" value='. $session['id_session'] . ' class="calendar_button">
+                echo '<button onclick="redirect_session(this.value,' . $_GET['id'] . ')" style="height:5em;" value='. $session['id_session'] . ' class="calendar_button">
                 <i class="uil uil-ticket" style="font-size:1.5em;";"></i>
                 <div>
                     <p style="width:4em; margin-left: 0.4em;">' .  date("G:i", strtotime($session['start_time'])) . '</p>

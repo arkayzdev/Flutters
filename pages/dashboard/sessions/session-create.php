@@ -6,14 +6,12 @@ $movie_name = $_POST['movie'];
 
 $q = "SELECT id_room FROM ROOM WHERE room_name = '$room_name'";
 $req = $bdd->query($q);
-$req->execute();
 $room = $req->fetch(PDO::FETCH_ASSOC);
 
 $q = "SELECT id_movie FROM MOVIE WHERE title = '$movie_name'";
 $req = $bdd->query($q);
-$req->execute();
 $movie = $req->fetch(PDO::FETCH_ASSOC);
-var_dump($movie);
+
 
 
 $q = 'INSERT INTO SESSION (seance_date, start_time, language, price, id_room) 

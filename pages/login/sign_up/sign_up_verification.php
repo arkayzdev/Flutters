@@ -146,7 +146,7 @@ $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 $mail->Username = 'flutters.noreply@gmail.com';
-$mail->Password = 'kvslcvqrtitiflsl';
+$mail->Password = 'jsclcfdogvsmscgt';
 $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
 $mail->SMTPDebug = true;
