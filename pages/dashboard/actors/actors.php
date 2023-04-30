@@ -49,9 +49,9 @@
               <div class="alert alert-success" role="alert">
                 L'acteur a été créé avec succès.
               </div>
-            <?php elseif ($_GET['alert'] == "alert_success") : ?>
+            <?php elseif ($_GET['alert'] == "alter_success") : ?>
               <div class="alert alert-success" role="alert">
-              L'acteur a été modifié avec succès
+              L'acteur a été modifié avec succès.
               </div>
             <?php else : ?>
             <div class="alert alert-danger" role="alert">

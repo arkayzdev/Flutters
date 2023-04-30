@@ -72,8 +72,7 @@ function redirect_payment(session_id) {
 
   console.log(quantity);
   console.log(session_id);
-  console.log(email);
 
   window.location.href =
-    "test.php?id_session=" + session_id + "&quantity=" + quantity;
+    "stripe_send?id_session=" + session_id + "&quantity=" + quantity;
 }

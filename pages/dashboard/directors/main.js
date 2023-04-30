@@ -22,5 +22,6 @@ async function searchDirectors() {
 
 function deleteModal(id) {
     const btn = document.getElementById('delete-director-btn');
-    btn.setAttribute('onclick', 'location.href = \'directors?type=delete&id=' + id + '\'');
+    const alert = "Vous avez supprimé un réalisateur."
+    btn.setAttribute('onclick', 'location.href = \'directors?alert=' + alert + '&type=delete&id=' + id + '\'');
 }

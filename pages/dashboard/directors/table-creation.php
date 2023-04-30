@@ -13,8 +13,8 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <form method="POST" action="director-update" enctype="multipart/form-data">
                         <?php
-                        echo '<td><input class="update-input form-control" name="first_name" value="' . htmlspecialchars($id_director['first_name']) . '"></td>';
-                        echo '<td><input class="update-input form-control" name="last_name" value="'. htmlspecialchars($id_director['last_name']). '"></td>';?>
+                        echo '<td><input class="update-input form-control" name="first_name" value="' . htmlspecialchars($id_director['first_name']) . '" required></td>';
+                        echo '<td><input class="update-input form-control" name="last_name" value="'. htmlspecialchars($id_director['last_name']). '"required></td>';?>
                         <td>
                             <?php echo '<input type="hidden" name="id" value="' . $id_director['id_director'] . '">'; ?>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#alterModal">
@@ -51,8 +51,8 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
     <tr>
         <form method="POST" action="director-create" enctype="multipart/form-data">
-            <td><input class="update-input form-control" name="first_name"></td>
-            <td><input class="update-input form-control" name="last_name"></td>
+            <td><input class="update-input form-control" name="first_name" required></td>
+            <td><input class="update-input form-control" name="last_name" required></td>
             <td>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createModal">
                     Confirmer

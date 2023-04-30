@@ -4,7 +4,7 @@ session_start();
 //Connect to db
 include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
 
-$id_session = $_GET['session_id'];
+$id_session = $_GET['id_session'];
 $quantity = $_GET['quantity'];
 
 // Verify is session exist
@@ -14,7 +14,27 @@ if(!isset($_SESSION['email'])){
     exit;
 }
 
-$price = 7;
+// Get the price
+$q = 'SELECT price FROM SESSION WHERE id_session = :id_session;';
+$req = $bdd->prepare($q);
+$reponse = $req->execute([
+    'id_session' => $_GET['id_session'],
+]);
+$price = $req -> fetch(PDO::FETCH_ASSOC);
+
+$price = number_format($price['price'],2);
+
+// Get movie infos
+$q = 'SELECT id_movie,title FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = :id_session)';
+$req = $bdd->prepare($q);
+$reponse = $req->execute([
+    'id_session' => $id_session,
+]);
+$movie = $req -> fetch(PDO::FETCH_ASSOC);
+
+$title = $movie['title'];
+$id_movie = $movie['id_movie'];
+
 
 require_once('vendor/autoload.php');
 \Stripe\Stripe::setApiKey('sk_test_51N2ZOTJqbTsXagty8NGbxgOrbpSaqwsdeq3gDrfvEerthIIs4oiaalVd1Tr7cXTdTnRTrZ98IqVr3fIYNCOLxCRk00CiNepoLZ');
@@ -27,36 +47,27 @@ $session = \Stripe\Checkout\Session::create([
         'price_data' => [
           'currency' => 'eur',
           'product_data' => [
-            'name' => 'Super Mario Bros',
+            'name' => $title,
           ],
-          'unit_amount' => 780,
+          'unit_amount' => floatval($price)*100,
         ],
-        'quantity' => 3,
+        'quantity' => $quantity,
       ]],
 
     'payment_method_types' => ['card'],
-    'success_url' => 'http://localhost:4242/success', // Send hash password
-    'cancel_url' => 'http://example.com/cancel',
+    'success_url' => "https://Flutters.ovh/pages/order/success?session_id={CHECKOUT_SESSION_ID}",    
+    'cancel_url' => 'https://Flutters.ovh/pages/order/session_order.php?id=' . $id_session . '&id_movie=' . $id_movie,
 ]);
 
 ?>
 
-<html>
-  <head>
-    <title>Buy cool new product</title>
     <script src="https://js.stripe.com/v3/"></script>
-  </head>
-  <body>
-    <button id="checkout-button">Checkout</button>
     <script>
       var stripe = Stripe('pk_test_51N2ZOTJqbTsXagtybVl3wxiFXioj9Pu6zaFqxFWkTGAmceByMQNgV4v4SLCXVli5DqrszVxUpDHb9KKwshnOi7ao00TMhGGuSf');
-      const btn = document.getElementById("checkout-button")
-      btn.addEventListener('click', function(e) {
+      addEventListener('load', function(e) {
         e.preventDefault();
         stripe.redirectToCheckout({
           sessionId: "<?php echo $session->id; ?>"
         });
       });
     </script>
-  </body>
-</html>

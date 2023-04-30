@@ -13,7 +13,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <form method="POST" action="movie-type-update" enctype="multipart/form-data">
                         <?php
-                        echo '<td><input class="update-input form-control" name="name" value="' . htmlspecialchars($id_type['name']) . '"></td>';?>
+                        echo '<td><input class="update-input form-control" name="name" value="' . htmlspecialchars($id_type['name']) . '" required></td>';?>
                         <td>
                             <?php echo '<input type="hidden" name="id" value="' . $id_type['id_type'] . '">'; ?>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#alterModal">
@@ -48,7 +48,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
     <tr>
         <form method="POST" action="movie-type-create" enctype="multipart/form-data">
-            <td><input class="update-input form-control" name="name"></td>
+            <td><input class="update-input form-control" name="name" required></td>
             <td>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createModal">
                     Confirmer

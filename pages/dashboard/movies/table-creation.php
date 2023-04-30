@@ -17,7 +17,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <small class="mb-2 form-text" id="poster-image-inline">Format : JPEG/PNG/GIF - 2 Mo max</small>
                         <div class="d-flex flex-column mb-3 btn btn-dark " style="width:60%">
                             <label class="form-label text-white m-1" for="customFile1">Changer image</label>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image" value="<?php echo $id_movie['poster_image']?>"/>
+                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image" value="<?php echo $id_movie['poster_image']?>" required>
                         </div>
                     
                     </div>
@@ -25,20 +25,20 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                     <div class="ml-2 d-flex flex-column">
                         <div class="mb-3">
                             <label class="form-label" for="film-input">Titre</label>
-                            <input class="form-control" name="title" placeholder="Film" id="film-input" value="<?php echo $id_movie['title']?>">
+                            <input class="form-control" name="title" placeholder="Film" id="film-input" value="<?php echo $id_movie['title']?>" required>
                         </div>   
                         <div class="mb-3">
                             <label class="form-label" for="trailer-input">Bande d'annonce</label>
-                            <input class="form-control" name="trailer" placeholder="Lien" id="trailer-input" value="<?php echo $id_movie['trailer']?>">
+                            <input class="form-control" name="trailer" placeholder="Lien" id="trailer-input" value="<?php echo $id_movie['trailer']?>" required>
                         </div>  
                         <div class="d-flex flex-row mb-3">
                             <div class="d-flex flex-column">
                                 <label class="form-label" for="release-date-input">Date de sortie</label>
-                                <input class="form-control" name="release_date" type="date" id="realase-date-input" value="<?php echo $id_movie['release_date']?>">
+                                <input class="form-control" name="release_date" type="date" id="realase-date-input" value="<?php echo $id_movie['release_date']?>" required>
                             </div>
                             <div class="d-flex flex-column">
                                 <label class="form-label" for="duration-input">Durée (en min)</label>
-                                <input class="form-control" name="duration" type="number" step="1" min="0" placeholder="0" id="duration-input" value="<?php echo $id_movie['duration']?>">
+                                <input class="form-control" name="duration" type="number" step="1" min="0" placeholder="0" id="duration-input" value="<?php echo $id_movie['duration']?>" required>
                             </div>
                            
                             
@@ -285,7 +285,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <small class="mb-2 form-text" id="poster-image-inline">Format JPEG/PNG/GIF- 2 Mo max</small>
                         <div class="d-flex flex-column mb-3 btn btn-dark " style="width:60%">
                             <label class="form-label text-white m-1" for="customFile1">Choisir image</label>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image"/>
+                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image" required>
                         </div>
                     
                     </div>
@@ -293,20 +293,20 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                     <div class="ml-2 d-flex flex-column">
                         <div class="mb-3">
                             <label class="form-label" for="film-input">Titre</label>
-                            <input class="form-control" name="title" placeholder="Film" id="film-input">
+                            <input class="form-control" name="title" placeholder="Film" id="film-input" required>
                         </div>  
                         <div class="mb-3">
                             <label class="form-label" for="trailer-input">Bande d'annonce</label>
-                            <input class="form-control" name="trailer" placeholder="Lien" id="trailer-input">
+                            <input class="form-control" name="trailer" placeholder="Lien" id="trailer-input" required>
                         </div>    
                         <div class="d-flex flex-row mb-3">
                             <div class="d-flex flex-column">
                                 <label class="form-label" for="release-date-input">Date de sortie</label>
-                                <input class="form-control" name="release_date" type="date" id="realase-date-input">
+                                <input class="form-control" name="release_date" type="date" id="realase-date-input" required>
                             </div>
                             <div class="d-flex flex-column">
                                 <label class="form-label" for="duration-input">Durée (en min)</label>
-                                <input class="form-control" name="duration" type="number" step="1" min="0" placeholder="0" id="duration-input">
+                                <input class="form-control" name="duration" type="number" step="1" min="0" placeholder="0" id="duration-input" required> 
                             </div>
                            
                             

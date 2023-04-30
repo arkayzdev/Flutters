@@ -22,5 +22,6 @@ async function searchActors() {
 
 function deleteModal(id) {
     const btn = document.getElementById('delete-actor-btn');
-    btn.setAttribute('onclick', 'location.href = \'actors?type=delete&id=' + id + '\'');
+    const alert = "Vous avez supprimé un acteur."
+    btn.setAttribute('onclick', 'location.href = \'actors?alert=' + alert + '&type=delete&id=' + id + '\'');
 }   

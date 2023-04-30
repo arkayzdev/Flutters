@@ -46,6 +46,23 @@
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <h2>Réalisateurs (<?php echo $result['COUNT(first_name)'] ?>)</h2>
+
+        <?php if(isset($_GET['alert'])) : ?>
+          <?php if ($_GET['alert'] == "create_success") : ?>
+              <div class="alert alert-success" role="alert">
+              Le réalisateur a été créé avec succès.
+              </div>
+          <?php elseif ($_GET['alert'] == "alert_success") : ?>
+              <div class="alert alert-success" role="alert">
+              Le réalisateur a été modifié avec succès.
+              </div>
+          <?php else : ?>
+          <div class="alert alert-danger" role="alert">
+              <?php echo $_GET['alert']; ?>
+          </div>
+          <?php endif;?>
+      <?php endif; ?>
+
         <div class="table-responsive">
           <table class="table table-sm">
             <thead>

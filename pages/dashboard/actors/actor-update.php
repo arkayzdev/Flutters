@@ -15,17 +15,16 @@ $q = "SELECT COUNT(id_actor) as COUNT FROM ACTOR WHERE first_name = '$first_name
 $req = $bdd->query($q);
 $result = $req->fetch(PDO::FETCH_ASSOC);
 if ($result['COUNT'] != "0") {
-    $alert = "L'acteur existe déjà.";
+    $alert = "L'acteur existe déjà, veuillez réessayer.";
     header('location: actors?type=modify&id=' . $id . '&alert=' . $alert);
     exit();
 }
 
-
 $q = "UPDATE ACTOR SET first_name = :first_name, last_name = :last_name WHERE id_actor = $id";                   
 $req = $bdd->prepare($q);
 $reponse = $req->execute([
-    'first_name' => $_POST['first_name'],
-    'last_name' => $_POST['last_name'],
+    'first_name' => $first_name,
+    'last_name' => $last_name
 ]); 
 
 $alert = "alter_success";

@@ -123,14 +123,13 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
             <p>Prix unitaire : <?php echo $session_price?>€ TTC</p>
             <p>8 billets maximum autorisé par commande</p>
                 <button id="select_ticket_total">Prix Total : 0.00€ TTC</button>
-                <button disabled style="display:none" id="order_validate_mobile"><i id="order_validate_mobile_i" class="uis uis-arrow-circle-right"></i></button>
+                <button disabled onclick="redirect_payment(<?php echo $session_id?>)" style="display:none" id="order_validate_mobile"><i id="order_validate_mobile_i" class="uis uis-arrow-circle-right"></i></button>
         </div>
     </main>
 
     <!-- poster  -->
     <div class="col-7 d-flex justify-content-center flex-column align-items-center r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo $movie_poster ?>');">
         <img src="../dashboard/movies/<?php echo $movie_poster ?>">
-        <?php echo $_SESSION['email'] ?>
         <button disabled onclick="redirect_payment(<?php echo $session_id?>)" id="order_validate_pc">Continuer vers le paiement<i class="uis uis-arrow-circle-right"></i></button>
     </div>
 
