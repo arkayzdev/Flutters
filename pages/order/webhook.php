@@ -44,6 +44,8 @@ $id = $event->data->object->id;
 $price = $event->data->object->amount_total;
 $user_email = $event->data->object->customer_details->email;
 $user_name = $event->data->object->customer_details->name;
+$account_email = $event->data->object->customer_email;
+$id_movie_session = $event->data->object->client_reference_id;
 
 
 // Handle the event
@@ -52,13 +54,15 @@ switch ($event->type) {
     $session = $event->data->object;
 
     // Insert to bdd
-    $q = 'INSERT INTO PAYMENT(id,email,price,name) VALUES(:id, :email, :price, :name)';
+    $q = 'INSERT INTO PAYMENT(id,email,price,name,account_email,id_session) VALUES(:id, :email, :price, :name, :account_email,:id_session)';
     $req = $bdd->prepare($q);
     $reponse = $req->execute([
         'id' => $id,
         'email' => $user_email,
         'price' => $price,
-        'name' => $user_name
+        'name' => $user_name,
+        ':account_email' => $account_email,
+        ':id_session' => $id_movie_session
     ]);
   // ... handle other event types
   default:

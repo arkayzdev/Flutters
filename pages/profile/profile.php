@@ -195,19 +195,32 @@ session_start();
                         <!-- profile right side infos -->
                         <div class="col-6 d-flex flex-column align-items-center align-self-center justify-content-center">
                             <!-- profile_avatar -->
-                            <?php
-                             echo '<img id="profile_avatar" src="users_avatars/' . $avatar . '">';
-                            ?>
-
-                            <!-- change avatar pic -->
-                            <label for="image" id="image_btn">Modifier ma photo</label>
-                            <form method="POST" id="avatar_submit_btn" action="avatar_verification.php" enctype="multipart/form-data">
-                                <input type="file" id="image" style="display:none" name="image" accept="image/jpg, image/png, image/gif" onChange='change_avatar()'></input>
-                            </form>
+                            <?php 
+                            $q = "SELECT src, name FROM COMPONENT c
+                                INNER JOIN WEARS w on c.id_component = w.id_component
+                                INNER JOIN USERS U on w.id_client = U.id_client
+                                WHERE U.id_client = $user_id";
+                            $req = $bdd->query($q);
+                            $results = $req->fetchAll(PDO::FETCH_ASSOC); ?>
+                            
+                            <div>
+                                <div id="avatar-parent">
+                                    <img class="profile_avatar"src="<?php echo $avatar?>">
+                                    <?php if($results) : 
+                                        foreach($results as $component) : ?>
+                                            <img class="profile_avatar"src="<?php echo $component['src']?>" alt="">
+                                        <?php endforeach;
+                                    endif; ?>
+                                </div>
+                            </div>
+                            
+                            
+                            
+            
 
                             <!-- Button trigger modal -->
-                            <button type="button" id="avatar_btn_delete" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Supprimer la photo
+                            <button class="mb-4" type="button" id="image_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Modifier la photo
                             </button>
 
                             <!-- Modal -->
@@ -215,11 +228,34 @@ session_start();
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content" style="background-color:white;">
                                         <div class="modal-header" style="border:none;">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:600;">Suppression de votre photo de profil</h1>
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:600;">Modification de votre photo de profil</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
+
                                         <div class="modal-body" style="border:none">
-                                            <p style="font-weight:400;">Etes-vous sûr(e) de vouloir supprimer votre photo de profil ?</p>
+                                            <div class="d-flex flex-column">
+                                                <label class="form-label" for="head_select">Chapeau</label>
+                                                <select id="head_select" class="form-select mb-2" name="head" id="">
+                                            
+                                                    <option value="none">Aucun</option>
+                                                </select>
+
+                                                <label class="form-label" for="eyes_select">Yeux</label>
+                                                <select id="eyes_select" class="form-select mb-2" name="eyes" id="">
+                                                    <option value="none">Aucun</option>
+                                                </select>
+
+                                                <label class="form-label" for="mouth_select">Bouche</label>
+                                                <select id="mouth_select" class="form-select mb-2" name="mouth" id="">
+                                                    <option value="none">Aucun</option>
+                                                </select>
+
+                                                <label class="form-label" for="outfit_select">Costume</label>
+                                                <select id="outfit_select" class="form-select mb-2" name="outfit" id="">
+                                                    <option value="none">Aucun</option>
+                                                </select>
+                                            </div>
+                                            
                                         </div>
                                         <div class="modal-footer" style="border:none">
                                             <button id="profile_avatar_delete_modal" type="button" data-bs-dismiss="modal" onclick="delete_avatar()">Oui</button>

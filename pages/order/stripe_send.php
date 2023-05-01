@@ -55,7 +55,9 @@ $session = \Stripe\Checkout\Session::create([
       ]],
 
     'payment_method_types' => ['card'],
-    'success_url' => "https://Flutters.ovh/pages/order/success?session_id={CHECKOUT_SESSION_ID}",    
+    'customer_email' => $_SESSION['email'],
+    'client_reference_id' => $id_session,
+    'success_url' => "https://Flutters.ovh/pages/order/stripe_success?session_id={CHECKOUT_SESSION_ID}",    
     'cancel_url' => 'https://Flutters.ovh/pages/order/session_order.php?id=' . $id_session . '&id_movie=' . $id_movie,
 ]);
 
