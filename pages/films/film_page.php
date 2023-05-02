@@ -9,12 +9,6 @@
     include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
 
 
-    // logs
-    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
-    $log_type = 3; $log_page = 'https://flutters.ovh/pages/films/film_page/';
-    include($_SERVER['DOCUMENT_ROOT']."/log.php");
-
-
     // Get every informations of the movie
        $q = 'SELECT * FROM MOVIE WHERE id_movie = :id_movie';
       $req = $bdd->prepare($q);

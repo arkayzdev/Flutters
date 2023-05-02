@@ -1,5 +1,6 @@
 <?php
 session_start();
+setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
 
 //Connect to db
 include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
@@ -7,7 +8,7 @@ include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
 // Verify is session exist
 if(!isset($_SESSION['email'])){
     $msg = "Connection expirée.";
-    header('location: /pages/order?id=' . $id_session . '&msg=' . $msg);
+    header('location:/pages/login/sign_in/sign_in.php?message=' . $msg);
     exit;
 }
 
@@ -95,20 +96,39 @@ if(!isset($_SESSION['email'])){
 
         // Create Ticket(s)
         $price_unit = ($payment_['price']/100)/$session_['price'];
-        echo $price_unit;
 
             for($i=0;$i!=$price_unit;$i++){
                 $q = 'INSERT INTO TICKET(qr_code, id_session, order_id) VALUES (:qr_code, :id_session, :order_id)';
                 $req = $bdd->prepare($q);
                 $reponse = $req->execute([
                     'order_id' => $payment_['id'],
-                    'qr_code' => 'AAA',
+                    'qr_code' => 'NULL',
                     'id_session' => $session_['id_session'],
                 ]);
             }
     }
 
+    // Get order and ticket infos
+    $q = 'SELECT * FROM ORDERS WHERE order_id = :order_id';
+    $req = $bdd->prepare($q);
+    $reponse = $req->execute([
+        'order_id' => $payment_['id'],
+    ]);
+    $order_ = $req -> fetch(PDO::FETCH_ASSOC);
 
+    $q = 'SELECT * FROM TICKET WHERE order_id = :order_id';
+    $req = $bdd->prepare($q);
+    $reponse = $req->execute([
+        'order_id' => $payment_['id'],
+    ]);
+    $ticket_ = $req -> fetch(PDO::FETCH_ASSOC);
+
+    $q = 'SELECT count(id_ticket) FROM TICKET WHERE order_id = :order_id';
+    $req = $bdd->prepare($q);
+    $reponse = $req->execute([
+        'order_id' => $payment_['id'],
+    ]);
+    $nb_ticket_ = $req -> fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -118,8 +138,51 @@ if(!isset($_SESSION['email'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout Success</title>
+
+    <!-- Import Bootstrap CSS Library -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Import css -->
+    <link href="stripe_success.css?rs=<?= time() ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
-<body>
-    <h1>Page en maintenance, vous pouvez dès à présent voir votre billet dans votre profil</h1>
+
+<body style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo $movie_['poster_image'] ?>');">
+    <!-- Include Header -->
+    <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); 
+    ?>
+
+    <!-- Main content -->
+    <main class="d-flex flex-column justify-content-center align-items-center">
+        <h1>Merci pour votre commande !</h1>
+        <p>Commande  #<?php echo str_replace("cs_test_", "", $order_['order_id'])?></p>
+        <!-- Recap -->
+        <div id="recap">
+            <p style="align-self:center; margin-bottom:1em; "><strong>Réservé le <?php echo ucwords(strftime('%A %e %B %Y',strtotime($order_['purchase_date'])))?></strong></p>
+            <p><strong>Email de facturation :</strong> <?php echo $payment_['email']?></p>
+
+            <p><strong>Film :</strong> <?php echo $movie_['title']?></p>
+            <p><strong>Séance: </strong><?php echo ucwords(strftime('%A %e %B %Y',strtotime($session_['seance_date'])))?> à <?php echo $session_['start_time']?> en salle <?php echo $room_['room_name']?> </p>
+
+            <p><strong>Nombre de billets :</strong> <?php echo $nb_ticket_['count(id_ticket)']?> billets</p>
+            <p><strong>Prix total :</strong> <?php echo number_format($payment_['price']/100, 2)?> € (<?php echo number_format($session_['price'],2) ?>€ par billet)</p>
+        </div>
+        <button onclick="download_ticket('<?php echo $_GET['session_id']?>')">Télécharger vos billets</button>
+    </main>
+
+    <!-- Footer -->
+    <?php include '/var/www/flutters.ovh/pages/footer/footer.php' ?>
+
+    <!-- Import Bootstrap JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
+
+<?php 
+            // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated 8-LogOut 9-FailedToSignUp 10-AccountCreated  
+    // 11-StripePaymentSent 12-StripePaymentSuccessfull 13-DownloadPDF | $page = actual url
+    $log_type=12;   $log_page = 'HH';
+    require_once($_SERVER['DOCUMENT_ROOT']."/log.php");
+    ?>

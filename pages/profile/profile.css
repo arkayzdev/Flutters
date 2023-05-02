@@ -244,11 +244,11 @@ main {
 }
 
 #profile_avatar_delete_modal:nth-child(2) {
-  background-color: #a9a9a9;
+  background-color: var(--red);
 }
 
 #profile_avatar_delete_modal:nth-child(2):hover {
-  background-color: #898989;
+  background-color: #f33232;
   transition: 0.2s;
 }
 

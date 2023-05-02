@@ -3,7 +3,7 @@ var loadFile = function (event) {
     var output = document.getElementById('preview-image')
     output.src = URL.createObjectURL(event.target.files[0])
     output.onload = function () {
-        URL.revokeObjectURL(output.src) // free memory
+        URL.revokeObjectURL(output.src)
     }
 }
 
@@ -188,5 +188,6 @@ async function searchMovies() {
 
 function deleteModal(id) {
     const btn = document.getElementById('delete-movie-btn');
-    btn.setAttribute('onclick', 'location.href = \'movies?type=delete&id=' + id + '\'');
+    const alert = "Vous avez supprimé un film."
+    btn.setAttribute('onclick', 'location.href = \'movies?alert=' + alert + '&type=delete&id=' + id + '\'');
 }   

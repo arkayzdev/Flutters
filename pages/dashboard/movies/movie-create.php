@@ -1,13 +1,7 @@
 <?php
 include '../../connect_db.php';
 
-// Image check
-//si une image est postée ($_FILES['image']) :
-
 if(isset($_FILES['image']) && $_FILES['image']['error'] != 4){
-
-    //vérifier que le fichier est de type jpg, png ou gif (utiliser le type du fichier), si non : redirection
-    // tableau des types acceptés
     $acceptable = [
                     'image/jpeg',
                     'image/png',
@@ -15,46 +9,59 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] != 4){
                 ];
 
     if(!in_array($_FILES['image']['type'], $acceptable)){
-        $msg = 'Le fichier doit être du type jpeg, gif ou png.';
-        header('location: movie?message=' . $msg);
-        exit;
+        $alert = 'Le fichier doit être du format JPEG, GIF ou PNG.';
+        header('location: movies?type=create&alert=' . $alert);
+        exit();
     }
 
-    //vérifier que le fichier moins de 2Mo  (utiliser la size du fichier), si non : redirection
-    $maxSize = 2 * 1024 * 1024; // 2Mo exprimée en octets
+    $maxSize = 2 * 1024 * 1024; 
     if($_FILES['image']['size'] > $maxSize){
-        $msg = 'Le fichier doit faire moins de 2 Mo.';
-        header('location: movie?message=' . $msg);
-        exit;
+        $alert = 'Le fichier doit faire moins de 2 Mo.';
+        header('location: movies?type=create&alert=' . $alert);
+        exit();
     }
 
-    //créer un dossier dossier s'il n'existe pas (fonctions file_exists et mkdir)
     if(!file_exists('movies-img')){
-        mkdir('movies-img'); // chmod 0777 par défaut
+        mkdir('movies-img'); 
     }
-
-    //y enregistrer le fichier (le déplacer de son emplacement temp vers le dossier uploads)
+    
     $from = $_FILES['image']['tmp_name'];
 
-    // Renommage du fichier : risque de doublon si 2 fichiers avec la meme ext. sont envoyés ds la même seconde
-    $timestamp = time(); // Nb de secondes écoulées depuis le 01/01/1970
-    // récupération de l'extension originale
-    //$_FILES['image']['name'] // image.jpeg / profile.gif / doc.min.png
-    $array = explode('.', $_FILES['image']['name']); //['doc', 'min', 'png']
-    $extension = end($array); // On récupère le dernier élément du tableau
-
+    $timestamp = time(); 
+    $array = explode('.', $_FILES['image']['name']);
+    $extension = end($array); 
     $filename = 'movie-poster-' . $timestamp . '.' . $extension;
     $destination = 'movies-img/' . $filename;
-
     $saveResult = move_uploaded_file($from, $destination);
 
     if(!$saveResult){
-        $msg = 'Le fichier n\'a pas pu être enregistré.';
-        header('location:profile.php?message=' . $msg);
-        exit;
+        $alert= 'Le fichier n\'a pas pu être enregistré.';
+        header('location: movies?type=create&alert=' . $alert);
+        exit();
     }
 } else {
-    header('location: movies.php?message=Veuillez mettre une image.');
+    $alert= 'Veuillez mettre une image.';
+    header('location: movies?type=create&alert=' . $alert);
+}
+
+if (!$_POST['types']) {
+    $alert= 'Veuillez mettre au moins un genre.';
+    header('location: movies?type=create&alert=' . $alert);
+}
+
+if (!$_POST['language']) {
+    $alert= 'Veuillez choisir une langue original.';
+    header('location: movies?type=create&alert=' . $alert);
+}
+
+if (!$_POST['actors']) {
+    $alert= 'Veuillez mettre un acteur au moins.';
+    header('location: movies?type=create&alert=' . $alert);
+}
+
+if (!$_POST['directors']) {
+    $alert= 'Veuillez mettre un réalisateur au moins.';
+    header('location: movies?type=create&alert=' . $alert);
 }
 
 
@@ -62,12 +69,12 @@ $q = 'INSERT INTO MOVIE (title, description, release_date, duration, poster_imag
       VALUES (:title, :description, :release_date, :duration, :poster_image, :trailer)';
 $req = $bdd->prepare($q); 
 $response = $req->execute([
-    'title' => $_POST['title'],
-    'description' => $_POST['description'],
+    'title' => trim($_POST['title']),
+    'description' => trim($_POST['description']),
     'release_date' => $_POST['release_date'],
-    'duration' => (int)$_POST['duration'],
+    'duration' => trim((int)$_POST['duration']),
     'poster_image' => $destination,
-    'trailer' => $_POST['trailer']
+    'trailer' => trim($_POST['trailer'])
 ]); 
 
 $id_movie = (int)$bdd->lastInsertId();
@@ -108,11 +115,8 @@ $req->execute([
     'id_language' => $id_language['id_language']
 ]); 
 
-
-
 $actors = $_POST['actors'];
 $id_actors = [];
-
 
 foreach($actors as $actor){
     $actor_names = explode(" ", $actor);
@@ -155,4 +159,6 @@ foreach($id_directors as $id) {
     ]); 
 }
 
-header('location: movies?message=Film créé !');
+$alert = "create_success";
+header('location: movies?alert=' . $alert);
+exit();

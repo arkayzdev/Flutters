@@ -57,6 +57,8 @@
         <div class="col-0 col-md-1" id="fantom_div"></div>
         <div class="d-block mb-5 col-8 col-md-4 col-xl-6">
             <img style="width:10em" src="/pages/footer/img/Flutters-White.svg">
+            
+</button>
         </div>
         <div class="col-10 col-md-2 col-xl-1 me-4 disapear_foot">
             <h5 class="text-white">Navigation</h5>
@@ -77,8 +79,8 @@
             <h5 class="text-white">Contact</h5>
             <ul class="footer-list d-block" id="footer_contact">
                 <li><a href="mailto:flutters.contact@gmail.com">flutters.contact@gmail.com</a></li>
-                <li><a href="">28 Boulevard de la Misère, Paris 15ème</a></li>
-                <li><a href="">05 85 76 21 03</a></li>
+                <li><a href="https://goo.gl/maps/SvCiSvqz7fUCE8PJ6">28 Boulevard de la Misère, Paris 15ème</a></li>
+                <li><a href="tel:05 85 76 21 03">05 85 76 21 03</a></li>
             </ul>
         </div>
         <div class="col-0 col-xl-1"></div>
@@ -89,18 +91,18 @@
         <div class="col-12 col-xl-7">
             <ul class="d-flex footer-list footer_copyright d-flex w-lg-100 justify-content-xl-start justify-content-center flex-column align-items-center flex-md-row ">
                 <li class="me-4">Copyright © 2023 Flutters</li>
-                <li class="me-4"><a href="">Politique de confidentialité</a></li>
-                <li class="me-4"><a href="">Conditions d'utilisation</a></li>
-                <li class="me-4"><a href="">Mentions légales</a></li>
+                <li class="me-4"><a href="/pages/footer/RGPD.php">Politique de confidentialité</a></li>
+                <li class="me-4"><a href="/pages/footer/conditions.php">Conditions d'utilisation</a></li>
+                <li class="me-4"><a href="/pages/footer/mentions_legales.php">Mentions légales</a></li>
             </ul>
         </div>
         <div class="d-none d-xl-block col-2"></div>
         <div class="col-12 col-xl-2 d-flex w-lg-100 justify-content-center" ;>
-            <ul class="d-flex footer-list">
-                <li><a href=""><img class="on_click_action" src="/pages/footer/img/Instagram.png"></a></li>
-                <li><a href=""><img class="on_click_action" src="/pages/footer/img/Tiktok.png"></a></li>
-                <li><a href=""><img class="on_click_action" src="/pages/footer/img/Twitter.png"></a></li>
-                <li><a href=""><img class="on_click_action" src="/pages/footer/img/Youtube.png"></a></li>
+            <ul class="d-flex footer-list" style="font-size:1.5em;margin-top:0.2em;">
+                <li style="margin-right:0.5em;"><a href="https://twitter.com/ESGI"><i class="uil uil-twitter"></i></a></li>
+                <li style="margin-right:0.5em;"><a href="https://www.instagram.com/esgiparis/?hl=fr"><i class="uil uil-instagram"></i></a></li>
+                <li style="margin-right:0.5em;"><a href="https://www.facebook.com/ESGIParis/?locale=fr_FR"><i class="uil uil-facebook-f"></i></a></li>
+                <li style="margin-right:0.5em;"><a href="https://www.youtube.com/channel/UCayBDi_BmTw8zA0nuUVU4EQ"><i class="uil uil-youtube"></i></a></li>
             </ul>
         </div>
     </div>

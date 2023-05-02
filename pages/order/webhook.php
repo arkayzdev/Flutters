@@ -64,6 +64,10 @@ switch ($event->type) {
         ':account_email' => $account_email,
         ':id_session' => $id_movie_session
     ]);
+
+    // Send Email
+    require_once('send_email.php');
+    
   // ... handle other event types
   default:
     echo 'Received unknown event type ' . $event->type;

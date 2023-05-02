@@ -22,7 +22,7 @@ $result = $bdd->query('SELECT * FROM NEWSLETTER');
         $state = $req->execute([
             'email' => $_GET['email']
         ]);
-        
+    
         if ($state) {
             echo "Abonné(e) supprimé avec succès !";
         }

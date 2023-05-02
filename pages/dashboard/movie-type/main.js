@@ -22,5 +22,6 @@ async function searchTypes() {
 
 function deleteModal(id) {
     const btn = document.getElementById('delete-movie-type-btn');
-    btn.setAttribute('onclick', 'location.href = \'movie-type?type=delete&id=' + id + '\'');
+    const alert = "Vous avez supprimé un genre."
+    btn.setAttribute('onclick', 'location.href = \'movie-type?alert=' + alert + '&type=delete&id=' + id + '\'');
 }   

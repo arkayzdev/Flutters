@@ -1,12 +1,6 @@
 <?php session_start();
   // $_SESSION['email']='huangfrederic2002@gmail.com';
   // $_SESSION['user_type']='Normal';
-
-  // logs
-  // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
-  $log_type = 3; 
-  $log_page = 'flutters.ovh';
-  include($_SERVER['DOCUMENT_ROOT']."/log.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

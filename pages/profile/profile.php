@@ -9,11 +9,6 @@ session_start();
     // Connect to the db
     include("../connect_db.php");
 
-        // logs
-    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
-    $log_type = 3; $log_page = 'https://flutters.ovh/pages/profile/profile';
-    include($_SERVER['DOCUMENT_ROOT']."/log.php");
-
     // Verify if session is on
     if(!isset($_SESSION['email'])){
         $msg = 'ERROR: PROFILE_SESSION_NOT_LOADED';
@@ -177,20 +172,8 @@ session_start();
                             </form>
 
                             <!-- PDF --> 
-                            <form action="profile_pdf.php" method="POST">
-                                <!-- actual pwd -->
-                                <?php 
-                                echo '<input type=\'text\' name=\'user_id\' value="' . $user_id . '" class="d-none">';
-                                echo '<input type=\'text\' name=\'first_name\' value="' . $firstname . '" class="d-none">';
-                                echo '<input type=\'text\' name=\'last_name\' value="' . $lastname . '" class="d-none">';
-                                echo '<input type=\'text\' name=\'email\' value="' . $email . '" class="d-none">';
-                                echo '<input type=\'text\' name=\'avatar\' value="' . $avatar . '" class="d-none">';
-                                echo '<input type=\'text\' name=\'newsletter\' value="' . $newsletter . '" class="d-none">';
-                                ?>
-                                <!-- lastname -->
-                                <!-- update_button -->
-                                <button id="redeem_data" type='submit' value="Exporter les informations utilisateurs">Exporter les informations utilisateurs</button>
-                            </form>
+                            <button onclick="download_user_pdf()" id="redeem_data" type='submit' value="Exporter les informations utilisateurs">Exporter les informations utilisateurs</button>
+
                         </div>
                         <!-- profile right side infos -->
                         <div class="col-6 d-flex flex-column align-items-center align-self-center justify-content-center">
@@ -226,47 +209,124 @@ session_start();
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
+                                 <form action="avatar_update" method="POST">
                                     <div class="modal-content" style="background-color:white;">
                                         <div class="modal-header" style="border:none;">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel" style="font-weight:600;">Modification de votre photo de profil</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-
+                                       
                                         <div class="modal-body" style="border:none">
+                                       
                                             <div class="d-flex flex-column">
+                                                <?php 
+                                                $q = "SELECT COUNT(name), name FROM COMPONENT c
+                                                INNER JOIN WEARS w on c.id_component = w.id_component
+                                                INNER JOIN USERS U on w.id_client = U.id_client
+                                                WHERE U.id_client = $user_id
+                                                AND type = 'head'";
+                                                $req = $bdd->query($q);
+                                                $head_result = $req->fetch(PDO::FETCH_ASSOC); 
+                                                $head_name = $head_result['name'];
+                                                
+                                                $q = "SELECT name FROM COMPONENT WHERE type ='head' AND NOT name = '$head_name'";
+                                                $req = $bdd->query($q);
+                                                $all_head = $req->fetchAll(PDO::FETCH_ASSOC); ?>
+                                                
+
                                                 <label class="form-label" for="head_select">Chapeau</label>
-                                                <select id="head_select" class="form-select mb-2" name="head" id="">
-                                            
-                                                    <option value="none">Aucun</option>
+                                                <select id="head_select" class="form-select mb-2" name="head">
+                                                    <option value="<?php echo ($head_result['COUNT(name)']) ? $head_result['name'] : "none"?>"><?php echo ($head_result['COUNT(name)']) ? $head_result['name'] : "Aucun"?></option>
+                                                    <?php echo ($head_result['COUNT(name)']) ? '<option value="none">Aucun</option>' : '' ;
+                                                    foreach ($all_head as $head) : ?>
+                                                        <option value="<?php echo $head['name']?>"><?php echo $head['name']?></option>
+                                                    <?php endforeach; ?>
+                                                    
                                                 </select>
+
+                                                <?php 
+                                                $q = "SELECT COUNT(name), name FROM COMPONENT c
+                                                INNER JOIN WEARS w on c.id_component = w.id_component
+                                                INNER JOIN USERS U on w.id_client = U.id_client
+                                                WHERE U.id_client = $user_id
+                                                AND type = 'eyes'";
+                                                $req = $bdd->query($q);
+                                                $eyes_result = $req->fetch(PDO::FETCH_ASSOC); 
+                                                $eyes_name = $eyes_result['name'];
+                                                
+                                                $q = "SELECT name FROM COMPONENT WHERE type ='eyes' AND NOT name = '$eyes_name'";
+                                                $req = $bdd->query($q);
+                                                $all_eyes = $req->fetchAll(PDO::FETCH_ASSOC); ?>
 
                                                 <label class="form-label" for="eyes_select">Yeux</label>
-                                                <select id="eyes_select" class="form-select mb-2" name="eyes" id="">
-                                                    <option value="none">Aucun</option>
+                                                <select id="eyes_select" class="form-select mb-2" name="eyes">
+                                                    <option value="<?php echo ($eyes_result['COUNT(name)']) ? $eyes_result['name'] : "none"?>"><?php echo ($eyes_result['COUNT(name)']) ? $eyes_result['name'] : "Aucun"?></option>
+                                                    <?php echo ($eyes_result['COUNT(name)']) ? '<option value="none">Aucun</option>' : '' ;
+                                                    foreach ($all_eyes as $eyes) : ?>
+                                                        <option value="<?php echo $eyes['name']?>"><?php echo $eyes['name']?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
+
+                                                <?php 
+                                                $q = "SELECT COUNT(name), name FROM COMPONENT c
+                                                INNER JOIN WEARS w on c.id_component = w.id_component
+                                                INNER JOIN USERS U on w.id_client = U.id_client
+                                                WHERE U.id_client = $user_id
+                                                AND type = 'mouth'";
+                                                $req = $bdd->query($q);
+                                                $mouth_result = $req->fetch(PDO::FETCH_ASSOC); 
+                                                $mouth_name = $mouth_result['name'];
+                                                
+                                                $q = "SELECT name FROM COMPONENT WHERE type ='mouth' AND NOT name = '$mouth_name'";
+                                                $req = $bdd->query($q);
+                                                $all_mouth = $req->fetchAll(PDO::FETCH_ASSOC); ?>
 
                                                 <label class="form-label" for="mouth_select">Bouche</label>
-                                                <select id="mouth_select" class="form-select mb-2" name="mouth" id="">
-                                                    <option value="none">Aucun</option>
+                                                <select id="mouth_select" class="form-select mb-2" name="mouth">
+                                                    <option value="<?php echo ($mouth_result['COUNT(name)']) ? $mouth_result['name'] : "none"?>"><?php echo ($mouth_result['COUNT(name)']) ? $mouth_result['name'] : "Aucun"?></option>
+                                                    <?php echo ($mouth_result['COUNT(name)']) ? '<option value="none">Aucun</option>' : '' ;
+                                                    foreach ($all_mouth as $mouth) : ?>
+                                                        <option value="<?php echo $mouth['name']?>"><?php echo $mouth['name']?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
 
+                                                <?php 
+                                                $q = "SELECT COUNT(name), name FROM COMPONENT c
+                                                INNER JOIN WEARS w on c.id_component = w.id_component
+                                                INNER JOIN USERS U on w.id_client = U.id_client
+                                                WHERE U.id_client = $user_id
+                                                AND type = 'outfit'";
+                                                $req = $bdd->query($q);
+                                                $outfit_result = $req->fetch(PDO::FETCH_ASSOC); 
+                                                $outfit_name = $outfit_result['name'];
+                                                
+                                                $q = "SELECT name FROM COMPONENT WHERE type ='outfit' AND NOT name = '$outfit_name'";
+                                                $req = $bdd->query($q);
+                                                $all_outfit = $req->fetchAll(PDO::FETCH_ASSOC); ?>
+
                                                 <label class="form-label" for="outfit_select">Costume</label>
-                                                <select id="outfit_select" class="form-select mb-2" name="outfit" id="">
-                                                    <option value="none">Aucun</option>
+                                                <select id="outfit_select" class="form-select mb-2" name="outfit">
+                                                    <option value="<?php echo ($outfit_result['COUNT(name)']) ? $outfit_result['name'] : "none"?>"><?php echo ($outfit_result['COUNT(name)']) ? $outfit_result['name'] : "Aucun"?></option>
+                                                    <?php echo ($outfit_result['COUNT(name)']) ? '<option value="none">Aucun</option>' : '' ;
+                                                    foreach ($all_outfit as $outfit) : ?>
+                                                        <option value="<?php echo $outfit['name']?>"><?php echo $outfit['name']?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
-                                            </div>
-                                            
+                                            </div>          
+                                        
                                         </div>
                                         <div class="modal-footer" style="border:none">
-                                            <button id="profile_avatar_delete_modal" type="button" data-bs-dismiss="modal" onclick="delete_avatar()">Oui</button>
-                                            <button type="button" id="profile_avatar_delete_modal" data-bs-dismiss="modal">Non, annuler</button>
+                                            <input type="hidden" name="id" value="<?php echo $user_id?>">
+                                            <button id="profile_avatar_delete_modal" data-bs-dismiss="modal" type="submit">Modifier</button>
+                                            <button type="button" id="profile_avatar_delete_modal" data-bs-dismiss="modal">Annuler</button>
                                         </div>
+                                    </form> 
                                     </div>
                                 </div>
                             </div>
 
                             <!-- informations about avatar changement -->
-                            <p id="avatar_info">Seuls les photos au format jpg, jpeg et png faisant moins de 10Mo sont acceptés</p>
+                            <p id="avatar_info">Personnalisez votre avatar pour qu'il soit à votre goût !</p>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,42 @@
+/* Colors root*/
+:root {
+  --white-1: #ffffff;
+  --white-2: #f9f9f9;
+  --white-3: #f2f3f4;
+  --white-4: #ecedee;
+  --red: #e32828;
+  --grey-1: #3c434b;
+  --grey-2: #282a2d;
+  --black: #000000;
+  --footer: #101114;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 1.1em;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+#qr_page,
+#recap_page {
+  text-align: center;
+
+  height: 1200px;
+  word-break: break-all;
+  padding: 50px;
+}
+
+#qr_page p,
+#recap_page p {
+  display: inline-block;
+  width: 100%;
+}
+
+h2 {
+  font-size: 2.5em;
+}

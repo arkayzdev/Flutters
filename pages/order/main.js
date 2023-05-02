@@ -70,9 +70,10 @@ function select_ticket(val, price) {
 function redirect_payment(session_id) {
   let quantity = document.getElementById("select_ticket_value").value;
 
-  console.log(quantity);
-  console.log(session_id);
-
   window.location.href =
     "stripe_send?id_session=" + session_id + "&quantity=" + quantity;
+}
+
+function download_ticket(order_id) {
+  window.location.href = "order_pdf/generate_pdf.php?order_id=" + order_id;
 }

@@ -147,7 +147,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
                         } ?>
                 </select>
             </td>
-            <td><input class="form-control" name="price" type="number"></td>
+            <td><input class="form-control" name="price" type="number" min="0" step="0.01"></td>
             <td>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createModal">
                     Confirmer

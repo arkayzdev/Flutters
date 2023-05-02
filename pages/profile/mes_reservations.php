@@ -17,10 +17,6 @@
         exit;
     }
 
-    // logs
-    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
-    $log_type = 3; $log_page = 'https://flutters.ovh/pages/profile/mes_reservations';
-    include($_SERVER['DOCUMENT_ROOT']."/log.php");
 
  
 
@@ -39,6 +35,7 @@
   <!-- Import css -->
   <link href="profile.css?rs=<?= time() ?>" rel="stylesheet">
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  
 </head>
 
 <body>
@@ -172,7 +169,7 @@
 
     
 
-                ?>
+            ?>
 
                 <!-- Tickets -->
                 <div class="profile_right_side_div d-block d-sm-flex flex-row-reverse r_background"
@@ -189,31 +186,32 @@
                         echo '<p><strong>Date de réservation: </strong>' . strftime("%d %B %G", strtotime($r_order_purchase_date)) . '</p>';
                         echo '<p><strong>Nombre de billets: </strong>' . $r_no_ticket . ' billet(s)</p>';
                         echo '<p><strong>Prix total: </strong>' . number_format($r_final_price,2) . '€ TTC</p>';
-                        echo '<p><strong>Numéro de commande:</strong> #' . $r_order_id . '</p>';
+                        echo '<p style="word-break:break-all;padding-right:2em;"><strong>Numéro de commande:</strong> #' . str_replace('cs_test_','',$r_order_id) . '</p>';
                         echo '<p><strong>Salle: </strong>' . $r_room_name . '</p>';
                         
                         ?>
                         
                         <!-- PDF --> 
-                        <form action="billet_pdf.php" method="POST">
-                        <!-- actual pwd -->
-                            <?php 
-                            echo '<input type=\'text\' name=\'r_order_id\' value="' . $r_order_id  . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_order_purchase_date\' value="' . $r_order_purchase_date  . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_final_price\' value="' . $r_final_price  . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_no_ticket\' value="' . $r_no_ticket  . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_seance_date\' value="' . $r_seance_date  . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_language\' value="' . $r_language  . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_start_time\' value="' . $r_start_time   . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_title\' value="' . $r_title   . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_duration\' value="' . $r_duration   . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_poster_image\' value="' . $r_poster_image  . '" class="d-none">';
-                            echo '<input type=\'text\' name=\'r_room_name\' value="' . $r_room_name  . '" class="d-none">';
-                            ?>
-                            <!-- lastname -->
-                            <!-- update_button -->
-                            <button id="billet_pdf" type='submit' value="Exporter les informations utilisateurs">Télécharger</button>
-                        </form>
+                        <div class="d-flex">
+                            <button style="border:none;" id="billet_pdf" onclick="download_order_pdf('<?php echo $r_order_id?>')">Télécharger</button>                        
+                            <!-- Button trigger modal -->
+                            <button class="d-block d-lg-none ms-2"type="button" data-bs-toggle="modal" data-bs-target="#show_qr_code" style="border:none;width:2.5em; font-size:1em;" id="billet_pdf"><i class="uil uil-qrcode-scan"></i></button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="show_qr_code" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content" style="background-color:white;">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $r_title?></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body d-flex justify-content-center" style="paddding:0;" >
+                                    <img src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&choe=UTF-8&chl=https://Flutters.ovh/pages/order/order_pdf/control_ticket.php?id=<?php echo $r_order_id?>" title="CONTROL TICKET" />
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <?php }} else { ?>

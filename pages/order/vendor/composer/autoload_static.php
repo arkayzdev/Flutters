@@ -7,6 +7,12 @@ namespace Composer\Autoload;
 class ComposerStaticInit32c2c0efb5905de7ff5879edb39fcda6
 {
     public static $prefixLengthsPsr4 = array (
+        'm' => 
+        array (
+            'mikehaertl\\wkhtmlto\\' => 20,
+            'mikehaertl\\tmp\\' => 15,
+            'mikehaertl\\shellcommand\\' => 24,
+        ),
         'S' => 
         array (
             'Stripe\\' => 7,
@@ -14,6 +20,18 @@ class ComposerStaticInit32c2c0efb5905de7ff5879edb39fcda6
     );
 
     public static $prefixDirsPsr4 = array (
+        'mikehaertl\\wkhtmlto\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mikehaertl/phpwkhtmltopdf/src',
+        ),
+        'mikehaertl\\tmp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mikehaertl/php-tmpfile/src',
+        ),
+        'mikehaertl\\shellcommand\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mikehaertl/php-shellcommand/src',
+        ),
         'Stripe\\' => 
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',

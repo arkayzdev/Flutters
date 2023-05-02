@@ -17,7 +17,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <small class="mb-2 form-text" id="poster-image-inline">Format : JPEG/PNG/GIF - 2 Mo max</small>
                         <div class="d-flex flex-column mb-3 btn btn-dark " style="width:60%">
                             <label class="form-label text-white m-1" for="customFile1">Changer image</label>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image" value="<?php echo $id_movie['poster_image']?>" required>
+                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image" value="<?php echo $id_movie['poster_image']?>">
                         </div>
                     
                     </div>
@@ -106,9 +106,9 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                     $req = $bdd->query($q);
                     $results = $req->fetchAll(PDO::FETCH_ASSOC);?>
 
-                    <option value="<?php echo $results[0]['name']?>"><?php echo $results[0]['name']?></option>
+                    <option value="<?php echo $results['0']['name']?>"><?php echo $results['0']['name']?></option>
                     <?php 
-                    $q = 'SELECT * FROM LANGUAGE ORDER BY name ASC'; // Existing Actors
+                    $q = 'SELECT * FROM LANGUAGE ORDER BY name ASC'; 
                     $req = $bdd->query($q);
                     $languages = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -138,7 +138,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
 
                             $id = $_GET['id'];
 
-                            $q ='SELECT * FROM ACTOR ORDER BY first_name ASC'; // Existing Actors
+                            $q ='SELECT * FROM ACTOR ORDER BY first_name ASC'; 
                             $req = $bdd->query($q);
                             $actors = $req->fetchAll(PDO::FETCH_ASSOC);
                             $all_actors = [];
@@ -194,7 +194,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
 
                             $id = $_GET['id'];
 
-                            $q ='SELECT * FROM DIRECTOR ORDER BY first_name ASC'; // Existing Actors
+                            $q ='SELECT * FROM DIRECTOR ORDER BY first_name ASC'; 
                             $req = $bdd->query($q);
                             $directors= $req->fetchAll(PDO::FETCH_ASSOC);
                             $all_directors = [];
@@ -247,7 +247,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                             Confirmer
                     </button>
                     <button type="button" class="btn" style="background-color: #c6c6c6;">
-                        <a class="text-light" href="actors">Annuler</a> 
+                        <a class="text-light" href="movies">Annuler</a> 
                     </button>
                 </div>
             </div>
@@ -285,7 +285,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <small class="mb-2 form-text" id="poster-image-inline">Format JPEG/PNG/GIF- 2 Mo max</small>
                         <div class="d-flex flex-column mb-3 btn btn-dark " style="width:60%">
                             <label class="form-label text-white m-1" for="customFile1">Choisir image</label>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image" required>
+                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image">
                         </div>
                     
                     </div>
@@ -340,7 +340,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                 <select class="form-select mb-2" name="language">
                     <option value="">Choisir une langue</option>
                     <?php 
-                        $q ='SELECT * FROM LANGUAGE ORDER BY name ASC'; // Existing Actors
+                        $q ='SELECT * FROM LANGUAGE ORDER BY name ASC'; 
                         $req = $bdd->query($q);
                         $languages = $req->fetchAll(PDO::FETCH_ASSOC);
                         
@@ -357,7 +357,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <select class="form-select mb-2" id="actor-select" onchange="addActor()">
                             <option id="actor-selected">Choisir un acteur</option>
                             <?php 
-                                $q ='SELECT * FROM ACTOR ORDER BY first_name ASC'; // Existing Actors
+                                $q ='SELECT * FROM ACTOR ORDER BY first_name ASC'; 
                                 $req = $bdd->query($q);
                                 $actors = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -374,7 +374,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <select onchange="addDirector()"class="form-select mb-2" id="director-select">
                             <option value="" id="director-selected">Choisir un réalisateur</option>
                             <?php 
-                                $q ='SELECT * FROM DIRECTOR ORDER BY first_name ASC'; // Existing Actors
+                                $q ='SELECT * FROM DIRECTOR ORDER BY first_name ASC'; 
                                 $req = $bdd->query($q);
                                 $directors = $req->fetchAll(PDO::FETCH_ASSOC);
                                 
@@ -482,7 +482,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                 </a>
             </button>
 
-            <button type="button" class="btn btn-light ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteModal(<?php echo $id_actor['id_actor']?>)">
+            <button type="button" class="btn btn-light ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="deleteModal(<?php echo $id_movie['id_movie']?>)">
                 <i class="uil uil-trash-alt"></i>
             </button>
         </td>

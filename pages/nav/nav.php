@@ -136,14 +136,25 @@
     list-style: none;
     }
 
-    #nav_profile img {
+    #profile-avatar {
+        position: relative;
+    }
+
+    #profile_avatar {
+        margin-right: 3em;
+    }
+
+    #profile_avatar img{
     width: 3em;
     height: 3em;
     object-fit: cover;
     border-radius: 40px;
-
-    position: relative;
+    position: absolute;
     top: -0.3em;
+    }
+    
+    .profile_avatar_nav {
+        position: absolute;
     }
 
     .dropdown-item {
@@ -238,19 +249,16 @@
         }
 
         // Get every informations of the user
-        $q = 'SELECT avatar FROM USERS WHERE email = :email';
+        $q = 'SELECT avatar, id_client FROM USERS WHERE email = :email';
         $req = $bdd->prepare($q);
         $reponse = $req->execute([
         'email' => htmlspecialchars($_SESSION['email']),
         ]);
-        $result= $req -> fetch();
+        $result= $req -> fetch(PDO::FETCH_ASSOC);
+        $avatar = $result['avatar'];
+        $user_id = $result['id_client'];
 
-        if($result['avatar']=='' || !isset($result['avatar'])){
-            $avatar = 'default_avatar.png';
-        } else {
-            $avatar = $result['avatar'];
-
-        }
+       
     }
 
 
@@ -276,20 +284,31 @@
             </form>
 
         <!-- nav_profile -->
-        <?php 
-        if (!isset($_SESSION['email'])){
-            echo '
+        <?php  if (!isset($_SESSION['email'])) : ?>
                 <ul class="d-flex ps-0 me-4" id="nav_profile">
                     <a id="nav_login_sign_up" id="sign_up_button" href="/pages/login/sign_in/sign_in.php">Se connecter</a>
                     <a id="nav_login_sign_in" href="/pages/login/sign_up/sign_up.php">Inscription</a>
                 </ul>  
-            ';
-        } elseif (isset($_SESSION['email']) && $_SESSION['user_type']=="Normal"){
-                echo '
+        <?php elseif (isset($_SESSION['email']) && $_SESSION['user_type']=="Normal") : 
+                $q = "SELECT src, name FROM COMPONENT c
+                INNER JOIN WEARS w on c.id_component = w.id_component
+                INNER JOIN USERS U on w.id_client = U.id_client
+                WHERE U.id_client = $user_id";
+                $req = $bdd->query($q);
+                $results = $req->fetchAll(PDO::FETCH_ASSOC); ?>
                 <ul class="ps-0 me-4 ms-4" id="nav_profile">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img id="profile_avatar" src="/pages/profile/users_avatars/' . $avatar . '">
+                            <div>
+                                <div id="profile_avatar">
+                                    <img class="profile_avatar_nav" src="<?php echo $avatar?> ">
+                                    <?php if($results) : 
+                                        foreach($results as $component) : ?>
+                                            <img class="profile_avatar_nav"src="<?php echo $component['src']?>" alt="">
+                                        <?php endforeach;
+                                    endif; ?>
+                                </div>  
+                            </div>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="/pages/profile/profile.php">Profil</a></li>
@@ -299,13 +318,29 @@
                         </ul>
                     </li>
                 </ul>
-            ';
-        } elseif(isset($_SESSION['email']) && $_SESSION['user_type']=="Admin"){
-            echo '
+        <?php elseif(isset($_SESSION['email']) && $_SESSION['user_type']=="Admin") : 
+            $q = "SELECT src, name FROM COMPONENT c
+                INNER JOIN WEARS w on c.id_component = w.id_component
+                INNER JOIN USERS U on w.id_client = U.id_client
+                WHERE U.id_client = $user_id";
+                $req = $bdd->query($q);
+                $results = $req->fetchAll(PDO::FETCH_ASSOC); ?>
+            
             <ul class="ps-0 me-4 ms-4" id="nav_profile">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img id="profile_avatar" src="/pages/profile/users_avatars/' . $avatar . '">
+                        <div>
+                            <div id="profile_avatar">
+                                <img class="profile_avatar_nav" src="<?php echo $avatar?> ">
+                                <?php if($results) : 
+                                    foreach($results as $component) : ?>
+                                        <img class="profile_avatar_nav"src="<?php echo $component['src']?>" alt="">
+                                    <?php endforeach;
+                                endif; ?>
+                            </div>  
+                        </div>
+                      
+                    
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/pages/profile/profile.php">Profil</a></li>
@@ -316,9 +351,8 @@
                     </ul>
                 </li>
             </ul>
-        ';
-        };
-        ?>   
+        <?php endif;?>
+  
 
         <!-- Button trigger modal -->
         <button type="button" id="nav_modal_burger" class="d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

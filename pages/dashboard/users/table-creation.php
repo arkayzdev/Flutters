@@ -23,9 +23,9 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
                             </select>
                         </td>
                         <?php
-                        echo '<td><input class="update-input form-control" name="first_name" value="' . htmlspecialchars($id_client['first_name']) . '"></td>';
-                        echo '<td><input class="update-input form-control" name="last_name" value="'. htmlspecialchars($id_client['last_name']). '"></td>';
-                        echo '<td><input class="update-input form-control" name="email" value="'. htmlspecialchars($id_client['email']). '"></td>'; ?>
+                        echo '<td><input class="update-input form-control" name="first_name" value="' . htmlspecialchars($id_client['first_name']) . '" required></td>';
+                        echo '<td><input class="update-input form-control" name="last_name" value="'. htmlspecialchars($id_client['last_name']). '" required></td>';
+                        echo '<td><input class="update-input form-control" type="email" name="email" value="'. htmlspecialchars($id_client['email']). '" required></td>'; ?>
                         <td >
                             <?php echo '<input type="hidden" name="id" value="' . htmlspecialchars($id_client['id_client']) . '">'; ?>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#alterModal">
@@ -62,10 +62,10 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
     <tr>
         <form method="POST" action="user-create" enctype="multipart/form-data">
-            <td><input class="update-input form-control" name="first_name"></td>
-            <td><input class="update-input form-control" name="last_name"></td>
-            <td><input class="update-input form-control" name="email"></td>
-            <td><input class="update-input form-control" type="password" name="password"></td>
+            <td><input class="update-input form-control" name="first_name" required></td>
+            <td><input class="update-input form-control" name="last_name" required></td>
+            <td><input class="update-input form-control" name="email" type="email" required></td>
+            <td><input class="update-input form-control" type="password" name="password" required></td>
             <td>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createModal">
                 Confirmer

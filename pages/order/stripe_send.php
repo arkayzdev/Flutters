@@ -61,6 +61,12 @@ $session = \Stripe\Checkout\Session::create([
     'cancel_url' => 'https://Flutters.ovh/pages/order/session_order.php?id=' . $id_session . '&id_movie=' . $id_movie,
 ]);
 
+  // logs
+	// type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated 8-LogOut 9-FailedToSignUp 10-AccountCreated  
+	// 11-StripePaymentSent 12-StripePaymentSuccessfull 13-DownloadPDF | $page = actual url
+  $log_type=11; $email=$_SESSION['email']; $log_page = 'HH';
+  include($_SERVER['DOCUMENT_ROOT']."/log.php");
+
 ?>
 
     <script src="https://js.stripe.com/v3/"></script>

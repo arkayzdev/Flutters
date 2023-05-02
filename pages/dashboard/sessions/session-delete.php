@@ -3,29 +3,33 @@ include '../../connect_db.php';
 
 if (isset($_GET['id']) && $_GET['type'] == 'delete') {
     $id = $_GET['id'];
-    $q = "SELECT poster_image FROM MOVIE WHERE id_movie = $id";
-    $req = $bdd->query($q);
-    $result = $req->fetch(PDO::FETCH_ASSOC);
-    $file_src = $result['poster_image'];
-    unlink($file_src);
+    
 
-    $q = "DELETE FROM IS_TO WHERE id_movie= $id";
+    $q = "SET FOREIGN_KEY_CHECKS=0;";
     $req = $bdd->prepare($q);
     $req->execute();
 
-    $q = "DELETE FROM PLAYED WHERE id_movie= $id";
+    $q = "DELETE FROM TAKE_PLACE WHERE id_session= $id";
     $req = $bdd->prepare($q);
     $req->execute();
 
-    $q = "DELETE FROM REALIZED WHERE id_movie= $id";
+    $q = "DELETE FROM PAYMENT WHERE id_session= $id";
     $req = $bdd->prepare($q);
     $req->execute();
 
-    $q = "DELETE FROM IN_LANGUAGE WHERE id_movie= $id";
+    $q = "DELETE FROM ORDERS WHERE order_id IN (SELECT order_id FROM TICKET WHERE id_session = $id)";
     $req = $bdd->prepare($q);
     $req->execute();
 
-    $q = "DELETE FROM MOVIE WHERE id_movie= $id";
+    $q = "DELETE FROM TICKET WHERE id_session= $id";
+    $req = $bdd->prepare($q);
+    $req->execute();
+
+    $q = "DELETE FROM SESSION WHERE id_session= $id";
+    $req = $bdd->prepare($q);
+    $req->execute();
+
+    $q = "SET FOREIGN_KEY_CHECKS=1;";
     $req = $bdd->prepare($q);
     $req->execute();
 }
