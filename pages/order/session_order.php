@@ -111,7 +111,6 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
         <!-- tickets -->
         <div id="ticket" class="d-flex flex-column align-items-center">
-
             <!-- select_ticket quantity -->
             <div id="select_ticket">
                 <button disabled id="select_ticket_minus" onclick="select_ticket('minus', '<?php echo $session_price ?>')" ><i class="uil uil-minus-circle"></i></button>

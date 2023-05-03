@@ -323,7 +323,7 @@ hr {
 
 .hero-news__item:first-child {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(img/homepage/frere.jpg);
+    url(img/homepage/Pierre.jpg);
   background-size: 120%;
   transition: 1s;
 }
@@ -335,7 +335,7 @@ hr {
 
 .hero-news__item:nth-child(2) {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(img/homepage/mario.jpg);
+    url(img/homepage/burton.jpg);
   background-size: 137%;
   transition: 1s;
 }
@@ -347,7 +347,7 @@ hr {
 
 .hero-news__item:nth-child(3) {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)),
-    url(img/homepage/dead.jpg);
+    url(img/homepage/Dirty.jpg);
 
   background-size: 135%;
   transition: 1s;

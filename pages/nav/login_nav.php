@@ -126,9 +126,10 @@
         <a class="d-none d-lg-block" href="/"><img class="nav_logo ms-4" style="width:10em;" src="/pages/nav/img/header-logo.svg"></a>
         <!-- nav list -->
         <ul class="d-flex" id="nav_link">
-            <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
-            <li class="nav-item"><a class="nav-link" href="/">Films</a></li>
-            <li class="nav-item"><a class="nav-link" href="/">À propos</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pages/films/films">Films</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pages/events/events.php">Evènements</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pages/about/img/index.php">À propos</a></li>
         </ul>
     </div>
     <div class="d-flex">
@@ -145,8 +146,9 @@
                         <button type="button" id="nav_modal_btn" data-bs-dismiss="modal" aria-label="Close"><img src="/pages/nav/img/white_cross.svg"></button>
                         <ul class="d-flex flex-column align-items-center" id="nav_link_modal">
                             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/">Films</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/">À propos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/films/films">Films</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/events/events.php">Evènements</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/about/img/index.php">À propos</a></li>
                             <?php 
                                 if (!isset($_SESSION['email'])){
                                     echo '

@@ -51,6 +51,7 @@ include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
     $order_ = $req -> fetchAll(PDO::FETCH_ASSOC);
 
 
+
 // logs
 // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated 8-LogOut 9-FailedToSignUp 10-AccountCreated  
 // 11-StripePaymentSent 12-StripePaymentSuccessfull 13-DownloadPDF | $page = actual url

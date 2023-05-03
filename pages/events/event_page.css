@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+/* Colors root*/
+:root {
+  --white-1: #ffffff;
+  --white-2: #f9f9f9;
+  --white-3: #f2f3f4;
+  --white-4: #ecedee;
+  --red: #e32828;
+  --grey-1: #3c434b;
+  --grey-2: #282a2d;
+  --black: #000000;
+  --footer: #101114;
+}
+
+#event_page {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+  padding: 0;
+}
+p {
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+}
+
+#event_page main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ----- event_presentation ----- */
+#event_presentation {
+  width: 100%;
+  padding: 9em 0 5em 0;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  color: white;
+}
+
+#event_presentation_firstdiv {
+  width: 80%;
+}
+
+#event_presentation_firstdiv > div {
+  width: 50%;
+}
+
+#event_presentation_firstdiv p {
+  padding-bottom: 1em;
+}
+
+#event_presentation img {
+  width: 22em;
+}
+
+#event_presentation div h2 {
+  font-size: 62px;
+  font-weight: 900;
+}
+
+#event_presentation a {
+  background-color: red;
+  color: white;
+  width: 12em;
+  height: 2.5em;
+}
+#event_presentation a:hover {
+  background-color: var(--red);
+  opacity: 0.95;
+  transition: 0.5s;
+}
+
+#event_presentation i {
+  font-style: normal;
+}
+
+.r_background {
+  object-fit: cover;
+  background-position: 50% 20% !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% !important;
+}
+
+/* Order ticket*/
+#ticket {
+  width: 100%;
+}
+#select_ticket_total {
+  font-size: 1.8em !important;
+  font-weight: 600;
+  color: White !important;
+  border: none;
+
+  border-radius: 10px;
+
+  background-color: lightgrey;
+
+  padding: 0.5em 1em 0.5em 1em;
+  margin-top: 1em;
+}
+
+#ticket > p {
+  color: grey;
+  font-size: 0.9em;
+}
+
+/* Order select tickets quantity*/
+#select_ticket {
+  display: flex;
+  align-items: center;
+}
+
+#select_ticket_minus {
+  background-color: inherit;
+  border: none;
+  font-size: 3em;
+  color: lightgrey;
+}
+
+#select_ticket_plus {
+  background-color: inherit;
+  border: none;
+  font-size: 3em;
+  color: var(--red);
+}
+
+#select_ticket_quantity {
+  font-size: 2em;
+  opacity: 0.5;
+  padding: 0 1.5em 0 1.5em;
+}
+
+/* -- QUERIES -- */
+@media screen and (max-width: 1024px) {
+  /* Section : event_presentation */
+  #event_presentation {
+    justify-content: space-between;
+  }
+  #event_presentation_firstdiv {
+    width: 90%;
+    margin: auto;
+  }
+  #event_presentation_firstdiv :nth-child(2) > p {
+    width: 100%;
+    padding-top: 0.5em;
+    margin-bottom: 0.2em !important;
+    padding-bottom: 0.5em;
+    font-size: 0.9em;
+  }
+  #event_presentation_firstdiv :nth-child(2) > h2 {
+    font-size: 3em;
+  }
+  #event_presentation_firstdiv :nth-child(2) > a {
+    margin-top: 0.8em;
+  }
+}
+@media screen and (max-width: 770px) {
+  /* Section : event_presentation */
+  #event_presentation_firstdiv {
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+  }
+  #event_presentation_firstdiv > div {
+    width: 80%;
+  }
+  #event_presentation_firstdiv > :nth-child(2) {
+    width: 95%;
+    padding-top: 3em;
+    padding-left: 6em;
+  }
+  .r_background {
+    background-size: 220% !important;
+    background-position: 50% 15% !important;
+  }
+}
+@media screen and (max-width: 430px) {
+  /* Section : event_presentation */
+  #event_presentation_firstdiv > div {
+    width: 100%;
+  }
+  #event_presentation_firstdiv > :first-child > img {
+    width: 75%;
+  }
+  #event_presentation_firstdiv > :nth-child(2) {
+    width: 100%;
+    padding-top: 3em;
+    padding-left: 1em;
+  }
+  #event_presentation_firstdiv :nth-child(2) > h2 {
+    font-size: 2em;
+  }
+  #event_presentation_firstdiv :nth-child(2) > p {
+    font-size: 0.9em;
+  }
+  .r_background {
+    background-size: 400% !important;
+    background-position: 50% 30% !important;
+  }
+}

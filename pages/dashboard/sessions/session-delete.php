@@ -4,7 +4,6 @@ include '../../connect_db.php';
 if (isset($_GET['id']) && $_GET['type'] == 'delete') {
     $id = $_GET['id'];
     
-
     $q = "SET FOREIGN_KEY_CHECKS=0;";
     $req = $bdd->prepare($q);
     $req->execute();

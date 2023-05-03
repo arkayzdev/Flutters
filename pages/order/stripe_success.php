@@ -40,7 +40,6 @@ if(!isset($_SESSION['email'])){
     ]);
     $session_ = $req -> fetch(PDO::FETCH_ASSOC);
 
-
     // PAYMENT
     $q = 'SELECT * FROM PAYMENT WHERE id = :id';
     $req = $bdd->prepare($q);
@@ -96,13 +95,12 @@ if(!isset($_SESSION['email'])){
 
         // Create Ticket(s)
         $price_unit = ($payment_['price']/100)/$session_['price'];
-
-            for($i=0;$i!=$price_unit;$i++){
-                $q = 'INSERT INTO TICKET(qr_code, id_session, order_id) VALUES (:qr_code, :id_session, :order_id)';
+ 
+            for($i=0;$i<$price_unit;$i++){
+                $q = 'INSERT INTO TICKET( id_session, order_id) VALUES (:id_session, :order_id)';
                 $req = $bdd->prepare($q);
                 $reponse = $req->execute([
                     'order_id' => $payment_['id'],
-                    'qr_code' => 'NULL',
                     'id_session' => $session_['id_session'],
                 ]);
             }
@@ -163,7 +161,7 @@ if(!isset($_SESSION['email'])){
             <p><strong>Film :</strong> <?php echo $movie_['title']?></p>
             <p><strong>Séance: </strong><?php echo ucwords(strftime('%A %e %B %Y',strtotime($session_['seance_date'])))?> à <?php echo $session_['start_time']?> en salle <?php echo $room_['room_name']?> </p>
 
-            <p><strong>Nombre de billets :</strong> <?php echo $nb_ticket_['count(id_ticket)']?> billets</p>
+            <p><strong>Nombre de billet(s) :</strong> <?php echo $nb_ticket_['count(id_ticket)']?> billet(s)</p>
             <p><strong>Prix total :</strong> <?php echo number_format($payment_['price']/100, 2)?> € (<?php echo number_format($session_['price'],2) ?>€ par billet)</p>
         </div>
         <button onclick="download_ticket('<?php echo $_GET['session_id']?>')">Télécharger vos billets</button>

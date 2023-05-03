@@ -272,6 +272,7 @@
         <ul class="d-flex" id="nav_link">
             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
             <li class="nav-item"><a class="nav-link" href="/pages/films/films">Films</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/events/events.php">Evènements</a></li>
             <li class="nav-item"><a class="nav-link" href="/pages/about/img/index.php">À propos</a></li>
         </ul>
     </div>
@@ -301,7 +302,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div>
                                 <div id="profile_avatar">
-                                    <img class="profile_avatar_nav" src="<?php echo $avatar?> ">
+                                    <img class="profile_avatar_nav" src="<?php echo htmlspecialchars($avatar)?> ">
                                     <?php if($results) : 
                                         foreach($results as $component) : ?>
                                             <img class="profile_avatar_nav"src="<?php echo $component['src']?>" alt="">
@@ -331,7 +332,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <div>
                             <div id="profile_avatar">
-                                <img class="profile_avatar_nav" src="<?php echo $avatar?> ">
+                                <img class="profile_avatar_nav" src="<?php echo htmlspecialchars($avatar)?> ">
                                 <?php if($results) : 
                                     foreach($results as $component) : ?>
                                         <img class="profile_avatar_nav"src="<?php echo $component['src']?>" alt="">
@@ -368,6 +369,7 @@
                         <ul class="d-flex flex-column align-items-center" id="nav_link_modal">
                             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
                             <li class="nav-item"><a class="nav-link" href="/pages/films/films">Films</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pages/events/events.php">Evènements</a></li>
                             <li class="nav-item"><a class="nav-link" href="/pages/about/img/index.php">À propos</a></li>
                             <?php 
                                 if (!isset($_SESSION['email'])){

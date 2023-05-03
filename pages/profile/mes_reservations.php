@@ -105,120 +105,272 @@
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column">
 
             <?php
-                $q = 'SELECT * FROM ORDERS WHERE id_client = (SELECT id_client FROM USERS WHERE email = :email) ORDER BY order_id ASC';
+            /////////////////////////////////////////////
+                $q = 'SELECT * FROM ORDERS INNER JOIN TICKET ON ORDERS.order_id = TICKET.order_id INNER JOIN SESSION ON SESSION.id_session = TICKET.id_session WHERE id_client = (SELECT id_client FROM USERS WHERE email = :email) ORDER BY seance_date DESC;';
                 $req = $bdd->prepare($q);
                 $reponse = $req->execute([
                   'email' => htmlspecialchars($_SESSION['email']),
                 ]);
-                $result = $req -> fetchAll(PDO::FETCH_ASSOC);
+                $tableau1 = $req -> fetchAll(PDO::FETCH_ASSOC);
+
+                $q = 'SELECT * FROM ORDERS INNER JOIN TICKET ON ORDERS.order_id = TICKET.order_id INNER JOIN EVENT ON EVENT.id_event = TICKET.id_event WHERE id_client = (SELECT id_client FROM USERS WHERE email = :email) ORDER BY date_event DESC;';
+                $req = $bdd->prepare($q);
+                $reponse = $req->execute([
+                  'email' => htmlspecialchars($_SESSION['email']),
+                ]);
+                $tableau2 = $req -> fetchAll(PDO::FETCH_ASSOC);
+
+                // Fusionner les tableaux
+                $result = array();
+                $i = 0;
+                foreach($tableau1 as $res) { 
+                    $result[$i] = $res;
+                    $i = $i+1;
+                }
+                foreach($tableau2 as $res) { 
+                    $result[$i] = array( 'order_id' => $res['order_id'], 'seance_date' => $res['date_event']);
+                    $i = $i+1;
+                }
+                
+
+                function removeDuplicateOrders($orders) {
+                    $orderIds = array();
+                    foreach ($orders as $key => $order) {
+                      $orderId = $order['order_id'];
+                      if (in_array($orderId, $orderIds)) {
+                        unset($orders[$key]);
+                      } else {
+                        $orderIds[] = $orderId;
+                      }
+                    }
+                    return array_values($orders);
+                  }
+                  $result = removeDuplicateOrders($result);
+
+                // Fonction de comparaison pour trier par ordre alphabétique du nom
+                function compareByName($a, $b) {
+                    return strcmp($b['seance_date'], $a['seance_date']);
+                }
+
+                usort($result, 'compareByName');
+
+
+                /////////////////////////////////////////////
+
+
+
+                
                 
                 if(isset($result[0])){
                     foreach($result as $id_client) { 
+                        // Verify if its an event or a movie session
+                        $q = 'SELECT id_session,id_event FROM TICKET WHERE order_id = :order_id LIMIT 1';
+                        $req = $bdd->prepare($q);
+                        $reponse = $req->execute([
+                          'order_id' => htmlspecialchars($id_client['order_id']),
+                        ]);
+                        $result = $req -> fetch(PDO::FETCH_ASSOC);
+
+                        if(isset($result['id_session'])){
+
+                            $r_order_id = $id_client['order_id'];
+                            $r_order_purchase_date = $id_client['purchase_date'];
+                            $r_final_price = $id_client['final_price'];
+
+                            // Verify if email exist in the db
+                            $query = $bdd->prepare('SELECT COUNT(id_ticket) FROM TICKET WHERE order_id = :order_id');
+                            $query->execute([
+                                'order_id' => htmlspecialchars($r_order_id),
+                            ]);
+                            $r_no_ticket = $query->fetch(PDO::FETCH_COLUMN);
+
+                            $query = $bdd->prepare('SELECT seance_date FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                            $query->execute([
+                                'order_id' => htmlspecialchars($r_order_id),
+                            ]);
+                            $r_seance_date = $query->fetch(PDO::FETCH_COLUMN);
+
+                            $query = $bdd->prepare('SELECT start_time FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                            $query->execute([
+                                'order_id' => htmlspecialchars($r_order_id),
+                            ]);
+                            $r_start_time = $query->fetch(PDO::FETCH_COLUMN);
+
+                            $query = $bdd->prepare('SELECT language FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
+                            $query->execute([
+                                'order_id' => htmlspecialchars($r_order_id),
+                            ]);
+                            $r_language = $query->fetch(PDO::FETCH_COLUMN);
+
+                            $query = $bdd->prepare('SELECT title FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                            $query->execute([
+                                'order_id' => htmlspecialchars($r_order_id),
+                            ]);
+                            $r_title = $query->fetch(PDO::FETCH_COLUMN);
+
+                            $query = $bdd->prepare('SELECT duration FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                            $query->execute([
+                                'order_id' => htmlspecialchars($r_order_id),
+                            ]);
+                            $r_duration = $query->fetch(PDO::FETCH_COLUMN);
+
+                            $query = $bdd->prepare('SELECT poster_image FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                            $query->execute([
+                                'order_id' => htmlspecialchars($r_order_id),
+                            ]);
+                            $r_poster_image = $query->fetch(PDO::FETCH_COLUMN);
+
+                            $query = $bdd->prepare('SELECT room_name FROM ROOM WHERE id_room = (SELECT id_room FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
+                            $query->execute([
+                                'order_id' => htmlspecialchars($r_order_id),
+                            ]);
+                            $r_room_name = $query->fetch(PDO::FETCH_COLUMN);
+                            ?>
+
+                            <!-- Tickets -->
+                            <div class="profile_right_side_div d-block d-sm-flex flex-row-reverse r_background"
+                                    <?php
+                                        if(date("Y-m-d",strtotime($r_seance_date))<date('Y-m-d')){
+                                            echo 'style="filter: grayscale(100%);background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/movies/' . $r_poster_image . '); ">';
+                                            echo '<div class="col-sm-4">';
+                                            echo '<img style="filter: grayscale(100%);"  class="r_poster" src="../dashboard/movies/' . $r_poster_image . '">';
+                                        } else {
+                                            echo 'style="background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/movies/' . $r_poster_image . '); ">';
+                                            echo '<div class="col-sm-4">';
+                                            echo '<img class="r_poster" src="../dashboard/movies/' . $r_poster_image . '">';
+                                        }
+                                    ?>
+                                </div>
+                                <div class="col-sm-8">
+                                    <?php 
+                                    echo '<p><strong>Film : </strong>' . strftime("%d %B %G", strtotime($r_seance_date)) . ' à ' .  date("G:i", strtotime($r_start_time)) . ' (' . $r_duration . ' min) en ' . $r_language . '</p>';
+                                    echo '<h3>' . $r_title . '</h3>';
+                                    echo '<p><strong>Date de réservation: </strong>' . strftime("%d %B %G", strtotime($r_order_purchase_date)) . '</p>';
+                                    echo '<p><strong>Nombre de billets: </strong>' . $r_no_ticket . ' billet(s)</p>';
+                                    echo '<p><strong>Prix total: </strong>' . number_format($r_final_price,2) . '€ TTC</p>';
+                                    echo '<p style="word-break:break-all;padding-right:2em;"><strong>Numéro de commande:</strong> #' . str_replace('cs_test_','',$r_order_id) . '</p>';
+                                    echo '<p><strong>Salle: </strong>' . $r_room_name . '</p>';
+                                    
+                                    ?>
+                                    
+                                    <!-- PDF --> 
+                                    <div class="d-flex">
+                                        <button style="border:none;" id="billet_pdf" onclick="download_order_pdf('<?php echo $r_order_id?>')">Télécharger</button>                        
+                                        <!-- Button trigger modal -->
+                                        <button class="d-block d-lg-none ms-2"type="button" data-bs-toggle="modal" data-bs-target="#show_qr_code_<?php echo $r_order_id?>" style="border:none;width:2.5em; font-size:1em;" id="billet_pdf"><i class="uil uil-qrcode-scan"></i></button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="show_qr_code_<?php echo $r_order_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content" style="background-color:white;">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $r_title?></h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body d-flex justify-content-center" style="paddding:0;" >
+                                                <img src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&choe=UTF-8&chl=https://Flutters.ovh/pages/order/order_pdf/control_ticket.php?id=<?php echo $r_order_id?>" title="CONTROL TICKET" />
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php } elseif(isset($result['id_event'])){
                         $r_order_id = $id_client['order_id'];
-                        $r_order_purchase_date = $id_client['purchase_date'];
-                        $r_final_price = $id_client['final_price'];
 
-                        // Verify if email exist in the db
-                        $query = $bdd->prepare('SELECT COUNT(id_ticket) FROM TICKET WHERE order_id = :order_id');
-                        $query->execute([
-                            'order_id' => htmlspecialchars($r_order_id),
+                        $q = 'SELECT * FROM ORDERS WHERE order_id = :order_id';
+                        $req = $bdd->prepare($q);
+                        $reponse = $req->execute([
+                          'order_id' => htmlspecialchars($r_order_id),
                         ]);
-                        $r_no_ticket = $query->fetch(PDO::FETCH_COLUMN);
+                        $result = $req -> fetch(PDO::FETCH_ASSOC);
+                        $r_order_purchase_date = $result['purchase_date'];
+                        $r_final_price = $result['final_price']; ; 
 
-                        $query = $bdd->prepare('SELECT seance_date FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
-                        $query->execute([
-                            'order_id' => htmlspecialchars($r_order_id),
+                        $q = 'SELECT count(id_ticket) FROM TICKET WHERE order_id = :order_id';
+                        $req = $bdd->prepare($q);
+                        $reponse = $req->execute([
+                          'order_id' => htmlspecialchars($r_order_id),
                         ]);
-                        $r_seance_date = $query->fetch(PDO::FETCH_COLUMN);
-
-                        $query = $bdd->prepare('SELECT start_time FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
-                        $query->execute([
-                            'order_id' => htmlspecialchars($r_order_id),
-                        ]);
-                        $r_start_time = $query->fetch(PDO::FETCH_COLUMN);
-
-                        $query = $bdd->prepare('SELECT language FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1)');
-                        $query->execute([
-                            'order_id' => htmlspecialchars($r_order_id),
-                        ]);
-                        $r_language = $query->fetch(PDO::FETCH_COLUMN);
-
-                        $query = $bdd->prepare('SELECT title FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
-                        $query->execute([
-                            'order_id' => htmlspecialchars($r_order_id),
-                        ]);
-                        $r_title = $query->fetch(PDO::FETCH_COLUMN);
-
-                        $query = $bdd->prepare('SELECT duration FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
-                        $query->execute([
-                            'order_id' => htmlspecialchars($r_order_id),
-                        ]);
-                        $r_duration = $query->fetch(PDO::FETCH_COLUMN);
-
-                        $query = $bdd->prepare('SELECT poster_image FROM MOVIE WHERE id_movie = (SELECT id_movie FROM TAKE_PLACE WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
-                        $query->execute([
-                            'order_id' => htmlspecialchars($r_order_id),
-                        ]);
-                        $r_poster_image = $query->fetch(PDO::FETCH_COLUMN);
-
-                        $query = $bdd->prepare('SELECT room_name FROM ROOM WHERE id_room = (SELECT id_room FROM SESSION WHERE id_session = (SELECT id_session FROM TICKET WHERE order_id = :order_id LIMIT 1))');
-                        $query->execute([
-                            'order_id' => htmlspecialchars($r_order_id),
-                        ]);
-                        $r_room_name = $query->fetch(PDO::FETCH_COLUMN);
-
-    
-
-            ?>
-
-                <!-- Tickets -->
-                <div class="profile_right_side_div d-block d-sm-flex flex-row-reverse r_background"
-                style="background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url('<?php echo '../dashboard/movies/' . $r_poster_image ?>'); ">
-                    <div class="col-sm-4">
-                        <?php
-                        echo '<img class="r_poster" src="../dashboard/movies/' . $r_poster_image . '">';
-                        ?>
-                    </div>
-                    <div class="col-sm-8">
-                        <?php 
-                        echo '<p>' . strftime("%d %B %G", strtotime($r_seance_date)) . ' à ' .  date("G:i", strtotime($r_start_time)) . ' (' . $r_duration . ' min) en ' . $r_language . '</p>';
-                        echo '<h3>' . $r_title . '</h3>';
-                        echo '<p><strong>Date de réservation: </strong>' . strftime("%d %B %G", strtotime($r_order_purchase_date)) . '</p>';
-                        echo '<p><strong>Nombre de billets: </strong>' . $r_no_ticket . ' billet(s)</p>';
-                        echo '<p><strong>Prix total: </strong>' . number_format($r_final_price,2) . '€ TTC</p>';
-                        echo '<p style="word-break:break-all;padding-right:2em;"><strong>Numéro de commande:</strong> #' . str_replace('cs_test_','',$r_order_id) . '</p>';
-                        echo '<p><strong>Salle: </strong>' . $r_room_name . '</p>';
+                        $result = $req -> fetch(PDO::FETCH_ASSOC);
+                        $r_no_ticket = $result['count(id_ticket)'];       
                         
-                        ?>
-                        
-                        <!-- PDF --> 
-                        <div class="d-flex">
-                            <button style="border:none;" id="billet_pdf" onclick="download_order_pdf('<?php echo $r_order_id?>')">Télécharger</button>                        
-                            <!-- Button trigger modal -->
-                            <button class="d-block d-lg-none ms-2"type="button" data-bs-toggle="modal" data-bs-target="#show_qr_code" style="border:none;width:2.5em; font-size:1em;" id="billet_pdf"><i class="uil uil-qrcode-scan"></i></button>
+                        $q = 'SELECT id_event FROM TICKET WHERE order_id = :order_id LIMIT 1';
+                        $req = $bdd->prepare($q);
+                        $reponse = $req->execute([
+                          'order_id' => htmlspecialchars($r_order_id),
+                        ]);
+                        $result = $req -> fetch(PDO::FETCH_ASSOC);
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="show_qr_code" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content" style="background-color:white;">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $r_title?></h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        $q = 'SELECT * FROM EVENT WHERE id_event = :id_event';
+                        $req = $bdd->prepare($q);
+                        $reponse = $req->execute([
+                          'id_event' => htmlspecialchars($result['id_event']),
+                        ]);
+                        $result = $req -> fetch(PDO::FETCH_ASSOC);
+
+                        $r_poster_image = $result['image'];
+                        $r_seance_date = $result['date_event'];
+                        $r_start_time = $result['start_time'];
+                        $r_title = $result['name'];
+
+                        ?>
+                        <!-- Tickets -->
+                        <div class="profile_right_side_div d-block d-sm-flex flex-row-reverse r_background"
+                                    <?php
+                                    if(date("Y-m-d",strtotime($r_seance_date))<=date('Y-m-d')){
+                                        echo 'style="filter: grayscale(100%);background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/events-img/' . $r_poster_image . '); ">';
+                                        echo '<div class="col-sm-4">';
+                                        echo '<img style="filter: grayscale(100%);" class="r_poster" src="../dashboard/events/events-img/' . $r_poster_image . '">';
+                                    } else {
+                                        echo 'style="background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/events-img/' . $r_poster_image . '); ">';
+                                        echo '<div class="col-sm-4">';
+                                        echo '<img class="r_poster" src="../dashboard/events/events-img/' . $r_poster_image . '">';
+                                    }
+                                    ?>
                                 </div>
-                                <div class="modal-body d-flex justify-content-center" style="paddding:0;" >
-                                    <img src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&choe=UTF-8&chl=https://Flutters.ovh/pages/order/order_pdf/control_ticket.php?id=<?php echo $r_order_id?>" title="CONTROL TICKET" />
-                                </div>
+                                <div class="col-sm-8">
+                                    <?php 
+                                    echo '<p><strong>Evènement</strong> : ' . strftime("%d %B %G", strtotime($r_seance_date)) . ' à ' .  date("G:i", strtotime($r_start_time)) . '</p>';
+                                    echo '<h3>' . $r_title . '</h3>';
+                                    echo '<p><strong>Date de réservation: </strong>' . strftime("%d %B %G", strtotime($r_order_purchase_date)) . '</p>';
+                                    echo '<p><strong>Nombre de billets: </strong>' . $r_no_ticket . ' billet(s)</p>';
+                                    echo '<p><strong>Prix total: </strong>' . number_format($r_final_price,2) . '€ TTC</p>';
+                                    echo '<p style="word-break:break-all;padding-right:2em;"><strong>Numéro de commande:</strong> #' . str_replace('cs_test_','',$r_order_id) . '</p>';                                    
+                                    ?>
+                                    
+                                    <!-- PDF --> 
+                                    <div class="d-flex">
+                                        <button style="border:none;" id="billet_pdf" onclick="download_event_pdf('<?php echo $r_order_id?>')">Télécharger</button>                        
+                                        <!-- Button trigger modal -->
+                                        <button class="d-block d-lg-none ms-2"type="button" data-bs-toggle="modal" data-bs-target="#show_qr_code_<?php echo $r_order_id?>" style="border:none;width:2.5em; font-size:1em;" id="billet_pdf"><i class="uil uil-qrcode-scan"></i></button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="show_qr_code_<?php echo $r_order_id?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content" style="background-color:white;">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $r_title?></h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body d-flex justify-content-center" style="paddding:0;" >
+                                                <img src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&choe=UTF-8&chl=https://Flutters.ovh/pages/events/events_pdf/control_ticket.php?id=<?php echo $r_order_id?>" title="CONTROL TICKET" />
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                    <?php
+                    }
+                    }
+                        } else { ?>
+                            <div id="no_command">
+                                <p> Vous n'avez aucunes commandes </p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <?php }} else { ?>
-                    <div id="no_command">
-                        <p> Vous n'avez aucunes commandes </p>
-                    </div>
-                <?php } ?>
+                        <?php } ?>
 
             </div>
 

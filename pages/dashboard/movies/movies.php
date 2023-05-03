@@ -69,7 +69,7 @@
                   <th scope="col" width="6%">Trailer </th>
                   <th scope="col" width="8%">Date </th>
                   <th scope="col" width="8%">Durée</th>
-                  <th scope="col" width="12%">Types</th>
+                  <th scope="col" width="14%">Types</th>
                   <th scope="col" width="12%">Directeurs</th>
                   <th scope="col" width="12%">Acteurs</th>
 

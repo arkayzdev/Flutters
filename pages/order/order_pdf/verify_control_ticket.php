@@ -24,7 +24,7 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
 
     if($state == 1){
-        $msg = "Le ticket a déjà été validé";
+        $msg = "TICKET ALREADY VALIDATED";
         header('location: control_ticket.php?id=' . $_GET['order_id'] . '&msg=' . $msg);
         exit;
     }elseif($pwd == hash('sha512', $_GET['code'])){
@@ -36,11 +36,11 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
 
 
-        $msg = "Le ticket a été utilisé.";
+        $msg = "TICKET SUCCESSFULLY VALIDATED";
         header('location: control_ticket.php?id=' . $_GET['order_id'] . '&msg=' . $msg);
         exit;
     } else {
-        $msg = "ERREUR : Mot de passe administrateur incorrect.";
+        $msg = "ERROR : SUPER ADMIN CODE ERRONED";
         header('location: control_ticket.php?id=' . $_GET['order_id'] . '&msg=' . $msg);
         exit;
     }

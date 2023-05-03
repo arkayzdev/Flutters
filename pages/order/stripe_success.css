@@ -21,7 +21,6 @@ body {
 
   object-fit: cover;
   background-position: 50% 20% !important;
-  background-repeat: no-repeat !important;
   background-size: 100% !important;
 }
 p {

@@ -27,6 +27,13 @@ if (isset($_POST['firstname']) && !empty($_POST['firstname'])) {
 
 // Account creation requirement
 
+// Check REGEX
+if (!preg_match("/^[a-zA-Zéèà]+$/", $_POST["first_name"]) || !preg_match("/^[a-zA-Zéèà-]+$/", $_POST["last_name"])){
+    $msg = 'Les caractères spéciaux ne sont pas autorisés !';
+    header('location:sign_up.php?message=' . $msg);
+    exit;
+}
+
 // Check if the captcha has been complete
 if ($_POST['captcha_check'] != 1) {
 
@@ -143,6 +150,7 @@ $message = '
 $mail = new PHPMailer(true);
 
 $mail->isSMTP();
+$mail->CharSet = "UTF-8";
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
 $mail->Username = 'flutters.noreply@gmail.com';

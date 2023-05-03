@@ -6,8 +6,10 @@ if (isset($_GET['id']) && $_GET['type'] == 'delete') {
     $q = "SELECT poster_image FROM MOVIE WHERE id_movie = $id";
     $req = $bdd->query($q);
     $result = $req->fetch(PDO::FETCH_ASSOC);
-    $file_src = $result['poster_image'];
-    unlink($file_src);
+    if ($result) {
+        $file_src = $result['poster_image'];
+        unlink($file_src);
+    }
 
     $q = "SELECT id_session FROM TAKE_PLACE WHERE id_movie= $id";
     $req = $bdd->prepare($q);
@@ -20,7 +22,6 @@ if (isset($_GET['id']) && $_GET['type'] == 'delete') {
         $req->execute([$session['id_session']]);
     }
     
-
     $q = "DELETE FROM TAKE_PLACE WHERE id_movie= $id";
     $req = $bdd->prepare($q);
     $req->execute();

@@ -97,8 +97,8 @@ if ($_GET['hash'] != hash('sha512', $result)) {
                         <input class="mt-0" type='submit' value="Enregistrer">
                     </div>
                     <?php
-                    echo '<input style="display:none" name="email" value=' . $_GET['email'] . '>';
-                    echo '<input style="display:none" name="hash" value=' . $_GET['hash'] . '>';
+                    echo '<input style="display:none" name="email" value=' . htmlspecialchars($_GET['email']) . '>';
+                    echo '<input style="display:none" name="hash" value=' . htmlspecialchars($_GET['hash']) . '>';
                     ?>
                 </form>
                 <p style="text-align:center; margin-top:2vh">Aller à la page de <a id="to-sign" href="../sign_in.php">connexion</a></p>

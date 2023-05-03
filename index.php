@@ -203,7 +203,7 @@
         <div class="hero-news hero-news1">
           <article class="hero-news__item">
             <h3 class="hero-news__item-title">
-              Ces deux stars de cinéma pourraient être... frères !
+            Pierre-William Glenn, « opérateur Nouvelle Vague »
               <br />
               <a class="redirection" href="https://Flutters.ovh"><mark>Lire la suite</mark></a>
             </h3>
@@ -211,16 +211,16 @@
           </article>
           <article class="hero-news__item">
             <h3 class="hero-news__item-title">
-              "Je n'irai pas voir Mario !" : pourquoi le Luigi de 1993 boycotte
-              le film d'animation
+            Une plongée immersive dans l'univers de Tim Burton
+            <br>
+
               <a class="redirection" href="https://Flutters.ovh"><mark>Lire la suite</mark></a>
             </h3>
             <div class="hero-news__item-date">5 AVril, 2023</div>
           </article>
           <article class="hero-news__item">
             <h3 class="hero-news__item-title">
-              Deadpool 3 : on le pensait mort mais ce personnage sera de retour
-              !
+            Wissam Charaf : « Je raconte dans mes films ce que je ne peux pas faire en news, en télévision »
               <br />
               <a class="redirection" href="https://Flutters.ovh"><mark>Lire la suite</mark></a>
             </h3>

@@ -20,7 +20,7 @@
         </a>
       </li>
       <li class="nav-item hover-effect">
-        <a class="nav-link" href="../movies/movies">
+        <a class="nav-link" href="../events/events">
           <i class="uil uil-archway"></i>
           Evénements
         </a>

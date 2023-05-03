@@ -69,7 +69,6 @@ $response = $req->execute([
 
 $types = $_POST['types'];
 $id_types = [];
-var_dump($types);
 
 $q = "DELETE FROM IS_TO WHERE id_movie = $id_movie";
 $req = $bdd->prepare($q);
