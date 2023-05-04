@@ -55,3 +55,25 @@
 2023-05-04 - 12:45:06 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
 2023-05-04 - 12:45:21 - a@a.com - Logging attempt FAILED <br>
 2023-05-04 - 12:47:16 - franck.zhuang@hotmail.fr - Logging attempt SUCCESS <br>
+2023-05-04 - 12:52:25 - test@test.com - Failed to sign up <br>
+2023-05-04 - 12:57:31 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 13:00:39 - franck.zhuang@hotmail.fr - Logging out <br>
+2023-05-04 - 13:00:48 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 13:03:15 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 13:33:37 - huangfrederic2002@gmail.com - Stripe Payment Sent <br>
+2023-05-04 - 13:33:40 - huangfrederic2002@gmail.com - Stripe Payment Sent <br>
+2023-05-04 - 13:33:44 - huangfrederic2002@gmail.com - Stripe Payment Sent <br>
+2023-05-04 - 16:09:58 - jtodorov@myges.fr - Failed to sign up <br>
+2023-05-04 - 16:11:17 - jtodorov@myges.fr - Account created successfully <br>
+2023-05-04 - 16:11:17 - jtodorov@myges.fr - Failed to sign up <br>
+2023-05-04 - 16:12:42 - todorovj@icloud.com - Account created successfully <br>
+2023-05-04 - 16:12:58 - todorovj@icloud.com - Logging attempt SUCCESS <br>
+2023-05-04 - 16:13:44 - todorovj@icloud.com - user info modified <br>
+2023-05-04 - 16:14:03 - todorovj@icloud.com - Stripe Payment Sent <br>
+2023-05-04 - 16:15:05 - todorovj@icloud.com - Stripe Payment Sent <br>
+2023-05-04 - 16:16:12 - todorovj@icloud.com - Stripe Payment Sent <br>
+2023-05-04 - 16:17:10 - todorovj@icloud.com - user info modified <br>
+2023-05-04 - 17:45:19 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 17:51:23 - franck.zhuang@hotmail.com - Failed to sign up <br>
+2023-05-04 - 17:51:47 - franck.zhuang@hotmail.com - Failed to sign up <br>
+2023-05-04 - 17:52:48 - franck.zhuang@hotmail.com - Failed to sign up <br>

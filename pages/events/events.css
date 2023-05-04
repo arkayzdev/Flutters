@@ -56,8 +56,8 @@
 }
 
 #event_img {
-  width: 12em;
-  height: 17em;
+  width: 13em;
+  height: 19em;
 }
 
 .event_a {
@@ -65,7 +65,7 @@
   width: 15em;
   height: 18em;
   text-decoration: none;
-  margin: 0 0.5em 2.5em 0.5em;
+  margin: 0 0.5em 5em 0.5em;
 
   text-align: center;
 }

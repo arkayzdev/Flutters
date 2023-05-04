@@ -19,3 +19,10 @@
 2023-05-04 - 12:35:31 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
 2023-05-04 - 12:41:30 - huangfrederic2002@gmail.com - Logging out <br>
 2023-05-04 - 12:45:06 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 12:57:31 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 13:00:48 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 13:03:15 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 13:33:37 - huangfrederic2002@gmail.com - Stripe Payment Sent <br>
+2023-05-04 - 13:33:40 - huangfrederic2002@gmail.com - Stripe Payment Sent <br>
+2023-05-04 - 13:33:44 - huangfrederic2002@gmail.com - Stripe Payment Sent <br>
+2023-05-04 - 17:45:19 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>

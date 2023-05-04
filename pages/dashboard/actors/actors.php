@@ -27,7 +27,7 @@ include '../admin-check.php'; ?>
     <input id="search-actor-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche par prénom ou nom" aria-label="Chercher" onchange="searchActors()">
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Déconnexion</a>
+        <a class="nav-link px-3" href="../deconnexion.php">Déconnexion</a>
       </div>
     </div>
   </header> 

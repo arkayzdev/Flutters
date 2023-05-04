@@ -85,17 +85,17 @@
     <main>
 
     <!-- Section : event_presentation -->
-    <section id="event_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/events/events-img/<?php echo htmlspecialchars($image) ?>');">
+    <section id="event_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/events/<?php echo htmlspecialchars($image) ?>');">
         <div id="event_presentation_firstdiv" class="d-flex ">
             <!-- poster  -->
             <div class=" d-flex justify-content-center align-items-center" >
-                <img src="../dashboard/events/events-img/<?php echo htmlspecialchars($image) ?>">
+                <img src="../dashboard/events/<?php echo htmlspecialchars($image) ?>">
             </div>
             <!-- informations -->
             <div>
                 <p class="fs-5 fw-bold mb-0" style="color:darkgrey;"><?php echo strtoupper(strftime("%A %d %B %G", strtotime($date_event)))?> à <?php echo htmlspecialchars($start_time)?></p>
                 <h2><?php echo htmlspecialchars($name)?></h2>
-                <p style="width:95%;"><?php echo htmlspecialchars($description)?></p>
+                <p style="width:95%; word-break:normal"><?php echo htmlspecialchars($description)?></p>
                 <p style="width:95%;"><strong>Entrées :</strong>  <?php echo htmlspecialchars($capacity)?> places</p>
                 <p style="width:95%;"><strong>Prix à l'unité</strong> :  <?php echo htmlspecialchars($price)?>€</p>
             </div>

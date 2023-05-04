@@ -27,7 +27,7 @@ include '../admin-check.php';?>
     <input id="search-event-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche par nom ou date" aria-label="Chercher" onchange="searchEvents()"" >
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
-        <a class="nav-link px-3" href="#">Déconnexion</a>
+        <a class="nav-link px-3" href="../deconnexion.php">Déconnexion</a>
       </div>
     </div>
   </header>

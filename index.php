@@ -38,7 +38,7 @@
         Morbi bibendum ante lorem, ac fringilla purus feugiat eu. <br>
         Vivamus quis felis et metus fringilla sodales. <br>
         Suspendisse sit amet dolor arcu. </p>
-      <a class="hover-effect" href="">Voir les films</a>
+      <a class="hover-effect" href="https://flutters.ovh/pages/films/films">Voir les films</a>
     </div>
 
   </div>
@@ -50,9 +50,30 @@
       <br />
     </section>
     <section>
-    <?php include('affiche.php'); ?>
-
-       
+    <div id="a_l_affiche">
+        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=98">
+          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683143325.jpg">
+            <p class="titlesaff"> Avatar</p> 
+        </a>
+        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=96">                
+          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683143002.jpg">
+            <p class="titlesaff"> Ca- Chapitre 2</p> 
+        </a>
+        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=105">                
+          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683144023.png">
+            <p class="titlesaff"> Super Mario Bross</p> 
+        </a>
+        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=153">                
+          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683150795.jpg">
+            <p class="titlesaff"> Soldat d'hiver</p> 
+        </a>
+        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=115">                
+          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683145051.jpg">
+            <p class="titlesaff"> SpiderMan - New Gen</p> 
+        </a>
+        
+    </div>
+    
     </section>
   <!-- homepage-event_carousel -->
   <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">

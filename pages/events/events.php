@@ -1,4 +1,6 @@
 <?php session_start();
+setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
+
     // $_SESSION['email']='huangfrederic2002@gmail.com';
     // $_SESSION['email']='franck.zhuang@htm.fr';
     // $_SESSION['user_type']='Normal';

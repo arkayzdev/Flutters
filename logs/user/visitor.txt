@@ -32,3 +32,11 @@
 2023-05-04 - 12:44:59 - huangfrederic2002@gmail.com - Logging attempt FAILED <br>
 2023-05-04 - 12:45:01 -  - Logging attempt FAILED <br>
 2023-05-04 - 12:45:21 - a@a.com - Logging attempt FAILED <br>
+2023-05-04 - 12:52:25 - test@test.com - Failed to sign up <br>
+2023-05-04 - 16:09:58 - jtodorov@myges.fr - Failed to sign up <br>
+2023-05-04 - 16:11:17 - jtodorov@myges.fr - Account created successfully <br>
+2023-05-04 - 16:11:17 - jtodorov@myges.fr - Failed to sign up <br>
+2023-05-04 - 16:12:42 - todorovj@icloud.com - Account created successfully <br>
+2023-05-04 - 17:51:23 - franck.zhuang@hotmail.com - Failed to sign up <br>
+2023-05-04 - 17:51:47 - franck.zhuang@hotmail.com - Failed to sign up <br>
+2023-05-04 - 17:52:48 - franck.zhuang@hotmail.com - Failed to sign up <br>
