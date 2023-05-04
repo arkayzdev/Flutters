@@ -41,8 +41,15 @@ if (isset($_GET['id']) && $_GET['type'] == 'delete') {
     $q = "DELETE FROM IN_LANGUAGE WHERE id_movie= $id";
     $req = $bdd->prepare($q);
     $req->execute();
+    
+    $q = "DELETE FROM REVIEW WHERE id_movie= $id";
+    $req = $bdd->prepare($q);
+    $req->execute();
+    
 
     $q = "DELETE FROM MOVIE WHERE id_movie= $id";
     $req = $bdd->prepare($q);
     $req->execute();
+
+   
 }

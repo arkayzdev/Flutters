@@ -34,7 +34,7 @@
         <p style="margin-bottom:30px;"><strong><?php echo str_replace('cs_test_','',$order_id);?></strong></p>
 
         <p>Commande effectuée par</p>
-        <p style="margin-bottom:50px;"><strong><?php echo $email?> le <?php echo $purchase_date?></strong></p>
+        <p style="margin-bottom:50px;"><strong><?php echo htmlspecialchars($email)?> le <?php echo $purchase_date?></strong></p>
         <img style="margin-bottom: 30px" src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&choe=UTF-8&chl=https://Flutters.ovh/pages/order/order_pdf/control_ticket.php?id=<?php echo $order_id?>" title="CONTROL TICKET" />
 
         <p><strong><?php echo $nb_billet?> billet(s)</strong></p>

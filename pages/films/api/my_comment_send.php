@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
 
 $email = $_GET['email'];
@@ -18,4 +20,16 @@ $reponse = $req->execute([
     'publication_date' => date('Y-m-d')
 ]);
 $result = $req -> fetchAll(PDO::FETCH_ASSOC);
+
+    $q=' SELECT * FROM MOVIE WHERE id_movie = :id_movie
+    ';
+    $req = $bdd->prepare($q);
+    $reponse = $req->execute([
+        'id_movie' => $id,
+    ]);
+    $result = $req -> fetch(PDO::FETCH_ASSOC);
+     // logs
+    // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
+    $log_type = 15; $log_page = $result['title'];
+    include($_SERVER['DOCUMENT_ROOT']."/log.php");
 

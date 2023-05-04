@@ -31,12 +31,12 @@
           Séances
         </a>
       </li>
-      <li class="nav-item hover-effect">
+      <!-- <li class="nav-item hover-effect">
         <a class="nav-link" href="../others/others">
           <i class="uil uil-layers"></i>
           Pages
         </a>
-      </li>
+      </li> -->
     </ul>
 
     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -67,6 +67,13 @@
           Newsletter
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link hover-effect" href="#">
+        <i class="uil uil-vertical-align-bottom"></i>
+          Logs
+        </a>
+      </li>
+      
     </ul>
   </div>
 </nav>

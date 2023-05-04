@@ -25,11 +25,11 @@ $result_events = $req->fetchAll(PDO::FETCH_ASSOC);
                     <div class="ml-2 d-flex flex-column">
                         <div class="mb-3">
                             <label class="form-label" for="event-input">Nom de l'événement</label>
-                            <input class="form-control" name="name" placeholder="Evenement" id="event-input" style="width:50%" value="<?php echo $id_event['name']?>" required>
+                            <input class="form-control" name="name" placeholder="Evenement" id="event-input" style="width:50%" value="<?php echo htmlspecialchars($id_event['name'], ENT_QUOTES)?>" required>
                         </div>  
 
                         <label class="form-label" for="description-input">Description</label>
-                        <textarea class="form-control mb-3" name="description" rows="6" aria-describedby="descriptionHelp" id="description-input" style="width:50%"><?php echo ($id_event['description'])?></textarea>
+                        <textarea class="form-control mb-3" name="description" rows="6" aria-describedby="descriptionHelp" id="description-input" style="width:50%"><?php echo htmlspecialchars($id_event['description'], ENT_QUOTES)?></textarea>
 
                         <div class="mb-3">
                             <label class="form-label" for="date-input">Date</label>
@@ -43,12 +43,12 @@ $result_events = $req->fetchAll(PDO::FETCH_ASSOC);
 
                         <div class="mb-3">
                             <label class="form-label" for="capacity-input">Capacité</label>
-                            <input class="form-control" name="capacity" placeholder="1" id="capacity-input" style="width:50%" type="number" min="1" step="1" value="<?php echo $id_event['capacity']?>" required>
+                            <input class="form-control" name="capacity" placeholder="1" id="capacity-input" style="width:50%" type="number" min="1" step="1" value="<?php echo htmlspecialchars($id_event['capacity'], ENT_QUOTES)?>" required>
                         </div>  
                         
                         <div class="mb-4">
                             <label class="form-label" for="price-input">Prix</label>
-                            <input class="form-control" name="price" placeholder="0" id="price-input" style="width:50%" type="number" min="0" step="0.01" value="<?php echo number_format($id_event['price'],2)?>" required>
+                            <input class="form-control" name="price" placeholder="0" id="price-input" style="width:50%" type="number" min="0" step="0.01" value="<?php echo htmlspecialchars(number_format($id_event['price'],2), ENT_QUOTES)?>" required>
                         </div>  
                     </div>
                  
@@ -136,8 +136,6 @@ $result_events = $req->fetchAll(PDO::FETCH_ASSOC);
                         </div>  
                     </div>
                 </div>
-
-            
             
             <div>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createModal">
@@ -207,7 +205,7 @@ $result_events = $req->fetchAll(PDO::FETCH_ASSOC);
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Êtes-vous sûr de vouloir supprimer ce film ?
+                Êtes-vous sûr de vouloir supprimer cet événement?
             </div>
             <div class="modal-footer">
                 <button id="delete-event-btn" type="button" class="btn btn-danger">Supprimer</button>

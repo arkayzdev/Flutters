@@ -1,4 +1,5 @@
-<?php include '../../connect_db.php'; ?>
+<?php include '../../connect_db.php';
+include '../admin-check.php';?>
 <!doctype html>
 <html lang="en">
 
@@ -23,7 +24,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <button id="trigger-search-directors" class="btn btn-dark" onclick="searchDirectors()"><i class="uil uil-search"></i></button>
-    <input id="search-director-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" >
+    <input id="search-director-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche par prénom ou nom" aria-label="Chercher" onchange="searchDirectors()">
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#">Déconnexion</a>
@@ -35,7 +36,7 @@
     <div class="row">
       
     <?php include '../sidebar.php' ?>
-    <?php 
+    <?php include 'director-delete.php';
     $q = "SELECT COUNT(first_name) FROM DIRECTOR";
     $req = $bdd->query($q);
     $req->execute();
@@ -88,7 +89,7 @@
             </thead>
             <tbody id="display-director">
               
-            <?php include 'director-delete.php';
+            <?php 
             include 'table-creation.php'; ?>
 
             </tbody>

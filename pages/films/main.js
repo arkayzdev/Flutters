@@ -131,6 +131,7 @@ async function my_comment_modify(email, id) {
   );
   let str = await res.text();
   let div = document.getElementById("film_comment_my_content");
+
   div.innerHTML = str;
 }
 

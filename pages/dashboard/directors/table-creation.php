@@ -13,8 +13,8 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <form method="POST" action="director-update" enctype="multipart/form-data">
                         <?php
-                        echo '<td><input class="update-input form-control" name="first_name" value="' . htmlspecialchars($id_director['first_name']) . '" required></td>';
-                        echo '<td><input class="update-input form-control" name="last_name" value="'. htmlspecialchars($id_director['last_name']). '"required></td>';?>
+                        echo '<td><input class="update-input form-control" name="first_name" value="' . htmlspecialchars($id_director['first_name'], ENT_QUOTES) . '" required></td>';
+                        echo '<td><input class="update-input form-control" name="last_name" value="'. htmlspecialchars($id_director['last_name'], ENT_QUOTES). '"required></td>';?>
                         <td>
                             <?php echo '<input type="hidden" name="id" value="' . $id_director['id_director'] . '">'; ?>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#alterModal">
@@ -87,7 +87,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
     <?php foreach($result as $id_director) : ?>
         <tr>
             <?php 
-            echo '<td>' .  htmlspecialchars($id_director['id_director']). '</td>';
+            echo '<td>' . $id_director['id_director'] . '</td>';
             echo '<td>' .  htmlspecialchars($id_director['first_name']) . '</td>';
             echo '<td>' .  htmlspecialchars($id_director['last_name']) . '</td>'; ?>
             <td class="d-flex justify-content-center">

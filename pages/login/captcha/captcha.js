@@ -5,7 +5,7 @@ var file = getElementById("captcha_files").innerHTML;
 
 // Shuffle captcha function
 function shuffle_captcha() {
-  file = Math.floor(Math.random() * 8) + 1;
+  file = Math.floor(Math.random() * 23) + 1;
   console.log(file);
 
   let tab = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -60,10 +60,10 @@ function check() {
     if (
       document.getElementById(j).src ==
       "https://flutters.ovh/pages/login/captcha/Captcha-Library/" +
-      file +
-      "/" +
-      i +
-      ".png"
+        file +
+        "/" +
+        i +
+        ".png"
     ) {
       check += 1;
     }
@@ -71,10 +71,10 @@ function check() {
     console.log(document.getElementById(i).src);
     console.log(
       "https://flutters.ovh/pages/login/captcha/Captcha-Library/" +
-      file +
-      "/" +
-      i +
-      ".png"
+        file +
+        "/" +
+        i +
+        ".png"
     );
   }
   if (check == 9) {

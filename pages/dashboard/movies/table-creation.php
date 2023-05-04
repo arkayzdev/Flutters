@@ -17,7 +17,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                         <small class="mb-2 form-text" id="poster-image-inline">Format : JPEG/PNG/GIF - 2 Mo max</small>
                         <div class="d-flex flex-column mb-3 btn btn-dark " style="width:60%">
                             <label class="form-label text-white m-1" for="customFile1">Changer image</label>
-                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image" value="<?php echo $id_movie['poster_image']?>" required>
+                            <input type="file" accept="image/*" onchange="loadFile(event)" class="form-control d-none" id="customFile1" aria-describedby="poster-image-inline" name="image" value="<?php echo $id_movie['poster_image']?>">
                         </div>
                     
                     </div>

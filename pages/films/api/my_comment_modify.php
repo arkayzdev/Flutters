@@ -22,7 +22,7 @@ echo '
     </div>
     <div></div>
     <div>
-        <input style="display:none;" id="comment_stars_value" type="number" min="1" max="5" value="' . $str_star . '">
+        <input style="display:none;" id="comment_stars_value" type="number" min="1" max="5" value="' . htmlspecialchars($str_star) . '">
 ';
 
         for($i=0;$i<$str_star;$i++){
@@ -35,10 +35,10 @@ echo '
 echo'
     </div>
 
-    <textarea id="comment_stars_description" maxlength="350" rows="6">' . $description . '</textarea>
+    <textarea id="comment_stars_description" maxlength="350" rows="6">' . htmlspecialchars($description) . '</textarea>
     <p>Description limité à 350 caractères</p>
 
 
 
-    <button onclick="my_comment_modify_send(\'' . $email . '\', \'' . $id . '\')" class="btn align-self-end film_modify_button" style="width:7.2em;"> Mettre à jour </button>
+    <button onclick="my_comment_modify_send(\'' . htmlspecialchars($email) . '\', \'' . htmlspecialchars($id) . '\')" class="btn align-self-end film_modify_button" style="width:7.2em;"> Mettre à jour </button>
 ';

@@ -1,4 +1,5 @@
-<?php include '../../connect_db.php'; ?>
+<?php include '../../connect_db.php';
+include '../admin-check.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +23,8 @@
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <button id="trigger-search-movies" class="btn btn-dark" onclick="searchMovies()"><i class="uil uil-search"></i></button>
-    <input id="search-movie-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" >
+    <button id="trigger-search-sessions" class="btn btn-dark" onclick="searchSessions()"><i class="uil uil-search"></i></button>
+    <input id="search-session-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche par date" aria-label="Chercher" onchange="searchSessions()">
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#">Déconnexion</a>
@@ -34,7 +35,7 @@
     <div class="row">
       
     <?php include '../sidebar.php' ?>
-    <?php 
+    <?php include 'session-delete.php';
     $q = "SELECT COUNT(id_session) FROM SESSION";
     $req = $bdd->query($q);
     $req->execute();
@@ -42,6 +43,23 @@
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <h2>Séances (<?php echo $result['COUNT(id_session)'] ?>)</h2>
+
+        <?php if(isset($_GET['alert'])) : ?>
+          <?php if ($_GET['alert'] == "create_success") : ?>
+              <div class="alert alert-success" role="alert">
+              La séance a été créé avec succès.
+              </div>
+          <?php elseif ($_GET['alert'] == "alter_success") : ?>
+              <div class="alert alert-success" role="alert">
+              La séance a été modifié avec succès.
+              </div>
+          <?php else : ?>
+          <div class="alert alert-danger" role="alert">
+              <?php echo $_GET['alert']; ?>
+          </div>
+          <?php endif;?>
+        <?php endif; ?>
+
         <div class="table-responsive">
           <table class="table table-sm">
             <thead>
@@ -70,7 +88,7 @@
                 </tr>
             </thead>
             <tbody id="display-session">
-            <?php include 'session-delete.php';
+            <?php 
             include 'table-creation.php'; ?>
 
             </tbody>

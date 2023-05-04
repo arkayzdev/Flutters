@@ -81,11 +81,13 @@
         </div>
         <!-- pwd -->
         <div class="col mt-3">
-          <p class="mb-1">Mot de passe (6-12 caractères)</p>
+          <p class="mb-0">Mot de passe</p>
           <div class="login-input">
             <img class="ms-1 me-1 pb-2" src="../img/pwd-login.png">
             <input class="col-10 mt-1 ms-2" type='password' name='password' placeholder='Mot de passe' required>
           </div>
+          <p style="color:grey; font-size:0.7em;padding:0;margin:0;">(Minimum 8 caractères avec au moins 1 majuscule, 1 minuscule et 1 chiffre)</p>
+
         </div>
         <!-- confirm pwd -->
         <div class="col mt-3">

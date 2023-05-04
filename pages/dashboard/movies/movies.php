@@ -1,11 +1,12 @@
-<?php include '../../connect_db.php'; ?>
+<?php include '../../connect_db.php';
+include '../admin-check.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
  
-  <title>Dashboard | Movies</title>
+  <title>Dashboard | Films</title>
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -23,7 +24,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <button id="trigger-search-movies" class="btn btn-dark" onclick="searchMovies()"><i class="uil uil-search"></i></button>
-    <input id="search-movie-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" >
+    <input id="search-movie-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche par titre de film" aria-label="Chercher" onchange="searchMovies()" >
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#">Déconnexion</a>
@@ -34,7 +35,7 @@
     <div class="row">
       
     <?php include '../sidebar.php' ?>
-    <?php 
+    <?php include 'movie-delete.php';
     $q = "SELECT COUNT(title) FROM MOVIE";
     $req = $bdd->query($q);
     $req->execute();
@@ -85,7 +86,7 @@
                 </tr>
             </thead>
             <tbody id="display-movie">
-            <?php include 'movie-delete.php';
+            <?php 
             include 'table-creation.php'; ?>
 
             </tbody>

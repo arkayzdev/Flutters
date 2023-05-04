@@ -68,7 +68,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body pt-0 pb-0" style="border:none">
-                        <?php echo '<p class="mb-0" style="font-weight:600;">' . $_GET['message'] .'</p>';?>
+                        <?php echo '<p class="mb-0" style="font-weight:600;">' . htmlspecialchars($_GET['message']) .'</p>';?>
                     </div>
                     <div class="modal-footer" style="border:none">
                         <button id="profile_avatar_delete_modal" type="button" data-bs-dismiss="modal">D'accord</button>
@@ -249,7 +249,7 @@
                                     echo '<p><strong>Nombre de billets: </strong>' . $r_no_ticket . ' billet(s)</p>';
                                     echo '<p><strong>Prix total: </strong>' . number_format($r_final_price,2) . '€ TTC</p>';
                                     echo '<p style="word-break:break-all;padding-right:2em;"><strong>Numéro de commande:</strong> #' . str_replace('cs_test_','',$r_order_id) . '</p>';
-                                    echo '<p><strong>Salle: </strong>' . $r_room_name . '</p>';
+                                    echo '<p><strong>Salle: </strong>' . htmlspecialchars($r_room_name) . '</p>';
                                     
                                     ?>
                                     
@@ -264,7 +264,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content" style="background-color:white;">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $r_title?></h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo htmlspecialchars($r_title)?></h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body d-flex justify-content-center" style="paddding:0;" >
@@ -320,13 +320,13 @@
                         <div class="profile_right_side_div d-block d-sm-flex flex-row-reverse r_background"
                                     <?php
                                     if(date("Y-m-d",strtotime($r_seance_date))<=date('Y-m-d')){
-                                        echo 'style="filter: grayscale(100%);background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/events-img/' . $r_poster_image . '); ">';
+                                        echo 'style="filter: grayscale(100%);background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/events-img/' . htmlspecialchars($r_poster_image) . '); ">';
                                         echo '<div class="col-sm-4">';
-                                        echo '<img style="filter: grayscale(100%);" class="r_poster" src="../dashboard/events/events-img/' . $r_poster_image . '">';
+                                        echo '<img style="filter: grayscale(100%);" class="r_poster" src="../dashboard/events/events-img/' . htmlspecialchars($r_poster_image) . '">';
                                     } else {
-                                        echo 'style="background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/events-img/' . $r_poster_image . '); ">';
+                                        echo 'style="background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/events-img/' . htmlspecialchars($r_poster_image) . '); ">';
                                         echo '<div class="col-sm-4">';
-                                        echo '<img class="r_poster" src="../dashboard/events/events-img/' . $r_poster_image . '">';
+                                        echo '<img class="r_poster" src="../dashboard/events/events-img/' . htmlspecialchars($r_poster_image) . '">';
                                     }
                                     ?>
                                 </div>
@@ -351,7 +351,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content" style="background-color:white;">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $r_title?></h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo htmlspecialchars($r_title)?></h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body d-flex justify-content-center" style="paddding:0;" >

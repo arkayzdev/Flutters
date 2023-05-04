@@ -144,7 +144,7 @@ if(!isset($_SESSION['email'])){
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 
-<body style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo $movie_['poster_image'] ?>');">
+<body style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo htmlspecialchars($movie_['poster_image']) ?>');">
     <!-- Include Header -->
     <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); 
     ?>
@@ -152,14 +152,14 @@ if(!isset($_SESSION['email'])){
     <!-- Main content -->
     <main class="d-flex flex-column justify-content-center align-items-center">
         <h1>Merci pour votre commande !</h1>
-        <p>Commande  #<?php echo str_replace("cs_test_", "", $order_['order_id'])?></p>
+        <p>Commande  #<?php echo htmlspecialchars(str_replace("cs_test_", "", $order_['order_id']))?></p>
         <!-- Recap -->
         <div id="recap">
-            <p style="align-self:center; margin-bottom:1em; "><strong>Réservé le <?php echo ucwords(strftime('%A %e %B %Y',strtotime($order_['purchase_date'])))?></strong></p>
+            <p style="align-self:center; margin-bottom:1em; "><strong>Réservé le <?php echo htmlspecialchars(ucwords(strftime('%A %e %B %Y',strtotime($order_['purchase_date']))))?></strong></p>
             <p><strong>Email de facturation :</strong> <?php echo $payment_['email']?></p>
 
             <p><strong>Film :</strong> <?php echo $movie_['title']?></p>
-            <p><strong>Séance: </strong><?php echo ucwords(strftime('%A %e %B %Y',strtotime($session_['seance_date'])))?> à <?php echo $session_['start_time']?> en salle <?php echo $room_['room_name']?> </p>
+            <p><strong>Séance: </strong><?php echo ucwords(strftime('%A %e %B %Y',strtotime($session_['seance_date'])))?> à <?php echo $session_['start_time']?> en salle <?php echo htmlspecialchars($room_['room_name'])?> </p>
 
             <p><strong>Nombre de billet(s) :</strong> <?php echo $nb_ticket_['count(id_ticket)']?> billet(s)</p>
             <p><strong>Prix total :</strong> <?php echo number_format($payment_['price']/100, 2)?> € (<?php echo number_format($session_['price'],2) ?>€ par billet)</p>

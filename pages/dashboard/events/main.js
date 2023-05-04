@@ -7,12 +7,12 @@ var loadFile = function (event) {
     }
 }
 
-async function searchMovies() {
-    const input = document.getElementById('search-movie-input');
+async function searchEvents() {
+    const input = document.getElementById('search-event-input');
     const name = input.value;
-    const res = await fetch("api/search-movie.php?name=" + name);
+    const res = await fetch("api/search-event.php?name=" + name);
     const str = await res.text();
-    const div = document.getElementById('display-movie');
+    const div = document.getElementById('display-event');
     div.innerHTML = str;
 }
 

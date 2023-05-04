@@ -87,13 +87,13 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
         <div class="d-flex justify-content-around align-items-center flex-column">
             <p><strong>Numéro de réservation</strong></p>
-            <p style="color:white; word-break:break-word; text-align:center"><?php echo str_replace('cs_test_','',$order_id);?></p>
+            <p style="color:white; word-break:break-word; text-align:center"><?php echo htmlspecialchars(str_replace('cs_test_','',$order_id));?></p>
         </div>
 
-        <h1 style="text-align:center;"><?php echo $name?></h1>
+        <h1 style="text-align:center;"><?php echo htmlspecialchars($name)?></h1>
 
         <div class="d-flex justify-content-around align-items-center flex-column">
-            <p><strong><?php echo $date_event?></strong></p>
+            <p><strong><?php echo htmlspecialchars($date_event)?></strong></p>
             <p>Début de l'évènement : <?php echo $start_time?></p>
         </div>
         
@@ -101,14 +101,14 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
 
         <input type="password" id="code" required placeholder="Code staff" style="text-align:center" class="form-control w-50">
-        <button class="btn btn-success mb-3" onclick="control_ticket('<?php echo $order_id?>')">Vérifier</button>
+        <button class="btn btn-success mb-3" onclick="control_ticket('<?php echo htmlspecialchars($order_id)?>')">Vérifier</button>
     </div>
 
     <?php
     if(isset($_GET['msg'])){ 
     ?>
         <script>
-     window.addEventListener("load", alert('<?php echo $_GET['msg']?>'))
+     window.addEventListener("load", alert('<?php echo htmlspecialchars($_GET['msg'])?>'))
      </script>
      <?php
     }

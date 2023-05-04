@@ -64,7 +64,7 @@ $response = $req->execute([
     'release_date' => $_POST['release_date'],
     'duration' => trim((int)$_POST['duration']),
     'poster_image' => $destination,
-    'trailer' => trim($_POST['trailer']),
+    'trailer' => trim($_POST['trailer'])
 ]); 
 
 $types = $_POST['types'];

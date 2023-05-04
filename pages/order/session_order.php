@@ -127,8 +127,8 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
     </main>
 
     <!-- poster  -->
-    <div class="col-7 d-flex justify-content-center flex-column align-items-center r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo $movie_poster ?>');">
-        <img src="../dashboard/movies/<?php echo $movie_poster ?>">
+    <div class="col-7 d-flex justify-content-center flex-column align-items-center r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo htmlspecialchars($movie_poster) ?>');">
+        <img src="../dashboard/movies/<?php echo htmlspecialchars($movie_poster) ?>">
         <button disabled onclick="redirect_payment(<?php echo $session_id?>)" id="order_validate_pc">Continuer vers le paiement<i class="uis uis-arrow-circle-right"></i></button>
     </div>
 

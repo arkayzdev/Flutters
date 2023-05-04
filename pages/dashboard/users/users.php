@@ -1,4 +1,6 @@
-<?php include '../../connect_db.php'; ?>
+<?php include '../../connect_db.php';
+include '../admin-check.php'; ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -23,7 +25,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <button id="trigger-search-users" class="btn btn-dark" onclick="searchUsers()"><i class="uil uil-search"></i></button>
-    <input id="search-user-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" >
+    <input id="search-user-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" onchange="searchUsers()">
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#">Déconnexion</a>
@@ -36,7 +38,7 @@
       
     <?php include '../sidebar.php' ?>
 
-    <?php 
+    <?php include 'user-delete.php';
     $q = "SELECT COUNT(first_name) FROM USERS";
     $req = $bdd->query($q);
     $req->execute();
@@ -88,7 +90,7 @@
             </thead>
             <tbody id="display-user">
               
-            <?php include 'user-delete.php';
+            <?php 
             include 'table-creation.php'; ?>
 
             </tbody>

@@ -93,7 +93,7 @@ session_start();
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body pt-0 pb-0" style="border:none">
-                    <?php echo '<p class="mb-0" style="font-weight:600;">' . $_GET['message'] .'</p>';?>
+                    <?php echo '<p class="mb-0" style="font-weight:600;">' . htmlspecialchars($_GET['message']) .'</p>';?>
                 </div>
                 <div class="modal-footer" style="border:none">
                     <button id="profile_avatar_delete_modal" type="button" data-bs-dismiss="modal">D'accord</button>
@@ -148,20 +148,20 @@ session_start();
                                 <div class="changeable">
                                     <label>Prénom</label>
                                     <?php
-                                    echo '<input type="text" name="firstname" placeholder="Remplir ce champs" required value="' . $firstname . '">';
+                                    echo '<input type="text" name="firstname" placeholder="Remplir ce champs" required value="' . htmlspecialchars($firstname) . '">';
                                     ?>
                                 </div>
                                 <!-- lastname -->
                                 <div class="changeable">
                                     <label>Nom</label>
                                     <?php
-                                    echo '<input type="text" name="lastname" placeholder="Remplir ce champs" required value="' . $lastname . '">';
+                                    echo '<input type="text" name="lastname" placeholder="Remplir ce champs" required value="' . htmlspecialchars($lastname) . '">';
                                     ?>                                </div>
                                 <!-- email -->
                                 <div class="changeable">
                                     <label>Email</label>
                                     <?php
-                                    echo '<p>' . $email . '</p>'
+                                    echo '<p>' . htmlspecialchars($email) . '</p>'
                                     ?>
                                 </div>
 
@@ -316,7 +316,7 @@ session_start();
                                         
                                         </div>
                                         <div class="modal-footer" style="border:none">
-                                            <input type="hidden" name="id" value="<?php echo $user_id?>">
+                                            <input type="hidden" name="id" value="<?php echo htmlspecialchars($user_id)?>">
                                             <button id="profile_avatar_delete_modal" data-bs-dismiss="modal" type="submit">Modifier</button>
                                             <button type="button" id="profile_avatar_delete_modal" data-bs-dismiss="modal">Annuler</button>
                                         </div>

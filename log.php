@@ -8,26 +8,23 @@
 	// include($_SERVER['DOCUMENT_ROOT']."/log.php");
 	// $log_type $email $log_page
 
-$email ='';
+if(!isset($_SESSION['email'])){
+	$email = 'visitor';
+}else{
+	$email = $_SESSION['email'];
+}
 
 function writeLog($type, $email, $page)
 {
-	if (!isset($_SESSION['email']) && $type == 3){
-		return;
-	}else if(!isset($_SESSION['email'])){
-		$email = 'visitor';
-	}else{
-		$email = $_SESSION['email'];
-	};
 	// Create txt everyday
-	$log = fopen($_SERVER['DOCUMENT_ROOT']. '/logs/' . date('Y-m-d') . '.txt' , 'a+');
+	$log = fopen($_SERVER['DOCUMENT_ROOT']. '/logs/date/' . date('Y-m-d') . '.txt' , 'a+');
 
 	if($type == 1){
 		$line = date('Y-m-d - H:i:s') . ' - ' . $_POST['email'] . ' - Logging attempt SUCCESS ' . "<br>\n" . '';
 	} elseif($type == 2) { 
 		$line = date('Y-m-d - H:i:s') . ' - ' . $_POST['email'] . ' - Logging attempt FAILED ' . "<br>\n" . '';
 	} elseif($type == 3){
-		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - visited ' . $page ."<br>\n" . '';
+		$line = '';
 	} elseif($type == 4){
 		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - email sent ' . "<br>\n" . '';
 	} elseif($type == 5){
@@ -48,20 +45,24 @@ function writeLog($type, $email, $page)
 		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - Sripe Payment Successfull ' . "<br>\n" . '';
 	} elseif($type == 13){
 		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - Downloaded PDF #' . $page . "<br>\n" . '';
+	} elseif($type == 14){
+		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - Commented ' . $page . "<br>\n" . '';
+	} elseif($type == 15){
+		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - Modified Comment ' . $page . "<br>\n" . '';
 	}
 
 	fputs($log, $line);
 	fclose($log);
 
 	// Create txt for every user
-	$log = fopen($_SERVER['DOCUMENT_ROOT']. '/logs/' . $email . '.txt' , 'a+');
+	$log = fopen($_SERVER['DOCUMENT_ROOT']. '/logs/user/' . $email . '.txt' , 'a+');
 
 	if($type == 1){
 		$line = date('Y-m-d - H:i:s') . ' - ' . $_POST['email'] . ' - Logging attempt SUCCESS ' . "<br>\n" . '';
 	} elseif($type == 2) { 
 		$line = date('Y-m-d - H:i:s') . ' - ' . $_POST['email'] . ' - Logging attempt FAILED ' . "<br>\n" . '';
 	} elseif($type == 3){
-		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - visited ' . $page ."<br>\n" . '';
+		$line = '';
 	} elseif($type == 4){
 		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - email sent ' . "<br>\n" . '';
 	} elseif($type == 5){
@@ -82,6 +83,10 @@ function writeLog($type, $email, $page)
 		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - Sripe Payment Successfull ' . "<br>\n" . '';
 	} elseif($type == 13){
 		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - Downloaded PDF ' . $page . "<br>\n" . '';
+	}elseif($type == 14){
+		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - Commented ' . $page . "<br>\n" . '';
+	} elseif($type == 15){
+		$line = date('Y-m-d - H:i:s') . ' - ' . $email . ' - Modified Comment ' . $page . "<br>\n" . '';
 	}
 
 	fputs($log, $line);

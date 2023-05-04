@@ -28,7 +28,7 @@ if (isset($_POST['firstname']) && !empty($_POST['firstname'])) {
 // Account creation requirement
 
 // Check REGEX
-if (!preg_match("/^[a-zA-Zéèà]+$/", $_POST["first_name"]) || !preg_match("/^[a-zA-Zéèà-]+$/", $_POST["last_name"])){
+if (!preg_match("/^[a-zA-Zéèà]+$/", $_POST["firstname"]) && !preg_match("/^[a-zA-Zéèà-]+$/", $_POST["lastname"])){
     $msg = 'Les caractères spéciaux ne sont pas autorisés !';
     header('location:sign_up.php?message=' . $msg);
     exit;
@@ -61,14 +61,14 @@ if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false) {
 }
 
 // Password requirement met
-if (strlen($_POST['password']) < 6 || strlen($_POST['password']) > 12) {
+if (strlen($_POST["password"]) <= 8 || !preg_match("/[A-Z]/", $_POST["password"]) || !preg_match("/[a-z]/", $_POST["password"]) || !preg_match("/[0-9]/", $_POST["password"])) {
 
     // logs
     // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
     $log_type = 9; $log_page = 'https://flutters.ovh/pages/login/sign_up/sign_up';
     include($_SERVER['DOCUMENT_ROOT']."/log.php");
 
-    $msg = 'Attention ! Mot de passe invalide. Le mot de passe doit être compris entre 6 et 12 caractères !';
+    $msg = 'Attention ! Mot de passe invalide. Le mot de passe doit être au minimum de 8 caractères et contenir au moins 1 majuscule, 1 minuscule et 1 chiffre !';
     header('location:sign_up.php?message=' . $msg);
     exit;
 }

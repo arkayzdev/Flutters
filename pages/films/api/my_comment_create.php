@@ -26,10 +26,10 @@ echo '
 echo'
     </div>
 
-    <textarea id="comment_stars_description" maxlength="350" rows="6">' . $description . '</textarea>
+    <textarea id="comment_stars_description" maxlength="350" rows="6">' . htmlspecialchars($description) . '</textarea>
     <p>Description limité à 350 caractères</p>
 
 
 
-    <button onclick="my_comment_create_send(\'' . $email . '\', \'' . $id . '\')" class="btn align-self-end film_modify_button" style="width:4.5em;"> Poster </button>
+    <button onclick="my_comment_create_send(\'' . htmlspecialchars($email) . '\', \'' . htmlspecialchars($id) . '\')" class="btn align-self-end film_modify_button" style="width:4.5em;"> Poster </button>
 ';

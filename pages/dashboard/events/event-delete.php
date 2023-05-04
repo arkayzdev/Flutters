@@ -11,7 +11,6 @@ if (isset($_GET['id']) && $_GET['type'] == 'delete') {
         unlink($file_src);
     }
     
-
     $q = "DELETE FROM TICKET WHERE id_event = $id";
     $req = $bdd->prepare($q);
     $req->execute();

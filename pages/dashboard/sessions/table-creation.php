@@ -240,4 +240,3 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <?php endif; ?>
 
-    <script src="main.js"></script>

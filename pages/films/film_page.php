@@ -185,26 +185,26 @@
   <main>
     
     <!-- Section : film_presentation -->
-    <section id="film_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo $poster ?>');">
+    <section id="film_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/movies/<?php echo htmlspecialchars($poster) ?>');">
       <div id="film_presentation_firstdiv" class="d-flex ">
         <!-- poster  -->
         <div class=" d-flex justify-content-center align-items-center" >
-          <img src="../dashboard/movies/<?php echo $poster ?>">
+          <img src="../dashboard/movies/<?php echo htmlspecialchars($poster) ?>">
         </div>
         <!-- informations -->
         <div>
           <p class="fs-5 fw-bold mb-0" style="color:darkgrey;"><?php echo strtoupper(strftime("%d %B %G", strtotime($release_date)))?></p>
-          <h2><?php echo $title?></h2>
-          <p class="fw-bolder"><?php echo $category?></p>
-          <p style="width:95%;"><?php echo $description?></p>
+          <h2><?php echo htmlspecialchars($title)?></h2>
+          <p class="fw-bolder"><?php echo htmlspecialchars($category)?></p>
+          <p style="width:95%;"><?php echo htmlspecialchars($description)?></p>
           <div class="d-flex mb-3">
-            <i class="uil uil-clock-eight col-4 col-sm-2">  <?php echo $duration?> min</i>
-            <i class="uil uil-film col-4 col-sm-2">   <?php echo $origin_language?></i>
+            <i class="uil uil-clock-eight col-4 col-sm-2">  <?php echo htmlspecialchars($duration)?> min</i>
+            <i class="uil uil-film col-4 col-sm-2">   <?php echo htmlspecialchars($origin_language)?></i>
             <i class="uil uil-star ms-3 col-4 col-sm-2"> <?php echo $note?>/5</i>
           </div>
-          <p style="padding-bottom:0!important;" class="mb-1">Réalisateurs principaux :  <?php echo $realisator?></p>
-          <p style="padding:0!important;" class="mb-4">Acteurs principaux :  <?php echo $actor?></p>
-          <a class="btn d-flex align-items-center justify-content-center" href="<?php echo $trailer?>"><i class="uil uil-play">  Bande d'annonce</i></a>
+          <p style="padding-bottom:0!important;" class="mb-1">Réalisateurs principaux :  <?php echo htmlspecialchars($realisator)?></p>
+          <p style="padding:0!important;" class="mb-4">Acteurs principaux :  <?php echo htmlspecialchars($actor)?></p>
+          <a class="btn d-flex align-items-center justify-content-center" href="<?php echo htmlspecialchars($trailer)?>"><i class="uil uil-play">  Bande d'annonce</i></a>
         </div>
       </div>
     </section>
@@ -224,8 +224,8 @@
         <button onclick="open_calendar()" id="switch_btn_pc" class="calendar_button calendar_button_act"><i class="uil uil-schedule"></i><p>Calendrier</p></button>
 
         <?php 
-        echo '<div id="switch_btn_mobile_div"><input id="switch_btn_mobile" style="display:none;" onchange="calendar_button_date(this.value, ' . $_GET['id'] . ')" value="' . date('Y-m-d') . '" type="date" min="' . date('Y-m-d') . '"></div>';
-        echo '<button value="' . strftime("%Y-%m-%d", strtotime($today)) . '" onclick="calendar_reload(this.value, ' . $_GET['id'] . ')" class="calendar_button calendar_button_act"><i class="uil uil-redo"></i><p>Today</p></button>';
+        echo '<div id="switch_btn_mobile_div"><input id="switch_btn_mobile" style="display:none;" onchange="calendar_button_date(this.value, ' . htmlspecialchars($_GET['id']) . ')" value="' . date('Y-m-d') . '" type="date" min="' . date('Y-m-d') . '"></div>';
+        echo '<button value="' . strftime("%Y-%m-%d", strtotime($today)) . '" onclick="calendar_reload(this.value, ' . htmlspecialchars($_GET['id']) . ')" class="calendar_button calendar_button_act"><i class="uil uil-redo"></i><p>Today</p></button>';
         ?>
       </div> 
 
@@ -263,8 +263,8 @@
 
         <div id="film_comment_button_div">
         <?php if(isset($_SESSION['email'])){$comment_email = $_SESSION['email'];} else {$comment_email = '';}?>
-        <?php $comment_id = $_GET['id']?>
-        <button id="film_comment_button" onclick="comment_show_more('<?php echo $comment_email?>', '<?php echo $comment_id?>')" class="btn film_comment_button">Voir plus</button>
+        <?php $comment_id = htmlspecialchars($_GET['id'])?>
+        <button id="film_comment_button" onclick="comment_show_more('<?php echo htmlspecialchars($comment_email)?>', '<?php echo htmlspecialchars($comment_id)?>')" class="btn film_comment_button">Voir plus</button>
         </div>
 
       </div>

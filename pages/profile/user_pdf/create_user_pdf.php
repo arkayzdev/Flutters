@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Export User Infos : <?php echo $email?></title>
+    <title>Export User Infos : <?php echo htmlspecialchars($email)?></title>
 </head>
 <body>
-    <h2>Informations Utilisateur : <?php echo $email?></h2>
+    <h2>Informations Utilisateur : <?php echo htmlspecialchars($email)?></h2>
 
     <!-- User infos -->
     <div>
         <p>ID client #<?php echo $id_client?></p>
-        <p>Email : <?php echo $email?></p>
-        <p>Nom : <?php echo $last_name?></p>
-        <p>Prénom : <?php echo $first_name?></p>
-        <p>Newsletter : <?php echo $newsletter?></p>
+        <p>Email : <?php echo htmlspecialchars($email)?></p>
+        <p>Nom : <?php echo htmlspecialchars($last_name)?></p>
+        <p>Prénom : <?php echo htmlspecialchars($first_name)?></p>
+        <p>Newsletter : <?php echo htmlspecialchars($newsletter)?></p>
     </div>
     
     <h2>Commandes effectuées</h2>
@@ -83,7 +83,7 @@
                     <p>Acheté le <?php echo ucwords(strftime('%A %e %B %Y',strtotime($result_['purchase_date'])))?></p>
                     <p>Prix Total : <?php echo number_format($price/100,2)?>€</p>
                     <p>Nombre de billets : <?php echo $nb_billet?> billets</p>
-                    <p><strong>Séance :</strong> <?php echo $title . ' - ' . ucwords(strftime('%A %e %B %Y',strtotime($seance_date))) . ' à ' . date('H:i', strtotime($start_time)) . ' en ' . $language?></p>
+                    <p><strong>Séance :</strong> <?php echo htmlspecialchars($title) . ' - ' . ucwords(strftime('%A %e %B %Y',strtotime($seance_date))) . ' à ' . date('H:i', strtotime($start_time)) . ' en ' . $language?></p>
                     <p>---------------------------------------------------------------</p>
                 </div style="margin-bottom:40px;">
             <?php 
@@ -131,7 +131,7 @@
                     <p>Acheté le <?php echo ucwords(strftime('%A %e %B %Y',strtotime($result_['purchase_date'])))?></p>
                     <p>Prix Total : <?php echo number_format($price/100,2)?>€</p>
                     <p>Nombre de billets : <?php echo $nb_billet?> billets</p>
-                    <p><strong>Evènement :</strong> <?php echo $title . ' - ' . ucwords(strftime('%A %e %B %Y',strtotime($seance_date))) . ' à ' . date('H:i', strtotime($start_time)) ?></p>
+                    <p><strong>Evènement :</strong> <?php echo htmlspecialchars($title) . ' - ' . ucwords(strftime('%A %e %B %Y',strtotime($seance_date))) . ' à ' . date('H:i', strtotime($start_time)) ?></p>
                     <p>---------------------------------------------------------------</p>
                 </div style="margin-bottom:40px;">
             <?php

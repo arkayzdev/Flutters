@@ -278,11 +278,18 @@
     </div>
     <div class="d-flex">
         <!-- searchbar -->
-        <form class="d-none d-sm-flex" role="search" action="#" method="POST" id="nav_searchbar">
-                <button type="submit" style="z-index:100;"><img src="/pages/nav/img/search.svg" alt="Loupe" width="15"
+        <div class="d-none d-sm-flex" role="search" action="#" method="POST" id="nav_searchbar">
+                <button onclick="searchbar_redirect()" style="z-index:100;"><img src="/pages/nav/img/search.svg" alt="Loupe" width="15"
                 height="15"></button>
-                <input class="form-control me-2" type="text" placeholder="Trouver des films" aria-label="Search">
-            </form>
+                <input id="search_value" onchange="searchbar_redirect()" class="form-control me-2" type="text" placeholder="Trouver des films" aria-label="Search">
+        </div>
+        <script>
+            function searchbar_redirect(){
+                console.log('catch');
+                let search = document.getElementById("search_value").value;
+                window.location.href='/pages/films/films.php?search=' + search;
+            }
+        </script>
 
         <!-- nav_profile -->
         <?php  if (!isset($_SESSION['email'])) : ?>
@@ -299,7 +306,7 @@
                 $results = $req->fetchAll(PDO::FETCH_ASSOC); ?>
                 <ul class="ps-0 me-4 ms-4" id="nav_profile">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div>
                                 <div id="profile_avatar">
                                     <img class="profile_avatar_nav" src="<?php echo htmlspecialchars($avatar)?> ">
@@ -329,7 +336,7 @@
             
             <ul class="ps-0 me-4 ms-4" id="nav_profile">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <div>
                             <div id="profile_avatar">
                                 <img class="profile_avatar_nav" src="<?php echo htmlspecialchars($avatar)?> ">

@@ -55,8 +55,8 @@ include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
 // logs
 // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated 8-LogOut 9-FailedToSignUp 10-AccountCreated  
 // 11-StripePaymentSent 12-StripePaymentSuccessfull 13-DownloadPDF | $page = actual url
-// $log_type=6; $email=$_SESSION['email']; $log_page = "";
-// include($_SERVER['DOCUMENT_ROOT']."/log.php");
+$log_type=6; $email=$_SESSION['email']; $log_page = "";
+include($_SERVER['DOCUMENT_ROOT']."/log.php");
 
 
 require "../../order/vendor/autoload.php";

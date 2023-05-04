@@ -14,11 +14,11 @@ if(isset($_GET['search']) && $_GET['search']!=""){
     $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 
     foreach($result as $event) { 
-        echo '<a class="event_a" href="event_page.php?id=' . $event['id_event'] . '">'
+        echo '<a class="event_a" href="event_page.php?id=' . htmlspecialchars($event['id_event']) . '">'
     ?>
             <?php 
-                echo '<img id="event_img" src="../dashboard/events/' . $event['image'] . '">
-                <p class="titles"> ' . $event['name'] . '</p> 
+                echo '<img id="event_img" src="../dashboard/events/' . htmlspecialchars($event['image']) . '">
+                <p class="titles"> ' . htmlspecialchars($event['name']) . '</p> 
             ';?>
         </a>
     <?php 
@@ -33,11 +33,11 @@ if(isset($_GET['search']) && $_GET['search']!=""){
         $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 
         foreach($result as $event) { 
-            echo '<a class="event_a" href="event_page.php?id=' . $event['id_event'] . '">'
+            echo '<a class="event_a" href="event_page.php?id=' . htmlspecialchars($event['id_event']) . '">'
         ?>
                 <?php 
-                    echo '<img id="event_img" src="../dashboard/events/events-img/' . $event['image'] . '">
-                    <p class="titles"> ' . $event['name'] . '</p> 
+                    echo '<img id="event_img" src="../dashboard/events/events-img/' . htmlspecialchars($event['image']) . '">
+                    <p class="titles"> ' . htmlspecialchars($event['name']) . '</p> 
                 ';?>
             </a>
     <?php 

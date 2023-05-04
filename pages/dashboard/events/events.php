@@ -1,4 +1,5 @@
-<?php include '../../connect_db.php'; ?>
+<?php include '../../connect_db.php';
+include '../admin-check.php';?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +23,8 @@
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <button id="trigger-search-events" class="btn btn-dark" onclick="searchevents()"><i class="uil uil-search"></i></button>
-    <input id="search-event-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche" aria-label="Chercher" >
+    <button id="trigger-search-events" class="btn btn-dark" onclick="searchEvents()"><i class="uil uil-search"></i></button>
+    <input id="search-event-input" class="form-control form-control-dark w-100" type="text" placeholder="Recherche par nom ou date" aria-label="Chercher" onchange="searchEvents()"" >
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <a class="nav-link px-3" href="#">Déconnexion</a>
@@ -34,7 +35,7 @@
     <div class="row">
       
     <?php include '../sidebar.php' ?>
-    <?php 
+    <?php include 'event-delete.php';
     $q = "SELECT COUNT(name) FROM EVENT";
     $req = $bdd->query($q);
     $req->execute();
@@ -84,8 +85,7 @@
                 </tr>
             </thead>
             <tbody id="display-event">
-            <?php include 'event-delete.php';
-            include 'table-creation.php'; ?>
+            <?php include 'table-creation.php'; ?>
 
             </tbody>
           </table> 

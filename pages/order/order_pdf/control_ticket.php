@@ -115,7 +115,7 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
             <p style="color:white; word-break:break-word; text-align:center"><?php echo str_replace('cs_test_','',$order_id);?></p>
         </div>
 
-        <h1><?php echo $title?></h1>
+        <h1><?php echo htmlspecialchars($title)?></h1>
 
         <div class="d-flex justify-content-around align-items-center flex-column">
             <p><strong><?php echo $seance_date?></strong></p>
@@ -138,7 +138,7 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
     if(isset($_GET['msg'])){ 
     ?>
         <script>
-     window.addEventListener("load", alert('<?php echo $_GET['msg']?>'))
+     window.addEventListener("load", alert('<?php echo htmlspecialchars($_GET['msg'])?>'))
      </script>
      <?php
     }

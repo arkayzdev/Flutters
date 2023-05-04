@@ -129,7 +129,7 @@ if(!isset($_SESSION['email'])){
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 
-<body style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/events/events-img/<?php echo $image ?>');">
+<body style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/events/events-img/<?php echo htmlspecialchars($image) ?>');">
     <!-- Include Header -->
     <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); 
     ?>
@@ -141,16 +141,16 @@ if(!isset($_SESSION['email'])){
         <!-- Recap -->
         <div id="recap">
             <p style="align-self:center; margin-bottom:1em; "><strong>Réservé le <?php echo ucwords(strftime('%A %e %B %Y',strtotime($order_['purchase_date'])))?></strong></p>
-            <p><strong>Email de facturation :</strong> <?php echo $payment_['email']?></p>
+            <p><strong>Email de facturation :</strong> <?php echo htmlspecialchars($payment_['email'])?></p>
 
-            <p><strong>Evenement :</strong> <?php echo $name?></p>
+            <p><strong>Evenement :</strong> <?php echo htmlspecialchars($name)?></p>
             <p><strong>Séance: </strong><?php echo ucwords(strftime('%A %e %B %Y',strtotime($date_event)))?> à <?php echo $start_time?></p>
 
             <p><strong>Nombre de billet(s) :</strong> <?php echo $nb_ticket_['count(id_ticket)']?> billet(s)</p>
             <p><strong>Prix total :</strong> <?php echo number_format($payment_['price']/100, 2)?> € (<?php echo number_format($price,2) ?>€ par billet)</p>
         </div>
         
-        <button onclick="download_ticket('<?php echo $_GET['event_id']?>')">Télécharger vos billets</button>
+        <button onclick="download_ticket('<?php echo htmlspecialchars($_GET['event_id'])?>')">Télécharger vos billets</button>
     </main>
 
     <!-- Footer -->

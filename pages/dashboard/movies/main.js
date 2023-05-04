@@ -1,4 +1,3 @@
-// Preview Image
 var loadFile = function (event) {
     var output = document.getElementById('preview-image')
     output.src = URL.createObjectURL(event.target.files[0])
@@ -166,15 +165,6 @@ function deleteDirector(value) {
     option.appendChild(addOption)
 
 }
-
-var inputTrigger = document.getElementById("search-movie-input");
-
-inputTrigger.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("trigger-search-movies").click();
-    }
-});
 
 async function searchMovies() {
     const input = document.getElementById('search-movie-input');

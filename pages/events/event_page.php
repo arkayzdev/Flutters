@@ -85,19 +85,19 @@
     <main>
 
     <!-- Section : event_presentation -->
-    <section id="event_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/events/events-img/<?php echo $image ?>');">
+    <section id="event_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/events/events-img/<?php echo htmlspecialchars($image) ?>');">
         <div id="event_presentation_firstdiv" class="d-flex ">
             <!-- poster  -->
             <div class=" d-flex justify-content-center align-items-center" >
-                <img src="../dashboard/events/events-img/<?php echo $image ?>">
+                <img src="../dashboard/events/events-img/<?php echo htmlspecialchars($image) ?>">
             </div>
             <!-- informations -->
             <div>
-                <p class="fs-5 fw-bold mb-0" style="color:darkgrey;"><?php echo strtoupper(strftime("%A %d %B %G", strtotime($date_event)))?> à <?php echo $start_time?></p>
-                <h2><?php echo $name?></h2>
-                <p style="width:95%;"><?php echo $description?></p>
-                <p style="width:95%;"><strong>Entrées :</strong>  <?php echo $capacity?> places</p>
-                <p style="width:95%;"><strong>Prix à l'unité</strong> :  <?php echo $price?>€</p>
+                <p class="fs-5 fw-bold mb-0" style="color:darkgrey;"><?php echo strtoupper(strftime("%A %d %B %G", strtotime($date_event)))?> à <?php echo htmlspecialchars($start_time)?></p>
+                <h2><?php echo htmlspecialchars($name)?></h2>
+                <p style="width:95%;"><?php echo htmlspecialchars($description)?></p>
+                <p style="width:95%;"><strong>Entrées :</strong>  <?php echo htmlspecialchars($capacity)?> places</p>
+                <p style="width:95%;"><strong>Prix à l'unité</strong> :  <?php echo htmlspecialchars($price)?>€</p>
             </div>
         </div>
 
@@ -118,10 +118,10 @@
 
             <!-- select_ticket quantity -->
             <div id="select_ticket">
-                <button disabled id="select_ticket_minus" onclick="select_ticket('minus', '<?php echo $price ?>')" ><i class="uil uil-minus-circle"></i></button>
+                <button disabled id="select_ticket_minus" onclick="select_ticket('minus', '<?php echo htmlspecialchars($price) ?>')" ><i class="uil uil-minus-circle"></i></button>
                 <input id="select_ticket_value" style="display:none;" value=0>
                 <p id="select_ticket_quantity"> 0 Billet(s)</p>
-                <button id="select_ticket_plus" onclick="select_ticket('plus', '<?php echo $price ?>')" ><i class="uil uil-plus-circle"></i></button>
+                <button id="select_ticket_plus" onclick="select_ticket('plus', '<?php echo htmlspecialchars($price) ?>')" ><i class="uil uil-plus-circle"></i></button>
             </div>
 
             <p>Prix unitaire : <?php echo $price?>€ TTC</p>

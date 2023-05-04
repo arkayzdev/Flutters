@@ -29,19 +29,19 @@ if(isset($_GET['search']) && $_GET['search']!=""){
             $diff_days = round((strtotime($session['seance_date']) - strtotime(date('Y-m-d'))) / (60 * 60 * 24),2);
 
             if($diff_minutes > 0 && $diff_days<=0){
-                echo '<button style="height:5em; color: darkgrey" value='. $session['id_session'] . ' class="calendar_button_passed">
+                echo '<button style="height:5em; color: darkgrey" value='. htmlspecialchars($session['id_session']) . ' class="calendar_button_passed">
                 <i class="uil uil-ticket" style="font-size:1.5em;";"></i>
                 <div>
                     <p style="width:4em; margin-left: 0.4em;color: darkgrey;">' .  date("G:i", strtotime($session['start_time'])) . '</p>
-                    <p style="width:5em;color: darkgrey">' .  $session['language'] . '</p>
+                    <p style="width:5em;color: darkgrey">' .  htmlspecialchars($session['language']) . '</p>
                 </div>
                 </button>';
             } else {
-                echo '<button onclick="redirect_session(this.value,' . $_GET['id'] . ')" style="height:5em;" value='. $session['id_session'] . ' class="calendar_button">
+                echo '<button onclick="redirect_session(this.value,' . htmlspecialchars($_GET['id']) . ')" style="height:5em;" value='. htmlspecialchars($session['id_session']) . ' class="calendar_button">
                 <i class="uil uil-ticket" style="font-size:1.5em;";"></i>
                 <div>
                     <p style="width:4em; margin-left: 0.4em;">' .  date("G:i", strtotime($session['start_time'])) . '</p>
-                    <p style="width:5em;">' .  $session['language'] . '</p>
+                    <p style="width:5em;">' .  htmlspecialchars($session['language']) . '</p>
                 </div>
                 </button>';
             }
@@ -73,19 +73,19 @@ if(isset($_GET['search']) && $_GET['search']!=""){
 
             if($diff_minutes > 0){
 
-                echo '<button style="height:5em; color: darkgrey" value='. $session['id_session'] . ' class="calendar_button_passed">
+                echo '<button style="height:5em; color: darkgrey" value='. htmlspecialchars($session['id_session']) . ' class="calendar_button_passed">
                 <i class="uil uil-ticket" style="font-size:1.5em;";"></i>
                 <div>
                     <p style="width:4em; margin-left: 0.4em;color: darkgrey;">' .  date("G:i", strtotime($session['start_time'])) . '</p>
-                    <p style="width:5em;color: darkgrey">' .  $session['language'] . '</p>
+                    <p style="width:5em;color: darkgrey">' .  htmlspecialchars($session['language']) . '</p>
                 </div>
                 </button>';
             } else {
-                echo '<button onclick="redirect_session(this.value,' . $_GET['id'] . ')" style="height:5em;" value='. $session['id_session'] . ' class="calendar_button">
+                echo '<button onclick="redirect_session(this.value,' . htmlspecialchars($_GET['id']) . ')" style="height:5em;" value='. htmlspecialchars($session['id_session']) . ' class="calendar_button">
                 <i class="uil uil-ticket" style="font-size:1.5em;";"></i>
                 <div>
                     <p style="width:4em; margin-left: 0.4em;">' .  date("G:i", strtotime($session['start_time'])) . '</p>
-                    <p style="width:5em;">' .  $session['language'] . '</p>
+                    <p style="width:5em;">' .  htmlspecialchars($session['language']) . '</p>
                 </div>
                 </button>';
             }

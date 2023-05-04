@@ -81,7 +81,7 @@
 
                     <div>' . $str_star . '</div>
                     <p style="color:darkslategrey!important">' . htmlspecialchars($own_comment[0]['description']) . '</p>
-                    <button onclick="my_comment_modify(\'' . $email . '\',\'' . $id . '\')" class="btn align-self-end film_modify_button"> Modifier </button>
+                    <button onclick="my_comment_modify(\'' . htmlspecialchars($email) . '\',\'' . htmlspecialchars($id) . '\')" class="btn align-self-end film_modify_button"> Modifier </button>
                 </div>
             ';
         } else if(!$own_comment && !is_null($email)){
@@ -89,7 +89,7 @@
                 <div  id="film_comment_my_content">
                     <p></p><p></p>
                     <p style="color:grey!important">Vous n\'avez pas encore noté(e) ce film</p>
-                    <button onclick="my_comment_create(\'' . $email . '\',\'' . $id . '\')" id="film_grade_button" class="btn film_modify_button"> Noter </button>
+                    <button onclick="my_comment_create(\'' . htmlspecialchars($email) . '\',\'' . htmlspecialchars($id) . '\')" id="film_grade_button" class="btn film_modify_button"> Noter </button>
                 </div>
             ';
         }
