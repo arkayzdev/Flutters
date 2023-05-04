@@ -89,7 +89,7 @@ p {
 
 .r_background {
   object-fit: cover;
-  background-position: 50% 20% !important;
+  background-position: 50% 80% !important;
   background-repeat: no-repeat !important;
   background-size: 100% !important;
 }

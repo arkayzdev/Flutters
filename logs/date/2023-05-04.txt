@@ -77,3 +77,17 @@
 2023-05-04 - 17:51:23 - franck.zhuang@hotmail.com - Failed to sign up <br>
 2023-05-04 - 17:51:47 - franck.zhuang@hotmail.com - Failed to sign up <br>
 2023-05-04 - 17:52:48 - franck.zhuang@hotmail.com - Failed to sign up <br>
+2023-05-04 - 19:20:31 - huangfrederic2002@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 19:20:47 - huangfrederic2002@gmail.com - Commented Ca- Chapitre 2<br>
+2023-05-04 - 19:20:48 - huangfrederic2002@gmail.com - Modified Comment Ca- Chapitre 2<br>
+2023-05-04 - 19:20:59 - huangfrederic2002@gmail.com - Commented Sword Art Online - Scherzo<br>
+2023-05-04 - 19:21:09 - huangfrederic2002@gmail.com - Commented Iron Man 2<br>
+2023-05-04 - 19:22:35 - huangfrederic2002@gmail.com - Commented Super Mario Bros<br>
+2023-05-04 - 19:24:06 - huangfrederic2002@gmail.com - Modified Comment Sword Art Online - Scherzo<br>
+2023-05-04 - 19:24:28 - huangfrederic2002@gmail.com - Commented Top Gun - Maverick<br>
+2023-05-04 - 19:24:41 - huangfrederic2002@gmail.com - Commented Avatar<br>
+2023-05-04 - 19:43:05 - yildizboran7@gmail.com - Failed to sign up <br>
+2023-05-04 - 19:44:15 - yildizboran7@gmail.com - Account created successfully <br>
+2023-05-04 - 19:45:24 - yildizboran7@gmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 19:46:43 - yildizboran7@gmail.com - user pdf generated <br>
+2023-05-04 - 19:49:39 - yildizboran7@gmail.com - user info modified <br>

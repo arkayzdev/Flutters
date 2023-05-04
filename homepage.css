@@ -66,7 +66,7 @@ a {
 /* ---------- homepage-welcome_attach ---------- */
 #homepage-welcome_attach {
   width: 100%;
-  height: 970px;
+  height: 55em;
   background: white;
   background-image: linear-gradient(
       78deg,
@@ -75,7 +75,6 @@ a {
       rgba(255, 255, 255, 0) 100%
     ),
     url("img/homepage/homepage-welcome_attach.png");
-  background-attachment: fixed;
   background-size: cover;
 
   display: flex;
@@ -113,6 +112,33 @@ a {
   background-color: var(--red);
 }
 
+@media screen and (max-width: 770px) {
+  #homepage-welcome_attach_pitch {
+    margin-left: 3em;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  #homepage-welcome_attach {
+    height: 50em;
+    background-position: 30% 30% !important;
+  }
+  #homepage-welcome_attach_pitch {
+    margin-left: 1.5em;
+    width: 90%;
+  }
+  #homepage-welcome_attach_pitch :nth-child(3) {
+    padding: 0.7em 0.7em 0.7em 0.7em;
+  }
+  #homepage-welcome_attach_pitch h3 {
+    font-size: 1.2em !important;
+  }
+  #homepage-welcome_attach_pitch p {
+    font-size: 0.9em !important;
+  }
+}
+
 /* ---------- homepage-tending ---------- */
 #homepage-tending {
   margin-top: 4em;
@@ -148,6 +174,13 @@ a {
 }
 
 /* homepage-tending_carousel_item */
+.c-img {
+  width: 100%;
+  height: 36em;
+  object-fit: cover;
+  object-position: 50% 5%;
+  filter: brightness(50%);
+}
 #homepage-tending_carousel_item {
   margin: 0.5em 0 0 7em;
 
@@ -236,7 +269,7 @@ a {
   width: 15em;
   height: 18em;
   text-decoration: none;
-  margin: 0 0.5em 2.5em 0.5em;
+  margin: 0 0.5em 4.5em 0.5em;
 
   text-align: center;
 }
@@ -275,22 +308,40 @@ a {
 @media screen and (max-width: 1111px) {
   .film_a {
     width: 13em;
+    margin-bottom: 3em;
   }
 }
 
 @media screen and (max-width: 740px) {
+  .film_a {
+    margin-bottom: 3em;
+  }
+  #a_l_affiche {
+    width: 95%;
+    margin-left: 1em;
+    margin-right: 0;
+  }
   #film_img {
-    height: 18em;
+    height: 17em;
   }
 }
 
 @media screen and (max-width: 480px) {
+  #a_l_affiche {
+    margin-left: 0.5em;
+    width: 98%;
+  }
   .film_a {
-    width: 12em;
-    height: 100%;
+    width: 10em;
+    height: auto;
+    margin-bottom: 0em;
+  }
+  .titlesaff {
+    font-size: 1em;
   }
   #film_img {
     width: 100%;
+    height: 14em;
   }
 }
 
@@ -650,4 +701,11 @@ hr {
 
 .footer-color {
   background-color: var(--footer);
+}
+
+/* CHANGEMENTS MADE IN FRED */
+.hero-news__item {
+  color: black;
+  display: flex;
+  flex-direction: column;
 }

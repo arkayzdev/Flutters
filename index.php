@@ -1,7 +1,13 @@
 <?php session_start();
-  // $_SESSION['email']='huangfrederic2002@gmail.com';
-  // $_SESSION['user_type']='Normal';
-?>
+setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
+
+    // $_SESSION['email']='huangfrederic2002@gmail.com';
+    // $_SESSION['email']='franck.zhuang@htm.fr';
+    // $_SESSION['user_type']='Normal';
+
+    // Connect to the db
+    include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +39,7 @@
 
     <!-- homepage-welcome_attach_pitch -->
     <div id="homepage-welcome_attach_pitch">
-      <h3>Revivez vos <span style="color: #E32828;">meilleurs</span> instants, <br> aux meilleurs prix.</h3>
+      <h3>Revivez vos <span style="color: #E32828;">meilleurs</span> instants, aux meilleurs prix.</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>
         Morbi bibendum ante lorem, ac fringilla purus feugiat eu. <br>
         Vivamus quis felis et metus fringilla sodales. <br>
@@ -51,7 +57,36 @@
     </section>
     <section>
     <div id="a_l_affiche">
-        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=98">
+
+      <?php
+          $q = 'SELECT AVG(score),id_movie FROM REVIEW GROUP BY id_movie ORDER BY score DESC LIMIT 5;';
+
+          $req = $bdd->prepare($q);
+          $reponse = $req->execute();
+          $result = $req -> fetchAll(PDO::FETCH_ASSOC);
+
+          foreach($result as $r){
+            $q = 'SELECT * FROM MOVIE WHERE id_movie = :id_movie';
+
+            $req = $bdd->prepare($q);
+            $reponse = $req->execute([
+                'id_movie' => $r['id_movie']
+            ]);
+            $one = $req -> fetchAll(PDO::FETCH_ASSOC);
+
+            foreach($one as $film) { 
+              echo '<a class="film_a" href="pages/films/film_page.php?id=' . htmlspecialchars($film['id_movie']) . '">';
+                      echo '<img id="film_img" src="pages/dashboard/movies/' . htmlspecialchars($film['poster_image']) . '">
+                      <p class="titlesaff"> ' . htmlspecialchars($film['title']) . '</p> 
+                      </a>
+                  ';?>
+            <?php 
+            }
+          }
+        ?>
+
+  
+        <!-- <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=98">
           <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683143325.jpg">
             <p class="titlesaff"> Avatar</p> 
         </a>
@@ -70,7 +105,7 @@
         <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=115">                
           <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683145051.jpg">
             <p class="titlesaff"> SpiderMan - New Gen</p> 
-        </a>
+        </a> -->
         
     </div>
     
@@ -83,39 +118,32 @@
       <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
 
+
     <div class="carousel-inner">
-      <div class="carousel-item active c-item">
-        <img src="img/image_28.png" class="d-block w-100 c-img" alt="Slide 1" />
-        <div class="carousel-caption top-0 mt-4">
-          <p class="mt-5 fs-3 text-uppercase">Les événements</p>
-          <h1 class="display-1 fw-bolder text-capitalize">FRENCH FESTIVAL</h1>
-          <button class="btn btn-outline-light px-4 py-2 fs-5 mt-5">
-            VOIR PLUS
-          </button>
-        </div>
-      </div>
-      <div class="carousel-item c-item">
-        <img src="img/image_28.png" class="d-block w-100 c-img" alt="Slide 2" />
-        <div class="carousel-caption top-0 mt-4">
-          <p class="text-uppercase fs-3 mt-5">Les événements</p>
-          <p class="display-1 fw-bolder text-capitalize">
-            CINÉMAS EXTERIEURS
-          </p>
-          <button class="btn btn-outline-light px-4 py-2 fs-5 mt-5" data-bs-toggle="modal" data-bs-target="#booking-modal">
-            VOIR PLUS
-          </button>
-        </div>
-      </div>
-      <div class="carousel-item c-item">
-        <img src="img/image_28.png" class="d-block w-100 c-img" alt="Slide 3" />
-        <div class="carousel-caption top-0 mt-4">
-          <p class="text-uppercase fs-3 mt-5">blablablabla</p>
-          <p class="display-1 fw-bolder text-capitalize">blablablabla</p>
-          <button class="btn btn-outline-light px-4 py-2 fs-5 mt-5" data-bs-toggle="modal" data-bs-target="#booking-modal">
-            VOIR PLUS
-          </button>
-        </div>
-      </div>
+    <?php
+          $q = 'SELECT * FROM EVENT WHERE date_event >= CURRENT_DATE ORDER BY date_event ASC LIMIT 3;';
+          $req = $bdd->prepare($q);
+          $reponse = $req->execute();
+          $result = $req -> fetchAll(PDO::FETCH_ASSOC);
+          $i=0;
+          
+          foreach($result as $res){
+          $i = $i+1;
+          ?>
+            <div class="carousel-item active c-item">
+              <img src="/pages/dashboard/events/<?php echo $res['image']?>" class="d-block w-100 c-img" alt="<?php echo $i?>" />
+              <div class="carousel-caption top-0 mt-4">
+                <p style="font-weight:700" class="mt-5 fs-3 text-uppercase"><?php echo ucwords(strftime("%A %d %B %G", strtotime($res['date_event'])))?></p>
+                <h1 class="display-1 fw-bolder text-capitalize"><?php echo htmlspecialchars($res['name'])?></h1>
+                <a href="/pages/events/event_page.php?id=<?php echo $res['id_event']?>" class="btn btn-outline-light px-4 py-2 fs-5 mt-5">
+                  VOIR PLUS
+                </a>
+              </div>
+          </div>
+
+    <?php
+          }
+    ?>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -129,42 +157,25 @@
 
   <!-- Actuality -->
   <section>
-      <h1 class="actutitre">Actualité</h1>
-      <br />
-      <br />
-      <br />
-    </section>
-    <div class="wrapper">
-      <section>
-        <div class="hero-news hero-news1">
-          <article class="hero-news__item">
-            <h3 class="hero-news__item-title">
-            Pierre-William Glenn, « opérateur Nouvelle Vague »
-              <br />
-              <a class="redirection" href="https://Flutters.ovh"><mark>Lire la suite</mark></a>
-            </h3>
-            <div class="hero-news__item-date">15 AVril, 2023</div>
-          </article>
-          <article class="hero-news__item">
-            <h3 class="hero-news__item-title">
-            Une plongée immersive dans l'univers de Tim Burton
-            <br>
+      <h1 class="actutitre">Nos coups de coeur</h1>
+      <div class="d-flex" style="height:1000px">
 
-              <a class="redirection" href="https://Flutters.ovh"><mark>Lire la suite</mark></a>
-            </h3>
-            <div class="hero-news__item-date">5 AVril, 2023</div>
-          </article>
-          <article class="hero-news__item">
-            <h3 class="hero-news__item-title">
-            Wissam Charaf : « Je raconte dans mes films ce que je ne peux pas faire en news, en télévision »
-              <br />
-              <a class="redirection" href="https://Flutters.ovh"><mark>Lire la suite</mark></a>
-            </h3>
-            <div class="hero-news__item-date">1 AVril, 2023</div>
-          </article>
+        <div class="col-1"></div>
+
+        <div class="col-3 d-flex flex-column align-items-center">
+          <h3>Frédéric</h3>
+          <img src="/pages/dashboard/movies/movies-img/movie-poster-1683139154.jpg">
+          <p>Le film de mon enfance, tout simplement.</p>
         </div>
-      </section>
-    </div>
+
+        <div class="col-3">
+        </div>
+
+        <div class="col-3">
+        </div>
+
+      </div>
+    </section>
 
   <!-- FAQ -->
 

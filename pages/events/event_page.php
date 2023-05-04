@@ -85,7 +85,7 @@
     <main>
 
     <!-- Section : event_presentation -->
-    <section id="event_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/events/<?php echo htmlspecialchars($image) ?>');">
+    <section id="event_presentation" class="r_background" style="background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6) 50%,rgba(0, 0, 0, 0.8) ), url('../dashboard/events/<?php echo htmlspecialchars($image) ?>');">
         <div id="event_presentation_firstdiv" class="d-flex ">
             <!-- poster  -->
             <div class=" d-flex justify-content-center align-items-center" >
