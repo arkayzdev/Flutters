@@ -16,10 +16,10 @@
 
         <h2><?php echo htmlspecialchars($name)?></h2>
 
-        <img style="width:400px;margin-bottom: 50px;" src="https://Flutters.ovh/pages/dashboard/events/events-img/<?php echo htmlspecialchars($image)?>">
+        <img style="width:400px;margin-bottom: 50px;" src="https://Flutters.ovh/pages/dashboard/events/<?php echo htmlspecialchars($image)?>">
 
         <p style="margin-bottom:1em;"><strong><?php echo $date_event?></strong></p>
-        <p style="margin-bottom:30px;">Début : <?php echo $start_time?></p>
+        <p style="margin-bottom:30px;"><strong>Début :</strong> <?php echo $start_time?></p>
     </div> 
     <div id="qr_page">
         <p>Numéro de réservation</p>
@@ -30,7 +30,7 @@
         <img style="margin-bottom: 30px" src="https://chart.googleapis.com/chart?chs=400x400&cht=qr&choe=UTF-8&chl=https://Flutters.ovh/pages/events/events_pdf/control_ticket.php?id=<?php echo htmlspecialchars($_GET['order_id'])?>" title="CONTROL TICKET" />
 
         <p><strong><?php echo ($nb_tickets/100)?> billet(s)</strong></p>
-        <p style="margin-bottom:50px;">Prix total : <strong><?php echo $final_price ?>€</strong></p>
+        <p style="margin-bottom:50px;">Prix total : <strong><?php echo number_format($final_price,2) ?>€</strong></p>
 
         <p>Ce billet est à usage unique - Une fois scanné et validé à l'entrée du lieu d'évènement, il ne pourra plus être réutilisé</p>
     </div>

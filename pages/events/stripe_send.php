@@ -1,5 +1,6 @@
 <?php
 session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
 
 //Connect to db
 include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");

@@ -121,7 +121,7 @@ a {
 
 @media screen and (max-width: 440px) {
   #homepage-welcome_attach {
-    height: 50em;
+    height: 47em;
     background-position: 30% 30% !important;
   }
   #homepage-welcome_attach_pitch {
@@ -708,4 +708,88 @@ hr {
   color: black;
   display: flex;
   flex-direction: column;
+}
+
+.ourpref {
+  transition: 0.2s;
+}
+.ourpref:hover {
+  scale: 1.03;
+  transition: 0.2s;
+}
+
+.ourpref h3 {
+  font-family: "Lato";
+  font-style: italic;
+  font-size: 2.2em;
+  font-weight: 700;
+  padding: 0em 0.5em 0em 0.5em;
+  border-left: 4px solid var(--red);
+  line-height: 80%;
+  margin-bottom: 0.8em;
+  color: black;
+}
+.ourpref p {
+  width: 20em;
+  text-align: center;
+  margin-top: 1em;
+  font-family: "Lato";
+  font-style: italic;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: black;
+}
+.ourpref img {
+  width: 20em;
+  height: 28em;
+}
+
+@media screen and (max-width: 1100px) {
+  .ourpref h3 {
+    font-size: 1.6em;
+  }
+  .ourpref img {
+    width: 16em;
+    height: 23em;
+  }
+  .ourpref p {
+    width: 16em;
+  }
+}
+@media screen and (max-width: 770px) {
+  .ourpref h3 {
+    font-size: 1.2em;
+  }
+  .ourpref img {
+    width: 12em;
+    height: 18em;
+  }
+  .ourpref p {
+    width: 12em;
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 440px) {
+  .actutitre,
+  .alaffiche {
+    font-size: 1.5em;
+  }
+  .titlesaff {
+    font-size: 0.8em;
+  }
+  .display-1 {
+    font-size: 2em;
+    margin-top: 4em;
+  }
+  .ourpref h3 {
+    font-size: 1.2em;
+  }
+  .ourpref img {
+    width: 8em;
+    height: 13em;
+  }
+  .ourpref p {
+    width: 8em;
+    font-size: 0.8em;
+  }
 }

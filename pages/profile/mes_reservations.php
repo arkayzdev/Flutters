@@ -156,10 +156,6 @@
 
 
                 /////////////////////////////////////////////
-
-
-
-                
                 
                 if(isset($result[0])){
                     foreach($result as $id_client) { 
@@ -320,13 +316,13 @@
                         <div class="profile_right_side_div d-block d-sm-flex flex-row-reverse r_background"
                                     <?php
                                     if(date("Y-m-d",strtotime($r_seance_date))<=date('Y-m-d')){
-                                        echo 'style="filter: grayscale(100%);background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/events-img/' . htmlspecialchars($r_poster_image) . '); ">';
+                                        echo 'style="filter: grayscale(100%);background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/' . htmlspecialchars($r_poster_image) . '); ">';
                                         echo '<div class="col-sm-4">';
-                                        echo '<img style="filter: grayscale(100%);" class="r_poster" src="../dashboard/events/events-img/' . htmlspecialchars($r_poster_image) . '">';
+                                        echo '<img style="filter: grayscale(100%);" class="r_poster" src="../dashboard/events/' . htmlspecialchars($r_poster_image) . '">';
                                     } else {
-                                        echo 'style="background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/events-img/' . htmlspecialchars($r_poster_image) . '); ">';
+                                        echo 'style="background: linear-gradient(to left, rgba(230, 230, 230, 0.5), rgba(230, 230, 230, 1)), url(../dashboard/events/' . htmlspecialchars($r_poster_image) . '); ">';
                                         echo '<div class="col-sm-4">';
-                                        echo '<img class="r_poster" src="../dashboard/events/events-img/' . htmlspecialchars($r_poster_image) . '">';
+                                        echo '<img class="r_poster" src="../dashboard/events/' . htmlspecialchars($r_poster_image) . '">';
                                     }
                                     ?>
                                 </div>
@@ -368,7 +364,7 @@
                     }
                         } else { ?>
                             <div id="no_command">
-                                <p> Vous n'avez aucunes commandes </p>
+                                <p> Vous n'avez aucune commande </p>
                             </div>
                         <?php } ?>
 

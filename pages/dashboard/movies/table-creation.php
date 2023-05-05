@@ -247,7 +247,7 @@ $result_movies = $req->fetchAll(PDO::FETCH_ASSOC);
                             Confirmer
                     </button>
                     <button type="button" class="btn" style="background-color: #c6c6c6;">
-                        <a class="text-light" href="actors">Annuler</a> 
+                        <a class="text-light" href="movies">Annuler</a> 
                     </button>
                 </div>
             </div>

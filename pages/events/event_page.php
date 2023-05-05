@@ -1,4 +1,5 @@
 <?php session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
   setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
 
     // $_SESSION['email']='huangfrederic2002@gmail.com';
@@ -112,7 +113,7 @@
 
             if($result['date_event'] >= date('Y-m-d')){
             ?>
-            
+        <?php if(isset($_SESSION['email'])){?>
             <!-- tickets -->
             <div id="ticket" class="d-flex flex-column align-items-center mt-5">
 
@@ -131,9 +132,28 @@
             </div>
 
             <?php
+            } else {?>
+                <!-- tickets -->
+                <div id="ticket" class="d-flex flex-column align-items-center mt-5">
+    
+                <!-- select_ticket quantity -->
+                <div id="select_ticket">
+                    <button disabled id="select_ticket_minus"><i class="uil uil-minus-circle"></i></button>
+                    <input id="select_ticket_value" style="display:none;" value=0>
+                    <p id="select_ticket_quantity"> 0 Billet(s)</p>
+                    <button disabled style="color:lightgrey" id="select_ticket_plus" ><i class="uil uil-plus-circle"></i></button>
+                </div>
+    
+                <p>Prix unitaire : <?php echo $price?>€ TTC</p>
+                <p>8 billets maximum autorisé par commande</p>
+                <button id="select_ticket_total">Connectez-vous pour réserver</button>
+                <p class="mt-1">Cliquez pour être redirigé vers le paiement</p>
+                </div>
+        <?php
             }
         ?>
     </section>
+        <?php } ?>
 
     
 

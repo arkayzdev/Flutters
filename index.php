@@ -1,5 +1,14 @@
-<?php session_start();
-setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
+  <?php 
+    // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, time()+3600, "/");
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+
+    session_start();
+    // include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
+    setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
+
 
     // $_SESSION['email']='huangfrederic2002@gmail.com';
     // $_SESSION['email']='franck.zhuang@htm.fr';
@@ -32,7 +41,7 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 <body>
   <!-- Import Header -->
   <?php 
-    include 'pages/nav/nav.php'; ?>
+    include 'pages/nav/nav.php';  ?>
 
   <!-- homepage-welcome_attach -->
   <div id="homepage-welcome_attach">
@@ -50,16 +59,16 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
   </div>
 
   <!-- Featured Movies -->
-    <section>
-      <h1 class="alaffiche">À l'affiche</h1>
+    <section class="ld_item" style="padding-top:3em;">
+      <h1 class="alaffiche ld_itema" style="margin-top:0;">À l'affiche</h1>
       <br />
       <br />
     </section>
     <section>
-    <div id="a_l_affiche">
+    <div id="a_l_affiche" class="ld_item" style="margin:0; padding-bottom:3em;">
 
       <?php
-          $q = 'SELECT AVG(score),id_movie FROM REVIEW GROUP BY id_movie ORDER BY score DESC LIMIT 5;';
+          $q = 'SELECT AVG(score),id_movie FROM REVIEW GROUP BY id_movie ORDER BY score DESC, count(id_movie) DESC, id_movie LIMIT 5;';
 
           $req = $bdd->prepare($q);
           $reponse = $req->execute();
@@ -77,35 +86,13 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
             foreach($one as $film) { 
               echo '<a class="film_a" href="pages/films/film_page.php?id=' . htmlspecialchars($film['id_movie']) . '">';
                       echo '<img id="film_img" src="pages/dashboard/movies/' . htmlspecialchars($film['poster_image']) . '">
-                      <p class="titlesaff"> ' . htmlspecialchars($film['title']) . '</p> 
+                      <p class="titlesaff ld_itema"> ' . htmlspecialchars($film['title']) . '</p> 
                       </a>
                   ';?>
             <?php 
             }
           }
         ?>
-
-  
-        <!-- <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=98">
-          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683143325.jpg">
-            <p class="titlesaff"> Avatar</p> 
-        </a>
-        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=96">                
-          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683143002.jpg">
-            <p class="titlesaff"> Ca- Chapitre 2</p> 
-        </a>
-        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=105">                
-          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683144023.png">
-            <p class="titlesaff"> Super Mario Bross</p> 
-        </a>
-        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=153">                
-          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683150795.jpg">
-            <p class="titlesaff"> Soldat d'hiver</p> 
-        </a>
-        <a class="film_a" href="https://flutters.ovh/pages/films/film_page.php?id=115">                
-          <img id="film_img" src="https://flutters.ovh/pages/dashboard/movies/movies-img/movie-poster-1683145051.jpg">
-            <p class="titlesaff"> SpiderMan - New Gen</p> 
-        </a> -->
         
     </div>
     
@@ -156,23 +143,27 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
   </div>
 
   <!-- Actuality -->
-  <section>
-      <h1 class="actutitre">Nos coups de coeur</h1>
-      <div class="d-flex" style="height:1000px">
+  <section class="ld_item" style="padding-top: 5em;">
+      <h1 style="margin-bottom:2em; margin-top:0;" class="actutitre ld_itema">Nos coups de coeur</h1>
+      <div class="d-flex justify-content-around pt-5 " style="width:100%;padding-bottom:5em">
 
-        <div class="col-1"></div>
-
-        <div class="col-3 d-flex flex-column align-items-center">
-          <h3>Frédéric</h3>
+        <a href="/pages/films/film_page.php?id=86" class="col-3 d-flex flex-column align-items-center ourpref">
+          <h3 class="ld_itema">Frédéric Huang</h3>
           <img src="/pages/dashboard/movies/movies-img/movie-poster-1683139154.jpg">
-          <p>Le film de mon enfance, tout simplement.</p>
-        </div>
+          <p class="ld_itema">"Pour combattre les monstres, nous avons créé nos propres monstres."</p>
+        </a>
 
-        <div class="col-3">
-        </div>
+        <a href="/pages/films/film_page.php?id=88" class="col-3 d-flex flex-column align-items-center ourpref">
+          <h3 class="ld_itema">Franck Zhuang</h3>
+            <img src="/pages/dashboard/movies/movies-img/movie-poster-1683139976.jpg">
+            <p class="ld_itema">"Quand on le veut, on peut. Tony Stark a réussi au fond d'une grotte."</p>
+        </a>
 
-        <div class="col-3">
-        </div>
+        <a href="/pages/films/film_page.php?id=100" class="col-3 d-flex flex-column align-items-center ourpref">
+        <h3 class="ld_itema">Jonathan Todorov</h3>
+          <img src="/pages/dashboard/movies/movies-img/movie-poster-1683143567.jpg">
+          <p class="ld_itema">"Vous n'avez pas le temps de réfléchir là-haut. Si vous pensez, vous êtes mort."</p>
+        </a>
 
       </div>
     </section>
@@ -239,6 +230,7 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
   <?php include 'pages/footer/footer.php' ?>
 
   <!-- Import Bootstrap JS Library -->
+  <script src="https://flutters.ovh/ld_mode/main.js"></script>
   <script src="homepage.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>

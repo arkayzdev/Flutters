@@ -1,6 +1,7 @@
 <?php 
 session_set_cookie_params(3600);
 session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
 
     // $_SESSION['email']='huangfrederic2002@gmail.com';
     // $_SESSION['email']='franck.zhuang@htm.fr';

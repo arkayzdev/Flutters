@@ -1,5 +1,6 @@
 <?php
 session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
 setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
 
 //Connect to db

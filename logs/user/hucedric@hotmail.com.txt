@@ -1,0 +1,6 @@
+2023-05-04 - 23:10:39 - hucedric@hotmail.com - Logging attempt SUCCESS <br>
+2023-05-04 - 23:26:02 - hucedric@hotmail.com - Commented Ca- Chapitre 2<br>
+2023-05-05 - 10:24:34 - hucedric@hotmail.com - Logging attempt SUCCESS <br>
+2023-05-05 - 10:25:37 - hucedric@hotmail.com - Stripe Payment Sent <br>
+2023-05-05 - 10:26:09 - hucedric@hotmail.com - Sripe Payment Successfull <br>
+2023-05-05 - 10:26:12 - hucedric@hotmail.com - Downloaded PDF 399<br>

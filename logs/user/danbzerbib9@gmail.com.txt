@@ -1,0 +1,2 @@
+2023-05-05 - 02:37:09 - danbzerbib9@gmail.com - Logging attempt SUCCESS <br>
+2023-05-05 - 02:39:56 - danbzerbib9@gmail.com - Stripe Payment Sent <br>

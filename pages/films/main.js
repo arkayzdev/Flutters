@@ -37,6 +37,12 @@ async function calendar_button_trigger(val, id) {
   let str = await res.text();
   let div = document.getElementById("film_session_sub_div");
   div.innerHTML = str;
+
+  if (check_cookie_name() == 1) {
+    load_night();
+  } else {
+    load_sun();
+  }
 }
 
 // Open calendar

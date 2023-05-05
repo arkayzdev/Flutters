@@ -1,4 +1,12 @@
-<?php session_start();
+<?php 
+// LD MODE COOKIES PAS TOUCHER
+if (!isset($_COOKIE['ld_mode'])) {
+    setcookie("ld_mode", 3, time()+3600, "/");
+}
+include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+
+session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
     // $_SESSION['email']='huangfrederic2002@gmail.com';
     // $_SESSION['email']='franck.zhuang@htm.fr';
     // $_SESSION['user_type']='Normal';
@@ -28,21 +36,21 @@
 
         <h2 id="film_h2">Films</h2>
         
-        <main id="film_main">
+        <main class="ld_item" id="film_main">
         <!-- Search -->
         <div id="films_searchbar">
-            <input  onchange="film_search()" id="film_search" type="text" placeholder="Chercher un film">
+            <input   onchange="film_search()" id="film_search" type="text" placeholder="Chercher un film">
             <button id="b" onclick="film_search()" type="button">Rechercher</button>
         </div>
 
-            <h3 class="film_h3"> À l'affiche (Séances planifiées) </h3>
+            <h3 class="film_h3 ld_itema"> À l'affiche (Séances planifiées) </h3>
 
-            <div id="a_l_affiche">
+            <div  id="a_l_affiche">
                 <?php include('api/create_a_l_affiche.php'); ?>
             </div>
 
             <div id="film_divider"></div>
-            <h3 class="film_h3 mt-5"> Tous les films (Séances non planifiées)</h3>
+            <h3 class="film_h3 mt-5 ld_itema"> Tous les films (Séances non planifiées)</h3>
 
             <div id="tous_les_films">
                 <?php include('api/create_tous_les_films.php'); ?>
@@ -52,6 +60,7 @@
               <!-- Footer -->
   <?php include '/var/www/flutters.ovh/pages/footer/footer.php' ?>
         <!-- Import Bootstrap JS Library -->
+        <script src="https://flutters.ovh/ld_mode/main.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
         <script src="main.js"></script>

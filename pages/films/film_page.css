@@ -254,7 +254,7 @@ p {
 
 #film_comment_content p,
 #film_comment_my_content p {
-  color: grey;
+  color: darkgrey;
   font-size: 0.9em;
   word-wrap: break-word;
 }

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
 setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
 
 //Connect to db
@@ -129,7 +130,7 @@ if(!isset($_SESSION['email'])){
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 
-<body style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/events/events-img/<?php echo htmlspecialchars($image) ?>');">
+<body style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 50%,rgba(0, 0, 0, 0.9) ), url('../dashboard/events/<?php echo htmlspecialchars($image) ?>');">
     <!-- Include Header -->
     <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); 
     ?>

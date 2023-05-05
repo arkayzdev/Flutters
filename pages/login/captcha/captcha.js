@@ -1,6 +1,6 @@
-var swap = 0;
 var saved_id;
 var saved_img;
+var swap = 0;
 var file = getElementById("captcha_files").innerHTML;
 
 // Shuffle captcha function

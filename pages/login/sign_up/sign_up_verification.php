@@ -28,7 +28,7 @@ if (isset($_POST['firstname']) && !empty($_POST['firstname'])) {
 // Account creation requirement
 
 // Check REGEX
-if (!preg_match("/^[a-zA-Zéèà]+$/", $_POST["firstname"]) && !preg_match("/^[a-zA-Zéèà-]+$/", $_POST["lastname"])){
+if (!preg_match("/^[a-zA-Zéèà]+$/", $_POST["firstname"]) || !preg_match("/^[a-zA-Zéèà-]+$/", $_POST["lastname"])){
     $msg = 'Les caractères spéciaux ne sont pas autorisés !';
     header('location:sign_up.php?message=' . $msg);
     exit;

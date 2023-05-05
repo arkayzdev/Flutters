@@ -12,6 +12,13 @@
         exit;
     }
 
+    // Check REGEX
+    if (!preg_match("/^[a-zA-Zéèà]+$/", $_POST["firstname"]) || !preg_match("/^[a-zA-Zéèà-]+$/", $_POST["lastname"])){
+    $msg = 'Les caractères spéciaux ne sont pas autorisés !';
+    header('location:profile.php?message=' . $msg);
+    exit;
+    }
+
         // Update users information
         $q = 'UPDATE USERS SET first_name=:first_name WHERE email=:email';
         $req = $bdd->prepare($q); // Renvoie une déclaration pdo (statement)

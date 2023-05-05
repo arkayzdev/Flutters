@@ -56,6 +56,10 @@ include '../admin-check.php'; ?>
               <div class="alert alert-success" role="alert">
               L'utilisateur a été modifié avec succès.
               </div>
+            <?php elseif ($_GET['alert'] == "unban") : ?>
+            <div class="alert alert-success" role="alert">
+              Vous avez débanni un utilisateur.
+            </div>
           <?php else : ?>
           <div class="alert alert-danger" role="alert">
               <?php echo $_GET['alert']; ?>

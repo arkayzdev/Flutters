@@ -58,7 +58,7 @@ $session = \Stripe\Checkout\Session::create([
     'customer_email' => $_SESSION['email'],
     'client_reference_id' => $id_session,
     'success_url' => "https://Flutters.ovh/pages/order/stripe_success?session_id={CHECKOUT_SESSION_ID}",    
-    'cancel_url' => 'https://Flutters.ovh/pages/order/session_order.php?id=' . $id_session . '&id_movie=' . $id_movie,
+    'cancel_url' => 'https://Flutters.ovh/pages/order/session_order.php?id_session=' . $id_session . '&id_movie=' . $id_movie,
 ]);
 
   // logs

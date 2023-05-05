@@ -27,7 +27,10 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
                     ?>
                     <option value="<?php echo $title?>" selected><?php echo htmlspecialchars($title)?></option>
                     <?php 
-                        $q = "SELECT title FROM MOVIE WHERE NOT title = '$title'";
+                        if(strpos($title, "'")) {
+                            $title = str_replace("'","\'",$title);
+                        }
+                        $q = "SELECT title FROM MOVIE WHERE NOT title = '$title' ORDER BY title ASC";
                         $req = $bdd->query($q);
                         $movies = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -71,7 +74,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
                     } ?>
                 </select>
             </td>
-            <td><input class="form-control" name="price" type="number" min="0" step="0.01" value="<?php echo htmlspecialchars(number_format($id_session['price'], 2))?>" required></td>
+            <td><input class="form-control" name="price" type="number" min="0.01" step="0.01" value="<?php echo htmlspecialchars(number_format($id_session['price'], 2))?>" required></td>
             <td>
             <?php echo '<input type="hidden" name="id" value="' . $_GET['id'] . '">'; ?>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#alterModal">
@@ -147,7 +150,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
                         } ?>
                 </select>
             </td>
-            <td><input class="form-control" name="price" type="number" min="0" step="0.01"></td>
+            <td><input class="form-control" name="price" type="number" min="0.01" step="0.01"></td>
             <td>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createModal">
                     Confirmer

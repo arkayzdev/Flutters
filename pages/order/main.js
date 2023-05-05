@@ -40,8 +40,8 @@ function select_ticket(val, price) {
 
   // If quantity = 0*
   let validate_pc = document.getElementById("order_validate_pc");
-  let validate_mobile = document.getElementById("order_validate_mobile");
-  let validate_mobile_i = document.getElementById("order_validate_mobile_i");
+  let validate_mobile = document.getElementById("select_ticket_total");
+  let validate_mobile_i = document.getElementById("select_ticket_total");
 
   if (input_quantity.value == 0) {
     quantity.style.opacity = "0.5";

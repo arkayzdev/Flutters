@@ -101,13 +101,23 @@ $query->execute([
 $result_firstname = $query->fetch(PDO::FETCH_COLUMN);
 $_SESSION['firstname'] = $result_firstname;
 
-// Session for lastname
+// Session for email and user_type
 $query = $bdd->prepare('SELECT user_type FROM USERS WHERE email= :email');
 $query->execute([
     'email' => htmlspecialchars($_POST['email']),
 ]);
 $result_user_type = $query->fetch(PDO::FETCH_COLUMN);
 $_SESSION['user_type'] = $result_user_type;
+
+// Session for email and user_type
+$query = $bdd->prepare('SELECT status FROM USERS WHERE email= :email');
+$query->execute([
+    'email' => htmlspecialchars($_POST['email']),
+]);
+$result_status = $query->fetch(PDO::FETCH_COLUMN);
+$_SESSION['status'] = $result_status;
+
+$_SESSION['ld_mode'] = 0;
 
 // Unset Cookies
 setcookie('email', $_POST['email'], time() - 24 * 3600);

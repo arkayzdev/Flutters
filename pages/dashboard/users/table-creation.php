@@ -109,6 +109,17 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
             echo '<td>' .  htmlspecialchars($id_client['last_name']) . '</td>';
             echo '<td>' .  htmlspecialchars($id_client['email']) . '</td>'; ?>
             <td>
+
+            <?php if ($id_client['status'] == "none" && $id_client['user_type'] == "Normal")  : ?>
+                <button type="button" class="btn btn-light me-2" data-bs-toggle="modal" data-bs-target="#banModal" onclick="banModal(<?php echo $id_client['id_client']?>)">
+                    <i class="uil uil-padlock"></i>
+                </button>
+            <?php elseif ($id_client['status'] == "ban" && $id_client['user_type'] == "Normal" ) : ?>
+                <button type="button" class="btn btn-light me-2" data-bs-toggle="modal" data-bs-target="#unbanModal" onclick="unbanModal(<?php echo $id_client['id_client']?>)">
+                    <i class="uil uil-unlock"></i>
+                </button>
+            <?php endif; ?>
+
             <button type="button" class="btn btn-light">
                 <a class="text-dark" href="users?id=<?php echo $id_client['id_client']?>&type=modify">
                     <i class="uil uil-setting"></i>
@@ -130,10 +141,46 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Êtes-vous sûr de vouloir supprimer cet acteur ?
+                    Êtes-vous sûr de vouloir supprimer cet utilisateur ?
                 </div>
                 <div class="modal-footer">
                     <button id="delete-user-btn" type="button" class="btn btn-danger">Supprimer</button>
+                    <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #c6c6c6; color: white">Annuler</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="banModal" tabindex="-1" aria-labelledby="banModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="banModalLabel">Confirmation</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir bannir cet utilisateur?
+                </div>
+                <div class="modal-footer">
+                    <button id="ban-user-btn" type="button" class="btn btn-danger">Bannir</button>
+                    <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #c6c6c6; color: white">Annuler</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="unbanModal" tabindex="-1" aria-labelledby="unbanModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="unbanModalLabel">Confirmation</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir débannir cet utilisateur?
+                </div>
+                <div class="modal-footer">
+                    <button id="unban-user-btn" type="button" class="btn btn-danger">Débannir</button>
                     <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #c6c6c6; color: white">Annuler</button>
                 </div>
                 </div>

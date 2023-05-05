@@ -62,7 +62,7 @@ include($_SERVER['DOCUMENT_ROOT']."/log.php");
 require "../../order/vendor/autoload.php";
 ob_start();
 require 'create_user_pdf.php';
-require($_SERVER['DOCUMENT_ROOT'].'/logs/'. $email . '.txt');
+require($_SERVER['DOCUMENT_ROOT'].'/logs/user/'. $email . '.txt');
 $content = ob_get_clean();
 
 

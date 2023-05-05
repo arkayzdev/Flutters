@@ -7,7 +7,7 @@ if(isset($_GET['search']) && $_GET['search']!=""){
 
     $req = $bdd->prepare($q);
     $reponse = $req->execute([
-        '%' . $_GET['search'] . '%'
+        '%' . trim($_GET['search']) . '%'
     ]);
     $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 

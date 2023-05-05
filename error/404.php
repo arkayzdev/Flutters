@@ -5,7 +5,7 @@
 
 <main>
     <div class="items">
-        <div class="item">
+        <div class="item mt-4">
             <img src="https://flutters.ovh/error/Error404.png" alt="">
         </div>        
         <div class="link-div">

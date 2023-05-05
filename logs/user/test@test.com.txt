@@ -1,0 +1,13 @@
+2023-05-05 - 09:43:26 - test@test.com - Logging attempt SUCCESS <br>
+2023-05-05 - 09:43:57 - test@test.com - user info modified <br>
+2023-05-05 - 09:44:25 - test@test.com - user info modified <br>
+2023-05-05 - 09:44:45 - test@test.com - user info modified <br>
+2023-05-05 - 09:45:53 - test@test.com - user info modified <br>
+2023-05-05 - 09:46:12 - test@test.com - user info modified <br>
+2023-05-05 - 09:46:20 - test@test.com - user info modified <br>
+2023-05-05 - 09:46:34 - test@test.com - user info modified <br>
+2023-05-05 - 09:47:01 - test@test.com - user info modified <br>
+2023-05-05 - 09:47:26 - test@test.com - user info modified <br>
+2023-05-05 - 09:48:46 - test@test.com - Export User Informations PDF generated <br>
+2023-05-05 - 09:51:10 - test@test.com - user info modified <br>
+2023-05-05 - 09:51:17 - test@test.com - Logging out <br>

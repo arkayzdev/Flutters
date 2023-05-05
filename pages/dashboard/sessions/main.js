@@ -3,7 +3,7 @@ async function searchSessions() {
     const name = input.value;
     const res = await fetch("api/search-session.php?name=" + name);
     const str = await res.text();
-    const div = document.getElementById('display-movie');
+    const div = document.getElementById('display-session');
     div.innerHTML = str;
 }
 

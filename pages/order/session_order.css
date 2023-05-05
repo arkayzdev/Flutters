@@ -85,7 +85,7 @@ main {
 /* Order Menu */
 #order_menu {
   width: 100%;
-  padding: 0em 1em 1em 1em;
+  padding: 0em 1em 0em 1em;
 }
 #order_menu > a {
   color: #e32828;
@@ -110,7 +110,7 @@ main > p {
 
 /* Order content*/
 #order_content {
-  padding: 2.5em 2em 1em 2em;
+  padding: 2em 2em 0em 2em;
   width: 95%;
 }
 

@@ -1,0 +1,35 @@
+/* Import font family : Open sans*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+/* Colors root*/
+#about_body {
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 1) 20%
+    ),
+    url("../profile/pxfuel.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: light-grey; */
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  height: 1000px;
+}
+
+#main_allabout {
+  background-color: white;
+  width: 100%;
+  padding: 4em 2em 4em 4em;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#about_h2 {
+  color: white;
+  font-size: 2.75em;
+  text-align: center;
+  font-weight: 700;
+  margin: 4em 0 1em 0;
+}

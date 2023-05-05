@@ -20,7 +20,19 @@ async function searchUsers() {
     div.innerHTML = str;
 }
 
+
 function deleteModal(id) {
     const btn = document.getElementById('delete-user-btn');
     btn.setAttribute('onclick', 'location.href = \'users?type=delete&id=' + id + '\'');
-}   
+}
+
+function banModal(id) {
+    const btn = document.getElementById('ban-user-btn');
+    btn.setAttribute('onclick', 'location.href = \'api/ban?id=' + id + '\'');
+}
+
+function unbanModal(id) {
+    const btn = document.getElementById('unban-user-btn');
+    btn.setAttribute('onclick', 'location.href = \'api/unban?id=' + id + '\'');
+}
+

@@ -73,14 +73,14 @@
             };
 
             echo '
-                <div  id="film_comment_my_content">
+                <div id="film_comment_my_content">
                     <div class="d-flex justify-content-between"> 
-                    <h3>Mon Commentaire</h3>
-                    <p style="color: grey; font-weight:500; margin:0;">' . strftime("%d %B %Y", strtotime($own_comment[0]['publication_date'] )). '</p>
+                    <h3 class="ld_itema">Mon Commentaire</h3>
+                    <p class="ld_itema" style="color: grey; font-weight:500; margin:0;">' . strftime("%d %B %Y", strtotime($own_comment[0]['publication_date'] )). '</p>
                     </div>
 
                     <div>' . $str_star . '</div>
-                    <p style="color:darkslategrey!important">' . htmlspecialchars($own_comment[0]['description']) . '</p>
+                    <p class="ld_itema" style="color:darkslategrey!important">' . htmlspecialchars($own_comment[0]['description']) . '</p>
                     <button onclick="my_comment_modify(\'' . htmlspecialchars($email) . '\',\'' . htmlspecialchars($id) . '\')" class="btn align-self-end film_modify_button"> Modifier </button>
                 </div>
             ';
@@ -115,9 +115,9 @@
 
             echo '
             
-                <div  id="film_comment_content">
+                <div id="film_comment_content">
                     <div class="d-flex justify-content-between"> 
-                        <h3>' . htmlspecialchars($result['first_name']) . ' ' . htmlspecialchars($result['last_name'])  . '</h3>
+                        <h3 class="ld_itema">' . htmlspecialchars($result['first_name']) . ' ' . htmlspecialchars($result['last_name'])  . '</h3>
                         <p style="color: grey; font-weight:500; margin:0;">' . strftime("%d %B %Y", strtotime($comment['publication_date'] )). '</p>
                     </div>
 

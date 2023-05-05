@@ -1,5 +1,12 @@
 <?php
+// LD MODE COOKIES PAS TOUCHER
+if (!isset($_COOKIE['ld_mode'])) {
+    setcookie("ld_mode", 3, time()+3600);
+}
+include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+
 session_start();
+include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
 setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
 
 //Connect to db
@@ -86,9 +93,9 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 </head>
 <body class="d-flex">
     <!-- order  -->
-    <main class="col-5 d-flex flex-column align-items-center ">
+    <main class="col-5 d-flex flex-column align-items-center ld_item ">
         <!-- Menu -->
-        <div id="order_menu" class="d-flex justify-content-between">
+        <div id="order_menu" class="d-flex justify-content-between pb-5">
             <a href="/pages/films/film_page.php?id=<?php echo $_GET['id_movie'] ?>" class="back_button"><i class="uis uis-arrow-circle-left"></i></a>
         </div>
 
@@ -121,8 +128,7 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
 
             <p>Prix unitaire : <?php echo $session_price?>€ TTC</p>
             <p>8 billets maximum autorisé par commande</p>
-                <button id="select_ticket_total">Prix Total : 0.00€ TTC</button>
-                <button disabled onclick="redirect_payment(<?php echo $session_id?>)" style="display:none" id="order_validate_mobile"><i id="order_validate_mobile_i" class="uis uis-arrow-circle-right"></i></button>
+                <button disabled onclick="redirect_payment(<?php echo $session_id?>)" id="select_ticket_total">Prix Total : 0.00€ TTC</button>
         </div>
     </main>
 

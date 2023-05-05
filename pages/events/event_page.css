@@ -188,6 +188,12 @@ p {
   }
 }
 @media screen and (max-width: 430px) {
+  #select_ticket_quantity {
+    font-size: 1.5em;
+    padding: 0;
+    width: 6em;
+    text-align: center;
+  }
   /* Section : event_presentation */
   #event_presentation_firstdiv > div {
     width: 100%;

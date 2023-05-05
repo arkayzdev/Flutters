@@ -20,7 +20,9 @@ $q = "SELECT s.seance_date, s.start_time, m.duration FROM SESSION s
     INNER JOIN TAKE_PLACE TP on s.id_session = TP.id_session
     INNER JOIN MOVIE m on TP.id_movie = m.id_movie
     WHERE (s.seance_date = '$session_date' OR s.seance_date = '$precedent_day')
-    AND s.id_room = $room_id";
+    AND s.id_room = $room_id
+    AND s.id_session != $id_session
+    ";
 $req = $bdd->query($q);
 $results = $req->fetchAll(PDO::FETCH_ASSOC);
     
@@ -35,12 +37,6 @@ foreach ($results as $session) {
         exit();
     }
 }
-
-$q = "SELECT id_room FROM ROOM WHERE room_name = '$room'";
-$req = $bdd->query($q);
-$req->execute();
-$result = $req->fetch(PDO::FETCH_ASSOC);
-$id_room = $result['id_room'];
  
 $q = "UPDATE SESSION SET seance_date=:seance_date, start_time=:start_time, language=:language, price=:price, id_room=:id_room WHERE id_session = $id_session";
 $req = $bdd->prepare($q); 
@@ -49,10 +45,10 @@ $response = $req->execute([
     'start_time' => $_POST['start_time'],
     'language' => $_POST['language'],
     'price' => $_POST['price'],
-    'id_room' => (int)$id_room
+    'id_room' => (int)$room_id
 ]); 
 
-$q = "SELECT id_movie FROM MOVIE WHERE title = '$movie_title'";
+$q = "SELECT id_movie FROM MOVIE WHERE title = '$movie_name'";
 $req = $bdd->query($q);
 $req->execute();
 $movie_result = $req->fetch(PDO::FETCH_ASSOC);

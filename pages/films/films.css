@@ -21,6 +21,8 @@
       rgba(0, 0, 0, 1) 20%
     ),
     url("../profile/profile_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   /* background-color: light-grey; */
   font-family: "Open Sans", sans-serif;
   font-size: 1em;

@@ -20,6 +20,14 @@
             exit;
         }
 
+        // Password requirement met
+        if (strlen($_POST["password"]) <= 8 || !preg_match("/[A-Z]/", $_POST["password"]) || !preg_match("/[a-z]/", $_POST["password"]) || !preg_match("/[0-9]/", $_POST["password"])) {
+
+            $msg = 'Attention ! Mot de passe invalide. Le mot de passe doit être au minimum de 8 caractères et contenir au moins 1 majuscule, 1 minuscule et 1 chiffre !';
+            header('location:profile.php?message=' . $msg);
+            exit;
+        }
+
         // Update users information
         $q = 'UPDATE USERS SET password=:password WHERE email=:email';
         $req = $bdd->prepare($q); // Renvoie une déclaration pdo (statement)
