@@ -4,3 +4,6 @@
 2023-05-04 - 16:15:05 - todorovj@icloud.com - Stripe Payment Sent <br>
 2023-05-04 - 16:16:12 - todorovj@icloud.com - Stripe Payment Sent <br>
 2023-05-04 - 16:17:10 - todorovj@icloud.com - user info modified <br>
+2023-05-07 - 18:20:00 - todorovj@icloud.com - Logging attempt SUCCESS <br>
+2023-05-07 - 18:20:23 - todorovj@icloud.com - Stripe Payment Sent <br>
+2023-05-07 - 18:40:28 - todorovj@icloud.com - Export User Informations PDF generated <br>

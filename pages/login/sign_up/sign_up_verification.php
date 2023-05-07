@@ -153,11 +153,11 @@ $mail->isSMTP();
 $mail->CharSet = "UTF-8";
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
+$mail->SMTPDebug = 0;
 $mail->Username = 'flutters.noreply@gmail.com';
 $mail->Password = 'jsclcfdogvsmscgt';
 $mail->SMTPSecure = 'ssl';
 $mail->Port = 465;
-$mail->SMTPDebug = true;
 
 $mail->setFrom('flutters.noreply@gmail.com');
 

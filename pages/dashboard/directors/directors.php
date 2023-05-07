@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
  
-  <title>Dashboard</title>
+  <title>Dashboard | Directeurs</title>
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">

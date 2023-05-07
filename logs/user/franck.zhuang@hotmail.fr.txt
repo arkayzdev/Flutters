@@ -20,3 +20,7 @@
 2023-05-05 - 18:33:03 - franck.zhuang@hotmail.fr - Logging attempt SUCCESS <br>
 2023-05-05 - 18:36:27 - franck.zhuang@hotmail.fr - Logging attempt SUCCESS <br>
 2023-05-05 - 18:41:04 - franck.zhuang@hotmail.fr - Logging attempt SUCCESS <br>
+2023-05-07 - 19:04:38 - franck.zhuang@hotmail.fr - Logging attempt SUCCESS <br>
+2023-05-07 - 19:05:14 - franck.zhuang@hotmail.fr - Stripe Payment Sent <br>
+2023-05-07 - 19:05:30 - franck.zhuang@hotmail.fr - Sripe Payment Successfull <br>
+2023-05-07 - 19:05:48 - franck.zhuang@hotmail.fr - Downloaded PDF 2<br>

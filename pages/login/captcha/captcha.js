@@ -60,10 +60,10 @@ function check() {
     if (
       document.getElementById(j).src ==
       "https://flutters.ovh/pages/login/captcha/Captcha-Library/" +
-        file +
-        "/" +
-        i +
-        ".png"
+      file +
+      "/" +
+      i +
+      ".png"
     ) {
       check += 1;
     }
@@ -71,10 +71,10 @@ function check() {
     console.log(document.getElementById(i).src);
     console.log(
       "https://flutters.ovh/pages/login/captcha/Captcha-Library/" +
-        file +
-        "/" +
-        i +
-        ".png"
+      file +
+      "/" +
+      i +
+      ".png"
     );
   }
   if (check == 9) {
@@ -106,4 +106,8 @@ function check() {
       document.getElementById(i).onclick = "";
     }
   }
+}
+
+function test() {
+  console.log('Hello');
 }

@@ -25,11 +25,18 @@
     </head>
     <body id="about_body">
         <!-- Include Header -->
-        <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); ?>
+        <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); 
+
+        // LD MODE COOKIES PAS TOUCHER
+        if (!isset($_COOKIE['ld_mode'])) {
+            setcookie("ld_mode", 3, time()+3600);
+        }
+        include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+?>
 
         <h2 id="about_h2">À propos</h2>
         
-        <main id=main_allabout>
+        <main class="ld_item" id=main_allabout>
 
         <section>
       <h1 class="directeurs_about">Fondateurs de Flutters</h1>
@@ -234,6 +241,7 @@
 
         <!-- Import Bootstrap JS Library -->
         <script src="about.js"></script>
+        <script src="https://flutters.ovh/ld_mode/main.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>

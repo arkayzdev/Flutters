@@ -56,7 +56,7 @@ foreach($result as $res){
     $mail->Password = 'jsclcfdogvsmscgt';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
-    $mail->SMTPDebug = true;
+    $mail->SMTPDebug = 0;
 
     $mail->setFrom('flutters.noreply@gmail.com');
 

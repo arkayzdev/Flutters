@@ -48,6 +48,10 @@ $response = $req->execute([
     'id_room' => (int)$room_id
 ]); 
 
+if(strpos($movie_name, "'")) {
+    $movie_name = str_replace("'","\'",$movie_name);
+}
+
 $q = "SELECT id_movie FROM MOVIE WHERE title = '$movie_name'";
 $req = $bdd->query($q);
 $req->execute();

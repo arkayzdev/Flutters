@@ -4,10 +4,6 @@ session_start();
 include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
   setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
 
-    // $_SESSION['email']='huangfrederic2002@gmail.com';
-    // $_SESSION['email']='franck.zhuang@htm.fr';
-    // $_SESSION['user_type']='Normal';
-
     // Connect to the db
     include($_SERVER['DOCUMENT_ROOT']."/pages/connect_db.php");
 
@@ -35,7 +31,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php echo '<title>Flutters : ' . $name . '</title>' ?>
+    <?php echo '<title>' . $name . '</title>' ?>
 
     <!-- Import Bootstrap CSS Library -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">

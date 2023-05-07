@@ -32,7 +32,9 @@
         'sub_date' => date("y-m-d"),
     ]);
 
+    $phpmailer->SMTPDebug=0;
     $mail = new PHPMailer(true);
+    $mail->SMTPDebug = 0;
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;

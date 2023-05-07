@@ -19,7 +19,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page d'accueil</title>
+  <title>Accueil</title>
 
   <!-- Import Bootstrap CSS Library -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -55,10 +55,10 @@
     <!-- homepage-welcome_attach_pitch -->
     <div id="homepage-welcome_attach_pitch">
       <h3>Revivez vos <span style="color: #E32828;">meilleurs</span> instants, aux meilleurs prix.</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>
-        Morbi bibendum ante lorem, ac fringilla purus feugiat eu. <br>
-        Vivamus quis felis et metus fringilla sodales. <br>
-        Suspendisse sit amet dolor arcu. </p>
+      <p> Un tout nouveau cinéma débarque fraîchement en France.<br>
+        Vivez une expérience inédite avec les films proposés par Flutters !<br>
+        Nous vous attendons tous avec impatience. 
+         </p>
       <a class="hover-effect" href="https://flutters.ovh/pages/films/films">Voir les films</a>
     </div>
 
@@ -159,11 +159,19 @@
           <p class="ld_itema">"Pour combattre les monstres, nous avons créé nos propres monstres."</p>
         </a>
 
-        <a href="/pages/films/film_page.php?id=5" class="col-3 d-flex flex-column align-items-center ourpref">
+        <div class="col-3 d-flex flex-column align-items-center ourpref" >
           <h3 class="ld_itema">Franck Zhuang</h3>
-            <img src="/pages/dashboard/movies/movies-img/movie-poster-1683407789.jpg">
+          <div style="position: relative;">
+            <img src="/pages/dashboard/movies/movies-img/movie-poster-1683407789.jpg" class="dragme" id="draggable" style="z-index: 10">
+            <img src="/pages/monsieur-sananes-pardonnez-moi.png" id="monsieur-sananes" style="" >
+          </div>
+            
+       
+            
             <p class="ld_itema">"Quand on le veut, on peut. Tony Stark a réussi au fond d'une grotte."</p>
-        </a>
+        </div>
+    
+       
 
         <a href="/pages/films/film_page.php?id=52" class="col-3 d-flex flex-column align-items-center ourpref">
         <h3 class="ld_itema">Jonathan Todorov</h3>

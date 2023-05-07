@@ -272,7 +272,7 @@
         <ul class="d-flex" id="nav_link">
             <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
             <li class="nav-item"><a class="nav-link" href="/pages/films/films">Films</a></li>
-            <li class="nav-item"><a class="nav-link" href="/pages/events/events.php">Evènements</a></li>
+            <li class="nav-item"><a class="nav-link" href="/pages/events/events">Evènements</a></li>
             <li class="nav-item"><a class="nav-link" href="/pages/about/index.php">À propos</a></li>
         </ul>
     </div>
@@ -319,8 +319,8 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/pages/profile/profile.php">Profil</a></li>
-                            <li><a class="dropdown-item" href="/pages/profile/mes_reservations.php">Mes réservations</a></li>
+                            <li><a class="dropdown-item" href="/pages/profile/profile">Profil</a></li>
+                            <li><a class="dropdown-item" href="/pages/profile/mes_reservations">Mes réservations</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/deconnexion.php">Deconnexion</a></li>
                         </ul>

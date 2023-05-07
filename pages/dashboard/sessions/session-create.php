@@ -35,6 +35,10 @@ foreach ($results as $session) {
     }
 }
 
+if(strpos($movie_name, "'")) {
+    $movie_name = str_replace("'","\'",$movie_name);
+}
+
 $q = "SELECT id_movie FROM MOVIE WHERE title = '$movie_name'";
 $req = $bdd->query($q);
 $movie = $req->fetch(PDO::FETCH_ASSOC);

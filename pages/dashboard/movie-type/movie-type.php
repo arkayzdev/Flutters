@@ -8,7 +8,7 @@ include '../admin-check.php'; ?>
 <head>
   <meta charset="utf-8">
  
-  <title>Dashboard</title>
+  <title>Dashboard | Genres</title>
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
