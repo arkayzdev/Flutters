@@ -43,3 +43,28 @@ document.querySelectorAll(".accordion__question").forEach((item) => {
     }
   });
 });
+
+let PASSCODE = ['e', 's', 'g', 'i'],
+  current = 0,
+  confetti = document.getElementById('mystere-confetti');
+
+function keyListener(e) {
+  let code = e.keyCode || e.which,
+    str = String.fromCharCode(code);
+
+  if (str === PASSCODE[current]) {
+    current++;
+    if (current >= PASSCODE.length) {
+      confetti.style.display = "flex";
+      setTimeout(function () {
+        window.open("https://www.esgi.fr/");
+        confetti.style.display = "none";
+      }, 2000);
+    }
+  } else {
+    current = 0;
+  }
+
+}
+
+document.addEventListener("keypress", keyListener);

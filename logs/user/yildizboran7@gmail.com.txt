@@ -4,3 +4,6 @@
 2023-05-04 - 22:04:26 - yildizboran7@gmail.com - Logging attempt SUCCESS <br>
 2023-05-04 - 22:04:31 - yildizboran7@gmail.com - Export User Informations PDF generated <br>
 2023-05-04 - 22:06:03 - yildizboran7@gmail.com - Export User Informations PDF generated <br>
+2023-05-06 - 19:32:36 - yildizboran7@gmail.com - Logging attempt SUCCESS <br>
+2023-05-06 - 19:33:04 - yildizboran7@gmail.com - Stripe Payment Sent <br>
+2023-05-06 - 19:33:42 - yildizboran7@gmail.com - Stripe Payment Sent <br>

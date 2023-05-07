@@ -62,3 +62,4 @@ $response = $req->execute([
 
 $alert = "alter_success";
 header('location: sessions?alert=' . $alert);
+exit();

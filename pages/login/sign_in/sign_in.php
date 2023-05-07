@@ -1,4 +1,5 @@
 <?php
+
     // logs
     // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
     $log_type = 3; $log_page = 'https://flutters.ovh/pages/login/sign_in/sign_in';
@@ -27,6 +28,13 @@
 </head>
 
 <body>
+<?php 
+          // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, $_SERVER['DOCUMENT_ROOT']);
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+    ?>
   <!-- Include Header -->
   <?php include("/var/www/flutters.ovh/pages/nav/login_nav.php"); ?>
 
@@ -37,11 +45,11 @@
     <div class="col col-lg-6 col-xl-7 d-none d-lg-inline img-fluid"></div>
 
     <!-- form -->
-    <div class="col col-lg-6 col-xl-5 bg-white d-flex flex-column justify-content-center align-items-center">
+    <div style="background-color:white;"class="col col-lg-6 col-xl-5 d-flex flex-column justify-content-center align-items-center ld_item">
 
       <!-- form title -->
       <div class="w-75" style="margin-bottom:2em">
-        <h2 class="align-self-start" style="font-size:3em; font-weight:700;"> Connexion </h2>
+        <h2 class="align-self-start ld_itema" style="font-size:3em; font-weight:700;"> Connexion </h2>
       </div>
 
       <!-- Notifications -->
@@ -57,29 +65,29 @@
       <form class="w-75 mt-3" action="sign_in_verification.php" method="POST">
         <!-- email -->
         <div class="col mt-3">
-          <p class="mb-1">Adresse email</p>
+          <p class="mb-1 ld_itema">Adresse email</p>
           <div class="login-input">
             <img class="ms-1 me-1 pb-1" src="../img/mail-login.png">
-            <input class="col-8 mt-1 mb-1 ms-2" type='email' name='email' placeholder="exemple@xyz.ab" required value='<?= isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : '' ?>'>
+            <input style="background-color:inherit" class="col-8 mt-1 mb-1 ms-2 ld_itema" type='email' name='email' placeholder="exemple@xyz.ab" required value='<?= isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : '' ?>'>
           </div>
         </div>
         <!-- pwd -->
         <div class="col mt-3">
-          <p class="mb-1">Votre mot de passe</p>
+          <p class="mb-1 ld_itema">Votre mot de passe</p>
           <div class="login-input">
             <img class="ms-1 me-1 pb-2" src="../img/pwd-login.png">
-            <input class="col-10 mt-1 ms-2" type='password' name='password' placeholder='Mot de passe' required>
+            <input style="background-color:inherit" class="col-10 mt-1 ms-2 ld_itema" type='password' name='password' placeholder='Mot de passe' required>
           </div>
         </div>
         <!-- pwd-forgot -->
-        <div class="w-75 mt-3"><a class="align-self-start" style="font-size:14px; font-weight:600; margin-top:2em" id="pwd-forgot" href="forgot_pwd/forgot_pwd.php">Mot de passe oublié ?</a></div>
+        <div class="w-75 mt-3 ld_itema"><a class="align-self-start" style="font-size:14px; font-weight:600; margin-top:2em" id="pwd-forgot" href="forgot_pwd/forgot_pwd.php">Mot de passe oublié ?</a></div>
         <!-- submit -->
         <div class="col login-submit">
           <input class="w-100 mt-1" type='submit' value="CONNEXION">
         </div>
         <!-- to-sign-up -->
         <div class="w-75">
-          <p class="align-self-start" style="font-size:14px; font-weight:600; margin-top:2em;"> Pas encore de compte ? <a id="to-sign" href="../sign_up/sign_up.php">Créer un compte</a> </p>
+          <p class="align-self-start ld_itema" style="font-size:14px; font-weight:600; margin-top:2em;"> Pas encore de compte ? <a id="to-sign" href="../sign_up/sign_up.php">Créer un compte</a> </p>
         </div>
         <!-- Captcha validation input -->
         <input style="display:none;" id="captcha_form_input" value="0" name="captcha_check">
@@ -92,6 +100,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
   <!-- Captcha JS Script -->
   <script src="../captcha/captcha.js"></script>
+  <script src="https://flutters.ovh/ld_mode/main.js"></script>
 </body>
 
 </html>

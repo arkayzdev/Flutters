@@ -42,6 +42,7 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] != 4){
 } else {
     $alert= 'Veuillez mettre une image.';
     header('location: events?type=create&alert=' . $alert);
+    exit();
 }
 
 $q = 'INSERT INTO EVENT (name, description, capacity, price, image, start_time, date_event) 

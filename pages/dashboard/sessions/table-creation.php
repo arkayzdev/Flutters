@@ -11,7 +11,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
 <?php foreach ($result_sessions as $id_session) {
     if ($_GET['id'] ==  $id_session['id_session']) : ?> 
         <?php $id=  $id_session['id_session']; ?>
-        <form class="d-flex flex-column m-2 col-6" method="POST" action="session-update" enctype="multipart/form-data">
+        <form class="d-flex flex-column m-2 col-6 ld_itema" method="POST" action="session-update" enctype="multipart/form-data">
             <td><input type="date" class="form-control" name="date" min="<?= date('Y-m-d')?>" value="<?php echo $id_session['seance_date']?>" required></td>
             <td><input type="time" class="form-control" name="start_time" value="<?php echo $id_session['start_time']?>" required></td>
             <td>
@@ -43,7 +43,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
             <td>
                 <select class="form-select mb-2" id="type-select" name="language">
                     <option value="<?php echo $id_session['language']?>" selected><?php echo htmlspecialchars($id_session['language'])?></option>
-                    <?php $language_options = array('VOSTFR', 'VO', 'VOSTENG'); 
+                    <?php $language_options = array('VOSTFR', 'VO', 'VOSTENG', 'VF'); 
                     foreach ($language_options as $language) {
                         if ($language != $id_session['language']) {
                             echo '<option value="' . $language .'">' . $language . '</option>';
@@ -112,7 +112,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
 <!-- Create table -->
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
     <tr>
-        <form method="POST" action="session-create" enctype="multipart/form-data">
+        <form class="ld_itema" method="POST" action="session-create" enctype="multipart/form-data">
             <td><input type="date" class="form-control" name="date" min="<?= date('Y-m-d')?>" required></td>
             <td><input type="time" class="form-control" name="start_time" required></td>
             <td>
@@ -135,6 +135,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
                     <option value="VOSTFR">VOSTFR</option>
                     <option value="VO">VO</option>
                     <option value="VOSTENG">VOSTENG</option>
+                    <option value="VF">VF</option>
                 </select>
             </td>    
             <td>
@@ -184,7 +185,7 @@ $result_sessions = $req->fetchAll(PDO::FETCH_ASSOC);
 <?php else : ?>
     <?php foreach ($result_sessions as $id_session) :
         $id = $id_session['id_session'];
-        echo '<tr>';
+        echo '<tr  class="ld_itema">';
         echo '<td>' .  htmlspecialchars($id_session['id_session']) . '</td>';
         echo '<td>' .  htmlspecialchars($id_session['seance_date']) . '</td>';
         echo '<td>' .  htmlspecialchars(date("H:i", strtotime($id_session['start_time']))) . '</td>';

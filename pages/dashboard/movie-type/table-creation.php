@@ -11,7 +11,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
     <?php foreach($result as $id_type) {
             if($_GET['id'] ==  $id_type['id_type']) : ?>
                 <tr>
-                    <form method="POST" action="movie-type-update" enctype="multipart/form-data">
+                    <form class="ld_itema" method="POST" action="movie-type-update" enctype="multipart/form-data">
                         <?php
                         echo '<td><input class="update-input form-control" name="name" value="' . htmlspecialchars($id_type['name']) . '" required></td>';?>
                         <td>
@@ -47,7 +47,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 <!-- Create Table -->
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
     <tr>
-        <form method="POST" action="movie-type-create" enctype="multipart/form-data">
+        <form class="ld_itema" method="POST" action="movie-type-create" enctype="multipart/form-data">
             <td><input class="update-input form-control" name="name" required></td>
             <td>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createModal">
@@ -82,7 +82,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 <!-- Display Table -->
 <?php else :?>
     <?php foreach($result as $id_type) : ?>
-        <tr>
+        <tr class="ld_itema">
             <?php 
             echo '<td>' .  htmlspecialchars($id_type['id_type']). '</td>';
             echo '<td>' .  htmlspecialchars($id_type['name']) . '</td>'; ?>

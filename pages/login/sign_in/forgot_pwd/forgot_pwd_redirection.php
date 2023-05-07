@@ -51,6 +51,13 @@ if ($_GET['hash'] != hash('sha512', $result)) {
 </head>
 
 <body>
+<?php 
+          // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, $_SERVER['DOCUMENT_ROOT']);
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+    ?>
     <!-- Include Header -->
     <?php include("/var/www/flutters.ovh/pages/nav/login_nav.php"); ?>
 
@@ -60,10 +67,10 @@ if ($_GET['hash'] != hash('sha512', $result)) {
         <div class="col col-lg-6 col-xl-7 d-none d-lg-inline img-fluid"></div>
 
         <!-- form -->
-        <div class="col col-lg-6 col-xl-5 bg-white d-flex flex-column align-items-center" style=" height:35vh background-color:white">
+        <div style="background-color:white;" class="col col-lg-6 col-xl-5 d-flex flex-column align-items-center ld_item" style=" height:35vh background-color:white">
             <!-- form title -->
             <div style="text-align:center; margin-top: 20vh">
-                <h2 style="font-size:2.5em; font-weight:700;"> Reinitialisation du mot de passe </h2>
+                <h2 class="ld_itema" style="font-size:2.5em; font-weight:700;"> Reinitialisation du mot de passe </h2>
                 <p style="color:grey;">Vous pouvez à présent définir votre nouveau mot de passe</p>
             </div>
 
@@ -78,18 +85,18 @@ if ($_GET['hash'] != hash('sha512', $result)) {
                 <form class="" action="forgot_pwd_modify.php" method="POST">
                     <!-- pwd -->
                     <div class="mt-4">
-                        <p>Mot de passe (6-12 caractères)</p>
+                        <p class="ld_itema" >Mot de passe (6-12 caractères)</p>
                         <div class="login-input">
                             <img src="../../img/pwd-login.png">
-                            <input type='password' name='password' placeholder='Mot de passe' required>
+                            <input style="background-color:inherit" class="ld_itema" type='password' name='password' placeholder='Mot de passe' required>
                         </div>
                     </div>
                     <!-- confirm pwd -->
                     <div class="mt-3">
-                        <p>Confirmation mot de passe</p>
+                        <p class="ld_itema">Confirmation mot de passe</p>
                         <div class="login-input">
                             <img src="../../img/pwd-login.png">
-                            <input type='password' name='confirm-password' placeholder='Répétez mot de passe' required>
+                            <input style="background-color:inherit" class="ld_itema" type='password' name='confirm-password' placeholder='Répétez mot de passe' required>
                         </div>
                     </div>
                     <!-- Submit -->
@@ -101,13 +108,14 @@ if ($_GET['hash'] != hash('sha512', $result)) {
                     echo '<input style="display:none" name="hash" value=' . htmlspecialchars($_GET['hash']) . '>';
                     ?>
                 </form>
-                <p style="text-align:center; margin-top:2vh">Aller à la page de <a id="to-sign" href="../sign_in.php">connexion</a></p>
+                <p style="text-align:center; margin-top:2vh" class="ld_itema">Aller à la page de <a id="to-sign" href="../sign_in.php">connexion</a></p>
             </div>
         </div>
 
         <!-- Import Bootstrap JS Library -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
+        <script src="https://flutters.ovh/ld_mode/main.js"></script>
 </body>
 
 </html>

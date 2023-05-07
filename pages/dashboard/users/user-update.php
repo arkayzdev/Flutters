@@ -12,7 +12,7 @@ if (!preg_match("/^[a-zA-Zéèà-]+$/", $first_name) || !preg_match("/^[a-zA-Zé
     exit();
 }
 
-$q = "SELECT COUNT(id_client) as COUNT FROM USERS WHERE email = '$email'";
+$q = "SELECT COUNT(id_client) as COUNT FROM USERS WHERE email = '$email' AND id_client != $id_client" ;
 $req = $bdd->query($q);
 $result = $req->fetch(PDO::FETCH_ASSOC);
 if ($result['COUNT'] != "0") {
@@ -26,9 +26,9 @@ $q = "UPDATE USERS SET first_name = :first_name, last_name = :last_name, email =
 $req = $bdd->prepare($q);
 $reponse = $req->execute([
     'first_name' => $first_name,
-    'last_name' => $_POST['last_name'],
-    'email' => $last_name,
-    'user_type' => $email
+    'last_name' => $last_name,
+    'email' => $email,
+    'user_type' => $_POST['user_type']
 ]); 
 
 $alert = "alter_success";

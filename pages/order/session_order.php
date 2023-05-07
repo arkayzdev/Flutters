@@ -1,9 +1,4 @@
 <?php
-// LD MODE COOKIES PAS TOUCHER
-if (!isset($_COOKIE['ld_mode'])) {
-    setcookie("ld_mode", 3, time()+3600);
-}
-include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
 
 session_start();
 include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
@@ -92,6 +87,13 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
 </head>
 <body class="d-flex">
+<?php 
+          // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, $_SERVER['DOCUMENT_ROOT']);
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+    ?>
     <!-- order  -->
     <main class="col-5 d-flex flex-column align-items-center ld_item ">
         <!-- Menu -->
@@ -106,23 +108,23 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
         <!-- Content -->
         <div id="order_content">
             <p>Date</p>
-            <p class="order_divider"><?php echo $session_date?></p>
+            <p class="order_divider ld_itema"><?php echo $session_date?></p>
 
             <p>Seance</p>
             <p><?php echo $session_start_time . ' ∘ ' . $session_language?></p>
-            <p class="order_divider" style="font-weight:500;">Fin prévue à <?php echo $session_end_time?></p>
+            <p class="order_divider ld_itema" style="font-weight:500;">Fin prévue à <?php echo $session_end_time?></p>
 
             <p>Salle <?php echo $room_name?> (<?php echo $room_capacity?> places)</p>
-            <p class="order_divider" style="font-weight:500;"> <?php echo $room_remaining_seats?> places restantes</p>
+            <p class="order_divider ld_itema" style="font-weight:500;"> <?php echo $room_remaining_seats?> places restantes</p>
         </div>
 
         <!-- tickets -->
-        <div id="ticket" class="d-flex flex-column align-items-center">
+        <div id="ticket" class="d-flex flex-column align-items-center mt-4">
             <!-- select_ticket quantity -->
             <div id="select_ticket">
                 <button disabled id="select_ticket_minus" onclick="select_ticket('minus', '<?php echo $session_price ?>')" ><i class="uil uil-minus-circle"></i></button>
                 <input id="select_ticket_value" style="display:none;" value=0>
-                <p id="select_ticket_quantity"> 0 Billet(s)</p>
+                <p id="select_ticket_quantity" class="ld_itema"> 0 Billet(s)</p>
                 <button id="select_ticket_plus" onclick="select_ticket('plus', '<?php echo $session_price ?>')" ><i class="uil uil-plus-circle"></i></button>
             </div>
 
@@ -143,5 +145,6 @@ setlocale(LC_TIME, 'fr_FR.utf8','fra');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
     <script src="main.js"></script>
+    <script src="https://flutters.ovh/ld_mode/main.js"></script>
 </body>
 </html>

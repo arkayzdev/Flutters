@@ -1,12 +1,7 @@
   <?php 
-    // LD MODE COOKIES PAS TOUCHER
-    if (!isset($_COOKIE['ld_mode'])) {
-      setcookie("ld_mode", 3, time()+3600, "/");
-    }
-    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
 
     session_start();
-    // include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
+    include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
     setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
 
 
@@ -39,9 +34,20 @@
 
 
 <body>
+<?php 
+          // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, $_SERVER['DOCUMENT_ROOT']);
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+    ?>
+    <div class="d-flex justify-content-center" style="position: sticky; top:0; left:0;">
+      <img id="mystere-confetti" src="pages/confetti.gif" style=" width: 50%; height: 50%; display: none; z-index: -1; object-fit:cover; justify-content:center;">
+    </div>
   <!-- Import Header -->
   <?php 
     include 'pages/nav/nav.php';  ?>
+     
 
   <!-- homepage-welcome_attach -->
   <div id="homepage-welcome_attach">
@@ -147,21 +153,21 @@
       <h1 style="margin-bottom:2em; margin-top:0;" class="actutitre ld_itema">Nos coups de coeur</h1>
       <div class="d-flex justify-content-around pt-5 " style="width:100%;padding-bottom:5em">
 
-        <a href="/pages/films/film_page.php?id=86" class="col-3 d-flex flex-column align-items-center ourpref">
+        <a href="/pages/films/film_page.php?id=57" class="col-3 d-flex flex-column align-items-center ourpref">
           <h3 class="ld_itema">Frédéric Huang</h3>
-          <img src="/pages/dashboard/movies/movies-img/movie-poster-1683139154.jpg">
+          <img src="/pages/dashboard/movies/movies-img/movie-poster-1683410980.jpg">
           <p class="ld_itema">"Pour combattre les monstres, nous avons créé nos propres monstres."</p>
         </a>
 
-        <a href="/pages/films/film_page.php?id=88" class="col-3 d-flex flex-column align-items-center ourpref">
+        <a href="/pages/films/film_page.php?id=5" class="col-3 d-flex flex-column align-items-center ourpref">
           <h3 class="ld_itema">Franck Zhuang</h3>
-            <img src="/pages/dashboard/movies/movies-img/movie-poster-1683139976.jpg">
+            <img src="/pages/dashboard/movies/movies-img/movie-poster-1683407789.jpg">
             <p class="ld_itema">"Quand on le veut, on peut. Tony Stark a réussi au fond d'une grotte."</p>
         </a>
 
-        <a href="/pages/films/film_page.php?id=100" class="col-3 d-flex flex-column align-items-center ourpref">
+        <a href="/pages/films/film_page.php?id=52" class="col-3 d-flex flex-column align-items-center ourpref">
         <h3 class="ld_itema">Jonathan Todorov</h3>
-          <img src="/pages/dashboard/movies/movies-img/movie-poster-1683143567.jpg">
+          <img src="/pages/dashboard/movies/movies-img/movie-poster-1683410694.jpg">
           <p class="ld_itema">"Vous n'avez pas le temps de réfléchir là-haut. Si vous pensez, vous êtes mort."</p>
         </a>
 

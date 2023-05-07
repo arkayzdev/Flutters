@@ -11,7 +11,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
     <?php foreach($result as $id_director) {
             if($_GET['id'] ==  $id_director['id_director']) : ?>
                 <tr>
-                    <form method="POST" action="director-update" enctype="multipart/form-data">
+                    <form class="ld_itema" method="POST" action="director-update" enctype="multipart/form-data">
                         <?php
                         echo '<td><input class="update-input form-control" name="first_name" value="' . htmlspecialchars($id_director['first_name'], ENT_QUOTES) . '" required></td>';
                         echo '<td><input class="update-input form-control" name="last_name" value="'. htmlspecialchars($id_director['last_name'], ENT_QUOTES). '"required></td>';?>
@@ -50,7 +50,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 <!-- Create Table -->
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
     <tr>
-        <form method="POST" action="director-create" enctype="multipart/form-data">
+        <form class="ld_itema" method="POST" action="director-create" enctype="multipart/form-data">
             <td><input class="update-input form-control" name="first_name" required></td>
             <td><input class="update-input form-control" name="last_name" required></td>
             <td>
@@ -85,7 +85,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 <!-- Display Table -->
 <?php else :?>
     <?php foreach($result as $id_director) : ?>
-        <tr>
+        <tr class="ld_itema">
             <?php 
             echo '<td>' . $id_director['id_director'] . '</td>';
             echo '<td>' .  htmlspecialchars($id_director['first_name']) . '</td>';

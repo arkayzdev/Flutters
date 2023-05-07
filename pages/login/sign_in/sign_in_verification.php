@@ -117,10 +117,16 @@ $query->execute([
 $result_status = $query->fetch(PDO::FETCH_COLUMN);
 $_SESSION['status'] = $result_status;
 
-$_SESSION['ld_mode'] = 0;
-
 // Unset Cookies
 setcookie('email', $_POST['email'], time() - 24 * 3600);
+
+$query = $bdd->prepare('UPDATE USERS SET last_login = :today WHERE email = :email');
+$query->execute([
+    'email' => htmlspecialchars($_SESSION['email']),
+    'today' => date('Y-m-d')
+]);
+
+include("check_last_log.php");
 
 // logs
 // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url

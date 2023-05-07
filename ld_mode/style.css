@@ -1,9 +1,35 @@
 #ld_button {
   position: fixed;
   top: 75vh;
-  left: 97%;
+  right: 0%;
   width: 3% !important;
   z-index: 500;
   border: 1px solid lightgrey;
   height: 5%;
+}
+
+@media screen and (max-width: 1100px) {
+  #ld_button {
+    right: 0%;
+    width: 6% !important;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  #ld_button {
+    right: 0%;
+    width: 7% !important;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  #ld_button {
+    right: 0%;
+    width: 11% !important;
+  }
+}
+
+/* POP UP */
+#COOKIE_POP_UP > div > div {
+  background-color: white;
 }

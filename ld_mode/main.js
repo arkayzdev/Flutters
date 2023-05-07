@@ -1,4 +1,4 @@
-//class="ld_item"
+//class="ld_itema"
 
 // LD MODE COOKIES PAS TOUCHER
 // if (!isset($_COOKIE['ld_mode'])) {
@@ -10,10 +10,8 @@
 // <script src="https://flutters.ovh/ld_mode/main.js"></script>
 
 if (check_cookie_name() == 1) {
-  console.log(check_cookie_name());
   load_night();
 } else if (check_cookie_name() == 0) {
-  console.log(check_cookie_name());
   load_sun();
 }
 
@@ -24,12 +22,12 @@ async function ld_switch() {
   if (actual_status.value == 0) {
     actual_status.style.backgroundColor = "rgb(45, 45, 45)";
     actual_status.value = "1";
-    document.cookie = "ld_mode=1";
+    document.cookie = "ld_mode=1; path=/";
     load_night();
   } else if (actual_status.value == 1) {
     actual_status.style.backgroundColor = "rgb(227,41,40)";
     actual_status.value = "0";
-    document.cookie = "ld_mode=0";
+    document.cookie = "ld_mode=0; path=/";
     load_sun();
   }
 
@@ -82,9 +80,22 @@ function load_night() {
 }
 
 function check_cookie_name() {
-  var match = document.cookie.match(
-    new RegExp("(^| )" + "ld_mode" + "=([^;]+)")
-  );
+  let name = "ld_mode" + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 
-  return match[2];
+function accepted_popup() {
+  console.log("COOKIE_ACCEPTED");
+  document.cookie = "pop_up_cookie=1; path=/";
 }

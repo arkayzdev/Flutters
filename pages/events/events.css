@@ -58,6 +58,7 @@
 #event_img {
   width: 13em;
   height: 19em;
+  object-fit: cover;
 }
 
 .event_a {

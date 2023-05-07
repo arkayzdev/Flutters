@@ -1,4 +1,5 @@
 <?php
+
     // logs
     // type = 1-logSuccess 2-logFailed 3-visited 4-emailSent 5-uiModified 6-updfGenerated 7-opdfGenerated  | $page = actual url
     $log_type = 3; $log_page = 'https://flutters.ovh/pages/login/sign_up/sign_up';
@@ -27,6 +28,13 @@
 </head>
 
 <body>
+<?php 
+          // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, $_SERVER['DOCUMENT_ROOT']);
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+    ?>
   <!-- Include Header -->
   <?php include("/var/www/flutters.ovh/pages/nav/login_nav.php"); ?>
 
@@ -37,11 +45,11 @@
     <div class="col col-lg-6 col-xl-7 d-none d-lg-inline img-fluid"></div>
 
     <!-- form -->
-    <div class="col col-lg-6 col-xl-5 bg-white d-flex flex-column justify-content-center align-items-center">
+    <div style="background-color:white;" class="col col-lg-6 col-xl-5  d-flex flex-column justify-content-center align-items-center ld_item">
 
       <!-- form title -->
       <div class="w-75" id="login_title" style="margin-bottom:2em"> 
-        <h2 class="align-self-start" style="font-size:3em; font-weight:700;"> Inscription </h2>
+        <h2 class="align-self-start ld_itema" style="font-size:3em; font-weight:700;"> Inscription </h2>
       </div>
 
       <!-- Error message -->
@@ -56,45 +64,45 @@
         <!-- first and last names -->
         <div class="d-flex flex-column flex-lg-row">
           <div class="col me-lg-4">
-            <p class="mb-1">Nom</p>
+            <p class="mb-1 ld_itema">Nom</p>
             <div class="login-input">
               <img class="ms-1 me-1 pb-2" src="../img/char-login.png">
-              <input class="col-8 mt-1 ms-2" type='text' name='lastname' placeholder="Nom" required value='<?= isset($_COOKIE['lastname']) ? htmlspecialchars($_COOKIE['lastname']) : '' ?>'>
+              <input class="col-8 mt-1 ms-2 ld_itema" style="background-color:inherit" type='text' name='lastname' placeholder="Nom" required value='<?= isset($_COOKIE['lastname']) ? htmlspecialchars($_COOKIE['lastname']) : '' ?>'>
             </div>
           </div>
 
           <div class="col">
-            <p class="mb-1">Prénom</p>
+            <p class="mb-1 ld_itema">Prénom</p>
             <div class="login-input">
               <img class="ms-1 me-1 pb-2" src="../img/char-login.png">
-              <input class="col-8 mt-1 ms-2" type='text' name='firstname' placeholder="Prénom" required value='<?= isset($_COOKIE['firstname']) ? htmlspecialchars($_COOKIE['firstname']) : '' ?>'>
+              <input class="col-8 mt-1 ms-2 ld_itema" style="background-color:inherit" type='text' name='firstname' placeholder="Prénom" required value='<?= isset($_COOKIE['firstname']) ? htmlspecialchars($_COOKIE['firstname']) : '' ?>'>
             </div>
           </div>
         </div>
         <!-- email -->
         <div class="col mt-3">
-          <p class="mb-1">Adresse email</p>
+          <p class="mb-1 ld_itema">Adresse email</p>
           <div class="login-input">
             <img class="ms-1 me-1 pb-1" src="../img/mail-login.png">
-            <input class="col-8 mt-1 mb-1 ms-2" type='email' name='email' placeholder="exemple@xyz.ab" required value='<?= isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : '' ?>'>
+            <input class="col-8 mt-1 mb-1 ms-2 ld_itema" style="background-color:inherit" type='email' name='email' placeholder="exemple@xyz.ab" required value='<?= isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : '' ?>'>
           </div>
         </div>
         <!-- pwd -->
         <div class="col mt-3">
-          <p class="mb-0">Mot de passe</p>
+          <p class="mb-0 ld_itema">Mot de passe</p>
           <div class="login-input">
             <img class="ms-1 me-1 pb-2" src="../img/pwd-login.png">
-            <input class="col-10 mt-1 ms-2" type='password' name='password' placeholder='Mot de passe' required>
+            <input class="col-10 mt-1 ms-2 ld_itema" style="background-color:inherit" type='password' name='password' placeholder='Mot de passe' required>
           </div>
           <p style="color:grey; font-size:0.7em;padding:0;margin:0;">(Minimum 8 caractères avec au moins 1 majuscule, 1 minuscule et 1 chiffre)</p>
 
         </div>
         <!-- confirm pwd -->
         <div class="col mt-3">
-          <p class="mb-1">Confirmation mot de passe</p>
+          <p class="mb-1 ld_itema">Confirmation mot de passe</p>
           <div class="login-input">
             <img class="ms-1 me-1 pb-2" src="../img/pwd-login.png">
-            <input class="col-8 mt-1 ms-2" type='password' name='confirm-password' placeholder='Répétez mot de passe' required>
+            <input class="col-8 mt-1 ms-2 ld_itema" style="background-color:inherit" type='password' name='confirm-password' placeholder='Répétez mot de passe' required>
           </div>
         </div>
         <?php include("/var/www/flutters.ovh/pages/login/captcha/captcha.php") ?>
@@ -104,7 +112,7 @@
         </div>
         <!-- to-connect -->
         <div class="w-75">
-          <p class="align-self-start" id="login_title_bottom" style="font-size:14px; font-weight:600; margin-top:2em;"> Déjà un compte ? <a id="to-sign" href="../sign_in/sign_in.php">Se connecter</a> </p>
+          <p class="align-self-start ld_itema " id="login_title_bottom" style="font-size:14px; font-weight:600; margin-top:2em;"> Déjà un compte ? <a id="to-sign" href="../sign_in/sign_in.php">Se connecter</a> </p>
         </div>
         <!-- Captcha validation input -->
         <input style="display:none;" id="captcha_form_input" value="0" name="captcha_check">
@@ -117,6 +125,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
   <!-- Captcha JS Script -->
   <script src="../captcha/captcha.js"></script>
+  <script src="https://flutters.ovh/ld_mode/main.js"></script>
 </body>
 
 </html>

@@ -1,9 +1,4 @@
 <?php 
-// LD MODE COOKIES PAS TOUCHER
-if (!isset($_COOKIE['ld_mode'])) {
-    setcookie("ld_mode", 3, time()+3600, "/");
-}
-include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
 
 session_start();
 include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
@@ -31,6 +26,13 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     </head>
     <body id="film_body">
+    <?php 
+          // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, $_SERVER['DOCUMENT_ROOT']);
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+    ?>
         <!-- Include Header -->
         <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); ?>
 

@@ -1,4 +1,6 @@
-<?php session_start();
+<?php 
+
+session_start();
 include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
   setlocale(LC_TIME, 'fr_FR.utf8','fra'); 
 
@@ -44,6 +46,13 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
 </head>
 <body id="event_page">
+<?php 
+          // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, $_SERVER['DOCUMENT_ROOT']);
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+    ?>
     <!-- Include Header -->
     <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); ?> 
 
@@ -167,5 +176,6 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
     <script src="main.js"></script>
+    <script src="https://flutters.ovh/ld_mode/main.js"></script>
 </body>
 </html>

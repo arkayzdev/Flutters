@@ -9,7 +9,7 @@ $result_events = $req->fetchAll(PDO::FETCH_ASSOC);
 <?php if (isset($_GET['type']) && isset($_GET['id']) && $_GET['type'] == 'modify') : ?> 
 <?php foreach ($result_events as $id_event) {
     if ($_GET['id'] ==  $id_event['id_event']) : ?> 
-       <form class="d-flex flex-column m-2 col-10" method="POST" action="event-update" enctype="multipart/form-data">
+       <form class="d-flex flex-column m-2 col-10 ld_itema" method="POST" action="event-update" enctype="multipart/form-data">
             <div>
 
                     <div class="me-4 d-flex flex-column">
@@ -94,7 +94,7 @@ $result_events = $req->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- Create table -->
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
-        <form class="d-flex flex-column m-2 col-10" method="POST" action="event-create" enctype="multipart/form-data">
+        <form class="d-flex flex-column m-2 col-10 ld_itema" method="POST" action="event-create" enctype="multipart/form-data">
             <div>
              
                     <div class="me-4 d-flex flex-column">
@@ -171,10 +171,10 @@ $result_events = $req->fetchAll(PDO::FETCH_ASSOC);
 <?php else : ?>
     <?php foreach ($result_events as $id_event) : 
         $id = $id_event['id_event'];
-        echo '<tr>';
+        echo '<tr class="ld_itema">';
         echo '<td>' .  htmlspecialchars($id_event['id_event']) . '</td>';
         echo '<td>' .  htmlspecialchars($id_event['name']) . '</td>';
-        echo '<td>' .  htmlspecialchars(substr($id_event['description'], 0, 20) . '...'). '</td>';
+        echo '<td>' .  htmlspecialchars(substr($id_event['description'], 0, 22) . '...'). '</td>';
         echo '<td>' .  htmlspecialchars($id_event['date_event']) . '</td>';
         echo '<td>' .  htmlspecialchars(date("H:i", strtotime($id_event['start_time']))) . '</td>';
         echo '<td>' .  htmlspecialchars(number_format($id_event['price'],2)) . '€</td>'; 

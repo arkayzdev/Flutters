@@ -62,7 +62,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 <?php elseif (isset($_GET['type']) && $_GET['type'] == 'create') : ?>
     <tr>
         <form method="POST" action="user-create" enctype="multipart/form-data">
-            <td><input class="update-input form-control" name="first_name" required></td>
+            <td><input  class="update-input form-control" name="first_name" required></td>
             <td><input class="update-input form-control" name="last_name" required></td>
             <td><input class="update-input form-control" name="email" type="email" required></td>
             <td><input class="update-input form-control" type="password" name="password" required></td>
@@ -99,7 +99,7 @@ $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 <!-- Display Table -->
 <?php else :?>
     <?php foreach($result as $id_client) : ?>
-        <tr>
+        <tr class="ld_itema">
             <?php if ($id_client['user_type'] == "Admin") {
                 echo '<td><i class="uil uil-user-md"></i></td>';
             } else {

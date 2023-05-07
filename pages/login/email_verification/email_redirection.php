@@ -1,3 +1,11 @@
+<?php 
+// LD MODE COOKIES PAS TOUCHER
+if (!isset($_COOKIE['ld_mode'])) {
+    setcookie("ld_mode", 3, time()+3600);
+}
+include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,10 +31,10 @@
     <div class="col col-lg-6 col-xl-7 d-none d-lg-inline img-fluid"></div>
 
     <!-- form -->
-    <div class="col col-lg-6 col-xl-5 bg-white d-flex flex-column justify-content-start align-items-center" style="height:100vh">
+    <div class="col col-lg-6 col-xl-5 d-flex flex-column justify-content-start align-items-center ld_item" style="height:100vh">
       <!-- form title -->
       <div>
-        <h2 style="margin-top: 30vh;font-size:2.8em; font-weight:700; text-align:center;"> Vérification du compte </h2>
+        <h2 class="ld_itema" style="margin-top: 30vh;font-size:2.8em; font-weight:700; text-align:center;"> Vérification du compte </h2>
       </div>
       <div>
         <?php
@@ -36,13 +44,14 @@
           echo '<p class="validation-message" style="text-align:center; margin-top:3em;">Erreur: no ?message</p>';
         }
         ?>
-        <p style="text-align:center; margin-top:2vh">Aller à la page de <a id="to-sign" href="../sign_in/sign_in.php">connexion</a></p>
+        <p class="ld_itema" style="text-align:center; margin-top:2vh">Aller à la page de <a id="to-sign" href="../sign_in/sign_in.php">connexion</a></p>
       </div>
     </div>
   </div>
   <!-- Import Bootstrap JS Library -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
+  <script src="https://flutters.ovh/ld_mode/main.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 <?php 
+
 session_set_cookie_params(3600);
 session_start();
 include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
@@ -66,6 +67,13 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
 </head>
 
 <body>
+<?php 
+          // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, $_SERVER['DOCUMENT_ROOT']);
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+    ?>
     <!-- Include Header -->
     <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); ?>
 
@@ -108,9 +116,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
         <!-- profile_up_side nav -->
         <div class="d-block d-lg-none" id="profile_up_side">
             <nav>
-                <ul class="d-flex p-0">
-                    <li class="col-6 text-center"><a href="profile.php">Mes informations</a></li>
-                    <li class="col-6 text-center"><a href="mes_reservations.php">Mes réservations</a></li>
+                <ul class="d-flex p-0 ld_item">
+                    <li class="col-6 text-center"><a class="ld_itema" href="profile.php">Mes informations</a></li>
+                    <li class="col-6 text-center"><a class="ld_itema" href="mes_reservations.php">Mes réservations</a></li>
                 </ul>
             </nav>
         </div>
@@ -123,11 +131,11 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
             <!-- profile_left_side nav -->
             <div class="d-none d-lg-block col-4 col-xl-3" id="profile_left_side">
                 <nav style="list-style:none;">
-                    <ul class="d-none d-lg-flex">
-                        <li><a href="#mes_informations">Mes informations</a></li>
-                        <li><a href="#mon_mot_de_passe">Mon mot de passe</a></li>
-                        <li><a href="#ma_newsletter">Ma newsletter</a></li>
-                        <li><a href="mes_reservations.php">Mes réservations</a></li>
+                    <ul class="d-none d-lg-flex ld_item">
+                        <li><a class="ld_itema" href="#mes_informations">Mes informations</a></li>
+                        <li><a class="ld_itema" href="#mon_mot_de_passe">Mon mot de passe</a></li>
+                        <li><a class="ld_itema" href="#ma_newsletter">Ma newsletter</a></li>
+                        <li><a class="ld_itema" href="mes_reservations.php">Mes réservations</a></li>
                     </ul>
                 </nav>
             </div>
@@ -136,9 +144,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
             <div class="col-12 col-lg-8 col-xl-7 d-flex flex-column">
 
                 <!----- Mes informations ----->
-                <div class="profile_right_side_div">
+                <div class="profile_right_side_div ld_item">
                     <!-- title -->
-                    <h3 id="h3" id="mes_informations">Mes informations</h3>
+                    <h3 id="h3" id="mes_informations" class="ld_itema">Mes informations</h3>
                     <!-- profile -->
                     <div class="d-flex flex-column-reverse flex-lg-row">
                         <!-- profile left side infos -->
@@ -149,14 +157,14 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
                                 <div class="changeable">
                                     <label>Prénom</label>
                                     <?php
-                                    echo '<input type="text" name="firstname" placeholder="Remplir ce champs" required value="' . htmlspecialchars($firstname) . '">';
+                                    echo '<input type="text" name="firstname" placeholder="Remplir ce champs" class="ld_itema" required value="' . htmlspecialchars($firstname) . '">';
                                     ?>
                                 </div>
                                 <!-- lastname -->
                                 <div class="changeable">
                                     <label>Nom</label>
                                     <?php
-                                    echo '<input type="text" name="lastname" placeholder="Remplir ce champs" required value="' . htmlspecialchars($lastname) . '">';
+                                    echo '<input type="text" name="lastname" placeholder="Remplir ce champs" class="ld_itema" required value="' . htmlspecialchars($lastname) . '">';
                                     ?>                                </div>
                                 <!-- email -->
                                 <div class="changeable">
@@ -333,9 +341,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
                 </div>
 
                 <!-- Mon mot de passe -->
-                <div id="mon_mot_de_passe" class="profile_right_side_div">
+                <div id="mon_mot_de_passe" class="profile_right_side_div ld_item">
                     <!-- title -->
-                    <h3>Mon mot de passe</h3>
+                    <h3 class="ld_itema">Mon mot de passe</h3>
                     <!-- profile pwd change -->
                     <div>
                         <!-- profile_password -->
@@ -343,12 +351,12 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
                             <!-- actual pwd -->
                             <div class="changeable">
                                 <label>Mot de passe actuel</label>
-                                <input type='password' name='actual_password' placeholder="Mot de passe actuel">
+                                <input class="ld_itema" type='password' name='actual_password' placeholder="Mot de passe actuel">
                             </div>
                             <!-- lastname -->
                             <div class="changeable">
                                 <label>Nouveau mot de passe</label>
-                                <input type='password' name='new_password' placeholder="Nouveau mot de passe">
+                                <input class="ld_itema" type='password' name='new_password' placeholder="Nouveau mot de passe">
                             </div>
                             <!-- update_button -->
                             <div class="update_btn">
@@ -359,16 +367,16 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
                 </div>
 
                 <!-- Newsletter -->
-                <div class="profile_right_side_div">
+                <div class="profile_right_side_div ld_item">
                     <!-- title -->
-                    <h3 id="ma_newsletter">Newsletter</h3>
+                    <h3 id="ma_newsletter" class="ld_itema">Newsletter</h3>
                     <!-- profile newsletter -->
                     <div>
                         <!-- proile_form_newsletter -->
                         <form action="profile_newsletter_update.php" method="POST">
                             <!-- newsletter_checkbox -->
                             <div class="d-flex">
-                                <label class="col-10">Recevoir toute l'actualité des films et évènements Flutters à venir</label>
+                                <label class="col-10 ld_itema">Recevoir toute l'actualité des films et évènements Flutters à venir</label>
                                 <?php
                                 if($newsletter == 0){
                                     echo '<input id="check_box" class="col-2" value="1" type=\'checkbox\' name=\'newsletter\'>';
@@ -399,6 +407,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pages/ban-check.php');
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
     <script src="profile.js"></script>
+    <script src="https://flutters.ovh/ld_mode/main.js"></script>
 </body>
 
 </html>

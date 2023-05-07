@@ -350,12 +350,12 @@
                       
                     
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/pages/profile/profile.php">Profil</a></li>
-                        <li><a class="dropdown-item" href="/pages/profile/mes_reservations.php">Mes réservations</a></li>
-                        <li><a class="dropdown-item" href="/pages/dashboard/users/users">Dashboard</a></li>
+                    <ul class="dropdown-menu ld_item" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item ld_itema" href="/pages/profile/profile.php">Profil</a></li>
+                        <li><a class="dropdown-item ld_itema" href="/pages/profile/mes_reservations.php">Mes réservations</a></li>
+                        <li><a class="dropdown-item ld_itema" href="/pages/dashboard/users/users">Dashboard</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/deconnexion.php">Deconnexion</a></li>
+                        <li><a class="dropdown-item ld_itema" href="/deconnexion.php">Deconnexion</a></li>
                     </ul>
                 </li>
             </ul>

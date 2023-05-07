@@ -145,6 +145,7 @@ main {
 }
 
 .changeable input {
+  background-color: inherit;
   border: none;
   border-bottom: 2px solid lightgrey;
   margin-right: 2em;

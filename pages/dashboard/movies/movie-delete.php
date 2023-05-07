@@ -8,7 +8,9 @@ if (isset($_GET['id']) && $_GET['type'] == 'delete') {
     $result = $req->fetch(PDO::FETCH_ASSOC);
     if ($result) {
         $file_src = $result['poster_image'];
-        unlink($file_src);
+        if (is_file($file_src)) {
+            unlink($file_src);
+        } 
     }
 
     $q = "SELECT id_session FROM TAKE_PLACE WHERE id_movie= $id";

@@ -10,16 +10,16 @@ session_start();
     include("pages/connect_db.php");
 
 
-    $movie = 100;
+    $movie = 42;
 
-    $price = 11.90;
-    $minutes = 135;
-    $id_room= 16; 
+    $price = 6.40;
+    $minutes = 95;
+    $id_room= 8; 
 
     // PAS TOUCHER 
     $seance_date = '2023-05-08';
     $start_time = '9:00';
-    $language = array('VO','VOSTFR','VOSTENG');
+    $language = array('VO','VOSTFR');
     $random_day_off = rand(2,5);
     // 194 -> 241
 

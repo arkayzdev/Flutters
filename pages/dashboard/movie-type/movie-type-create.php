@@ -3,7 +3,7 @@ include '../../connect_db.php';
 $name = trim($_POST['name']);
 
 if (!preg_match("/^[a-zA-Zéèà-]+$/", $name)) {
-    $alert = "Veuillez entrer un nom valide, contenant seulement des caractères.";
+    $alert = "Veuillez entrer un nom valide, contenant seulement des caractères (et séparé uniquement par un tiret).";
     header('location: movie-type?type=create&alert=' . $alert);
     exit();
 }

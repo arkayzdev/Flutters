@@ -55,10 +55,14 @@
     <!-- footer-upper -->
     <div class="row border-bottom pb-3 ps-4 d-flex justify-content:center">
         <div class="col-0 col-md-1" id="fantom_div"></div>
-        <div class="d-block mb-5 col-8 col-md-4 col-xl-6">
+        <div class="d-flex flex-column mb-5 col-12 col-sm-8 col-md-4 col-xl-6 ">
             <img style="width:10em" src="/pages/footer/img/Flutters-White.svg">
-            
-</button>
+            <p style="color:white;font-weight:500;font-size:1.2em;" class="mt-4 mb-1">Newsletter</p>
+            <div>
+                <input id="sub_newsletter_input" style="width:13em; height:1.8em;border-radius:5px; border:1px solid lightgrey;" class="ps-2" type="email" placeholder="flutters@email.com" require>
+                <button onclick="sub_newsletter()" style="background-color:white;height:1.8em; border:1px solid lightgrey; border-radius:5px" class=""><i style="color:red;" class="uil uil-envelope-upload"></i></button>
+                <p style="color:white; padding-top:0.5em;width:20em;" id="sub_newsletter_div"></p>
+            </div>
         </div>
         <div class="col-10 col-md-2 col-xl-1 me-4 disapear_foot">
             <h5 class="text-white">Navigation</h5>
@@ -106,4 +110,5 @@
             </ul>
         </div>
     </div>
+    <script src="/pages/footer/main.js"></script>
 </footer>

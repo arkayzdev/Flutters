@@ -32,14 +32,135 @@
         <main id=main_allabout>
 
         <section>
-      <h1 class="flutters_about">Flutters</h1>
+      <h1 class="directeurs_about">Fondateurs de Flutters</h1>
+      <br />
+      <br />
+    </section>
+    <section>
+      <div class="main_about">
+        <div class="container_allcard">
+          <div class="card_directeurs">
+            <img src="img/jojo.jpg" />
+            <div class="details_directeurs">
+              <h3>TODOROV Jonathan</h3>
+              <p>Directeur</p>
+              <div class="social-links_directeurs">
+                <a
+                  href="https://www.facebook.com/zuck/?locale=fr_FR"
+                  target="_blank"
+                  ><i class="uil uil-facebook-f"></i
+                ></a>
+                <a href="https://www.instagram.com/zuck/" target="_blank"
+                  ><i class="uil uil-instagram"></i
+                ></a>
+                <a href="https://twitter.com/finkd?lang=fr" target="_blank"
+                  ><i class="uil uil-twitter-alt"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="card_directeurs">
+            <img src="img/fred.jpg" />
+            <div class="details_directeurs">
+              <h3>HUANG Frédéric</h3>
+              <p>Directeur</p>
+              <div class="social-links_directeurs">
+                <a
+                  href="https://www.facebook.com/DwayneJohnson/?locale=fr_FR"
+                  target="_blank"
+                  ><i class="uil uil-facebook-f"></i
+                ></a>
+                <a href="https://www.instagram.com/therock/" target="_blank"
+                  ><i class="uil uil-instagram"></i
+                ></a>
+                <a href="https://twitter.com/TheRock" target="_blank"
+                  ><i class="uil uil-twitter-alt"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="card_directeurs">
+            <img src="img/franck.jpg" />
+            <div class="details_directeurs">
+              <h3>ZHUANG Franck</h3>
+              <p>Directeur</p>
+              <div class="social-links_directeurs">
+                <a
+                  href="https://www.facebook.com/BillGates/?locale=fr_FR"
+                  target="_blank"
+                  ><i class="uil uil-facebook-f"></i
+                ></a>
+                <a
+                  href="https://z-p4.www.instagram.com/thisisbillgates/?hl=fr-ca"
+                  target="_blank"
+                  ><i class="uil uil-instagram"></i
+                ></a>
+                <a href="https://twitter.com/BillGates" target="_blank"
+                  ><i class="uil uil-twitter-alt"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h1 class="directeurs_about">Présentation Flutters</h1>
+      <br />
+      <br />
+    </section>
+    <div class="about_history">
+      <details class="card_history">
+        <summary>
+          <h2 id="title_history">Flutters</h2>
+          <h3 id="title2_history">Présentation du cinéma Flutters</h3>
+          <div class="crop">
+            <img src="/pages/about/img/Icon-White.svg  " alt="" />
+          </div>
+        </summary>
+
+        <p id="text_history">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt eum
+          assumenda repellendus aperiam veniam mollitia consequatur laudantium
+          vero iusto fugit quaerat ratione similique facere sequi voluptates,
+          voluptas magni reprehenderit iste.Lorem, ipsum dolor sit amet
+          consectetur adipisicing elit. Provident omnis velit eveniet
+          repellendus, quidem ullam, laboriosam animi aspernatur dolorum
+          officiis eligendi architecto molestias, sequi quae quas consequatur
+          ipsa. Ut, iusto.
+        </p>
+        <p id="text_history">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, hic
+          esse? Quod iure magnam recusandae necessitatibus? Eum ullam dolore
+          accusamus perferendis officia. Repudiandae, fugit? Mollitia quos
+          recusandae similique deleniti minus?Lorem, ipsum dolor sit amet
+          consectetur adipisicing elit. Provident omnis velit eveniet
+          repellendus, quidem ullam, laboriosam animi aspernatur dolorum
+          officiis eligendi architecto molestias, sequi quae quas consequatur
+          ipsa. Ut, iusto.
+        </p>
+        <p id="text_history">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident
+          omnis velit eveniet repellendus, quidem ullam, laboriosam animi
+          aspernatur dolorum officiis eligendi architecto molestias, sequi quae
+          quas consequatur ipsa. Ut, iusto.Lorem, ipsum dolor sit amet
+          consectetur adipisicing elit. Provident omnis velit eveniet
+          repellendus, quidem ullam, laboriosam animi aspernatur dolorum
+          officiis eligendi architecto molestias, sequi quae quas consequatur
+          ipsa. Ut, iusto.
+        </p>
+      </details>
+    </div>
+
+    <section>
+      <h1 class="flutters_about">Notre parcours</h1>
       <br />
       <br />
     </section>
     <section class="timeline">
       <div class="info_about">
-        <img width="50" height="50" src="pages/about/img/Icon-Black.svg" alt="" />
-        <h2>Notre histoire</h2>
+        <img width="50" height="50" src="/pages/about/img/Icon-White.svg" alt="" />
+        <h2>Il etait une fois</h2>
         <p>
           At vero eos et accusamus et iusto odio dignissimos ducimus qui
           blanditiis praesentium
@@ -105,7 +226,6 @@
         <li></li>
       </ol>
     </section>
-    
 </main>
     
 

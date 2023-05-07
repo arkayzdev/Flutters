@@ -8,7 +8,9 @@ if (isset($_GET['id']) && $_GET['type'] == 'delete') {
     $result = $req->fetch(PDO::FETCH_ASSOC);
     if ($result) {
         $file_src = $result['image'];
-        unlink($file_src);
+        if (is_file($file_src)) {
+            unlink($file_src);
+        } 
     }
     
     $q = "DELETE FROM TICKET WHERE id_event = $id";

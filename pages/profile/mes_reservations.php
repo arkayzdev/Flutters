@@ -39,6 +39,13 @@
 </head>
 
 <body>
+<?php 
+          // LD MODE COOKIES PAS TOUCHER
+    if (!isset($_COOKIE['ld_mode'])) {
+      setcookie("ld_mode", 3, $_SERVER['DOCUMENT_ROOT']);
+    }
+    include ($_SERVER['DOCUMENT_ROOT'].'/ld_mode/ld_mode.php');
+    ?>
     <!-- Include Header -->
     <?php include("/var/www/flutters.ovh/pages/nav/nav.php"); ?>
 
@@ -80,9 +87,9 @@
         <!-- profile_up_side nav -->
         <div class="d-block d-lg-none" id="profile_up_side">
             <nav>
-                <ul class="d-flex p-0">
-                    <li class="col-6 text-center"><a href="profile.php">Mes informations</a></li>
-                    <li class="col-6 text-center"><a href="mes_reservations.php">Mes réservations</a></li>
+                <ul class="d-flex p-0 ld_item">
+                    <li class="col-6 text-center"><a class="ld_itema" href="profile.php">Mes informations</a></li>
+                    <li class="col-6 text-center"><a class="ld_itema" href="mes_reservations.php">Mes réservations</a></li>
                 </ul>
             </nav>
         </div>
@@ -94,9 +101,9 @@
             <!-- profile_left_side nav -->
             <div class="d-none d-lg-block col-4 col-xl-3" id="profile_left_side">
                 <nav style="list-style:none;">
-                    <ul class="d-none d-lg-flex">
-                        <li><a href="profile.php">Mes informations</a></li>
-                        <li><a href="mes_reservations.php">Mes réservations</a></li>
+                    <ul class="d-none d-lg-flex ld_item">
+                        <li><a class="ld_itema" href="profile.php">Mes informations</a></li>
+                        <li><a class="ld_itema" href="mes_reservations.php">Mes réservations</a></li>
                     </ul>
                 </nav>
             </div>
@@ -383,6 +390,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.0/gsap.min.js"></script>
     <script src="profile.js"></script>
+    <script src="https://flutters.ovh/ld_mode/main.js"></script>
 </body>
 
 </html>

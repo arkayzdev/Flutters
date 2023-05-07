@@ -1,17 +1,17 @@
 :root {
-  --white-1: #FFFFFF;
-  --white-2: #F9F9F9;
-  --white-3: #F2F3F4;
-  --white-4: #ECEDEE;
-  --red: #E32828;
-  --grey-1: #3C434B;
-  --grey-2: #282A2D;
+  --white-1: #ffffff;
+  --white-2: #f9f9f9;
+  --white-3: #f2f3f4;
+  --white-4: #ecedee;
+  --red: #e32828;
+  --grey-1: #3c434b;
+  --grey-2: #282a2d;
   --black: #000000;
   --footer: #101114;
 }
 
 body {
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 .add-cta {
@@ -31,9 +31,6 @@ nav i {
   font-size: 20px;
 }
 
-
-
-
 .hover-effect:hover {
   opacity: 50%;
   transition: 0.4s;
@@ -43,7 +40,6 @@ nav i {
   opacity: 100%;
   transition: 0.4s;
 }
-
 
 .feather {
   width: 16px;
@@ -68,7 +64,7 @@ nav i {
   /* Behind the navbar */
   padding: 48px 0 0;
   /* Height of navbar */
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 767.98px) {
@@ -81,7 +77,7 @@ nav i {
   position: relative;
   top: 0;
   height: calc(100vh - 48px);
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
   /* Scrollable contents if viewport is shorter than content. */
@@ -99,15 +95,13 @@ nav i {
   color: #727272;
 }
 
-
-
 .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {
   color: inherit;
 }
 
 .sidebar-heading {
-  font-size: .75rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 
@@ -116,33 +110,33 @@ nav i {
  */
 
 .navbar-brand {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   font-size: 1rem;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.25);
 }
 
 .navbar .navbar-toggler {
-  top: .25rem;
+  top: 0.25rem;
   right: 1rem;
 }
 
 .navbar .form-control {
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   border-width: 0;
   border-radius: 0;
 }
 
 .form-control-dark {
   color: #fff;
-  background-color: rgba(255, 255, 255, .1);
-  border-color: rgba(255, 255, 255, .1);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .form-control-dark:focus {
   border-color: transparent;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
 
 .button {
@@ -168,4 +162,9 @@ nav i {
 .add-icon {
   margin-right: 0.5em;
   font-size: 16px;
+}
+
+/* FRED MODIF PR LD */
+.bgg-light {
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity));
 }

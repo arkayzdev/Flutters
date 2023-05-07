@@ -11,7 +11,7 @@ if (!preg_match("/^[a-zA-Zéèà -]+$/", $first_name) || !preg_match("/^[a-zA-Z�
     exit();
 }
 
-$q = "SELECT COUNT(id_actor) as COUNT FROM ACTOR WHERE first_name = '$first_name' AND last_name = '$last_name'";
+$q = "SELECT COUNT(id_actor) as COUNT FROM ACTOR WHERE first_name = '$first_name' AND last_name = '$last_name' AND id_actor != $id";
 $req = $bdd->query($q);
 $result = $req->fetch(PDO::FETCH_ASSOC);
 if ($result['COUNT'] != "0") {

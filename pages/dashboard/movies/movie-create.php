@@ -42,26 +42,31 @@ if(isset($_FILES['image']) && $_FILES['image']['error'] != 4){
 } else {
     $alert= 'Veuillez mettre une image.';
     header('location: movies?type=create&alert=' . $alert);
+    exit();
 }
 
 if (!$_POST['types']) {
     $alert= 'Veuillez mettre au moins un genre.';
     header('location: movies?type=create&alert=' . $alert);
+    exit();
 }
 
 if (!$_POST['language']) {
     $alert= 'Veuillez choisir une langue original.';
     header('location: movies?type=create&alert=' . $alert);
+    exit();
 }
 
 if (!$_POST['actors']) {
     $alert= 'Veuillez mettre un acteur au moins.';
     header('location: movies?type=create&alert=' . $alert);
+    exit();
 }
 
 if (!$_POST['directors']) {
     $alert= 'Veuillez mettre un réalisateur au moins.';
     header('location: movies?type=create&alert=' . $alert);
+    exit();
 }
 
 
