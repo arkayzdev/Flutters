@@ -24,10 +24,10 @@
               $result = $req -> fetchAll(PDO::FETCH_ASSOC);
   
               if(count($result) != 0){
-                  echo '<button style=" box-shadow:  rgba(148, 15, 32, 0.45) 0px 5px 15px; transition: 0.2s; " onclick="calendar_button_trigger(this.value,' . htmlspecialchars($_GET['id']) . ')" value="' . htmlspecialchars($calendar[$i]) . '" class="calendar_button"><p class="ld_itema" id="' . htmlspecialchars($calendar[$i]) . '">' . strtoupper(strftime("%a %d %b",strtotime($calendar[$i]))) . '</p></button>';
+                  echo '<button style=" box-shadow:  rgba(148, 15, 32, 0.45) 0px 5px 15px; transition: 0.2s; " onclick="calendar_button_trigger(this.value,' . htmlspecialchars($_GET['id']) . ')" value="' . htmlspecialchars($calendar[$i]) . '" class="calendar_button"><p class="" id="' . htmlspecialchars($calendar[$i]) . '">' . strtoupper(strftime("%a %d %b",strtotime($calendar[$i]))) . '</p></button>';
 
                 } else {
-                    echo '<button onclick="calendar_button_trigger(this.value,' . htmlspecialchars($_GET['id']) . ')" value="' . htmlspecialchars($calendar[$i]) . '" class="calendar_button ld_itemz"><p class="ld_itema" id="' . htmlspecialchars($calendar[$i]) . '">' . strtoupper(strftime("%a %d %b",strtotime($calendar[$i]))) . '</p></button>';
+                    echo '<button onclick="calendar_button_trigger(this.value,' . htmlspecialchars($_GET['id']) . ')" value="' . htmlspecialchars($calendar[$i]) . '" class="calendar_button"><p class="" id="' . htmlspecialchars($calendar[$i]) . '">' . strtoupper(strftime("%a %d %b",strtotime($calendar[$i]))) . '</p></button>';
                 }
           
             }
@@ -51,11 +51,11 @@
             $result = $req -> fetchAll(PDO::FETCH_ASSOC);
 
             if(count($result) != 0){
-                echo '<button style="  box-shadow:  rgba(148, 15, 32, 0.45) 0px 5px 15px; transition: 0.2s; " onclick="calendar_button_trigger(this.value,' . htmlspecialchars($_GET['id']) . ')" value="' . htmlspecialchars($calendar[$i]) . '" class="calendar_button"><p class="ld_itema" id="' . htmlspecialchars($calendar[$i]) . '">' . strtoupper(strftime("%a %d %b",strtotime($calendar[$i]))) . '</p></button>';
+                echo '<button style="  box-shadow:  rgba(148, 15, 32, 0.45) 0px 5px 15px; transition: 0.2s; " onclick="calendar_button_trigger(this.value,' . htmlspecialchars($_GET['id']) . ')" value="' . htmlspecialchars($calendar[$i]) . '" class="calendar_button"><p class="" id="' . htmlspecialchars($calendar[$i]) . '">' . strtoupper(strftime("%a %d %b",strtotime($calendar[$i]))) . '</p></button>';
             } else {
-                echo '<button onclick="calendar_button_trigger(this.value,' . htmlspecialchars($_GET['id']) . ')" value="' . htmlspecialchars($calendar[$i]) . '" class="calendar_button ld_itemz"><p class="ld_itema" id="' . htmlspecialchars($calendar[$i]) . '">' . strtoupper(strftime("%a %d %b",strtotime($calendar[$i]))) . '</p></button>';
+                echo '<button onclick="calendar_button_trigger(this.value,' . htmlspecialchars($_GET['id']) . ')" value="' . htmlspecialchars($calendar[$i]) . '" class="calendar_button"><p class="" id="' . htmlspecialchars($calendar[$i]) . '">' . strtoupper(strftime("%a %d %b",strtotime($calendar[$i]))) . '</p></button>';
             }
         }
 
-        echo '<input class="d-none" id="calendar_selected_date" value=' . date('Y-m-d', strtotime($_GET['date']. ' + 0 day')) . '>';
+        echo '<input class="d-none " id="calendar_selected_date" value=' . date('Y-m-d', strtotime($_GET['date']. ' + 0 day')) . '>';
 }

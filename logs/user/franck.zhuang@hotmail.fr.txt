@@ -24,3 +24,10 @@
 2023-05-07 - 19:05:14 - franck.zhuang@hotmail.fr - Stripe Payment Sent <br>
 2023-05-07 - 19:05:30 - franck.zhuang@hotmail.fr - Sripe Payment Successfull <br>
 2023-05-07 - 19:05:48 - franck.zhuang@hotmail.fr - Downloaded PDF 2<br>
+2023-05-07 - 21:17:48 - franck.zhuang@hotmail.fr - Logging attempt SUCCESS <br>
+2023-05-07 - 22:56:36 - franck.zhuang@hotmail.fr - Stripe Payment Sent <br>
+2023-05-07 - 22:57:06 - franck.zhuang@hotmail.fr - Logging attempt SUCCESS <br>
+2023-05-07 - 23:01:46 - franck.zhuang@hotmail.fr - Stripe Payment Sent <br>
+2023-05-07 - 23:02:03 - franck.zhuang@hotmail.fr - Sripe Payment Successfull <br>
+2023-05-07 - 23:02:08 - franck.zhuang@hotmail.fr - Downloaded PDF 913<br>
+2023-05-08 - 11:18:09 - franck.zhuang@hotmail.fr - Logging attempt SUCCESS <br>

@@ -163,7 +163,7 @@
             echo '<p style="color: grey; text-align:center; margin: 2em 0 2em 0;">Pas de commentaires sur ce film.</p>';
             echo '<BODY onLoad="remove_show_btn()">';   
         }
-        if (!isset($all_comments[4])){
+        if (!isset($all_comments[3])){
             echo '<BODY onLoad="remove_show_btn()">';  
         }
         

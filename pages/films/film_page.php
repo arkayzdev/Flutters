@@ -220,7 +220,7 @@
     </section>
 
     <!-- Section : film_calendar -->
-    <section id="film_calendar" class="pt-3 ld_item">
+    <section id="film_calendar" class="pt-3">
 
       <div id="film_calendar_div">
         <?php include('api/create_calendar.php'); ?>
@@ -231,21 +231,21 @@
 
       <div style="display:flex">
         <!-- Bouton switching for mobile x other devices -->
-        <button onclick="open_calendar()" id="switch_btn_pc" class="calendar_button calendar_button_act ld_itema  ld_itemz"><i class="uil uil-schedule"></i><p>Calendrier</p></button>
+        <button onclick="open_calendar()" id="switch_btn_pc" class="calendar_button calendar_button_act"><i class="uil uil-schedule"></i><p>Calendrier</p></button>
 
         <?php 
         echo '<div id="switch_btn_mobile_div"><input id="switch_btn_mobile" style="display:none;" onchange="calendar_button_date(this.value, ' . htmlspecialchars($_GET['id']) . ')" value="' . date('Y-m-d') . '" type="date" min="' . date('Y-m-d') . '"></div>';
-        echo '<button value="' . strftime("%Y-%m-%d", strtotime($today)) . '" onclick="calendar_reload(this.value, ' . htmlspecialchars($_GET['id']) . ')" class="calendar_button calendar_button_act ld_itema ld_itemz"><i class="uil uil-redo"></i><p>Today</p></button>';
+        echo '<button value="' . strftime("%Y-%m-%d", strtotime($today)) . '" onclick="calendar_reload(this.value, ' . htmlspecialchars($_GET['id']) . ')" class="calendar_button calendar_button_act"><i class="uil uil-redo"></i><p>Today</p></button>';
         ?>
       </div> 
 
     </section>
 
     <!-- Section : film_session -->
-    <section class="ld_item" id="film_session">
+    <section id="film_session">
         <div id="film_session_div">
-          <h3 class="ld_itema">Flutters La Misère</h3>
-          <p class="ld_itema" style="margin-bottom:1em">28 Boulevard de la Misère, Paris 15ème</p>
+          <h3>Flutters La Misère</h3>
+          <p style="margin-bottom:1em">28 Boulevard de la Misère, Paris 15ème</p>
           <div id="film_session_sub_div">
 
             <?php include('api/create_film_session.php') ?>

@@ -9,7 +9,7 @@ $description = "";
 
 echo '
     <div class="d-flex justify-content-between"> 
-    <h3>Mon Commentaire</h3>
+    <h3  class="ld_itema">Mon Commentaire</h3>
     <p></p>
     </div>
     <div></div>
