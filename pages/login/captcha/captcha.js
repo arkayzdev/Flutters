@@ -108,6 +108,3 @@ function check() {
   }
 }
 
-function test() {
-  console.log('Hello');
-}

@@ -117,4 +117,4 @@ $pdf = new \mikehaertl\wkhtmlto\Pdf();
 $pdf->setOptions(['user-style-sheet' => realpath('pdf.css')]);
 $pdf->addPage($content);
 
-$pdf->send( str_replace('cs_test_','', $order_id) . '.pdf');
+$pdf->send(str_replace('cs_test_','', $order_id) . '.pdf');

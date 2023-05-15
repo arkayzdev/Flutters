@@ -18,21 +18,21 @@
             <div id="captcha_full_puzzle" class="modal-body">
                 <!-- 1st row -->
                 <div class="d-flex row">
-                    <img class="col-4" onclick="captcha(this.id)" src="" id="1" ondrop="test()" ondragover="test()">
-                    <img class="col-4" onclick="captcha(this.id)" src="" id="2" ondrop="test()" ondragover="test()">
-                    <img class="col-4" onclick="captcha(this.id)" src="" id="3" ondrop="test()" ondragover="test()">
+                    <img class="col-4" onclick="captcha(this.id)" src="" id="1">
+                    <img class="col-4" onclick="captcha(this.id)" src="" id="2">
+                    <img class="col-4" onclick="captcha(this.id)" src="" id="3">
                 </div>
                 <!-- 2st row -->
                 <div class="d-flex row">
-                    <img class="col-4" onclick="captcha(this.id)" src="" id="4" ondrop="test()" ondragover="test()">
-                    <img class="col-4" onclick="captcha(this.id)" src="" id="5" ondrop="test()" ondragover="test()">
-                    <img class="col-4" onclick="captcha(this.id)" src="" id="6" ondrop="test()" ondragover="test()">
+                    <img class="col-4" onclick="captcha(this.id)" src="" id="4">
+                    <img class="col-4" onclick="captcha(this.id)" src="" id="5">
+                    <img class="col-4" onclick="captcha(this.id)" src="" id="6">
                 </div>
                 <!-- 3st row -->
                 <div class="d-flex row">
-                    <img class="col-4" onclick="captcha(this.id)" src="" id="7" ondrop="test()" ondragover="test()">
-                    <img class="col-4" onclick="captcha(this.id)" src="" id="8" ondrop="test()" ondragover="test()">
-                    <img class="col-4" onclick="captcha(this.id)" src="" id="9" ondrop="test()" ondragover="test()">
+                    <img class="col-4" onclick="captcha(this.id)" src="" id="7">
+                    <img class="col-4" onclick="captcha(this.id)" src="" id="8">
+                    <img class="col-4" onclick="captcha(this.id)" src="" id="9">
                 </div>
             </div>
             <!-- Captcha Footer -->
